@@ -48,13 +48,15 @@ end
 
 # trips
 50.times do
-  Trip.create!(title: "#{Faker::Address.country} #{rand(1990..2021)}",
-               description: Faker::Hipster.sentence,
-               start_date: Faker::Date.between(from: 10.years.ago, to: Date.today),
-               end_date: Faker::Date.between(from: 10.years.ago, to: Date.today),
-               budget: rand(50.0..999_999.9),
-               visibility: Trip.visibilities.values.sample,
-               status: Trip.statuses.values.sample)
+  Trip.create!(
+    title: "#{Faker::Address.country} #{rand(1990..2021)}",
+    description: Faker::Hipster.sentence,
+    start_date: Faker::Date.between(from: 10.years.ago, to: Date.today),
+    end_date: Faker::Date.between(from: 10.years.ago, to: Date.today),
+    budget: rand(50.0..999_999.9),
+    visibility: Trip.visibilities.values.sample,
+    status: Trip.statuses.values.sample
+  )
 end
 
 # trip_users
@@ -76,14 +78,16 @@ continents = [
 # waypoints
 Trip.all.each do |t|
   rand(5..10).times do
-    Waypoint.create!(trip: t,
-                     name: Faker::Address.city,
-                     notes: Faker::Hipster.sentence,
-                     address: Faker::Address.street_address,
-                     country: Faker::Address.country,
-                     continent: continents.sample,
-                     longitude: Faker::Address.longitude,
-                     latitude: Faker::Address.latitude)
+    Waypoint.create!(
+      trip: t,
+      name: Faker::Address.city,
+      notes: Faker::Hipster.sentence,
+      address: Faker::Address.street_address,
+      country: Faker::Address.country,
+      continent: continents.sample,
+      longitude: Faker::Address.longitude,
+      latitude: Faker::Address.latitude
+    )
   end
 end
 
@@ -106,36 +110,44 @@ end
 
 # posts
 20.times do
-  Post.create!(waypoint: Waypoint.all.sample, title: Faker::Hipster.sentence(word_count: 3),
-               content: Faker::Hipster.paragraph, user: User.all.sample)
+  Post.create!(
+    waypoint: Waypoint.all.sample, title: Faker::Hipster.sentence(word_count: 3),
+    content: Faker::Hipster.paragraph, user: User.all.sample
+  )
 end
 
 # media items
 20.times do
-  MediaItem.create!(post: Post.all.sample, title: Faker::Hipster.sentence(word_count: 3),
-                    description: Faker::Hipster.sentence)
+  MediaItem.create!(
+    post: Post.all.sample, title: Faker::Hipster.sentence(word_count: 3),
+    description: Faker::Hipster.sentence
+  )
 end
 
 # comments
 50.times do
-  commentable = case rand(1..4)
-                when 1 then Post.all.sample
-                when 2 then Activity.all.sample
-                when 3 then Trip.all.sample
-                when 4 then MediaItem.all.sample
-                end
-  Comment.create(title: Faker::Hipster.sentence(word_count: 3), content: Faker::Hipster.paragraph,
-                 user: User.all.sample, commentable: commentable)
+  commentable =
+    case rand(1..4)
+    when 1 then Post.all.sample
+    when 2 then Activity.all.sample
+    when 3 then Trip.all.sample
+    when 4 then MediaItem.all.sample
+    end
+  Comment.create(
+    title: Faker::Hipster.sentence(word_count: 3), content: Faker::Hipster.paragraph,
+    user: User.all.sample, commentable: commentable
+  )
 end
 
 # likes
 50.times do
-  likeable = case rand(1..5)
-             when 1 then Post.all.sample
-             when 2 then Activity.all.sample
-             when 3 then Trip.all.sample
-             when 4 then MediaItem.all.sample
-             when 5 then Comment.all.sample
-             end
+  likeable =
+    case rand(1..5)
+    when 1 then Post.all.sample
+    when 2 then Activity.all.sample
+    when 3 then Trip.all.sample
+    when 4 then MediaItem.all.sample
+    when 5 then Comment.all.sample
+    end
   Like.create(user: User.all.sample, likeable: likeable)
 end
