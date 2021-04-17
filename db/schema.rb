@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_17_150349) do
+ActiveRecord::Schema.define(version: 2021_04_17_151027) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 2021_04_17_150349) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "likeable_type", null: false
+    t.bigint "likeable_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["likeable_type", "likeable_id"], name: "index_likes_on_likeable"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "media_items", force: :cascade do |t|
@@ -113,6 +123,7 @@ ActiveRecord::Schema.define(version: 2021_04_17_150349) do
 
   add_foreign_key "activities", "users"
   add_foreign_key "comments", "users"
+  add_foreign_key "likes", "users"
   add_foreign_key "media_items", "posts"
   add_foreign_key "posts", "waypoints"
   add_foreign_key "segments", "trips"
