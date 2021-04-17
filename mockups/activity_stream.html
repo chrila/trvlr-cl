@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time travelling turtle - Activity stream</title>
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+  <!-- custom stylesheet -->
+  <link rel="stylesheet" href="assets/stylesheet.css">
+  <!-- LineIcons -->
+  <link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Delius+Unicase:wght@400;700" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Navbar -->
+  <header class="p-3 mb-3 border-bottom">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <div class="dropdown text-end">
+          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+          </a>
+          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+          </ul>
+        </div>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="#" class="nav-link px-5"><i class="lni lni-rss-feed mx-2"></i>Activity stream</a></li>
+          <li><a href="#" class="nav-link px-5 link-dark"><i class="lni lni-map mx-2"></i>My trips</a></li>
+          <li><a href="#" class="nav-link px-5 link-dark"><i class="lni lni-bar-chart mx-2"></i>Summary</a></li>
+        </ul>
+
+        <span class="navbar-logo">trvler</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Activity stream -->
+    <h1 class="display-2">Activity stream</h1>
+
+    <div class="row row-cols-1 g-4">
+      <div class="col">
+        <div class="card h-100 activity-card">
+          <div class="activity-pic-container">
+            <img src="https://github.com/mdo.png" class="card-img-top rounded-circle activity-user-pic" alt="user xy">
+          </div>
+          <div class="card-body activity-body">
+            <h5 class="card-title">User 1</h5>
+            <p class="card-text">Started planning a new trip.</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">a few seconds ago</small>
+            <span class="like-button"><i class="lni lni-thumbs-up mx-4"></i><i class="lni lni-comments"></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100 activity-card">
+          <div class="activity-pic-container">
+            <img src="https://github.com/mdo.png" class="card-img-top rounded-circle activity-user-pic" alt="user xy">
+          </div>
+          <div class="card-body activity-body">
+            <h5 class="card-title">User 2</h5>
+            <p class="card-text">Published a new blog post in his trip <strong>summer vacation 2021</strong>.</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">30 minutes ago</small>
+            <span class="like-button"><i class="lni lni-thumbs-up mx-4"></i><i class="lni lni-comments"></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100 activity-card">
+          <div class="activity-pic-container">
+            <img src="https://github.com/mdo.png" class="card-img-top rounded-circle activity-user-pic" alt="user xy">
+          </div>
+          <div class="card-body activity-body">
+            <h5 class="card-title">User 2</h5>
+            <p class="card-text">Uploaded new photos in his trip <strong>summer vacation 2021</strong></p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">2 hours ago</small>
+            <span class="like-button"><i class="lni lni-thumbs-up mx-4"></i><i class="lni lni-comments"></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100 activity-card">
+          <div class="activity-pic-container">
+            <img src="https://github.com/mdo.png" class="card-img-top rounded-circle activity-user-pic" alt="user xy">
+          </div>
+          <div class="card-body activity-body">
+            <h5 class="card-title">User 4</h5>
+            <p class="card-text">Is now following User 3</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">5 days ago</small>
+            <span class="like-button"><i class="lni lni-thumbs-up mx-4"></i><i class="lni lni-comments"></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100 activity-card">
+          <div class="activity-pic-container">
+            <img src="https://github.com/mdo.png" class="card-img-top rounded-circle activity-user-pic" alt="user xy">
+          </div>
+          <div class="card-body activity-body">
+            <h5 class="card-title">User 5</h5>
+            <p class="card-text">This text describes the activity of a user that you are following.</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">3 weeks ago</small>
+            <span class="like-button"><i class="lni lni-thumbs-up mx-4"></i><i class="lni lni-comments"></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100 activity-card">
+          <div class="activity-pic-container">
+            <img src="https://github.com/mdo.png" class="card-img-top rounded-circle activity-user-pic" alt="user xy">
+          </div>
+          <div class="card-body activity-body">
+            <h5 class="card-title">User 6</h5>
+            <p class="card-text">This text describes the activity of a user that you are following.</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">4 months ago</small>
+            <span class="like-button"><i class="lni lni-thumbs-up mx-4"></i><i class="lni lni-comments"></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100 activity-card">
+          <div class="activity-pic-container">
+            <img src="https://github.com/mdo.png" class="card-img-top rounded-circle activity-user-pic" alt="user xy">
+          </div>
+          <div class="card-body activity-body">
+            <h5 class="card-title">User 7</h5>
+            <p class="card-text">This text describes the activity of a user that you are following.</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">2 years ago</small>
+            <span class="like-button"><i class="lni lni-thumbs-up mx-4"></i><i class="lni lni-comments"></i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap js -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
