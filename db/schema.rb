@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_17_144529) do
+ActiveRecord::Schema.define(version: 2021_04_17_144938) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,21 @@ ActiveRecord::Schema.define(version: 2021_04_17_144529) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_activities_on_user_id"
+  end
+
+  create_table "segments", force: :cascade do |t|
+    t.bigint "trip_id", null: false
+    t.bigint "waypoint_from_id", null: false
+    t.bigint "waypoint_to_id", null: false
+    t.datetime "time_from"
+    t.datetime "time_to"
+    t.float "distance"
+    t.integer "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["trip_id"], name: "index_segments_on_trip_id"
+    t.index ["waypoint_from_id"], name: "index_segments_on_waypoint_from_id"
+    t.index ["waypoint_to_id"], name: "index_segments_on_waypoint_to_id"
   end
 
   create_table "trip_users", force: :cascade do |t|
@@ -67,6 +82,9 @@ ActiveRecord::Schema.define(version: 2021_04_17_144529) do
   end
 
   add_foreign_key "activities", "users"
+  add_foreign_key "segments", "trips"
+  add_foreign_key "segments", "waypoints", column: "waypoint_from_id"
+  add_foreign_key "segments", "waypoints", column: "waypoint_to_id"
   add_foreign_key "trip_users", "trips"
   add_foreign_key "trip_users", "users"
   add_foreign_key "waypoints", "trips"
