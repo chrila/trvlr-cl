@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_17_144938) do
+ActiveRecord::Schema.define(version: 2021_04_17_145711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 2021_04_17_144938) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_activities_on_user_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.bigint "waypoint_id", null: false
+    t.string "title"
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["waypoint_id"], name: "index_posts_on_waypoint_id"
   end
 
   create_table "segments", force: :cascade do |t|
@@ -82,6 +91,7 @@ ActiveRecord::Schema.define(version: 2021_04_17_144938) do
   end
 
   add_foreign_key "activities", "users"
+  add_foreign_key "posts", "waypoints"
   add_foreign_key "segments", "trips"
   add_foreign_key "segments", "waypoints", column: "waypoint_from_id"
   add_foreign_key "segments", "waypoints", column: "waypoint_to_id"
