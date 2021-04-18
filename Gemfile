@@ -62,3 +62,6 @@ group :development do
   # for generating ERD model
   gem 'rails-erd'
 end
+
+# for user management
+gem 'devise'
