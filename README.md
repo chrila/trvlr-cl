@@ -3,10 +3,11 @@ Este es el proyecto final de la carrera "desarrollo fullstack", generación 39, 
 
 El objetivo de este proyecto es crear una plataforma para planificar, gestionar, documentar y compartir viajes.
 
-## Trello
+## Links
+### Trello
 https://trello.com/b/FINbe47p/time-travelling-turtle
 
-## DB (work in progress)
+### DB design
 https://dbdiagram.io/d/60722617ecb54e10c33faa66
 
 ## Versiones
@@ -31,3 +32,7 @@ rails: 6.1.3.1
 
 ### My trips - media
 ![mockup: my trips - media](mockups/screenshots/my_trips_media.png)
+
+## ERD
+![ERD model](doc/erd.png)
+Nota: también está disponible cómo PDF en docs/erd.pdf
