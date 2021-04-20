@@ -33,6 +33,9 @@ rails: 6.1.3.1
 ### My trips - media
 ![mockup: my trips - media](mockups/screenshots/my_trips_media.png)
 
+### Summary page
+![mockup: overview](mockups/screenshots/summary.png)
+
 ## ERD
 ![ERD model](doc/erd.png)
 Nota: también está disponible cómo PDF en docs/erd.pdf
