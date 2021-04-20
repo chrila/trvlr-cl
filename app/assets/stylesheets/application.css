@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+
+ .navbar-logo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  background-color: black;
+  padding: 0.5rem;
+  text-decoration: none;
+  font-family: 'Delius Unicase', cursive;
+}
+
+.navbar-logo:hover {
+  color: white;
+}
