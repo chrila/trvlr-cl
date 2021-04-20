@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   get 'home/index', as: 'home'
   get 'activities/index', as: 'activities'
+  resources :trips
 
   root 'home#index'
 end
