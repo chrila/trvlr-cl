@@ -1,2 +1,6 @@
-<h1 class="display-2">Hello visitor!</h1>
-On this page, published trips will be visible.
+<h1 class="display-2">Hello visitor :)</h1>
+<p class="display-6">Check out the trips from our users!</p>
+
+<% Trip.public_most_likes.each do |t| %>
+  <%= render 'trip', trip: t %>
+<% end %>

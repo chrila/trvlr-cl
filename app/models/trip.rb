@@ -7,4 +7,9 @@ class Trip < ApplicationRecord
 
   enum status: %i[trip_draft trip_active trip_finished trip_cancelled]
   enum visibility: %i[visibility_private visibility_users_only visibility_public]
+
+  scope :public_newest, -> { visibility_public.order(:id).reverse.limit(10) }
+  scope :public_most_likes, -> { left_joins(:likes).group(:id).order('COUNT(likes.id) DESC').limit(10) }
+
+  attr_readonly :likes_count
 end
