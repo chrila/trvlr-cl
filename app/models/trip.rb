@@ -12,4 +12,5 @@ class Trip < ApplicationRecord
   scope :public_most_likes, -> { visibility_public.order(:likes_count).reverse.first(10) }
 
   attr_readonly :likes_count
+  attr_readonly :comments_count
 end
