@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'home/index', as: 'home'
   get 'activities/index', as: 'activities'
   resources :trips
+  resources :users, only: :show
 
   root 'home#index'
 end

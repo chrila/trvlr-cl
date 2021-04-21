@@ -1,0 +1,7 @@
+<div class="container">
+  <h1 class="display-2">Hi, I'm <%= @user.username %></h1>
+
+  <% if @user.id == current_user.id %>
+    <%= button_to 'Edit profile', edit_user_registration_path, method: :get, class: 'btn btn-dark' %>
+  <% end %>
+</div>
