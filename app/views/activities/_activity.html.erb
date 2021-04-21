@@ -1,0 +1,19 @@
+<div class="col">
+  <div class="card h-100 activity-card">
+    <div class="activity-pic-container">
+      <img src="https://github.com/chrila.png" class="card-img-top rounded-circle activity-user-pic" alt=<<%= activity.user.username %>>
+    </div>
+    <div class="card-body activity-body">
+      <h5 class="card-title">
+        <%= link_to activity.user.username, user_path(activity.user) %>
+      </h5>
+      <p class="card-text"><%= activity.description %></p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">
+        <%= link_to "#{time_ago_in_words(activity.created_at)} ago", activity_path(activity) %>
+      </small>
+      <span class="like-button"><i class="bi bi-hand-thumbs-up mx-4"></i><i class="bi bi-chat-right"></i></span>
+    </div>
+  </div>
+</div>

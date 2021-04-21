@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   }
 
   get 'home/index', as: 'home'
-  get 'activities/index', as: 'activities'
+  resources :activities, only: [:index, :show]
   resources :trips
   resources :users, only: :show
 
