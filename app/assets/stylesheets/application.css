@@ -14,7 +14,11 @@
  *= require_self
  */
 
- .navbar-logo {
+.navbar-brand:hover {
+  color: white;
+}
+
+.navbar-brand {
   font-size: 2rem;
   font-weight: bold;
   color: white;
@@ -24,6 +28,6 @@
   font-family: 'Delius Unicase', cursive;
 }
 
-.navbar-logo:hover {
-  color: white;
+.navbar-collapse {
+  padding-top: 0.5rem;
 }

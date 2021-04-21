@@ -1,31 +1,50 @@
-<header class="p-3 mb-3 border-bottom">
+<nav class="navbar navbar-expand-md navbar-light p-3 mb-3 border-bottom">
   <div class="container-fluid">
-    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarToggler">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <% if signed_in? %>
-          <div class="dropdown text-end">
-            <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="https://github.com/chrila.png" alt="chrila" width="32" height="32" class="rounded-circle">
-            </a>
-            <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser">
-              <li><%= link_to 'My profile', edit_user_registration_path, class: "dropdown-item" %></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><%= link_to "Sign Out", destroy_user_session_path, method: "delete", class: "dropdown-item" %></li>
-            </ul>
-          </div>
-          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="#" class="nav-link px-5"><i class="bi bi-rss mx-2"></i>Activity stream</a></li>
-            <li><a href="#" class="nav-link px-5 link-dark"><i class="bi bi-compass mx-2"></i>My trips</a></li>
-            <li><a href="#" class="nav-link px-5 link-dark"><i class="bi bi-bar-chart-line mx-2"></i>Summary</a></li>
-          </ul>
+          <li class="nav-item">
+            <%= link_to activities_path, class: 'nav-link' do %>
+              <i class="bi bi-rss mx-2"></i>Activity stream
+            <% end%>
+          </li>
+          <li class="nav-item">
+            <%= link_to trips_path, class: 'nav-link' do %>
+              <i class="bi bi-compass mx-2"></i>My trips
+            <% end%>
+          </li>
+          <li class="nav-item">
+            <%= link_to activities_path, class: 'nav-link' do %>
+              <i class="bi bi-bar-chart-line mx-2"></i>Summary
+            <% end%>
+          </li>
+          <li class="nav-item">
+            <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link' do %>
+              <i class="bi bi-box-arrow-left mx-2"></i>Sign Out
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to edit_user_registration_path, class: 'nav-link' do %>
+              <i class="bi bi-person-circle mx-2"></i><%= current_user.username %>
+            <% end %>
+          </li>
         <% else %>
-          <%= button_to 'Sign in', new_user_session_path, method: :get, class: 'btn btn-secondary btn-large mx-2' %>
-          <%= button_to 'Sign up', new_user_registration_path, method: :get, class: 'btn btn-primary btn-large' %>
-          <span class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"></span>
+          <li class="nav-item">
+            <%= link_to new_user_session_path, class: 'nav-link' do %>
+              <i class="bi bi-box-arrow-in-left mx-2"></i>Sign in
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to new_user_registration_path, class: 'nav-link' do %>
+              <i class="bi bi-person-plus mx-2"></i>Sign up
+            <% end %>
+          </li>
         <% end %>
-      <%= link_to 'trvlr', root_path, class: 'navbar-logo' %>
+      </ul>
     </div>
+    <%= link_to 'trvlr', root_path, class: 'navbar-brand text-white' %>
   </div>
-</header>
+</nav>
