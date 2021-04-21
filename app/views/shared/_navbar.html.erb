@@ -22,25 +22,21 @@
             <% end%>
           </li>
           <li class="nav-item">
-            <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link' do %>
-              <i class="bi bi-box-arrow-left mx-2"></i>Sign Out
-            <% end %>
-          </li>
-          <li class="nav-item">
             <%= link_to edit_user_registration_path, class: 'nav-link' do %>
               <i class="bi bi-person-circle mx-2"></i><%= current_user.username %>
             <% end %>
           </li>
-        <% else %>
           <li class="nav-item">
-            <%= link_to new_user_session_path, class: 'nav-link' do %>
-              <i class="bi bi-box-arrow-in-left mx-2"></i>Sign in
+            <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link' do %>
+              <i class="bi bi-box-arrow-left mx-2"></i>Sign Out
             <% end %>
           </li>
+        <% else %>
           <li class="nav-item">
-            <%= link_to new_user_registration_path, class: 'nav-link' do %>
-              <i class="bi bi-person-plus mx-2"></i>Sign up
-            <% end %>
+            <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-dark mx-3' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Sign in', new_user_session_path, class: 'btn btn-outline-dark'%>
           </li>
         <% end %>
       </ul>
