@@ -1,8 +1,6 @@
-<div class="container">
-  <h1 class="display-2">Hello visitor :)</h1>
-  <p class="display-6">Check out the trips from our users!</p>
+<h1 class="display-2">Hello visitor :)</h1>
+<p class="display-6">Check out the trips from our users!</p>
 
-  <% Trip.public_most_likes.each do |t| %>
-    <%= render 'trip', trip: t %>
-  <% end %>
-</div>
+<% Trip.public_most_likes.each do |t| %>
+  <%= render 'trip', trip: t %>
+<% end %>

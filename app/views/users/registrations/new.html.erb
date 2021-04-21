@@ -1,36 +1,34 @@
-<div class="container">
-  <h2 class="display-4">Sign up</h2>
+<h2 class="display-4">Sign up</h2>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= render "users/shared/error_messages", resource: resource %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "users/shared/error_messages", resource: resource %>
 
-    <div class="form-group my-2">
-      <%= f.label :username %>
-      <%= f.text_field :username, autofocus: true, autocomplete: "username", class: "form-control" %>
-    </div>
+  <div class="form-group my-2">
+    <%= f.label :username %>
+    <%= f.text_field :username, autofocus: true, autocomplete: "username", class: "form-control" %>
+  </div>
 
-    <div class="form-group my-2">
-      <%= f.label :email %>
-      <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
-    </div>
+  <div class="form-group my-2">
+    <%= f.label :email %>
+    <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
+  </div>
 
-    <div class="form-group my-2">
-      <%= f.label :password %>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %>
-      <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
-    </div>
+  <div class="form-group my-2">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %>
+    <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+  </div>
 
-    <div class="form-group my-2">
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
-    </div>
+  <div class="form-group my-2">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+  </div>
 
-    <div class="actions form-group my-2">
-      <%= f.submit "Sign up", class: "btn btn-dark" %>
-    </div>
-  <% end %>
+  <div class="actions form-group my-2">
+    <%= f.submit "Sign up", class: "btn btn-dark" %>
+  </div>
+<% end %>
 
-  <%= render "users/shared/links" %>
-</div>
+<%= render "users/shared/links" %>
