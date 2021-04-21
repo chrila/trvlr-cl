@@ -1,2 +1,45 @@
-<h1>Trips#index</h1>
-<p>Find me in app/views/trips/index.html.erb</p>
+<div class="container-fluid">
+  <!-- sidebar with list of trips -->
+  <div class="d-flex flex-column p-3 bg-light trip-sidebar">
+    <a href="#" class="nav-link trip-sidebar-menu-item">
+      <i class="bi bi-plus-circle mx-3"></i>New trip ...
+    </a>
+    <hr>
+    <div class="accordion" id="accordionTrips">
+      <% @trips.each do |t| %>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id=<%= "trip-heading-#{t.id}" %>>
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target=<%= "#trip-collapse-#{t.id}" %>
+            aria-expanded="true" aria-controls=<%= "trip-collapse-#{t.id}" %>>
+            <%= t.title %>
+          </button>
+        </h2>
+        <div id=<%= "trip-collapse-#{t.id}" %> class="accordion-collapse collapse" aria-labelledby=<%= "trip-heading-#{t.id}" %>
+          data-bs-parent="#accordionTrips">
+          <div class="accordion-body">
+            <ul class="nav nav-pills flex-column mb-auto">
+              <li class="nav-item">
+                <a href="#" class="nav-link active trip-sidebar-menu-item">Overview</a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link trip-sidebar-menu-item">Segments</a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link trip-sidebar-menu-item">Blog</a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link trip-sidebar-menu-item">Media</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- trip content -->
+  <div class="trip-content">
+    <h2 class="display-6">Nice trip!</h2>
+  </div>
+</div>

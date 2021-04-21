@@ -1,3 +1,12 @@
-// Place all the styles related to the Trips controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.trip-sidebar {
+  position: fixed;
+  width: 25%;
+  bottom: 2rem;
+  top: 7.5rem;
+  border: solid 1px lightgray;
+  border-radius: 10px;
+}
+
+.trip-content {
+  margin-left: 27%;
+}

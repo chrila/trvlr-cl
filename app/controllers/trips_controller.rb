@@ -1,6 +1,5 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: %i[show edit update destroy]
-  before_action :authenticate_user!, unless: @trip.visibility_public?
 
   def new
     @trip = Trip.new
