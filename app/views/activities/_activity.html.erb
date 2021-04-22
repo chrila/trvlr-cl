@@ -13,7 +13,18 @@
       <small class="text-muted">
         <%= link_to "#{time_ago_in_words(activity.created_at)} ago", activity_path(activity) %>
       </small>
-      <span class="like-button"><i class="bi bi-hand-thumbs-up mx-4"></i><i class="bi bi-chat-right"></i></span>
+      <span class="like-button">
+        <% if Like.liked?(current_user, activity) %>
+          <%= link_to dislike_activity_path, method: :delete do %>
+            <i class="bi bi-hand-thumbs-up-fill mx-4"></i>  
+          <% end %>
+        <% else %>
+          <%= link_to like_activity_path, method: :post do %>
+            <i class="bi bi-hand-thumbs-up mx-4"></i>  
+          <% end %>
+        <% end %>
+        <i class="bi bi-chat-right"></i>
+      </span>
     </div>
   </div>
 </div>

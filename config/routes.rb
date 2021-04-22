@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   }
 
   get 'home/index', as: 'home'
+
   resources :activities, only: [:index, :show]
+  post 'activities/:id/like', to: 'activities#like', as: :like_activity
+  delete 'activities/:id/like', to: 'activities#dislike', as: :dislike_activity
+
   resources :trips
   resources :users, only: :show
 
