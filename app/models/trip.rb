@@ -1,8 +1,8 @@
 class Trip < ApplicationRecord
-  has_many :comments, as: :commentable
-  has_many :likes, as: :likeable
-  has_many :waypoints
-  has_many :trip_users
+  has_many :comments, as: :commentable, dependent: :destroy
+  has_many :likes, as: :likeable, dependent: :destroy
+  has_many :waypoints, dependent: :destroy
+  has_many :trip_users, dependent: :destroy
   has_many :users, through: :trip_users
 
   enum status: %i[trip_draft trip_active trip_finished trip_cancelled]
