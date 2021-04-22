@@ -1,4 +1,7 @@
 <h1 class="display-2">My trips</h1>
+<div class="mb-3 text-end">
+  <%= link_to 'New trip', new_trip_path, class: 'btn btn-large btn-dark' %>
+</div>
 <div class="row row-cols-1 g-4">
   <%= render @trips %>
 </div>

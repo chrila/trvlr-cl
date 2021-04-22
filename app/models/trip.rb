@@ -14,4 +14,12 @@ class Trip < ApplicationRecord
 
   attr_readonly :likes_count
   attr_readonly :comments_count
+
+  def visibility_string
+    visibility.split('_').last.humanize
+  end
+
+  def status_string
+    status.split('_').last.humanize
+  end
 end
