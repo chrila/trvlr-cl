@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-  before_action :set_trip, only: %i[show edit update destroy]
+  before_action :set_trip, only: %i[show edit update destroy like dislike]
 
   def new
     @trip = Trip.new
@@ -46,6 +46,14 @@ class TripsController < ApplicationController
 
   def index
     @trips = Trip.of_user(current_user)
+  end
+
+  def like
+    Like.like(current_user, @trip)
+  end
+
+  def dislike
+    Like.dislike(current_user, @trip)
   end
 
   private

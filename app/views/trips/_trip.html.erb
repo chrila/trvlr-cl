@@ -10,6 +10,26 @@
       <small class="text-muted">
         <%= participant_list(trip) %>
       </small>
+      <span class="trip-reaction-buttons">
+        <div class="mx-4">
+          <% if Like.liked?(current_user, trip) %>
+            <%= link_to trip_dislike_path(trip), method: :delete do %>
+              <i class="bi bi-hand-thumbs-up-fill mx-1"></i>  
+            <% end %>
+          <% else %>
+            <%= link_to trip_like_path(trip), method: :post do %>
+              <i class="bi bi-hand-thumbs-up mx-1"></i>  
+            <% end %>
+          <% end %>
+          <%= trip.likes_count %>
+        </div>
+        <div>
+          <%= link_to trip_comments_path(trip) do %>
+            <i class="bi bi-chat-right mx-1"></i>
+          <% end %>
+          <%= trip.comments_count %>
+        </div>
+      </span>
     </div>
   </div>
 </div>

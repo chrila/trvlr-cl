@@ -12,14 +12,14 @@
     <div class="card-footer">
       <span><i class="bi bi-geo-alt"></i> <%= "#{post.waypoint.name}, #{post.waypoint.country}" %></span>
       <small class="text-muted mx-2"><%= "#{time_ago_in_words(post.created_at)} ago" %></small>
-      <span class="reaction-buttons">
+      <span class="post-reaction-buttons">
         <div class="mx-4">
           <% if Like.liked?(current_user, post) %>
-            <%= link_to dislike_post_path(post), method: :delete do %>
+            <%= link_to post_dislike_path(post), method: :delete do %>
               <i class="bi bi-hand-thumbs-up-fill mx-1"></i>  
             <% end %>
           <% else %>
-            <%= link_to like_post_path(post), method: :post do %>
+            <%= link_to post_like_path(post), method: :post do %>
               <i class="bi bi-hand-thumbs-up mx-1"></i>  
             <% end %>
           <% end %>
