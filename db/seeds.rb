@@ -1,19 +1,19 @@
 ## clear DB
-Like.delete_all
-Comment.delete_all
-MediaItem.delete_all
-Post.delete_all
-Segment.delete_all
-Waypoint.delete_all
-TripUser.delete_all
-Trip.delete_all
-Activity.delete_all
-Following.delete_all
-User.delete_all
+# Like.delete_all
+# Comment.delete_all
+# MediaItem.delete_all
+# Post.delete_all
+# Segment.delete_all
+# Waypoint.delete_all
+# TripUser.delete_all
+# Trip.delete_all
+# Activity.delete_all
+# Following.delete_all
+# User.delete_all
 
 # users
 20.times do
-  User.create!(username: Faker::Internet.username, email: Faker::Internet.email)
+  User.create!(username: Faker::Internet.username, email: Faker::Internet.email, password: '123456')
 end
 
 # activities
