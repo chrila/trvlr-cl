@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :trip_users, dependent: :destroy
   has_many :trips, through: :trip_users
+  has_many :media_items, dependent: :destroy
   has_many :followings_passive, class_name: 'Following', foreign_key: :followed_user_id, dependent: :destroy
   has_many :followers, class_name: 'User', through: :followings_passive, source: :user
   has_many :followings_active, class_name: 'Following', foreign_key: :user_id, dependent: :destroy
