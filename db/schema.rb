@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_21_232606) do
+ActiveRecord::Schema.define(version: 2021_04_23_200146) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,14 +58,12 @@ ActiveRecord::Schema.define(version: 2021_04_21_232606) do
   end
 
   create_table "media_items", force: :cascade do |t|
-    t.bigint "post_id", null: false
     t.string "title"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "likes_count", default: 0, null: false
     t.integer "comments_count", default: 0, null: false
-    t.index ["post_id"], name: "index_media_items_on_post_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -154,7 +152,6 @@ ActiveRecord::Schema.define(version: 2021_04_21_232606) do
   add_foreign_key "followings", "users"
   add_foreign_key "followings", "users", column: "followed_user_id"
   add_foreign_key "likes", "users"
-  add_foreign_key "media_items", "posts"
   add_foreign_key "posts", "users"
   add_foreign_key "posts", "waypoints"
   add_foreign_key "segments", "trips"
