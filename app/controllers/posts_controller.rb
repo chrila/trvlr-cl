@@ -43,6 +43,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
+        Activity.create(user: current_user, description: "Wrote a new blog post about #{@post.waypoint.name}, #{@post.waypoint.country}.")
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
       else
         format.html { render :new }
