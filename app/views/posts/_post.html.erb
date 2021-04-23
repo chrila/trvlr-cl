@@ -4,7 +4,9 @@
       <img src="https://github.com/chrila.png" class="card-img-top rounded-circle activity-user-pic" alt=<%= post.user %>>
     </div>
     <div class="card-body post-body">
-      <h5 class="card-title"><%= post.title %></h5>
+      <%= link_to post do %>
+        <h5 class="card-title"><%= post.title %></h5>
+      <% end %>
       <p class="card-text"><%= post.content %></p>
     </div>
     <div class="card-footer">
@@ -24,7 +26,9 @@
           <%= post.likes_count %>
         </div>
         <div>
-          <i class="bi bi-chat-right mx-1"></i>
+          <%= link_to post_comments_path(post) do %>
+            <i class="bi bi-chat-right mx-1"></i>
+          <% end %>
           <%= post.comments_count %>
         </div>
       </span>

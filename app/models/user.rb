@@ -12,4 +12,8 @@ class User < ApplicationRecord
   has_many :following, class_name: 'User', through: :followings_active, source: :followed_user
 
   validates :username, presence: true
+
+  def to_s
+    username
+  end
 end

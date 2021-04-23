@@ -1,0 +1,8 @@
+<h2 class="display-6">Comments for <%= @commentable.class.to_s.downcase %></h2>
+<p><%= "#{@comments.size} comments" %></p>
+<div class="my-4">
+  <%= link_to 'New comment', new_comment_path(@commentable), class: 'btn btn-large btn-dark' %>
+</div>
+<div class="row row-cols-1 g-4">
+  <%= render @comments %>
+</div>
