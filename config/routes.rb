@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   delete 'activities/:id/like', to: 'activities#dislike', as: :dislike_activity
   get 'activities/:id/comments', to: 'comments#index_activity', as: :activity_comments
   get 'activities/:id/comments/new', to: 'comments#new_activity', as: :activity_new_comment
+  post 'activities/:id/comments', to: 'comments#create'
 
   resources :trips do
     get 'posts', to: 'posts#index_trip', as: :posts
