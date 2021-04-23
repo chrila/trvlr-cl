@@ -1,7 +1,25 @@
 <div class="col">
-  <div class="card">
+  <div class="card comment-card">
     <h5><%= comment.title %></h5>
     <p><%= comment.content %></p>
-    <p class="text-muted"><%= comment.user %></p>
+    <div>
+      <%= link_to comment.user do %>
+        <small class="text-muted"><%= comment.user %></small>
+      <% end %>
+      <span class="comment-reaction-buttons">
+        <div class="mx-4">
+          <% if Like.liked?(current_user, comment) %>
+            <%= link_to comment_dislike_path(comment), method: :delete do %>
+              <i class="bi bi-hand-thumbs-up-fill mx-1"></i>  
+            <% end %>
+          <% else %>
+            <%= link_to comment_like_path(comment), method: :post do %>
+              <i class="bi bi-hand-thumbs-up mx-1"></i>  
+            <% end %>
+          <% end %>
+          <%= comment.likes_count %>
+        </div>
+      </span>
+    <div>
   </div>
 </div>
