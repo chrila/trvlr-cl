@@ -20,6 +20,11 @@
           <%= comment.likes_count %>
         </div>
       </span>
+      <p class="mb-0">
+        <%= link_to comment, method: :delete do %>
+          <small class="text-muted">Delete</small>
+        <% end %>
+      </p>
     </div>
   </div>
 </div>

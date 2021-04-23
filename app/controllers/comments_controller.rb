@@ -81,6 +81,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @commentable = @comment.commentable
     respond_to do |format|
       if @comment.destroy
         format.html { redirect_to @commentable, notice: 'Comment was successfully deleted.' }

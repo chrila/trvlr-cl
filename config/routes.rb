@@ -47,7 +47,6 @@ Rails.application.routes.draw do
     post 'comments', to: 'comments#create'
   end
 
-  resources :comments, only: %i[edit delete]
   scope 'comments/:id', as: :comment do
     post 'like', to: 'comments#like', as: :like
     delete 'like', to: 'comments#dislike', as: :dislike
@@ -62,6 +61,7 @@ Rails.application.routes.draw do
     post 'comments', to: 'comments#create'
   end
 
+  resources :comments, only: %i[update destroy]
   resources :users, only: :show
 
   root 'home#index'
