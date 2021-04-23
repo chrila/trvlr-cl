@@ -119,7 +119,7 @@ end
 # media items
 20.times do
   MediaItem.create!(
-    post: Post.all.sample, title: Faker::Hipster.sentence(word_count: 3),
+    waypoint: Waypoint.all.sample, title: Faker::Hipster.sentence(word_count: 3),
     description: Faker::Hipster.sentence
   )
 end

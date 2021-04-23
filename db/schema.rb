@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_23_200146) do
+ActiveRecord::Schema.define(version: 2021_04_23_200602) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,8 @@ ActiveRecord::Schema.define(version: 2021_04_23_200146) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "likes_count", default: 0, null: false
     t.integer "comments_count", default: 0, null: false
+    t.bigint "waypoint_id"
+    t.index ["waypoint_id"], name: "index_media_items_on_waypoint_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -152,6 +154,7 @@ ActiveRecord::Schema.define(version: 2021_04_23_200146) do
   add_foreign_key "followings", "users"
   add_foreign_key "followings", "users", column: "followed_user_id"
   add_foreign_key "likes", "users"
+  add_foreign_key "media_items", "waypoints"
   add_foreign_key "posts", "users"
   add_foreign_key "posts", "waypoints"
   add_foreign_key "segments", "trips"
