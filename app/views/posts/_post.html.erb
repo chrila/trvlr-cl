@@ -1,0 +1,33 @@
+<div class="col">
+  <div class="card activity-card">
+    <div class="post-pic-container">
+      <img src="https://github.com/chrila.png" class="card-img-top rounded-circle activity-user-pic" alt=<%= post.user %>>
+    </div>
+    <div class="card-body post-body">
+      <h5 class="card-title"><%= post.title %></h5>
+      <p class="card-text"><%= post.content %></p>
+    </div>
+    <div class="card-footer">
+      <span><i class="bi bi-geo-alt"></i> <%= "#{post.waypoint.name}, #{post.waypoint.country}" %></span>
+      <small class="text-muted mx-2"><%= "#{time_ago_in_words(post.created_at)} ago" %></small>
+      <span class="reaction-buttons">
+        <div class="mx-4">
+          <% if Like.liked?(current_user, post) %>
+            <%= link_to dislike_post_path(post), method: :delete do %>
+              <i class="bi bi-hand-thumbs-up-fill mx-1"></i>  
+            <% end %>
+          <% else %>
+            <%= link_to like_post_path(post), method: :post do %>
+              <i class="bi bi-hand-thumbs-up mx-1"></i>  
+            <% end %>
+          <% end %>
+          <%= post.likes_count %>
+        </div>
+        <div>
+          <i class="bi bi-chat-right mx-1"></i>
+          <%= post.comments_count %>
+        </div>
+      </span>
+    </div>
+  </div>
+</div>

@@ -11,9 +11,18 @@ Rails.application.routes.draw do
   delete 'activities/:id/like', to: 'activities#dislike', as: :dislike_activity
 
   resources :trips do
-    resources :waypoints
+    get 'posts', to: 'posts#index_trip', as: :posts
+    get 'posts/new', to: 'posts#new_trip', as: :new_post
     resources :segments
+    resources :waypoints do
+      get 'posts', to: 'posts#index_waypoint', as: :posts
+      get 'posts/new', to: 'posts#new_waypoint', as: :new_post
+    end
   end
+
+  resources :posts
+  post 'posts/:id/like', to: 'posts#like', as: :like_post
+  delete 'posts/:id/like', to: 'posts#dislike', as: :dislike_post
 
   resources :users, only: :show
 

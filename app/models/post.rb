@@ -6,4 +6,7 @@ class Post < ApplicationRecord
 
   attr_readonly :likes_count
   attr_readonly :comments_count
+
+  scope :for_trip, ->(trip) { where(waypoint: trip.waypoints) }
+  scope :for_waypoint, ->(waypoint) { where(waypoint: waypoint) }
 end

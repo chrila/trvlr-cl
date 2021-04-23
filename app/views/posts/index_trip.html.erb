@@ -1,0 +1,9 @@
+<h1 class="display-2">Blog</h1>
+
+<div class="my-3">
+  <%= link_to 'New blog post', trip_new_post_path, class: 'btn btn-primary btn-large' %>
+</div>
+
+<div class="row row-cols-1 g-4">
+  <%= render @posts %>
+</div>
