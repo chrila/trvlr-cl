@@ -10,4 +10,7 @@
   <%= link_to 'Delete', @trip, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-large btn-outline-dark' %>
 </div>
 <div class="my-3">
+  <%= link_to 'Waypoints', trip_waypoints_path(@trip), class: 'btn btn-large btn-dark' %>
 </div>
+
+<%= link_to 'Back', :back %>

@@ -1,0 +1,53 @@
+<%= form_with(model: [@trip, waypoint], local: true) do |f| %>
+    <% if waypoint.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(waypoint.errors.count, "error") %> prohibited this waypoint from being saved:</h2>
+      <ul>
+      <% waypoint.errors.full_messages.each do |e| %>
+        <li><%= e %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group my-2">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group my-2">
+    <%= f.label :notes %>
+    <%= f.text_area :notes, class: 'form-control' %>
+  </div>
+
+  <div class="form-group my-2">
+    <%= f.label :address %>
+    <%= f.text_field :address, class: 'form-control' %>
+  </div>
+
+  <div class="form-group my-2">
+    <%= f.label :country %>
+    <%= f.text_field :country, class: 'form-control' %>
+  </div>
+
+  <div class="form-group my-2">
+    <%= f.label :continent %>
+    <%= f.text_field :continent, class: 'form-control' %>
+  </div>
+
+  <div class="form-group my-2">
+    <%= f.label :longitude %>
+    <%= f.text_field :longitude, class: 'form-control' %>
+  </div>
+
+  <div class="form-group my-2">
+    <%= f.label :latitude %>
+    <%= f.text_field :latitude, class: 'form-control' %>
+  </div>
+
+  <div class="form-group my-4">
+    <%= f.submit class: 'btn btn-dark' %>
+  </div>
+<% end %>
+
+<%= link_to "Back", :back %>
