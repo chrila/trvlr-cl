@@ -1,0 +1,53 @@
+<%= form_with(model: trip, local: true) do |f| %>
+    <% if trip.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(trip.errors.count, "error") %> prohibited this trip from being saved:</h2>
+      <ul>
+      <% trip.errors.full_messages.each do |e| %>
+        <li><%= e %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group my-2">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="form-group my-2">
+    <%= f.label :description %>
+    <%= f.text_field :description, class: 'form-control' %>
+  </div>
+
+  <div class="form-group my-2">
+    <%= f.label :start_date %>
+    <%= f.date_field :start_date, class: 'form-control' %>
+  </div>
+
+  <div class="form-group my-2">
+    <%= f.label :end_date %>
+    <%= f.date_field :end_date, class: 'form-control' %>
+  </div>
+
+  <div class="form-group my-2">
+    <%= f.label :budget %>
+    <%= f.text_field :budget, class: 'form-control' %>
+  </div>
+
+  <div class="form-group my-2">
+    <%= f.label :visibility %>
+    <%= f.select :visibility, visibilities_list, {}, class: 'custom-select mx-sm-3' %>
+  </div>
+
+  <div class="form-group my-2">
+    <%= f.label :status %>
+    <%= f.select :status, statuses_list, {}, class: 'custom-select mx-sm-3' %>
+  </div>
+
+  <div class="form-group my-4">
+    <%= f.submit class: 'btn btn-dark' %>
+  </div>
+<% end %>
+
+<%= link_to "Back", :back %>
