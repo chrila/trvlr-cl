@@ -18,11 +18,15 @@ Rails.application.routes.draw do
   resources :trips do
     get 'posts', to: 'posts#index_trip', as: :posts
     get 'posts/new', to: 'posts#new_trip', as: :new_post
+    get 'media_items', to: 'media_items#index_trip', as: :media_items
+    get 'media_items/new', to: 'media_items#new_trip', as: :new_media_item
 
     resources :segments
     resources :waypoints do
       get 'posts', to: 'posts#index_waypoint', as: :posts
       get 'posts/new', to: 'posts#new_waypoint', as: :new_post
+      get 'media_items', to: 'media_items#index_waypoint', as: :media_items
+      get 'media_items/new', to: 'media_items#new_waypoint', as: :new_media_item
     end
   end
 
@@ -47,6 +51,15 @@ Rails.application.routes.draw do
   scope 'comments/:id', as: :comment do
     post 'like', to: 'comments#like', as: :like
     delete 'like', to: 'comments#dislike', as: :dislike
+  end
+
+  resources :media_items
+  scope 'media_items/:id', as: :media_item do
+    post 'like', to: 'media_items#like', as: :like
+    delete 'like', to: 'media_items#dislike', as: :dislike
+    get 'comments', to: 'comments#index_media_item', as: :comments
+    get 'comments/new', to: 'comments#new_media_item', as: :new_comment
+    post 'comments', to: 'comments#create'
   end
 
   resources :users, only: :show

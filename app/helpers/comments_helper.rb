@@ -1,5 +1,5 @@
 module CommentsHelper
   def new_comment_path(commentable)
-    send("#{commentable.class.to_s.downcase}_new_comment_path")
+    send("#{commentable.class.to_s.underscore}_new_comment_path")
   end
 end

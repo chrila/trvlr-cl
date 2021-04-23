@@ -1,0 +1,7 @@
+<h2 class="display-2">Media gallery</h2>
+<div class="my-4">
+  <%= link_to 'New item', new_media_item_path, class: 'btn btn-large btn-dark' %>
+</div>
+<div class="row row-cols-1 g-4">
+  <%= render @media_items %>
+</div>
