@@ -27,7 +27,7 @@
           <%= activity.likes_count %>
         </div>
         <div>
-          <%= link_to activity_comments_path(activity) do %>
+          <%= link_to activity_new_comment_path(activity) do %>
             <i class="bi bi-chat-right mx-1"></i>
           <% end %>
           <%= activity.comments_count %>
