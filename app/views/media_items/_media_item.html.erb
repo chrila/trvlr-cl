@@ -1,31 +1,33 @@
 <div class="col">
-  <div class="card media-item-card">
-    <h5><%= media_item.title %></h5>
-    <p><%= media_item.description %></p>
-    <div>
-      <%= link_to media_item.user do %>
-        <small class="text-muted"><%= media_item.user %></small>
-      <% end %>
-      <span class="media-item-reaction-buttons">
-        <div class="mx-4">
-          <% if Like.liked?(current_user, media_item) %>
-            <%= link_to media_item_dislike_path(media_item), method: :delete do %>
-              <i class="bi bi-hand-thumbs-up-fill mx-1"></i>  
+  <div class="card shadow-sm">
+    <%= link_to media_item do %>
+      <img src="https://picsum.photos/300" class="media-gallery-img">
+    <% end %>
+    <div class="card-body">
+      <p class="card-text"><i class="bi bi-geo-alt"></i> <%= "#{media_item.waypoint.name}, #{media_item.waypoint.country}" %></p>
+      <div class="d-flex justify-content-between align-items-center">
+        <small class="text-muted"><%= "#{time_ago_in_words(media_item.created_at)} ago" %></small>
+        <span class="media-item-reaction-buttons">
+          <div class="mx-4">
+            <% if Like.liked?(current_user, media_item) %>
+              <%= link_to media_item_dislike_path(media_item), method: :delete do %>
+                <i class="bi bi-hand-thumbs-up-fill mx-1"></i>  
+              <% end %>
+            <% else %>
+              <%= link_to media_item_like_path(media_item), method: :post do %>
+                <i class="bi bi-hand-thumbs-up mx-1"></i>  
+              <% end %>
             <% end %>
-          <% else %>
-            <%= link_to media_item_like_path(media_item), method: :post do %>
-              <i class="bi bi-hand-thumbs-up mx-1"></i>  
+            <%= media_item.likes_count %>
+          </div>
+          <div>
+            <%= link_to media_item_comments_path(media_item) do %>
+              <i class="bi bi-chat-right mx-1"></i>
             <% end %>
-          <% end %>
-          <%= media_item.likes_count %>
-        </div>
-        <div>
-          <%= link_to media_item_comments_path(media_item) do %>
-            <i class="bi bi-chat-right mx-1"></i>
-          <% end %>
-          <%= media_item.comments_count %>
-        </div>
-      </span>
+            <%= media_item.comments_count %>
+          </div>
+        </span>
+      </div>
     </div>
   </div>
 </div>

@@ -4,6 +4,8 @@
   display: inline-flex;
 }
 
-.media-item-card {
-  padding: 1rem;
+.media-gallery-img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
 }
