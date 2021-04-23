@@ -1,5 +1,5 @@
 class WaypointsController < ApplicationController
-  before_action :set_trip #, only: %i[index show edit new update destroy]
+  before_action :set_trip
   before_action :set_waypoint, only: %i[show edit update destroy]
 
   def index

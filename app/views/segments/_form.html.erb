@@ -1,0 +1,48 @@
+<%= form_with(model: [@trip, segment], local: true) do |f| %>
+    <% if segment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(segment.errors.count, "error") %> prohibited this segment from being saved:</h2>
+      <ul>
+      <% segment.errors.full_messages.each do |e| %>
+        <li><%= e %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group my-2">
+    <%= f.label :waypoint_from %>
+    <%= f.select :waypoint_from_id, waypoints_for_select(@trip), {}, class: 'custom-select mx-sm-3 mb-2' %>
+  </div>
+
+  <div class="form-group my-2">
+    <%= f.label :waypoint_to %>
+    <%= f.select :waypoint_to_id, waypoints_for_select(@trip), {}, class: 'custom-select mx-sm-3 mb-2' %>
+  </div>
+
+  <div class="form-group my-2">
+    <%= f.label :time_from %>
+    <%= f.time_field :time_from, class: 'form-control' %>
+  </div>
+
+  <div class="form-group my-2">
+    <%= f.label :time_to %>
+    <%= f.time_field :time_to, class: 'form-control' %>
+  </div>
+
+  <div class="form-group my-2">
+    <%= f.label :distance %>
+    <%= f.text_field :distance, class: 'form-control' %>
+  </div>
+
+  <div class="form-group my-2">
+    <%= f.label :status %>
+    <%= f.select :status, segment_statuses_list, {}, class: 'custom-select mx-sm-3' %>
+  </div>
+
+  <div class="form-group my-4">
+    <%= f.submit class: 'btn btn-dark' %>
+  </div>
+<% end %>
+
+<%= link_to "Back", :back %>

@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'waypoints/index'
-  get 'waypoints/new'
-  get 'waypoints/edit'
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions'
@@ -15,8 +12,9 @@ Rails.application.routes.draw do
 
   resources :trips do
     resources :waypoints
+    resources :segments
   end
-  
+
   resources :users, only: :show
 
   root 'home#index'
