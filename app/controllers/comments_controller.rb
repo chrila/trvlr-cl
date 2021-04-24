@@ -1,11 +1,11 @@
 class CommentsController < ApplicationController
-  load_and_authorize_resource
   before_action :set_activity, only: %i[index_activity new_activity]
   before_action :set_media_item, only: %i[index_media_item new_media_item]
   before_action :set_post, only: %i[index_post new_post]
   before_action :set_trip, only: %i[index_trip new_trip]
   before_action :set_comment, only: %i[show edit update destroy like dislike]
   before_action :create_comment, only: %i[new_activity new_media_item new_post new_trip]
+  authorize_resource
 
   def index
     @comments = Comment.all.order(:id).reverse
@@ -32,7 +32,6 @@ class CommentsController < ApplicationController
   end
 
   def new
-  
   end
 
   def new_activity

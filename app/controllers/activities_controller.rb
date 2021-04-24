@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
-  load_and_authorize_resource
   before_action :set_activity, only: %i[show like dislike]
+  authorize_resource
 
   def index
     @activities = Activity.for_user(current_user).order(:id).reverse
