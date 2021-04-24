@@ -62,11 +62,16 @@ Rails.application.routes.draw do
     post 'comments', to: 'comments#create'
   end
 
-  resources :comments, only: %i[update destroy]
   resources :users, only: :show
+  scope 'users/:id', as: :user do
+    post 'follow', to: 'users#follow', as: :follow
+    delete 'unfollow', to: 'users#unfollow', as: :unfollow
+  end
+
+  resources :comments, only: %i[update destroy]
 
   get 'home/index', as: :home
   get 'summary/index', as: :summary
-  
+
   root 'home#index'
 end

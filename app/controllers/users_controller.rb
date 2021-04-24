@@ -4,6 +4,16 @@ class UsersController < ApplicationController
   def show
   end
 
+  def follow
+    current_user.follow(@user)
+    redirect_to @user
+  end
+
+  def unfollow
+    current_user.unfollow(@user)
+    redirect_to @user
+  end
+
   private
 
   def set_user

@@ -21,4 +21,16 @@ class User < ApplicationRecord
   def to_s
     username
   end
+
+  def follow(other_user)
+    Following.create(user: self, followed_user: other_user) unless following?(other_user)
+  end
+
+  def unfollow(other_user)
+    followings_active.where(followed_user: other_user).destroy_all if following?(other_user)
+  end
+
+  def following?(other_user)
+    followings_active.where(followed_user: other_user).size.positive?
+  end
 end

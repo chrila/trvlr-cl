@@ -29,7 +29,7 @@ class Ability
 
     # User profiles
     # users can see other users' profile pages
-    can :read, User
+    can %i[read follow unfollow], User
 
     # Comments
     # users can read, create, like and dislike comments, but only delete their own comments
