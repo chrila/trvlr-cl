@@ -1,6 +1,10 @@
+<%= link_to @trip, class: 'btn btn-large btn-outline-dark mb-4' do %>
+  <i class="bi bi-arrow-left"></i>
+<% end %>
+
 <h1 class="display-2"><%= "#{@trip.title} - Segments" %></h1>
 
-<div class="mb-3 text-end">
+<div class="my-3">
   <%= link_to 'New segment', new_trip_segment_path(@trip), class: 'btn btn-large btn-dark' %>
 </div>
 
@@ -21,5 +25,3 @@
     <%= render @segments %>
   </tbody>
 </table>
-
-<%= link_to 'Back', :back %>

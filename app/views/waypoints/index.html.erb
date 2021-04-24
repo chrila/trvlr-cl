@@ -1,6 +1,10 @@
+<%= link_to :back, class: 'btn btn-large btn-outline-dark mb-4' do %>
+  <i class="bi bi-arrow-left"></i>
+<% end %>
+
 <h1 class="display-2"><%= "#{@trip.title} - Waypoints" %></h1>
 
-<div class="mb-3 text-end">
+<div class="my-3">
   <%= link_to 'New waypoint', new_trip_waypoint_path(@trip), class: 'btn btn-large btn-dark' %>
 </div>
 
@@ -22,5 +26,3 @@
     <%= render @waypoints %>
   </tbody>
 </table>
-
-<%= link_to 'Back', :back %>

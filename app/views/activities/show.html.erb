@@ -1,3 +1,7 @@
+<%= link_to activities_path, class: 'btn btn-large btn-outline-dark mb-4' do %>
+  <i class="bi bi-arrow-left"></i>
+<% end %>
+
 <h1 class="display-2">Activity detail</h1>
 <%= render @activity %>
 
@@ -5,3 +9,5 @@
 <div class="row row-cols-1 row-cols-xl-2 g-3 my-3">
   <%= render @activity.comments %>
 </div>
+
+<%= link_to 'New comment', activity_new_comment_path(@activity), class: 'btn btn-large btn-dark' %>

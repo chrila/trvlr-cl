@@ -1,7 +1,11 @@
+<%= link_to @waypoint, class: 'btn btn-large btn-outline-dark mb-4' do %>
+  <i class="bi bi-arrow-left"></i>
+<% end %>
+
 <h1 class="display-2"><%= "#{@waypoint.name} - Blog" %></h1>
 
 <div class="my-3">
-  <%= link_to 'New blog post', trip_waypoint_new_post_path, class: 'btn btn-primary btn-large' %>
+  <%= link_to 'New blog post', trip_waypoint_new_post_path, class: 'btn btn-dark btn-large' %>
 </div>
 
 <div class="row row-cols-1 g-4">
