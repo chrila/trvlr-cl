@@ -42,12 +42,11 @@ class Ability
     can %i[read like dislike], Activity
 
     # Trips
-    # users can see trips that are set to 'visibility_users'
-    can :read, Trip, visibility: :visibility_users
-
+    # users can see and like/dislike trips that are public and users-only
+    can %i[read like dislike], Trip, visibility: ['visibility_public', 'visibility_users']
     # private trips can only be read by participants
-    can :read, Trip do |t|
-      t.visibility == :visibility_private && user_ids.include?(user.id)
+    can %i[read like dislike], Trip do |t|
+      t.visibility_private? && t.user_ids.include?(user.id)
     end
     # users can manage trips which they participate in as administrator
     can :manage, Trip, user.trips do |t|
