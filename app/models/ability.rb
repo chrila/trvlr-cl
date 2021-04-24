@@ -5,20 +5,20 @@ class Ability
 
   def initialize(user)
     # visitors can view public trips and their details
-    can :read, Trip, visibility: :visibility_public
+    can :read, Trip, visibility: 'visibility_public'
     cannot :index, Trip
 
     can :index, Waypoint do |w|
-      w.trip.visibility_public?
+      can? :read, w.trip
     end
     can :index, Segment do |s|
-      s.trip.visibility_public?
+      can? :read, s.trip
     end
     can %i[index_trip index_waypoint], Post do |p|
-      p.trip.visibility_public?
+      can? :read, p.trip
     end
     can %i[index_trip index_waypoint], MediaItem do |m|
-      m.trip.visibility_public?
+      can? :read, m.trip
     end
 
     return unless user.present?
@@ -51,6 +51,33 @@ class Ability
     # users can manage trips which they participate in as administrator
     can :manage, Trip, user.trips do |t|
       t.trip_users.role_administrator.map(&:user).include? user
+    end
+
+    # Waypoints and segments
+    # They can only be managed by the administrator of the trip
+    can :manage, Waypoint do |w|
+      can? :manage, w.trip
+    end
+    can :manage, Segment do |s|
+      can? :manage, s.trip
+    end
+
+    # Media items and posts
+    # They can only be created if a user is participating in a trip as 'administrator' or 'editor'
+    can %i[new_trip new_waypoint create], MediaItem do |m|
+      m.trip.trip_users.role_administrator.map(&:user).include?(user) ||
+        m.trip.trip_users.role_editor.map(&:user).include?(user)
+    end
+    can %i[new_trip new_waypoint create], Post do |p|
+      p.trip.trip_users.role_administrator.map(&:user).include?(user) ||
+        p.trip.trip_users.role_editor.map(&:user).include?(user)
+    end
+    # Reading is analog to the trip's permission
+    can %i[read like dislike], MediaItem do |m|
+      can? :read, m.trip
+    end
+    can %i[read like dislike], Post do |p|
+      can? :read, p.trip
     end
   end
 end
