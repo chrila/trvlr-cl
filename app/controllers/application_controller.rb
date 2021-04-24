@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def active_admin_resource?
-    self.class.ancestors.include? ActiveAdmin::BaseController
+    self.class.ancestors.include?(ActiveAdmin::BaseController) ||
+      self.class.ancestors.include?(ActiveAdmin::Devise::SessionsController)
   end
 end
