@@ -7,9 +7,12 @@
       <p class="card-text"><%= trip.description %></p>
     </div>
     <div class="card-footer">
-      <small class="text-muted">
-        <%= participant_list(trip) %>
-      </small>
+      <div class="btn-group">
+        <%= link_to  'Waypoints', trip_waypoints_path(trip), class: 'btn btn-sm btn-outline-dark' %>
+        <%= link_to  'Segments', trip_segments_path(trip), class: 'btn btn-sm btn-outline-dark' %>
+        <%= link_to  'Blog', trip_posts_path(trip), class: 'btn btn-sm btn-outline-dark' %>
+        <%= link_to  'Media', trip_media_items_path(trip), class: 'btn btn-sm btn-outline-dark' %>
+      </div>
       <span class="trip-reaction-buttons">
         <div class="mx-4">
           <% if Like.liked?(current_user, trip) %>
