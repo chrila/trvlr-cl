@@ -1,14 +1,17 @@
-<h1 class="display-2"><%= @trip.title %></h1>
+<h1 class="display-2"><%= "#{@trip.title} - Overview" %></h1>
+
 <p class="fs-3"><%= @trip.description %></p>
 <p><strong>Start date: </strong><%= @trip.start_date %></p>
 <p><strong>End date: </strong><%= @trip.end_date %></p>
 <p><strong>Budget: </strong><%= @trip.budget %></p>
 <p><strong>Status: </strong><%= @trip.status_string %></p>
 <p><strong>Visibility: </strong><%= @trip.visibility_string %></p>
+
 <div class="my-3">
   <%= link_to 'Edit', edit_trip_path(@trip), class: 'btn btn-large btn-dark' %>
   <%= link_to 'Delete', @trip, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-large btn-outline-dark' %>
 </div>
+
 <div class="my-3">
   <%= link_to 'Waypoints', trip_waypoints_path(@trip), class: 'btn btn-large btn-dark' %>
   <%= link_to 'Segments', trip_segments_path(@trip), class: 'btn btn-large btn-dark' %>
