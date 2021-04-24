@@ -69,3 +69,5 @@ gem 'devise'
 gem 'cancancan'
 # admin panel
 gem 'activeadmin'
+# for selecting countries in forms
+gem 'country_select'
