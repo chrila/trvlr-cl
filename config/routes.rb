@@ -4,8 +4,6 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
 
-  get 'home/index', as: 'home'
-
   resources :activities, only: %i[index show]
   scope 'activities/:id', as: :activity do
     post 'like', to: 'activities#like', as: :like
@@ -64,5 +62,7 @@ Rails.application.routes.draw do
   resources :comments, only: %i[update destroy]
   resources :users, only: :show
 
+  get 'home/index', as: :home
+  get 'summary/index', as: :summary
   root 'home#index'
 end
