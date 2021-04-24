@@ -11,7 +11,9 @@
 <p><strong>Distance: </strong><%= @segment.distance %></p>
 <p><strong>Status: </strong><%= @segment.status_string %></p>
 
-<div class="my-3">
-  <%= link_to 'Edit', edit_trip_segment_path(@trip, @segment), class: 'btn btn-large btn-dark' %>
-  <%= link_to 'Delete', trip_segment_path(@trip, @segment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-large btn-outline-dark' %>
-</div>
+<% if can? :manage, segment %>
+  <div class="my-3">
+    <%= link_to 'Edit', edit_trip_segment_path(@trip, @segment), class: 'btn btn-large btn-dark' %>
+    <%= link_to 'Delete', trip_segment_path(@trip, @segment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-large btn-outline-dark' %>
+  </div>
+<% end %>

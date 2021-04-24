@@ -10,5 +10,6 @@
   <%= render @media_item.comments %>
 </div>
 
-
-<%= link_to 'New comment', media_item_new_comment_path(@media_item), class: 'btn btn-large btn-dark' %>
+<% if can? :new_media_item, Comment %>
+  <%= link_to 'New comment', media_item_new_comment_path(@media_item), class: 'btn btn-large btn-dark' %>
+<% end %>

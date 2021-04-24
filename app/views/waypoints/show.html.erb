@@ -11,7 +11,9 @@
 <p><strong>Longitude: </strong><%= @waypoint.longitude %></p>
 <p><strong>Latitude: </strong><%= @waypoint.latitude %></p>
 
-<div class="my-3">
-  <%= link_to 'Edit', edit_trip_waypoint_path(@trip, @waypoint), class: 'btn btn-large btn-dark' %>
-  <%= link_to 'Delete', trip_waypoint_path(@trip, @waypoint), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-large btn-outline-dark' %>
-</div>
+<% if can? :manage, @waypoint %>
+  <div class="my-3">
+    <%= link_to 'Edit', edit_trip_waypoint_path(@trip, @waypoint), class: 'btn btn-large btn-dark' %>
+    <%= link_to 'Delete', trip_waypoint_path(@trip, @waypoint), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-large btn-outline-dark' %>
+  </div>
+<% end %>

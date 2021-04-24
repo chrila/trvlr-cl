@@ -10,5 +10,6 @@
   <%= render @post.comments %>
 </div>
 
-
-<%= link_to 'New comment', post_new_comment_path(@post), class: 'btn btn-large btn-dark' %>
+<% if can? :new_post, Comment %>
+  <%= link_to 'New comment', post_new_comment_path(@post), class: 'btn btn-large btn-dark' %>
+<% end %>

@@ -1,19 +1,23 @@
 <div class="btn-group mb-4">
-  <%= link_to :back, class: 'btn btn-large btn-outline-dark' do %>
-    <i class="bi bi-arrow-left"></i>
+  <% if signed_in? %>
+    <%= link_to :back, class: 'btn btn-large btn-outline-dark' do %>
+      <i class="bi bi-arrow-left"></i>
+    <% end %>
   <% end %>
   <%= link_to 'Overview', @trip, class: 'btn btn-large btn-outline-dark' %>
   <%= link_to 'Waypoints', trip_waypoints_path(@trip), class: 'btn btn-large btn-outline-dark' %>
   <%= link_to 'Segments', trip_segments_path(@trip), class: 'btn btn-large btn-outline-dark ' %>
-  <%= link_to  'Blog', trip_posts_path(@trip), class: 'btn btn-large btn-outline-dark' %>
-  <%= link_to  'Media', trip_media_items_path(@trip), class: 'btn btn-large btn-outline-dark' %>
+  <%= link_to 'Blog', trip_posts_path(@trip), class: 'btn btn-large btn-outline-dark' %>
+  <%= link_to 'Media', trip_media_items_path(@trip), class: 'btn btn-large btn-outline-dark' %>
 </div>
 
 <h1 class="display-2"><%= "#{@trip.title} - Waypoints" %></h1>
 
-<div class="my-3">
-  <%= link_to 'New waypoint', new_trip_waypoint_path(@trip), class: 'btn btn-large btn-dark' %>
-</div>
+<% if can? :manage, @trip %>
+  <div class="my-3">
+    <%= link_to 'New waypoint', new_trip_waypoint_path(@trip), class: 'btn btn-large btn-dark' %>
+  </div>
+<% end %>
 
 <table class="table table-striped table-hover">
   <thead>

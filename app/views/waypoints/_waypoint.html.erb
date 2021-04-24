@@ -8,10 +8,16 @@
   <td><%= waypoint.longitude %></td>
   <td><%= waypoint.latitude %></td>
   <td>
-    <%= link_to 'Show', trip_waypoint_path(@trip, waypoint) %>
-    <%= link_to 'Edit', edit_trip_waypoint_path(@trip, waypoint) %>
-    <%= link_to 'Delete', trip_waypoint_path(@trip, waypoint), method: :delete, data: { confirm: 'Are you sure?' } %>
-    <%= link_to 'Posts', trip_waypoint_posts_path(@trip, waypoint) %>
-    <%= link_to 'Media', trip_waypoint_media_items_path(@trip, waypoint) %>
+    <% if can? :read, waypoint %>
+      <%= link_to 'Show', trip_waypoint_path(@trip, waypoint) %>
+    <% end %>
+    <% if can? :manage, waypoint %>
+      <%= link_to 'Edit', edit_trip_waypoint_path(@trip, waypoint) %>
+      <%= link_to 'Delete', trip_waypoint_path(@trip, waypoint), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+    <% if can? :read, @trip %>
+      <%= link_to 'Posts', trip_waypoint_posts_path(@trip, waypoint) %>
+      <%= link_to 'Media', trip_waypoint_media_items_path(@trip, waypoint) %>
+    <% end %>
   </td>
 </tr>

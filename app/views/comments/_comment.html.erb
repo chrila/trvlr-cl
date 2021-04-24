@@ -5,12 +5,14 @@
     <div>
       <%= link_to comment.user do %>
         <small class="text-muted"><%= comment.user %></small>
-      <% end %>      
+      <% end %>
+
       <% if can? :destroy, comment %>
        | <%= link_to comment, method: :delete do %>
           <small class="text-muted">Delete</small>
         <% end %>
       <% end %>
+      
       <span class="comment-reaction-buttons">
         <div class="mx-4">
           <% if Like.liked?(current_user, comment) %>

@@ -10,12 +10,10 @@ class ActivitiesController < ApplicationController
   end
 
   def like
-    authorize! :like, :activity
     Like.like(current_user, @activity)
   end
 
   def dislike
-    authorize! :dislike, :activity
     Like.dislike(current_user, @activity)
   end
 

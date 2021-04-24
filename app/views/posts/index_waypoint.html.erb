@@ -4,9 +4,11 @@
 
 <h1 class="display-2"><%= "#{@waypoint.name} - Blog" %></h1>
 
-<div class="my-3">
-  <%= link_to 'New blog post', trip_waypoint_new_post_path, class: 'btn btn-dark btn-large' %>
-</div>
+<% if can? :new_waypoint, Post %>
+  <div class="my-3">
+    <%= link_to 'New blog post', trip_waypoint_new_post_path, class: 'btn btn-dark btn-large' %>
+  </div>
+<% end %>
 
 <div class="row row-cols-1 g-4">
   <%= render @posts %>
