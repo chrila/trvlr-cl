@@ -65,3 +65,5 @@ end
 
 # for user management
 gem 'devise'
+# for rights management
+gem 'cancancan'
