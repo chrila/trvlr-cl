@@ -24,7 +24,7 @@
           <%= trip.likes_count %>
         </div>
         <div>
-          <%= link_to trip_comments_path(trip) do %>
+          <%= link_to trip_new_comment_path(trip) do %>
             <i class="bi bi-chat-right mx-1"></i>
           <% end %>
           <%= trip.comments_count %>
