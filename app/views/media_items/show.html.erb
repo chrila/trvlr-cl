@@ -9,3 +9,6 @@
 <div class="row row-cols-1 row-cols-xl-2 g-3 my-3">
   <%= render @media_item.comments %>
 </div>
+
+
+<%= link_to 'New comment', media_item_new_comment_path(@media_item), class: 'btn btn-large btn-dark' %>

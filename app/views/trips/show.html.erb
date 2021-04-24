@@ -1,4 +1,4 @@
-<%= link_to :back, class: 'btn btn-large btn-outline-dark mb-4' do %>
+<%= link_to trips_path, class: 'btn btn-large btn-outline-dark mb-4' do %>
   <i class="bi bi-arrow-left"></i>
 <% end %>
 
@@ -27,3 +27,5 @@
 <div class="row row-cols-1 row-cols-xl-2 g-3 my-3">
   <%= render @trip.comments %>
 </div>
+
+<%= link_to 'New comment', trip_new_comment_path(@trip), class: 'btn btn-large btn-dark' %>
