@@ -2,6 +2,7 @@
   "name": "time-travelling-turtle",
   "private": true,
   "dependencies": {
+    "@activeadmin/activeadmin": "^2.9.0",
     "@popperjs/core": "^2.9.2",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",

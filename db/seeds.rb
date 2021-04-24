@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ## clear DB
 # Like.delete_all
 # Comment.delete_all
@@ -151,3 +153,6 @@ end
     end
   Like.create(user: User.all.sample, likeable: likeable)
 end
+
+# dummy admin user for development
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

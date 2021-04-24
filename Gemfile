@@ -67,3 +67,5 @@ end
 gem 'devise'
 # for rights management
 gem 'cancancan'
+# admin panel
+gem 'activeadmin'
