@@ -1,6 +1,13 @@
-<%= link_to trips_path, class: 'btn btn-large btn-outline-dark mb-4' do %>
-  <i class="bi bi-arrow-left"></i>
-<% end %>
+<div class="btn-group mb-4">
+  <%= link_to trips_path, class: 'btn btn-large btn-outline-dark' do %>
+    <i class="bi bi-arrow-left"></i>
+  <% end %>
+  <%= link_to 'Overview', @trip, class: 'btn btn-large btn-outline-dark' %>
+  <%= link_to 'Waypoints', trip_waypoints_path(@trip), class: 'btn btn-large btn-outline-dark' %>
+  <%= link_to 'Segments', trip_segments_path(@trip), class: 'btn btn-large btn-outline-dark ' %>
+  <%= link_to  'Blog', trip_posts_path(@trip), class: 'btn btn-large btn-outline-dark' %>
+  <%= link_to  'Media', trip_media_items_path(@trip), class: 'btn btn-large btn-outline-dark' %>
+</div>
 
 <h1 class="display-2"><%= "#{@trip.title} - Overview" %></h1>
 
@@ -14,13 +21,6 @@
 <div class="my-3">
   <%= link_to 'Edit', edit_trip_path(@trip), class: 'btn btn-large btn-dark' %>
   <%= link_to 'Delete', @trip, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-large btn-outline-dark' %>
-</div>
-
-<div class="my-3">
-  <%= link_to 'Waypoints', trip_waypoints_path(@trip), class: 'btn btn-large btn-dark' %>
-  <%= link_to 'Segments', trip_segments_path(@trip), class: 'btn btn-large btn-dark' %>
-  <%= link_to  'Blog', trip_posts_path(@trip), class: 'btn btn-large btn-dark' %>
-  <%= link_to  'Media', trip_media_items_path(@trip), class: 'btn btn-large btn-dark' %>
 </div>
 
 <h2 class="display-6 mt-5">Comments</h2>

@@ -1,6 +1,13 @@
-<%= link_to :back, class: 'btn btn-large btn-outline-dark mb-4' do %>
-  <i class="bi bi-arrow-left"></i>
-<% end %>
+<div class="btn-group mb-4">
+  <%= link_to :back, class: 'btn btn-large btn-outline-dark' do %>
+    <i class="bi bi-arrow-left"></i>
+  <% end %>
+  <%= link_to 'Overview', @trip, class: 'btn btn-large btn-outline-dark' %>
+  <%= link_to 'Waypoints', trip_waypoints_path(@trip), class: 'btn btn-large btn-outline-dark' %>
+  <%= link_to 'Segments', trip_segments_path(@trip), class: 'btn btn-large btn-outline-dark ' %>
+  <%= link_to  'Blog', trip_posts_path(@trip), class: 'btn btn-large btn-outline-dark' %>
+  <%= link_to  'Media', trip_media_items_path(@trip), class: 'btn btn-large btn-outline-dark' %>
+</div>
 
 <h1 class="display-2"><%= "#{@trip.title} - Waypoints" %></h1>
 
