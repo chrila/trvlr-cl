@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_activity, only: %i[index_activity new_activity]
   before_action :set_media_item, only: %i[index_media_item new_media_item]
   before_action :set_post, only: %i[index_post new_post]

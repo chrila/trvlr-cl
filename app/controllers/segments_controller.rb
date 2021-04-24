@@ -1,4 +1,5 @@
 class SegmentsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_trip
   before_action :set_segment, only: %i[show edit update destroy]
 
