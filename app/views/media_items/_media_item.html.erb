@@ -21,7 +21,7 @@
             <%= media_item.likes_count %>
           </div>
           <div>
-            <%= link_to media_item_comments_path(media_item) do %>
+            <%= link_to media_item_new_comment_path(media_item) do %>
               <i class="bi bi-chat-right mx-1"></i>
             <% end %>
             <%= media_item.comments_count %>
