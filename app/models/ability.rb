@@ -9,10 +9,19 @@ class Ability
 
     return unless user.present?
 
+    # Summary
+    # users can see their summary page
+    can :read, :summary
+
+    # User profiles
+    # users can see other users' profile pages
+    can :read, User
+
     # Comments
-    # users can read all comments, but only delete their own comments
+    # users can read and create comments, but only delete their own comments
     can :destroy, Comment, user_id: user.id
     can :read, Comment
+    can %i[new_activity new_media_item new_post new_trip], Comment
 
     # Activities
     # users can read all activities
