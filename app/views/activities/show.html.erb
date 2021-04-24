@@ -7,7 +7,7 @@
 
 <h2 class="display-6 mt-5">Comments</h2>
 <div class="row row-cols-1 row-cols-xl-2 g-3 my-3">
-  <%= render @activity.comments %>
+  <%= render @activity.comments.order(:id).reverse %>
 </div>
 
 <%= link_to 'New comment', activity_new_comment_path(@activity), class: 'btn btn-large btn-dark' %>

@@ -7,7 +7,7 @@
 
 <h2 class="display-6 mt-5">Comments</h2>
 <div class="row row-cols-1 row-cols-xl-2 g-3 my-3">
-  <%= render @post.comments %>
+  <%= render @post.comments.order(:id).reverse %>
 </div>
 
 <% if can? :new_post, Comment %>
