@@ -18,6 +18,8 @@ class User < ApplicationRecord
 
   validates :username, presence: true
 
+  scope :users_to_follow, ->(user) { where.not(id: user.followings_active.map(&:followed_user_id)) }
+
   def to_s
     username
   end

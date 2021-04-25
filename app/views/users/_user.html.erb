@@ -1,0 +1,6 @@
+<div class="col">
+  <div class="card p-4">
+    <p><%= user.username %></p>
+    <%= link_to  'Follow', user_follow_path(user), method: :post, class: 'btn btn-sm btn-outline-dark' %>
+  </div>
+</div>

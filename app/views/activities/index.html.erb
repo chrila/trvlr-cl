@@ -1,4 +1,12 @@
 <h1 class="display-2">Activity stream</h1>
+
+<div class="mt-2 mb-3">
+  <h2 class="fs-3">Users you might want to follow</h2>
+  <div class="row row-cols-4 g-2">
+    <%= render User.users_to_follow(current_user).first(4) %>
+  </div>
+</div>
+
 <div class="row row-cols-1 g-4">
   <%= render @activities %>
 </div>
