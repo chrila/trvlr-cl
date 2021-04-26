@@ -3,8 +3,9 @@
     <i class="bi bi-arrow-left"></i>
   <% end %>
   <%= link_to 'Overview', @trip, class: 'btn btn-large btn-outline-dark' %>
+  <%= link_to 'Participants', trip_trip_users_path(@trip), class: 'btn btn-large btn-outline-dark' %>
   <%= link_to 'Waypoints', trip_waypoints_path(@trip), class: 'btn btn-large btn-outline-dark' %>
   <%= link_to 'Segments', trip_segments_path(@trip), class: 'btn btn-large btn-outline-dark ' %>
-  <%= link_to  'Blog', trip_posts_path(@trip), class: 'btn btn-large btn-outline-dark' %>
-  <%= link_to  'Media', trip_media_items_path(@trip), class: 'btn btn-large btn-outline-dark' %>
+  <%= link_to 'Blog', trip_posts_path(@trip), class: 'btn btn-large btn-outline-dark' %>
+  <%= link_to 'Media', trip_media_items_path(@trip), class: 'btn btn-large btn-outline-dark' %>
 </div>

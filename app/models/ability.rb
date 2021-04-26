@@ -8,6 +8,10 @@ class Ability
     can :read, Trip, visibility: 'visibility_public'
     cannot :index, Trip
 
+    can :index, TripUser do |t|
+      can? :read, t.trip
+    end
+
     can :index, Waypoint do |w|
       can? :read, w.trip
     end
@@ -51,6 +55,12 @@ class Ability
     # users can manage trips which they participate in as administrator
     can :manage, Trip, user.trips do |t|
       t.trip_users.role_administrator.map(&:user).include? user
+    end
+
+    # Participants
+    # only users that can manage a trip can also manage participants
+    can :manage, TripUser do |t|
+      can? :manage, t.trip
     end
 
     # Waypoints and segments

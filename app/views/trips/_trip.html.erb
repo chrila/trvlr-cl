@@ -8,6 +8,7 @@
     </div>
     <div class="card-footer">
       <div class="btn-group">
+        <%= link_to  'Participants', trip_trip_users_path(trip), class: 'btn btn-sm btn-outline-dark' %>
         <%= link_to  'Waypoints', trip_waypoints_path(trip), class: 'btn btn-sm btn-outline-dark' %>
         <%= link_to  'Segments', trip_segments_path(trip), class: 'btn btn-sm btn-outline-dark' %>
         <%= link_to  'Blog', trip_posts_path(trip), class: 'btn btn-sm btn-outline-dark' %>
