@@ -14,18 +14,20 @@
       <% end %>
       
       <span class="comment-reaction-buttons">
-        <div class="mx-4">
-          <% if Like.liked?(current_user, comment) %>
-            <%= link_to comment_dislike_path(comment), method: :delete do %>
-              <i class="bi bi-hand-thumbs-up-fill mx-1"></i>  
+        <% if can? :like, comment %>
+          <div class="mx-4">
+            <% if Like.liked?(current_user, comment) %>
+              <%= link_to comment_dislike_path(comment), method: :delete do %>
+                <i class="bi bi-hand-thumbs-up-fill mx-1"></i>  
+              <% end %>
+            <% else %>
+              <%= link_to comment_like_path(comment), method: :post do %>
+                <i class="bi bi-hand-thumbs-up mx-1"></i>  
+              <% end %>
             <% end %>
-          <% else %>
-            <%= link_to comment_like_path(comment), method: :post do %>
-              <i class="bi bi-hand-thumbs-up mx-1"></i>  
-            <% end %>
-          <% end %>
-          <%= comment.likes_count %>
-        </div>
+            <%= comment.likes_count %>
+          </div>
+        <% end %>
       </span>
     </div>
   </div>

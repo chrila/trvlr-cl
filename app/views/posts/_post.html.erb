@@ -13,6 +13,7 @@
       <span><i class="bi bi-geo-alt"></i> <%= "#{post.waypoint.name}, #{post.waypoint.country}" %></span>
       <small class="text-muted mx-2"><%= "#{time_ago_in_words(post.created_at)} ago" %></small>
       <span class="post-reaction-buttons">
+        <% if can? :like, post %>
         <div class="mx-4">
           <% if Like.liked?(current_user, post) %>
             <%= link_to post_dislike_path(post), method: :delete do %>
@@ -25,12 +26,15 @@
           <% end %>
           <%= post.likes_count %>
         </div>
-        <div>
-          <%= link_to post_new_comment_path(post) do %>
-            <i class="bi bi-chat-right mx-1"></i>
-          <% end %>
-          <%= post.comments_count %>
-        </div>
+        <% end %>
+        <% if can? :new_post, Comment %>
+          <div>
+            <%= link_to post_new_comment_path(post) do %>
+              <i class="bi bi-chat-right mx-1"></i>
+            <% end %>
+            <%= post.comments_count %>
+          </div>
+        <% end %>
       </span>
     </div>
   </div>
