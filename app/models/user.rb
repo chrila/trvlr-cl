@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :activities, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :posts, dependent: :destroy
+  has_many :segments, through: :trips
+  has_many :waypoints, through: :trips
   has_many :followings_passive, class_name: 'Following', foreign_key: :followed_user_id, dependent: :destroy
   has_many :followers, class_name: 'User', through: :followings_passive, source: :user
   has_many :followings_active, class_name: 'Following', foreign_key: :user_id, dependent: :destroy
