@@ -10,4 +10,8 @@ module TripsHelper
   def trip_statuses_list
     Trip.statuses.keys.collect { |k| [k.split('_').last.humanize, k] }
   end
+
+  def role_of_user_in_trip(user, trip)
+    trip.trip_users.find_by(user: user).role_string
+  end
 end

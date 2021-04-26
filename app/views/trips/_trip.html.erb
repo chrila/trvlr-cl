@@ -5,14 +5,19 @@
         <%= link_to trip.title, trip %>
       </h5>
       <p class="card-text"><%= trip.description %></p>
+      <p class="card-text">
+        <span class="badge bg-dark"><%= trip.visibility_string %></span>
+        <span class="badge bg-dark"><%= role_of_user_in_trip(current_user, trip) %></span>
+        <span class="badge bg-primary"><%= trip.status_string %></span>
+      </p>
     </div>
     <div class="card-footer">
       <div class="btn-group">
-        <%= link_to  'Participants', trip_trip_users_path(trip), class: 'btn btn-sm btn-outline-dark' %>
-        <%= link_to  'Waypoints', trip_waypoints_path(trip), class: 'btn btn-sm btn-outline-dark' %>
-        <%= link_to  'Segments', trip_segments_path(trip), class: 'btn btn-sm btn-outline-dark' %>
-        <%= link_to  'Blog', trip_posts_path(trip), class: 'btn btn-sm btn-outline-dark' %>
-        <%= link_to  'Media', trip_media_items_path(trip), class: 'btn btn-sm btn-outline-dark' %>
+        <%= link_to 'Participants', trip_trip_users_path(trip), class: 'btn btn-sm btn-outline-dark' %>
+        <%= link_to 'Waypoints', trip_waypoints_path(trip), class: 'btn btn-sm btn-outline-dark' %>
+        <%= link_to 'Segments', trip_segments_path(trip), class: 'btn btn-sm btn-outline-dark' %>
+        <%= link_to 'Blog', trip_posts_path(trip), class: 'btn btn-sm btn-outline-dark' %>
+        <%= link_to 'Media', trip_media_items_path(trip), class: 'btn btn-sm btn-outline-dark' %>
       </div>
       <span class="trip-reaction-buttons">
         <div class="mx-4">
