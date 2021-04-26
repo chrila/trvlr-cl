@@ -4,7 +4,7 @@ class WaypointsController < ApplicationController
   authorize_resource
 
   def index
-    @waypoints = @trip.waypoints
+    @waypoints = @trip.waypoints.order(:id)
   end
 
   def new

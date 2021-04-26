@@ -4,7 +4,7 @@ class SegmentsController < ApplicationController
   authorize_resource
 
   def index
-    @segments = @trip.segments
+    @segments = @trip.segments.order(:id)
   end
 
   def new

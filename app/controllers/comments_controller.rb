@@ -12,22 +12,22 @@ class CommentsController < ApplicationController
   end
 
   def index_activity
-    @comments = @activity.comments
+    @comments = @activity.comments.order(:id)
     render :index
   end
 
   def index_media_item
-    @comments = @media_item.comments
+    @comments = @media_item.comments.order(:id)
     render :index
   end
 
   def index_post
-    @comments = @post.comments
+    @comments = @post.comments.order(:id)
     render :index
   end
 
   def index_trip
-    @comments = @trip.comments
+    @comments = @trip.comments.order(:id)
     render :index
   end
 

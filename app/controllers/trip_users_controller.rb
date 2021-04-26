@@ -4,7 +4,7 @@ class TripUsersController < ApplicationController
   authorize_resource
 
   def index
-    @trip_users = @trip.trip_users
+    @trip_users = @trip.trip_users.order(:id)
   end
 
   def new
