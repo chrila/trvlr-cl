@@ -64,7 +64,11 @@ group :development do
 end
 
 # for user management
-gem 'devise'
+gem "devise", github: "heartcombo/devise", branch: "master"
+# for login using facebook
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-rails_csrf_protection'
 # for rights management
 gem 'cancancan'
 # admin panel
