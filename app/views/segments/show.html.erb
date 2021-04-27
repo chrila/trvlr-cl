@@ -1,4 +1,4 @@
-<%= link_to @trip, class: 'btn btn-large btn-outline-dark mb-4' do %>
+<%= link_to trip_segments_path(@trip), class: 'btn btn-large btn-outline-dark mb-4' do %>
   <i class="bi bi-arrow-left"></i>
 <% end %>
 
@@ -11,7 +11,7 @@
 <p><strong>Distance: </strong><%= @segment.distance %></p>
 <p><strong>Status: </strong><%= @segment.status_string %></p>
 
-<% if can? :manage, segment %>
+<% if can? :manage, @segment %>
   <div class="my-3">
     <%= link_to 'Edit', edit_trip_segment_path(@trip, @segment), class: 'btn btn-large btn-dark' %>
     <%= link_to 'Delete', trip_segment_path(@trip, @segment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-large btn-outline-dark' %>
