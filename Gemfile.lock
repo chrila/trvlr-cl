@@ -112,6 +112,7 @@ GEM
       countries (~> 3.0)
       sort_alphabetical (~> 1.1)
     crass (1.0.6)
+    dotenv (2.7.6)
     erubi (1.10.0)
     faker (2.17.0)
       i18n (>= 1.6, < 2)
@@ -334,6 +335,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   country_select
   devise!
+  dotenv
   faker
   image_processing (~> 1.2)
   jbuilder (~> 2.7)

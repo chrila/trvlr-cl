@@ -75,3 +75,5 @@ gem 'cancancan'
 gem 'activeadmin'
 # for selecting countries in forms
 gem 'country_select'
+# for environment variables
+gem 'dotenv'
