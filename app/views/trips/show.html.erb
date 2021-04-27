@@ -16,11 +16,12 @@
   </div>
 <% end %>
 
-<h2 class="display-6 mt-5">Comments</h2>
-<div class="row row-cols-1 row-cols-xl-2 g-3 my-3">
-  <%= render @trip.comments.order(:id).reverse %>
-</div>
+<h2 class="display-6 mt-5 mb-4">Comments</h2>
 
 <% if can? :new_trip, Comment %>
   <%= link_to 'New comment', trip_new_comment_path(@trip), class: 'btn btn-large btn-dark' %>
 <% end %>
+
+<div class="row row-cols-1 row-cols-xl-2 g-3 my-3">
+  <%= render @trip.comments.order(:id).reverse %>
+</div>

@@ -1,4 +1,4 @@
-<h2 class="display-6">Comments for <%= beautiful_classname(@commentable) %></h2>
+<h2 class="display-6">Comments for <%= beautify_classname(@commentable) %></h2>
 <p><%= "#{@comments.size} comments" %></p>
 <div class="my-4">
   <%= link_to 'New comment', new_comment_path(@commentable), class: 'btn btn-large btn-dark' %>

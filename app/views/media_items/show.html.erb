@@ -5,11 +5,12 @@
 <h1 class="display-2">Media item</h1>
 <%= render @media_item %>
 
-<h2 class="display-6 mt-5">Comments</h2>
-<div class="row row-cols-1 row-cols-xl-2 g-3 my-3">
-  <%= render @media_item.comments.order(:id).reverse %>
-</div>
+<h2 class="display-6 mt-5 mb-4">Comments</h2>
 
 <% if can? :new_media_item, Comment %>
   <%= link_to 'New comment', media_item_new_comment_path(@media_item), class: 'btn btn-large btn-dark' %>
 <% end %>
+
+<div class="row row-cols-1 row-cols-xl-2 g-3 my-3">
+  <%= render @media_item.comments.order(:id).reverse %>
+</div>

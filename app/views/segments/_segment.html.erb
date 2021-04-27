@@ -1,18 +1,16 @@
 <tr>
-  <th scope="row"><%= segment.id %></th>
+  <th scope="row"><%= segment_counter + 1 %></th>
   <td><%= segment.waypoint_from.name %></td>
   <td><%= segment.waypoint_to.name %></td>
   <td><%= segment.time_from %></td>
   <td><%= segment.time_to %></td>
   <td><%= segment.distance %></td>
   <td><%= segment.status_string %></td>
-  <td>
-    <% if can? :read, segment %>
-      <%= link_to 'Show', trip_segment_path(@trip, segment) %>
-    <% end %>
     <% if can? :manage, segment %>
-      <%= link_to 'Edit', edit_trip_segment_path(@trip, segment) %>
-      <%= link_to 'Delete', trip_segment_path(@trip, segment), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <td>
+        <%= link_to 'Show', trip_segment_path(@trip, segment) %>
+        <%= link_to 'Edit', edit_trip_segment_path(@trip, segment) %>
+        <%= link_to 'Delete', trip_segment_path(@trip, segment), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
     <% end %>
-  </td>
 </tr>

@@ -18,7 +18,9 @@
       <th scope="col">End</th>
       <th scope="col">Distance</th>
       <th scope="col">Status</th>
-      <th scope="col">Actions</th>
+      <% if can? :manage, @trip %>
+        <th scope="col">Actions</th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
