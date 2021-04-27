@@ -29,7 +29,7 @@ class Ability
 
     # Summary
     # users can see their summary page
-    can :read, :summary
+    can %i[overall current_year], :summary
 
     # User profiles
     # users can see other users' profile pages

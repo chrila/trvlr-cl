@@ -5,6 +5,8 @@ class Segment < ApplicationRecord
 
   enum status: %i[segment_open segment_active segment_finished]
 
+  scope :finished_between, ->(date_from, date_to) { segment_finished.where('segments.updated_at between ? and ?', date_from, date_to) }
+
   def status_string
     status.split('_').last.humanize
   end

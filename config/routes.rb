@@ -73,7 +73,8 @@ Rails.application.routes.draw do
   resources :comments, only: %i[update destroy]
 
   get 'home/index', as: :home
-  get 'summary/index', as: :summary
+  get 'summary/overall', as: :summary_overall
+  get 'summary/current_year', as: :summary_current_year
 
   root 'home#index'
 end

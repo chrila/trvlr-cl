@@ -4,4 +4,6 @@ class Comment < ApplicationRecord
   has_many :likes, as: :likeable, dependent: :destroy
 
   attr_readonly :likes_count
+
+  scope :created_between, ->(date_from, date_to) { where('created_at between ? and ?', date_from, date_to) }
 end

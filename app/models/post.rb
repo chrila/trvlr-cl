@@ -10,4 +10,5 @@ class Post < ApplicationRecord
 
   scope :for_trip, ->(trip) { where(waypoint: trip.waypoints) }
   scope :for_waypoint, ->(waypoint) { where(waypoint: waypoint) }
+  scope :created_between, ->(date_from, date_to) { where('created_at between ? and ?', date_from, date_to) }
 end
