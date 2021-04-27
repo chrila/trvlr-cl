@@ -1,0 +1,17 @@
+<% if trip_counter < 1 %>
+  <div class="carousel-item active">
+<% else %>
+  <div class="carousel-item">
+<% end %>
+
+  <img src="https://www.peru.travel/Contenido/Atractivo/Imagen/es/38/1.1/Principal/Machu%20Picchu.jpg" class="carousel-image">
+
+  <div class="container">
+    <div class="carousel-caption text-start">
+      <h1><span class="carousel-caption-title"><%= trip.title %></span></h1>
+      <h4>by <%= participant_list trip %></h4>
+      <p><%= trip.description %></p>
+      <p><%= link_to raw('Check it out &raquo'), trip, class: 'btn btn-lg btn-primary' %></p>
+    </div>
+  </div>
+</div>
