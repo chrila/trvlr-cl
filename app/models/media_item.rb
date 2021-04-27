@@ -5,6 +5,8 @@ class MediaItem < ApplicationRecord
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :likes, as: :likeable, dependent: :destroy
 
+  has_one_attached :photo
+
   attr_readonly :likes_count
   attr_readonly :comments_count
 

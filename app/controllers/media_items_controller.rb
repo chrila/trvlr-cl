@@ -83,7 +83,7 @@ class MediaItemsController < ApplicationController
   private
 
   def media_item_params
-    params.require(:media_item).permit(%i[title description waypoint_id])
+    params.require(:media_item).permit(%i[title description waypoint_id photo])
   end
 
   def set_trip
