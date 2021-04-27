@@ -77,3 +77,5 @@ gem 'activeadmin'
 gem 'country_select'
 # for environment variables
 gem 'dotenv'
+# for downloading files
+gem 'down'

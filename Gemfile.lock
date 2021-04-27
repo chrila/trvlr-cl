@@ -88,7 +88,7 @@ GEM
       ruby2_keywords (>= 0.0.2, < 1.0)
     bcrypt (3.1.16)
     bindex (0.8.1)
-    bootsnap (1.7.3)
+    bootsnap (1.7.4)
       msgpack (~> 1.0)
     builder (3.2.4)
     byebug (11.1.3)
@@ -113,6 +113,8 @@ GEM
       sort_alphabetical (~> 1.1)
     crass (1.0.6)
     dotenv (2.7.6)
+    down (5.2.1)
+      addressable (~> 2.5)
     erubi (1.10.0)
     faker (2.17.0)
       i18n (>= 1.6, < 2)
@@ -312,7 +314,7 @@ GEM
       nokogiri (~> 1.6)
       rubyzip (>= 1.3.0)
       selenium-webdriver (>= 3.0, < 4.0)
-    webpacker (5.2.1)
+    webpacker (5.3.0)
       activesupport (>= 5.2)
       rack-proxy (>= 0.6.1)
       railties (>= 5.2)
@@ -336,6 +338,7 @@ DEPENDENCIES
   country_select
   devise!
   dotenv
+  down
   faker
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
