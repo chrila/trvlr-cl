@@ -1,5 +1,8 @@
 <div class="container">
   <h1 class="display-2">Hi, I'm <%= @user.username %></h1>
+
+  <%= image_tag @user.avatar, class: 'user-avatar' %>
+
   <p>Following <%= pluralize(@user.following_count, 'user') %></p>
   <p>Has <%= pluralize(@user.followers_count, 'follower') %></p>
 

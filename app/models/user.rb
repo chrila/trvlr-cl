@@ -18,6 +18,8 @@ class User < ApplicationRecord
   has_many :followings_active, class_name: 'Following', foreign_key: :user_id, dependent: :destroy
   has_many :following, class_name: 'User', through: :followings_active, source: :followed_user
 
+  has_one_attached :avatar
+
   validates :username, presence: true
 
   scope :users_to_follow, ->(user) { where.not(id: user.followings_active.map(&:followed_user_id)) }
