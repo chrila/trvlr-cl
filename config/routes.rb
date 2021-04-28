@@ -75,6 +75,7 @@ Rails.application.routes.draw do
   get 'home/index', as: :home
   get 'summary/overall', as: :summary_overall
   get 'summary/current_year', as: :summary_current_year
+  get 'summary/last_year', as: :summary_last_year
 
   root 'home#index'
 end

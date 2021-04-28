@@ -1,6 +1,5 @@
 class SummaryController < ApplicationController
   authorize_resource class: false
-  before_action :init_stats
 
   def overall
     @stats = calculate_stats(Date.new, Time.now)
@@ -14,19 +13,13 @@ class SummaryController < ApplicationController
     render :show
   end
 
-  private
-
-  def init_stats
-    @stats = {
-      countries: 0,
-      continents: 0,
-      km: 0,
-      pictures: 0,
-      posts: 0,
-      likes: 0,
-      comments: 0
-    }
+  def last_year
+    @stats = calculate_stats(Time.now.beginning_of_year - 1.year, Time.now.beginning_of_year)
+    @stats[:title] = 'Last year'
+    render :show
   end
+
+  private
 
   def calculate_stats(date_from, date_to)
     segments = current_user.segments.finished_between(date_from, date_to)
@@ -42,11 +35,11 @@ class SummaryController < ApplicationController
   end
 
   def calculate_countries(segments)
-    segments.joins(:waypoint_from).pluck(:country).uniq.count
+    (segments.joins(:waypoint_from).pluck(:country) + segments.joins(:waypoint_to).pluck(:country)).uniq.count
   end
 
   def calculate_continents(segments)
-    segments.joins(:waypoint_from).pluck(:continent).uniq.count
+    (segments.joins(:waypoint_from).pluck(:continent) + segments.joins(:waypoint_from).pluck(:continent)).uniq.count
   end
 
   def calculate_km(segments)
