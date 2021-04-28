@@ -15,7 +15,9 @@
 
 # users
 20.times do
-  User.create!(username: Faker::Internet.username, email: Faker::Internet.email, password: '123456')
+  u = User.new(username: Faker::Internet.username, email: Faker::Internet.email, password: '123456')
+  u.avatar.attach(io: File.open('app/assets/images/default_avatar.jpg'), filename: 'avatar.jpg')
+  u.save!
 end
 
 # activities
@@ -120,10 +122,12 @@ end
 
 # media items
 20.times do
-  MediaItem.create!(
+  m = MediaItem.new(
     waypoint: Waypoint.all.sample, title: Faker::Hipster.sentence(word_count: 3),
     description: Faker::Hipster.sentence, user: User.all.sample
   )
+  m.photo.attach(io: File.open('app/assets/images/default_media_item.jpg'), filename: 'photo.jpg')
+  m.save!
 end
 
 # comments

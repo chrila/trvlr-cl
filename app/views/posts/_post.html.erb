@@ -1,7 +1,9 @@
 <div class="col">
   <div class="card activity-card">
     <div class="post-pic-container">
-      <img src="https://github.com/chrila.png" class="card-img-top rounded-circle activity-user-pic" alt=<%= post.user %>>
+      <%= link_to post.user do %>
+        <%= image_tag post.user.avatar.representation(resize_to_limit: [32, 32]), class: 'rounded-circle post-user-pic', alt: post.user %>
+      <% end %>
     </div>
     <div class="card-body post-body">
       <%= link_to post do %>
