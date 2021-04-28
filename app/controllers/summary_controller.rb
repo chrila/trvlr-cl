@@ -39,7 +39,7 @@ class SummaryController < ApplicationController
   end
 
   def calculate_continents(segments)
-    (segments.joins(:waypoint_from).pluck(:continent) + segments.joins(:waypoint_from).pluck(:continent)).uniq.count
+    (segments.joins(:waypoint_from).pluck(:continent) + segments.joins(:waypoint_to).pluck(:continent)).uniq.count
   end
 
   def calculate_km(segments)
