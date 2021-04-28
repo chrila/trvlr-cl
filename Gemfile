@@ -64,7 +64,7 @@ group :development do
 end
 
 # for user management
-gem "devise", github: "heartcombo/devise", branch: "master"
+gem 'devise', github: 'heartcombo/devise', branch: 'master'
 # for login using facebook
 gem 'omniauth'
 gem 'omniauth-facebook'
@@ -79,3 +79,5 @@ gem 'country_select'
 gem 'dotenv'
 # for downloading files
 gem 'down'
+# for charts
+gem 'chartkick'

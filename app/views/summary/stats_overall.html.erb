@@ -1,0 +1,15 @@
+<h1 class="display-2"><%= "Summary: #{@stats[:title]}" %></h1>
+
+<%= render 'navbar_summary' %>
+
+<%= render 'summary', stats: @stats %>
+
+<div class="my-4">
+  <h2 class="display-6">Places visited per continent</h2>
+  <%= pie_chart @stats[:waypoints_per_continent] %>
+</div>
+
+<div class="my-4">
+  <h2 class="display-6">Distance travelled per year</h2>
+  <%= column_chart @stats[:distance_per_year], discrete: true, round: 2, suffix: ' km' %>
+</div>
