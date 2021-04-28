@@ -74,22 +74,35 @@ class SummaryController < ApplicationController
     Comment.created_between(date_from, date_to).where(commentable: current_user.media_items).count
   end
 
+  # input: array of the form: [[a_1, [a_1, a_1, a_1]], [a_2, [a_2, a_2]] .. [a_n, [a_n, a_n, a_n, a_n]]]
+  # returns: hash of the form: { a_1: 3, a_2: 2, .. a_n: 4 }
   def to_data_row_count(arr)
-    arr.group_by { |x| x }.map { |x, y| [x, y.count] }.to_h.sort
+    arr
+      .group_by { |x| x } # group by first value
+      .map { |x, y| [x, y.count] } # second value = count of elements in array
+      .to_h # to hash
+      .sort # sort by key
   end
 
+  # input: array of the form: [[a_1, [a_1_1, a_1_2, a_1_3]], [a_2, [a_2_1, a_2_2]] .. [a_n, [a_n_1, a_n_2, a_n_3, a_n_4]]]
+  # returns: hash of the form: { a_1: sum(a_1_1 .. a_1_3), a_2: sum(a_2_1 .. a_2_2), .. a_n: sum(a_n_1 .. a_n_4)  }
   def to_data_row_sum(arr)
-    arr.group_by(&:first).map { |x, y| [x, y.inject(0) { |sum, i| sum + i.last }] }.to_h.sort
+    arr
+      .group_by(&:first) # group by first value
+      .map { |x, y| [x, y.inject(0) { |sum, i| sum + i.last }] } # second value = sum of elements in array
+      .to_h # to hash
+      .sort # sort by key
   end
 
   def calculate_waypoints_per_continent(segments)
     to_data_row_count get_continents(segments)
   end
 
+  # dummy data to show also e.g. years without travelling activity
   def dummy_data(from, to)
     arr = []
     (from..to).each do |i|
-      arr << [i + 1, 0]
+      arr << [i, 0]
     end
     arr
   end
@@ -103,8 +116,8 @@ class SummaryController < ApplicationController
   end
 
   def get_distance_and_year(segments)
-    segments.pluck(:time_to, :distance).map { |time, distance| [time.year, distance] } +
-      dummy_data(segments.pluck(:time_to).min.year, segments.pluck(:time_to).max.year)
+    years = segments.pluck(:time_to).map(&:year)
+    segments.pluck(:time_to, :distance).map { |time, distance| [time.year, distance] } + dummy_data(years.min, years.max)
   end
 
   def calculate_distance_per_year(segments)
