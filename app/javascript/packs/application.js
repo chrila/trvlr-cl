@@ -16,3 +16,7 @@ ActiveStorage.start()
 
 require("trix")
 require("@rails/actiontext")
+
+import 'leaflet/dist/leaflet.css'
+import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css'
+import '../js/leaflet.js'

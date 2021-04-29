@@ -49,3 +49,8 @@ h1 {
 .nav-link {
   color: black;
 }
+
+.map-container {
+  width: 100%;
+  height: 600px;
+}

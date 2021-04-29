@@ -1,0 +1,41 @@
+<div id="mapid" class="map-container"></div>
+<script>
+
+	var mymap = L.map('mapid', {
+    center: [0, 0],
+    zoom: 1
+  });
+
+  // tiles
+	L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY2hyaWxhIiwiYSI6ImNrbzF4ZWJhcjBwZmQycG1zbWRodWM1cm8ifQ.M0TKFhXK_SzhWqokJpDE4Q', {
+		maxZoom: 18,
+		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+		id: 'mapbox/streets-v11',
+		tileSize: 512,
+		zoomOffset: -1
+	}).addTo(mymap);
+
+  // draw waypoints
+  <% waypoints.each do |w| %>
+	  L.marker([<%= w.lat_long_str %>], {
+      title: '<%= w.name %>'
+    }).addTo(mymap);
+  <% end %>
+
+  <% if local_assigns[:segments].present? %>
+    // draw segments
+    var lines = []
+    var line;
+    <% segments.each do |s| %>
+      line = [[<%= s.waypoint_from.lat_long_str %>], [<%= s.waypoint_to.lat_long_str %>]];
+      lines.push(line);
+      L.polyline(line, { color: '<%= segment_status_color s %>' }).addTo(mymap);
+    <% end %>
+
+    // zoom the map to the entire path (= all segments)
+    var path = L.polyline(lines);
+    mymap.fitBounds(path.getBounds());
+  <% end %>
+
+</script>
