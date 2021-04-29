@@ -13,10 +13,10 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Username</th>
-      <th scope="col">e-Mail</th>
       <th scope="col">Role</th>
+      <th scope="col" class="d-none d-lg-block">e-Mail</th>
       <% if can? :manage, @trip %>
-        <th scope="col">Actions</th>
+        <th scope="col"></th>
       <% end %>
     </tr>
   </thead>

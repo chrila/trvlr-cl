@@ -1,12 +1,16 @@
 <tr>
   <th scope="row"><%= trip_user_counter + 1 %></th>
   <td><%= trip_user.user.username %></td>
-  <td><%= trip_user.user.email %></td>
-  <td><%= trip_user.role_string %></td>
+  <td><%= tag.span trip_user.role_string, class: class_names('badge', bg_class_for_role(trip_user)) %></td>
+  <td class="d-none d-lg-block"><%= trip_user.user.email %></td>
     <% if can? :manage, trip_user %>
       <td>
-        <%= link_to 'Edit', edit_trip_trip_user_path(@trip, trip_user) %>
-        <%= link_to 'Delete', trip_trip_user_path(@trip, trip_user), method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to edit_trip_trip_user_path(@trip, trip_user) do %>
+          <i class="bi bi-pencil"></i>
+        <% end %>
+        <%= link_to trip_trip_user_path(@trip, trip_user), method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <i class="bi bi-trash"></i>
+        <% end %>
       </td>
     <% end %>
 </tr>
