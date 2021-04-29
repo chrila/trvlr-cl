@@ -81,3 +81,5 @@ gem 'dotenv'
 gem 'down'
 # for charts
 gem 'chartkick'
+# for sending mails
+gem 'mailgun-ruby'
