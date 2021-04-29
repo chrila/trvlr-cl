@@ -1,6 +1,7 @@
+<h1 class="display-2">New comment</h1>
+
 <%= link_to @comment.commentable, class: 'btn btn-large btn-outline-dark mb-4' do %>
   <i class="bi bi-arrow-left"></i>
 <% end %>
 
-<h1 class="display-2">New comment</h1>
 <%= render 'form', comment: @comment %>

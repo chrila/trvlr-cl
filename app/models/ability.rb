@@ -56,6 +56,10 @@ class Ability
     can :manage, Trip, user.trips do |t|
       t.trip_users.role_administrator.map(&:user).include? user
     end
+    # Users that can see the trip can also see a list of comments for the trip
+    can :index_trip, Comment do |c|
+      can? :read, c.commentable
+    end
 
     # Participants
     # only users that can manage a trip can also manage participants

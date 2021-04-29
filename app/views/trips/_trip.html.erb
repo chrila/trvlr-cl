@@ -1,23 +1,25 @@
 <div class="col">
   <div class="card trip-card">
+    <%= link_to trip do %>
     <div class="card-body">
       <h5 class="card-title">
-        <%= link_to trip.title, trip %>
+        <%= trip.title %>
       </h5>
       <p class="card-text"><%= trip.description %></p>
       <p class="card-text">
         <span class="badge bg-dark"><%= trip.visibility_string %></span>
-        <span class="badge bg-dark"><%= role_of_user_in_trip(current_user, trip) %></span>
-        <span class="badge bg-primary"><%= trip.status_string %></span>
+        <%= tag.span user_in_trip(current_user, trip).role_string, class: class_names('badge', bg_class_for_role(user_in_trip(current_user, trip))) %>
+        <%= tag.span trip.status_string, class: class_names('badge', bg_class_for_status(trip)) %>
       </p>
     </div>
+    <% end %>
     <div class="card-footer">
       <div class="btn-group">
-        <%= link_to 'Participants', trip_trip_users_path(trip), class: 'btn btn-sm btn-outline-dark' %>
-        <%= link_to 'Waypoints', trip_waypoints_path(trip), class: 'btn btn-sm btn-outline-dark' %>
-        <%= link_to 'Segments', trip_segments_path(trip), class: 'btn btn-sm btn-outline-dark' %>
-        <%= link_to 'Blog', trip_posts_path(trip), class: 'btn btn-sm btn-outline-dark' %>
-        <%= link_to 'Media', trip_media_items_path(trip), class: 'btn btn-sm btn-outline-dark' %>
+        <%= render 'shared/trip_users_button', trip: trip %>
+        <%= render 'shared/trip_waypoints_button', trip: trip %>
+        <%= render 'shared/trip_segments_button', trip: trip %>
+        <%= render 'shared/trip_posts_button', trip: trip %>
+        <%= render 'shared/trip_media_items_button', trip: trip %>
       </div>
       <span class="trip-reaction-buttons">
         <% if can? :like, trip %>
@@ -36,7 +38,7 @@
         <% end %>
         <% if can? :new_trip, Comment %>
           <div>
-            <%= link_to trip_new_comment_path(trip) do %>
+            <%= link_to trip_comments_path(trip) do %>
               <i class="bi bi-chat-right mx-1"></i>
             <% end %>
             <%= trip.comments_count %>

@@ -1,6 +1,6 @@
-<%= render 'shared/navbar_trips' %>
-
 <h1 class="display-2"><%= "#{@trip.title} - Waypoints" %></h1>
+
+<%= render 'shared/navbar_trips' %>
 
 <% if can? :manage, @trip %>
   <div class="my-3">

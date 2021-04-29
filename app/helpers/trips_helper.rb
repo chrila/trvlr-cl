@@ -11,7 +11,17 @@ module TripsHelper
     Trip.statuses.keys.collect { |k| [k.split('_').last.humanize, k] }
   end
 
-  def role_of_user_in_trip(user, trip)
-    trip.trip_users.find_by(user: user).role_string
+  def user_in_trip(user, trip)
+    trip.trip_users.find_by(user: user)
+  end
+
+  def bg_class_for_status(trip)
+    bg_classes = {
+      trip_draft: 'bg-secondary',
+      trip_active: 'bg-warning text-dark',
+      trip_finished: 'bg-success',
+      trip_cancelled: 'bg-danger'
+    }
+    bg_classes[trip.status.to_sym]
   end
 end
