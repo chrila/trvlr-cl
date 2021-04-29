@@ -1,0 +1,7 @@
+<h1>Hello <%= @invited_user.username %>,</h1>
+<p>
+  The user <%= @user.username %> has added you to their trip <%= link_to @trip.title, trip_url(@trip) %>.<br/>
+</p>
+<p>
+  Login and go to "my trips" to find out more about the trip.
+</p>

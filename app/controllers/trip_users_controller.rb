@@ -23,6 +23,7 @@ class TripUsersController < ApplicationController
     respond_to do |format|
       if @trip_user.save
         format.html { redirect_to trip_trip_users_path(@trip), notice: 'Participant was successfully added to the trip.' }
+        UserMailer.with(user: current_user, invited_user: @trip_user.user, trip: @trip).added_to_trip.deliver_later
       else
         format.html { render :new }
       end
