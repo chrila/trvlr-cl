@@ -15,4 +15,13 @@ module SegmentsHelper
     }
     colors[segment.status.to_sym]
   end
+
+  def segment_status_bg_class(segment)
+    bg_classes = {
+      segment_open: 'bg-dark',
+      segment_active: 'bg-warning font-dark',
+      segment_finished: 'bg-success'
+    }
+    bg_classes[segment.status.to_sym]
+  end
 end

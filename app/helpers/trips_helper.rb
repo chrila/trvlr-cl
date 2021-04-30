@@ -15,7 +15,7 @@ module TripsHelper
     trip.trip_users.find_by(user: user)
   end
 
-  def bg_class_for_status(trip)
+  def trip_status_bg_class(trip)
     bg_classes = {
       trip_draft: 'bg-secondary',
       trip_active: 'bg-warning text-dark',

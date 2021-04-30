@@ -1,4 +1,4 @@
-<%= render 'shared/trips_header', trip: @trip, title: 'Participants' %>
+<%= render 'shared/trips_header', trip: @trip, title: 'Participants', active: 'participants' %>
 
 <% if can? :manage, @trip %>
   <%= render 'shared/add_button', target: new_trip_trip_user_path(@trip), resource: 'participant' %>

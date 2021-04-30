@@ -8,14 +8,14 @@
       <p class="card-text"><%= trip.description %></p>
       <p class="card-text">
         <span class="badge bg-dark"><%= trip.visibility_string %></span>
-        <%= tag.span user_in_trip(current_user, trip).role_string, class: class_names('badge', bg_class_for_role(user_in_trip(current_user, trip))) %>
-        <%= tag.span trip.status_string, class: class_names('badge', bg_class_for_status(trip)) %>
+        <%= tag.span user_in_trip(current_user, trip).role_string, class: class_names('badge', trip_role_bg_class(user_in_trip(current_user, trip))) %>
+        <%= tag.span trip.status_string, class: class_names('badge', trip_status_bg_class(trip)) %>
       </p>
     </div>
     <% end %>
     <div class="card-footer">
       <div class="btn-group">
-        <%= render 'shared/trip_users_button', trip: trip %>
+        <%= render 'shared/trip_participants_button', trip: trip %>
         <%= render 'shared/trip_waypoints_button', trip: trip %>
         <%= render 'shared/trip_segments_button', trip: trip %>
         <%= render 'shared/trip_posts_button', trip: trip %>

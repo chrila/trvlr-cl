@@ -5,8 +5,8 @@
   <td class="d-none d-md-table-cell"><%= waypoint.address %></td>
   <td class="d-none d-lg-table-cell"><%= waypoint.country %></td>
   <td class="d-none d-lg-table-cell"><%= waypoint.continent %></td>
-  <td class="d-none d-xl-table-cell"><%= waypoint.latitude %></td>
-  <td class="d-none d-xl-table-cell"><%= waypoint.longitude %></td>
+  <td class="d-none d-xl-table-cell"><%= waypoint.latitude.round(4) %></td>
+  <td class="d-none d-xl-table-cell"><%= waypoint.longitude.round(4) %></td>
   <td>
     <% if can? :read, waypoint %>
       <%= link_to trip_waypoint_path(@trip, waypoint) do %>

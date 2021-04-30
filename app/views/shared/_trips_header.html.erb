@@ -1,3 +1,6 @@
-<h1 class="display-2"><%= "#{trip.title} - #{title}" %></h1>
+<div class="mb-4">
+  <h1 class="display-6 text-black-50 mb-0"><%= trip.title %></h1>
+  <h2 class="display-2"><%= title %></h2>
+</div>
 
-<%= render 'shared/trips_navbar' %>
+<%= render 'shared/trips_navbar', active: active %>

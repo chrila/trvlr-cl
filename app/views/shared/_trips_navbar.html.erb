@@ -1,8 +1,8 @@
-<div class="btn-group mb-4">
-  <%= render 'shared/trip_overview_button', trip: @trip %>
-  <%= render 'shared/trip_users_button', trip: @trip %>
-  <%= render 'shared/trip_waypoints_button', trip: @trip %>
-  <%= render 'shared/trip_segments_button', trip: @trip %>
-  <%= render 'shared/trip_posts_button', trip: @trip %>
-  <%= render 'shared/trip_media_items_button', trip: @trip %>
+<div class="btn-group mb-4 w-100">
+  <%= render 'shared/trip_overview_button', trip: @trip, active: local_assigns[:active] %>
+  <%= render 'shared/trip_participants_button', trip: @trip, active: local_assigns[:active] %>
+  <%= render 'shared/trip_waypoints_button', trip: @trip, active: local_assigns[:active] %>
+  <%= render 'shared/trip_segments_button', trip: @trip, active: local_assigns[:active] %>
+  <%= render 'shared/trip_posts_button', trip: @trip, active: local_assigns[:active] %>
+  <%= render 'shared/trip_media_items_button', trip: @trip, active: local_assigns[:active] %>
 </div>

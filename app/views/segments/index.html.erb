@@ -1,4 +1,4 @@
-<%= render 'shared/trips_header', trip: @trip, title: 'Segments' %>
+<%= render 'shared/trips_header', trip: @trip, title: 'Segments', active: 'segments' %>
 
 <% if can? :manage, @trip %>
   <%= render 'shared/add_button', target: new_trip_segment_path(@trip), resource: 'segment' %>
@@ -15,7 +15,7 @@
       <th scope="col">Distance</th>
       <th scope="col">Status</th>
       <% if can? :manage, @trip %>
-        <th scope="col">Actions</th>
+        <th scope="col"></th>
       <% end %>
     </tr>
   </thead>
