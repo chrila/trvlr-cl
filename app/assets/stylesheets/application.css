@@ -31,6 +31,7 @@ h1 {
 
 .navbar-light {
   color: black;
+  background-color: white;
 }
 
 .navbar-light .navbar-nav .nav-link {
