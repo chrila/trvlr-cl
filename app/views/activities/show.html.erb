@@ -7,7 +7,7 @@
 <h2 class="display-6 mt-5 mb-4">Comments</h2>
 
 <% if can? :new_activity, Comment %>
-  <%= link_to 'New comment', activity_new_comment_path(@activity), class: 'btn btn-large btn-dark' %>
+  <%= render 'shared/add_button', target: activity_new_comment_path(@activity), resource: 'comment' %>
 <% end %>
 
 <div class="row row-cols-1 row-cols-xl-2 g-3 my-3">
