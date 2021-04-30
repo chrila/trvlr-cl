@@ -1,13 +1,9 @@
 <h1 class="display-2"><%= "#{@waypoint.name} - Media gallery" %></h1>
 
-<%= link_to :back, class: 'btn btn-large btn-outline-dark mb-4' do %>
-  <i class="bi bi-arrow-left"></i>
-<% end %>
+<%= render 'shared/back_button', target: :back %>
 
 <% if can? :new_waypoint, MediaItem %>
-  <div class="my-3">
-    <%= link_to 'New item', trip_waypoint_new_media_item_path, class: 'btn btn-dark btn-large' %>
-  </div>
+  <%= render 'shared/add_button', target: trip_waypoint_new_media_item_path(@trip, @waypoint), resource: 'media item' %>
 <% end %>
 
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">

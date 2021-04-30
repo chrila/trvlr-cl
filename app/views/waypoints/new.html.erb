@@ -1,7 +1,5 @@
 <h1 class="display-2">New waypoint</h1>
 
-<%= link_to trip_waypoints_path(@trip), class: 'btn btn-large btn-outline-dark mb-4' do %>
-  <i class="bi bi-arrow-left"></i>
-<% end %>
+<%= render 'shared/back_button', target: trip_waypoints_path(@trip) %>
 
 <%= render 'form', waypoint: @waypoint %>

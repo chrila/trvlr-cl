@@ -1,7 +1,5 @@
 <h1 class="display-2">New blog post</h1>
 
-<%= link_to trip_posts_path(@trip), class: 'btn btn-large btn-outline-dark mb-4' do %>
-  <i class="bi bi-arrow-left"></i>
-<% end %>
+<%= render 'shared/back_button', target: trip_posts_path(@trip) %>
 
 <%= render 'form', post: @post %>

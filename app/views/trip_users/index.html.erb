@@ -3,9 +3,7 @@
 <%= render 'shared/navbar_trips' %>
 
 <% if can? :manage, @trip %>
-  <div class="my-3">
-    <%= link_to 'Add participant', new_trip_trip_user_path, class: 'btn btn-dark btn-large' %>
-  </div>  
+  <%= render 'shared/add_button', target: new_trip_trip_user_path(@trip), resource: 'participant' %>
 <% end %>
 
 <table class="table table-striped table-hover">

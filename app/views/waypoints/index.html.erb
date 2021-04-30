@@ -3,9 +3,7 @@
 <%= render 'shared/navbar_trips' %>
 
 <% if can? :manage, @trip %>
-  <div class="my-3">
-    <%= link_to 'New waypoint', new_trip_waypoint_path(@trip), class: 'btn btn-large btn-dark' %>
-  </div>
+  <%= render 'shared/add_button', target: new_trip_waypoint_path(@trip), resource: 'waypoint' %>
 <% end %>
 
 <table class="table table-striped table-hover">

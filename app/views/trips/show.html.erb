@@ -22,7 +22,7 @@
 <h2 class="display-6 mt-5 mb-4">Comments</h2>
 
 <% if can? :new_trip, Comment %>
-  <%= link_to 'New comment', trip_new_comment_path(@trip), class: 'btn btn-large btn-dark' %>
+  <%= render 'shared/add_button', target: trip_new_comment_path(@trip), resource: 'comment' %>
 <% end %>
 
 <div class="row row-cols-1 row-cols-xl-2 g-3 my-3">

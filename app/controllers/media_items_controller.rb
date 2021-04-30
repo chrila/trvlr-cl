@@ -1,5 +1,5 @@
 class MediaItemsController < ApplicationController
-  before_action :set_trip, only: %i[index_trip new_trip new_waypoint]
+  before_action :set_trip, only: %i[index_trip index_waypoint new_trip new_waypoint]
   before_action :set_waypoint, only: %i[index_waypoint new_waypoint]
   before_action :set_media_item, only: %i[show edit update destroy like dislike]
   authorize_resource

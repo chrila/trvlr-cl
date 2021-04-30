@@ -3,9 +3,7 @@
 <%= render 'shared/navbar_trips' %>
 
 <% if can? :new_trip, Post %>
-  <div class="my-3">
-    <%= link_to 'New blog post', trip_new_post_path, class: 'btn btn-dark btn-large' %>
-  </div>
+  <%= render 'shared/add_button', target: trip_new_post_path(@trip), resource: 'blog post' %>
 <% end %>
 
 <div class="row row-cols-1 g-4">

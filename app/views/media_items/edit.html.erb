@@ -1,7 +1,5 @@
 <h1 class="display-2">Edit media item</h1>
 
-<%= link_to :back, class: 'btn btn-large btn-outline-dark mb-4' do %>
-  <i class="bi bi-arrow-left"></i>
-<% end %>
+<%= render 'shared/back_button', target: trip_media_items_path(@media_item.trip) %>
 
 <%= render 'form', media_item: @media_item %>

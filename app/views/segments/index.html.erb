@@ -3,9 +3,7 @@
 <%= render 'shared/navbar_trips' %>
 
 <% if can? :manage, @trip %>
-  <div class="my-3">
-    <%= link_to 'New segment', new_trip_segment_path(@trip), class: 'btn btn-large btn-dark' %>
-  </div>
+  <%= render 'shared/add_button', target: new_trip_segment_path(@trip), resource: 'segment' %>
 <% end %>
 
 <table class="table table-striped table-hover">

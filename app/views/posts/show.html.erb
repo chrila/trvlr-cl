@@ -1,15 +1,13 @@
 <h1 class="display-2">Blog post</h1>
 
-<%= link_to trip_posts_path(@post.trip), class: 'btn btn-large btn-outline-dark mb-4' do %>
-  <i class="bi bi-arrow-left"></i>
-<% end %>
+<%= render 'shared/back_button', target: trip_posts_path(@post.trip) %>
 
 <%= render @post %>
 
 <h2 class="display-6 mt-5 mb-4">Comments</h2>
 
 <% if can? :new_post, Comment %>
-  <%= link_to 'New comment', post_new_comment_path(@post), class: 'btn btn-large btn-dark' %>
+  <%= render 'shared/add_button', target: post_new_comment_path(@post), resource: 'comment' %>
 <% end %>
 
 <div class="row row-cols-1 row-cols-xl-2 g-3 my-3">

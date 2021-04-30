@@ -1,8 +1,6 @@
 <h1 class="display-2">Activity detail</h1>
 
-<%= link_to activities_path, class: 'btn btn-large btn-outline-dark mb-4' do %>
-  <i class="bi bi-arrow-left"></i>
-<% end %>
+<%= render 'shared/back_button', target: activities_path %>
 
 <%= render @activity %>
 

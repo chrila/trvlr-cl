@@ -1,8 +1,6 @@
-<h1 class="display-6"><%= "Segment details" %></h1>
+<h1 class="display-2"><%= "Segment details" %></h1>
 
-<%= link_to trip_segments_path(@trip), class: 'btn btn-large btn-outline-dark mb-4' do %>
-  <i class="bi bi-arrow-left"></i>
-<% end %>
+<%= render 'shared/back_button', target: trip_segments_path(@trip) %>
 
 <p><strong>From: </strong><%= @segment.waypoint_from.name %></p>
 <p><strong>To: </strong><%= @segment.waypoint_to.name %></p>

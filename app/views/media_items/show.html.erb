@@ -1,15 +1,13 @@
 <h1 class="display-2">Media item</h1>
 
-<%= link_to trip_media_items_path(@media_item.trip), class: 'btn btn-large btn-outline-dark mb-4' do %>
-  <i class="bi bi-arrow-left"></i>
-<% end %>
+<%= render 'shared/back_button', target: trip_media_items_path(@media_item.trip) %>
 
 <%= render 'media_item_show', media_item: @media_item  %>
 
 <h2 class="display-6 mt-5 mb-4">Comments</h2>
 
 <% if can? :new_media_item, Comment %>
-  <%= link_to 'New comment', media_item_new_comment_path(@media_item), class: 'btn btn-large btn-dark' %>
+  <%= render 'shared/add_button', target: media_item_new_comment_path(@media_item), resource: 'comment' %>
 <% end %>
 
 <div class="row row-cols-1 row-cols-xl-2 g-3 my-3">
