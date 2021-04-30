@@ -10,3 +10,9 @@
 <div class="row row-cols-1 g-4">
   <%= render @activities %>
 </div>
+
+<div class="my-5 text-center">
+  <div class="d-inline-block">
+    <%== pagy_bootstrap_nav @pagy %>
+  </div>
+</div>

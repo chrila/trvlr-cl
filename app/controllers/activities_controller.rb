@@ -1,9 +1,11 @@
 class ActivitiesController < ApplicationController
+  include Pagy::Backend
+
   before_action :set_activity, only: %i[show like dislike]
   authorize_resource
 
   def index
-    @activities = Activity.for_user(current_user).order(:id).reverse
+    @pagy, @activities = pagy(Activity.for_user(current_user).order(id: :desc))
   end
 
   def show

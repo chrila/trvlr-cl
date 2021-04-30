@@ -83,3 +83,5 @@ gem 'down'
 gem 'chartkick'
 # for sending mails
 gem 'mailgun-ruby'
+# for pagination
+gem 'pagy'
