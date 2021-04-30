@@ -1,23 +1,35 @@
 <tr>
   <th scope="row"><%= waypoint_counter + 1 %></th>
   <td><%= waypoint.name %></td>
-  <td><%= waypoint.notes %></td>
-  <td><%= waypoint.address %></td>
-  <td><%= waypoint.country %></td>
-  <td><%= waypoint.continent %></td>
-  <td><%= waypoint.longitude %></td>
-  <td><%= waypoint.latitude %></td>
+  <td class="d-none d-sm-table-cell"><%= waypoint.notes %></td>
+  <td class="d-none d-md-table-cell"><%= waypoint.address %></td>
+  <td class="d-none d-lg-table-cell"><%= waypoint.country %></td>
+  <td class="d-none d-lg-table-cell"><%= waypoint.continent %></td>
+  <td class="d-none d-xl-table-cell"><%= waypoint.latitude %></td>
+  <td class="d-none d-xl-table-cell"><%= waypoint.longitude %></td>
   <td>
     <% if can? :read, waypoint %>
-      <%= link_to 'Show', trip_waypoint_path(@trip, waypoint) %>
+      <%= link_to trip_waypoint_path(@trip, waypoint) do %>
+        <i class="bi bi-file-earmark-text"></i>
+      <% end %>
     <% end %>
     <% if can? :manage, waypoint %>
-      <%= link_to 'Edit', edit_trip_waypoint_path(@trip, waypoint) %>
-      <%= link_to 'Delete', trip_waypoint_path(@trip, waypoint), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to edit_trip_waypoint_path(@trip, waypoint) do %>
+          <i class="bi bi-pencil mx-1"></i>
+      <% end %>
+      <%= link_to trip_waypoint_path(@trip, waypoint), method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <i class="bi bi-trash"></i>
+      <% end %>
     <% end %>
+  </td>
+  <td>
     <% if can? :read, @trip %>
-      <%= link_to 'Posts', trip_waypoint_posts_path(@trip, waypoint) %>
-      <%= link_to 'Media', trip_waypoint_media_items_path(@trip, waypoint) %>
+      <%= link_to trip_waypoint_posts_path(@trip, waypoint) do %>
+        <i class="bi bi-journals mx-1"></i>
+      <% end %>
+      <%= link_to trip_waypoint_media_items_path(@trip, waypoint) do %>
+        <i class="bi bi-images"></i>
+      <% end %>
     <% end %>
   </td>
 </tr>
