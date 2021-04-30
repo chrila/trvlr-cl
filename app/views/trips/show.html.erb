@@ -1,6 +1,4 @@
-<h1 class="display-2"><%= "#{@trip.title} - Overview" %></h1>
-
-<%= render 'shared/navbar_trips' %>
+<%= render 'shared/trips_header', trip: @trip, title: 'Overview' %>
 
 <p class="fs-3"><%= @trip.description %></p>
 <p><strong>Start date: </strong><%= @trip.start_date %></p>

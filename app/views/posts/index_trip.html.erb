@@ -1,6 +1,4 @@
-<h1 class="display-2"><%= "#{@trip.title} - Blog" %></h1>
-
-<%= render 'shared/navbar_trips' %>
+<%= render 'shared/trips_header', trip: @trip, title: 'Blog' %>
 
 <% if can? :new_trip, Post %>
   <%= render 'shared/add_button', target: trip_new_post_path(@trip), resource: 'blog post' %>

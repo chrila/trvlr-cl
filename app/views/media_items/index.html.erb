@@ -1,5 +1,7 @@
 <h2 class="display-2">Media gallery</h2>
+
 <%= render 'shared/add_button', target: new_media_item_path, resource: 'media item' %>
+
 <div class="row row-cols-1 g-4">
   <%= render @media_items %>
 </div>

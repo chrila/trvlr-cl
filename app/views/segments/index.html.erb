@@ -1,6 +1,4 @@
-<h1 class="display-2"><%= "#{@trip.title} - Segments" %></h1>
-
-<%= render 'shared/navbar_trips' %>
+<%= render 'shared/trips_header', trip: @trip, title: 'Segments' %>
 
 <% if can? :manage, @trip %>
   <%= render 'shared/add_button', target: new_trip_segment_path(@trip), resource: 'segment' %>
