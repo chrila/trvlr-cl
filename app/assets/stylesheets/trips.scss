@@ -1,7 +1,4 @@
-.trip-sidebar {
-  border: solid 1px lightgray;
-  border-radius: 10px;
-}
+/* trips */
 
 .trip-card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -12,4 +9,10 @@
   bottom: 8%;
   position: absolute;
   display: inline-flex;
+}
+
+/* map */
+
+.map-container {
+  width: 100%;
 }

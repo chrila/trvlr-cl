@@ -7,6 +7,8 @@ body {
   margin-bottom: 3rem;
 }
 
+/* navbar */
+
 .navbar-brand:hover {
   color: white;
 }
@@ -47,6 +49,21 @@ body {
   color: black;
 }
 
-.map-container {
-  width: 100%;
+/* pagination links */
+
+.page-link {
+  color: black;
+}
+
+.page-link:hover {
+  color: black;
+}
+
+.page-item.active .page-link {
+  background-color: black;
+  border-color: black;
+}
+
+.pagy-bootstrap-nav {
+  display: inline-block;
 }
