@@ -1,19 +1,21 @@
 class MediaItemsController < ApplicationController
+  include Pagy::Backend
+
   before_action :set_trip, only: %i[index_trip index_waypoint new_trip new_waypoint]
   before_action :set_waypoint, only: %i[index_waypoint new_waypoint]
   before_action :set_media_item, only: %i[show edit update destroy like dislike]
   authorize_resource
 
   def index
-    @media_items = MediaItem.all.order(id: :desc)
+    @pagy, @media_items = pagy(MediaItem.all.order(id: :desc))
   end
 
   def index_trip
-    @media_items = MediaItem.for_trip(@trip).order(id: :desc)
+    @pagy, @media_items = pagy(MediaItem.for_trip(@trip).order(id: :desc))
   end
 
   def index_waypoint
-    @media_items = MediaItem.for_waypoint(@waypoint).order(id: :desc)
+    @pagy, @media_items = pagy(MediaItem.for_waypoint(@waypoint).order(id: :desc))
   end
 
   def new
