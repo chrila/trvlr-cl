@@ -8,26 +8,26 @@ class CommentsController < ApplicationController
   authorize_resource
 
   def index
-    @comments = Comment.all.order(:id).reverse
+    @comments = Comment.all.order(id: :desc)
   end
 
   def index_activity
-    @comments = @activity.comments.order(:id)
+    @comments = @activity.comments.order(id: :desc)
     render :index
   end
 
   def index_media_item
-    @comments = @media_item.comments.order(:id)
+    @comments = @media_item.comments.order(id: :desc)
     render :index
   end
 
   def index_post
-    @comments = @post.comments.order(:id)
+    @comments = @post.comments.order(id: :desc)
     render :index
   end
 
   def index_trip
-    @comments = @trip.comments.order(:id)
+    @comments = @trip.comments.order(id: :desc)
     render :index
   end
 

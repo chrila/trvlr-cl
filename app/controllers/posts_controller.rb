@@ -5,15 +5,15 @@ class PostsController < ApplicationController
   authorize_resource
 
   def index
-    @posts = Post.all.order(:id).reverse
+    @posts = Post.all.order(id: :desc)
   end
 
   def index_trip
-    @posts = Post.for_trip(@trip).order(:id).reverse
+    @posts = Post.for_trip(@trip).order(id: :desc)
   end
 
   def index_waypoint
-    @posts = Post.for_waypoint(@waypoint).order(:id).reverse
+    @posts = Post.for_waypoint(@waypoint).order(id: :desc)
   end
 
   def new

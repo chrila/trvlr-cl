@@ -2,6 +2,10 @@ class TripsController < ApplicationController
   before_action :set_trip, only: %i[show edit update destroy like dislike]
   authorize_resource
 
+  def index
+    @trips = Trip.of_user(current_user)
+  end
+
   def new
     @trip = Trip.new
   end
@@ -43,10 +47,6 @@ class TripsController < ApplicationController
         format.html { redirect_to trips_path, alert: 'Trip could not be deleted.' }
       end
     end
-  end
-
-  def index
-    @trips = Trip.of_user(current_user)
   end
 
   def like

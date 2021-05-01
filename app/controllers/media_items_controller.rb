@@ -5,15 +5,15 @@ class MediaItemsController < ApplicationController
   authorize_resource
 
   def index
-    @media_items = MediaItem.all.order(:id).reverse
+    @media_items = MediaItem.all.order(id: :desc)
   end
 
   def index_trip
-    @media_items = MediaItem.for_trip(@trip).order(:id).reverse
+    @media_items = MediaItem.for_trip(@trip).order(id: :desc)
   end
 
   def index_waypoint
-    @media_items = MediaItem.for_waypoint(@waypoint).order(:id).reverse
+    @media_items = MediaItem.for_waypoint(@waypoint).order(id: :desc)
   end
 
   def new

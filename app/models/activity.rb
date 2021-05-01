@@ -6,5 +6,5 @@ class Activity < ApplicationRecord
   attr_readonly :likes_count
   attr_readonly :comments_count
 
-  scope :for_user, ->(user) { where(user: user.following) }
+  scope :for_user, ->(user) { where(user: user.following).order(id: :desc) }
 end

@@ -5,5 +5,5 @@ class Comment < ApplicationRecord
 
   attr_readonly :likes_count
 
-  scope :created_between, ->(date_from, date_to) { where('created_at between ? and ?', date_from, date_to) }
+  scope :created_between, ->(date_from, date_to) { where('created_at between ? and ?', date_from, date_to).order(id: :desc) }
 end
