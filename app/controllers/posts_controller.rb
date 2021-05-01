@@ -1,19 +1,21 @@
 class PostsController < ApplicationController
+  include Pagy::Backend
+
   before_action :set_trip, only: %i[index_trip index_waypoint new_trip new_waypoint]
   before_action :set_waypoint, only: %i[index_waypoint new_waypoint]
   before_action :set_post, only: %i[show edit update destroy like dislike]
   authorize_resource
 
   def index
-    @posts = Post.all.order(id: :desc)
+    @pagy, @posts = pagy(Post.all.order(id: :desc))
   end
 
   def index_trip
-    @posts = Post.for_trip(@trip).order(id: :desc)
+    @pagy, @posts = pagy(Post.for_trip(@trip).order(id: :desc))
   end
 
   def index_waypoint
-    @posts = Post.for_waypoint(@waypoint).order(id: :desc)
+    @pagy, @posts = pagy(Post.for_waypoint(@waypoint).order(id: :desc))
   end
 
   def new
