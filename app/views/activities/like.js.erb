@@ -1,0 +1,15 @@
+// change icon
+id = "like-button-<%= @activity.id %>"
+elem = document.getElementById(id);
+elem.classList.remove('bi-hand-thumbs-up');
+elem.classList.add('bi-hand-thumbs-up-fill');
+
+// refresh likes count
+id = "like-counter-<%= @activity.id %>";
+document.getElementById(id).innerText = "<%= @activity.likes_count %>";
+
+// update link
+id = "like-link-<%= @activity.id %>";
+elem = document.getElementById(id);
+elem.setAttribute("href", '<%= activity_dislike_path(@activity) %>');
+elem.setAttribute("data-method", "delete");

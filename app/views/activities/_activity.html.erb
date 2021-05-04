@@ -19,15 +19,15 @@
         <% if can? :like, activity %>
         <div class="mx-4">
           <% if Like.liked?(current_user, activity) %>
-            <%= link_to activity_dislike_path(activity), method: :delete do %>
-              <i class="bi bi-hand-thumbs-up-fill mx-1"></i>  
+            <%= link_to activity_dislike_path(activity), method: :delete, remote: true, id: "like-link-#{activity.id}" do %>
+              <i id=<%= "like-button-#{activity.id}" %> class="bi bi-hand-thumbs-up-fill mx-1"></i>  
             <% end %>
           <% else %>
-            <%= link_to activity_like_path(activity), method: :post do %>
-              <i class="bi bi-hand-thumbs-up mx-1"></i>  
+            <%= link_to activity_like_path(activity), method: :post, remote: true, id: "like-link-#{activity.id}" do %>
+              <i id=<%= "like-button-#{activity.id}" %> class="bi bi-hand-thumbs-up mx-1"></i>  
             <% end %>
           <% end %>
-          <%= activity.likes_count %>
+          <span id=<%= "like-counter-#{activity.id}" %>><%= activity.likes_count %></span>
         </div>
         <% end %>
         <% if can? :new_activity, Comment %>

@@ -13,10 +13,12 @@ class ActivitiesController < ApplicationController
 
   def like
     Like.like(current_user, @activity)
+    set_activity
   end
 
   def dislike
     Like.dislike(current_user, @activity)
+    set_activity
   end
 
   private
