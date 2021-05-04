@@ -11,15 +11,15 @@
           <% if can? :like, media_item %>
           <div class="mx-4">
             <% if Like.liked?(current_user, media_item) %>
-              <%= link_to media_item_dislike_path(media_item), method: :delete do %>
-                <i class="bi bi-hand-thumbs-up-fill mx-1"></i>  
+              <%= link_to media_item_dislike_path(media_item), method: :delete, remote: true, id: "like-link-#{media_item.id}" do %>
+                <i id=<%= "like-button-#{media_item.id}" %> class="bi bi-hand-thumbs-up-fill mx-1"></i>  
               <% end %>
             <% else %>
-              <%= link_to media_item_like_path(media_item), method: :post do %>
-                <i class="bi bi-hand-thumbs-up mx-1"></i>  
+              <%= link_to media_item_like_path(media_item), method: :post, remote: true, id: "like-link-#{media_item.id}" do %>
+                <i id=<%= "like-button-#{media_item.id}" %> class="bi bi-hand-thumbs-up mx-1"></i>  
               <% end %>
             <% end %>
-            <%= media_item.likes_count %>
+            <span id=<%= "like-counter-#{media_item.id}" %>><%= media_item.likes_count %></span>
           </div>
           <% end %>
           <% if can? :new_media_item, Comment %>
