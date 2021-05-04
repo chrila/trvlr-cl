@@ -1,0 +1,15 @@
+// change icon
+id = "like-button-<%= @comment.id %>"
+elem = document.getElementById(id);
+elem.classList.remove('bi-hand-thumbs-up-fill');
+elem.classList.add('bi-hand-thumbs-up');
+
+// refresh likes count
+id = "like-counter-<%= @comment.id %>";
+document.getElementById(id).innerText = "<%= @comment.likes_count %>";
+
+// update link
+id = "like-link-<%= @comment.id %>";
+elem = document.getElementById(id);
+elem.setAttribute("href", '<%= comment_like_path(@comment) %>');
+elem.setAttribute("data-method", "post");

@@ -93,10 +93,12 @@ class CommentsController < ApplicationController
 
   def like
     Like.like(current_user, @comment)
+    set_comment
   end
 
   def dislike
     Like.dislike(current_user, @comment)
+    set_comment
   end
 
   private
