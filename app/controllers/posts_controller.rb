@@ -76,10 +76,12 @@ class PostsController < ApplicationController
 
   def like
     Like.like(current_user, @post)
+    set_post
   end
 
   def dislike
     Like.dislike(current_user, @post)
+    set_post
   end
 
   private

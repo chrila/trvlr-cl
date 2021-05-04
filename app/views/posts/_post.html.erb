@@ -18,15 +18,15 @@
         <% if can? :like, post %>
         <div class="mx-4">
           <% if Like.liked?(current_user, post) %>
-            <%= link_to post_dislike_path(post), method: :delete do %>
-              <i class="bi bi-hand-thumbs-up-fill mx-1"></i>  
+            <%= link_to post_dislike_path(post), method: :delete, remote: true, id: "like-link-#{post.id}" do %>
+              <i id=<%= "like-button-#{post.id}" %> class="bi bi-hand-thumbs-up-fill mx-1"></i>  
             <% end %>
           <% else %>
-            <%= link_to post_like_path(post), method: :post do %>
-              <i class="bi bi-hand-thumbs-up mx-1"></i>  
+            <%= link_to post_like_path(post), method: :post, remote: true, id: "like-link-#{post.id}" do %>
+              <i id=<%= "like-button-#{post.id}" %> class="bi bi-hand-thumbs-up mx-1"></i>  
             <% end %>
           <% end %>
-          <%= post.likes_count %>
+          <span id=<%= "like-counter-#{post.id}" %>><%= post.likes_count %></span>
         </div>
         <% end %>
         <% if can? :new_post, Comment %>
