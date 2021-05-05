@@ -2,10 +2,11 @@
   <div class="card trip-card">
     <%= link_to trip do %>
     <div class="card-body">
-      <h5 class="card-title">
+      <h5 class="card-title mb-0">
         <%= trip.title %>
       </h5>
-      <p class="card-text"><%= trip.description %></p>
+      <small class="text-muted"><%= "#{trip.start_date.to_s(:long)} to #{trip.end_date.to_s(:long)}" %></small>
+      <p class="card-text mt-2"><%= trip.description %></p>
       <p class="card-text">
         <span class="badge bg-dark"><%= trip.visibility_string %></span>
         <%= tag.span user_in_trip(current_user, trip).role_string, class: class_names('badge', trip_role_bg_class(user_in_trip(current_user, trip))) %>

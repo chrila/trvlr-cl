@@ -4,11 +4,23 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.trip-reaction-buttons {
-  right: 2%;
-  bottom: 8%;
-  position: absolute;
-  display: inline-flex;
+.trip-card:hover {
+  color: black;
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.card-title {
+  color: black;
+}
+
+.trip-show-info-block {
+  display: inline-block;
+  width: 80%;
+}
+
+.trip-show-action-buttons {
+  display: inline-block;
+  vertical-align: top;
 }
 
 /* map */
