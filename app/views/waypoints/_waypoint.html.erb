@@ -1,10 +1,9 @@
 <tr>
   <th scope="row"><%= @pagy.from + waypoint_counter %></th>
   <td><%= waypoint.name %></td>
-  <td class="d-none d-sm-table-cell"><%= waypoint.notes %></td>
+  <td class="d-none d-sm-table-cell"><%= truncate_string(waypoint.notes) %></td>
   <td class="d-none d-md-table-cell"><%= waypoint.address %></td>
   <td class="d-none d-lg-table-cell"><%= waypoint.country %></td>
-  <td class="d-none d-lg-table-cell"><%= waypoint.continent %></td>
   <td class="d-none d-xl-table-cell"><%= waypoint.latitude.round(4) %></td>
   <td class="d-none d-xl-table-cell"><%= waypoint.longitude.round(4) %></td>
   <td>

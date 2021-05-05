@@ -32,7 +32,7 @@
 
   <div class="form-group my-2">
     <%= f.label :continent %>
-    <%= f.text_field :continent, class: 'form-control' %>
+    <%= f.select :continent, continents_for_select, {}, class: 'form-select' %>
   </div>
 
   <div class="form-group my-2">
