@@ -2,9 +2,9 @@
   <th scope="row"><%= segment_counter + 1 %></th>
   <td><%= segment.waypoint_from.name %></td>
   <td><%= segment.waypoint_to.name %></td>
-  <td class="d-none d-lg-table-cell"><%= segment.time_from.to_s(:date_time_no_sec) %></td>
+  <td class="d-none d-lg-table-cell"><%= segment.time_from.to_s(:day_and_year) %></td>
   <td class="d-none d-md-table-cell d-lg-none"><%= segment.time_from.to_s(:day) %></td>
-  <td class="d-none d-lg-table-cell"><%= segment.time_to.to_s(:date_time_no_sec) %></td>
+  <td class="d-none d-lg-table-cell"><%= segment.time_to.to_s(:day_and_year) %></td>
   <td class="d-none d-md-table-cell d-lg-none"><%= segment.time_to.to_s(:day) %></td>
   <td class="d-none d-sm-table-cell"><%= segment.distance.round(1) %></td>
   <td><%= tag.span segment.status_string, class: class_names('badge', segment_status_bg_class(segment)) %></td>
