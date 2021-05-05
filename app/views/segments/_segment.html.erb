@@ -1,5 +1,5 @@
 <tr>
-  <th scope="row"><%= segment_counter + 1 %></th>
+  <th scope="row"><%= @pagy.from + segment_counter %></th>
   <td><%= segment.waypoint_from.name %></td>
   <td><%= segment.waypoint_to.name %></td>
   <td class="d-none d-lg-table-cell"><%= segment.time_from.to_s(:day_and_year) %></td>

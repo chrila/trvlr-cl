@@ -1,10 +1,12 @@
 class SegmentsController < ApplicationController
+  include Pagy::Backend
+
   before_action :set_trip
   before_action :set_segment, only: %i[show edit update destroy]
   authorize_resource
 
   def index
-    @segments = @trip.segments.order(:id)
+    @pagy, @segments = pagy(@trip.segments.order(:id))
   end
 
   def new
