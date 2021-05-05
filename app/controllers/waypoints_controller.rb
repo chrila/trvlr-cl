@@ -1,10 +1,12 @@
 class WaypointsController < ApplicationController
+  include Pagy::Backend
+
   before_action :set_trip
   before_action :set_waypoint, only: %i[show edit update destroy]
   authorize_resource
 
   def index
-    @waypoints = @trip.waypoints.order(:id)
+    @pagy, @waypoints = pagy(@trip.waypoints.order(:id))
   end
 
   def new

@@ -1,5 +1,5 @@
 <tr>
-  <th scope="row"><%= waypoint_counter + 1 %></th>
+  <th scope="row"><%= @pagy.from + waypoint_counter %></th>
   <td><%= waypoint.name %></td>
   <td class="d-none d-sm-table-cell"><%= waypoint.notes %></td>
   <td class="d-none d-md-table-cell"><%= waypoint.address %></td>
