@@ -1,5 +1,11 @@
-<h1 class="display-2">Hello visitor :)</h1>
-<p class="display-6">Check out the trips from our users!</p>
+<h1 class="d-none">trvlr</h1>
+<div class="landing-header">
+  <p class="display-1 mb-5">Welcome to trvlr!</p>
+  <p class="display-1 mb-5">Plan, document and share your trips.</p>
+  <p class="display-1 text-primary mt-5">Together.</p>
+</div>
+
+<h2 class="display-3 mb-5">Check out the trips shared by our users!</h2>
 
 <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
@@ -20,5 +26,7 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
+
+<h2 class="display-3 mb-5">... and there is more :)</h2>
 
 <%= render partial: 'trip', collection: Trip.public_most_likes, as: :trip %>

@@ -1,5 +1,10 @@
 /* visitor home */
 
+.landing-header {
+  margin-top: 20%;
+  height: 85vh;
+}
+
 .carousel {
   margin-bottom: 4rem;
 }
@@ -10,7 +15,7 @@
 }
 
 .carousel-item {
-  height: 32rem;
+  height: 75vh;
 }
 
 .carousel-item>img {
@@ -18,7 +23,7 @@
   top: 0;
   left: 0;
   min-width: 120%;
-  height: 32rem;
+  height: 100%;
 }
 
 .carousel-caption-title {
