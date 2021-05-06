@@ -64,7 +64,7 @@ group :development do
 end
 
 # for user management
-gem 'devise', github: 'heartcombo/devise', branch: 'master'
+gem 'devise'
 # for login using facebook
 gem 'omniauth'
 gem 'omniauth-facebook'
