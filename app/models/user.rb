@@ -22,7 +22,7 @@ class User < ApplicationRecord
 
   validates :username, presence: true
 
-  scope :users_to_follow, ->(user) { where.not(id: user.followings_active.map(&:followed_user_id)) }
+  scope :users_to_follow, ->(user) { where.not(id: user.followings_active.map(&:followed_user_id)).where.not(id: user.id) }
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
