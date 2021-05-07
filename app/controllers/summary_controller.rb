@@ -23,6 +23,8 @@ class SummaryController < ApplicationController
 
   def calculate_stats(date_from, date_to)
     segments = current_user.segments.finished_between(date_from, date_to)
+    return empty_stats unless segments.size.positive?
+
     stats = {}
     stats[:countries] = calculate_countries(segments)
     stats[:continents] = calculate_continents(segments)
@@ -34,6 +36,18 @@ class SummaryController < ApplicationController
     stats[:waypoints_per_continent] = calculate_waypoints_per_continent(segments)
     stats[:distance_per_year] = calculate_distance_per_year(segments)
     stats[:distance_per_month] = calculate_distance_per_month(segments)
+    stats
+  end
+
+  def empty_stats
+    stats = {}
+    stats[:countries] = 0
+    stats[:continents] = 0
+    stats[:km] = 0
+    stats[:pictures] = 0
+    stats[:posts] = 0
+    stats[:likes] = 0
+    stats[:comments] = 0
     stats
   end
 
