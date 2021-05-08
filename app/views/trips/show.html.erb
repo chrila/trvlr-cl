@@ -7,7 +7,9 @@
   <p class="card-text">
     <% if signed_in? %>
       <span class="badge bg-dark"><%= @trip.visibility_string %></span>
-      <%= tag.span user_in_trip(current_user, @trip).role_string, class: class_names('badge', trip_role_bg_class(user_in_trip(current_user, @trip))) %>
+      <% if @trip.users.exists? current_user.id%>
+        <%= tag.span user_in_trip(current_user, @trip).role_string, class: class_names('badge', trip_role_bg_class(user_in_trip(current_user, @trip))) %>
+      <% end %>
       <%= tag.span @trip.status_string, class: class_names('badge', trip_status_bg_class(@trip)) %>
       <span class="like-button-group">
         <% if can? :like, @trip %>
