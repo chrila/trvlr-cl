@@ -1,4 +1,6 @@
 class Trip < ApplicationRecord
+  include ActivitySubject
+
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :likes, as: :likeable, dependent: :destroy
   has_many :activities, as: :subject, dependent: :destroy
@@ -24,5 +26,9 @@ class Trip < ApplicationRecord
 
   def status_string
     status.split('_').last.humanize
+  end
+
+  def owned_by?(a_user)
+    users.exists? a_user.id
   end
 end

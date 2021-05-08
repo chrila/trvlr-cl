@@ -1,4 +1,6 @@
 class Comment < ApplicationRecord
+  include ActivitySubject
+
   belongs_to :user
   belongs_to :commentable, polymorphic: true, counter_cache: true
   has_many :likes, as: :likeable, dependent: :destroy

@@ -10,7 +10,8 @@
         <%= link_to activity.user, user_path(activity.user) %>
       </h5>
       <p class="card-text">
-        <%= "#{activity.user} #{activity.action} your " %>
+        <%= "#{activity.user} #{activity.action}"%>
+        <%= activity.subject.owned_by?(current_user) ? ' your ' : ' a ' %>
         <%= link_to activity.subject.class.to_s.downcase, activity.subject %>
       </p>
     </div>

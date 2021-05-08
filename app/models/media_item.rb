@@ -1,4 +1,6 @@
 class MediaItem < ApplicationRecord
+  include ActivitySubject
+
   belongs_to :waypoint
   belongs_to :user
   has_one :trip, through: :waypoint
