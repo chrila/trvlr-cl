@@ -3,6 +3,7 @@ class Activity < ApplicationRecord
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :likes, as: :likeable, dependent: :destroy
   belongs_to :subject, polymorphic: true
+  has_many :activities, as: :subject, dependent: :destroy
 
   attr_readonly :likes_count
   attr_readonly :comments_count

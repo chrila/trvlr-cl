@@ -135,17 +135,18 @@ end
 
 # activities
 (User.count * 5).times do
-  n = rand(1..5)
+  n = rand(1..6)
   subject =
     case n
     when 1 then Comment.all.sample
     when 2 then MediaItem.all.sample
     when 3 then Post.all.sample
     when 4 then Trip.all.sample
-    when 5 then User.all.sample
+    when 5 then Activity.all.sample
+    when 6 then User.all.sample
     end
   action = rand(1..2) == 1 ? 'liked' : 'commented on'
-  action = 'started following' if n == 5
+  action = 'started following' if n == 6
   Activity.create!(user: User.all.sample, subject: subject, action: action)
 end
 
