@@ -20,31 +20,6 @@
   u.save!
 end
 
-# activities
-# some example activities
-activity_examples = [
-  'started planning a new trip',
-  'wrote a new blog post',
-  'uploaded a new photo',
-  'started a new trip',
-  'finished a trip',
-  'cancelled a trip',
-  'started following you',
-  'liked your post',
-  'liked your trip',
-  'liked your photo',
-  'liked your comment',
-  'commented on your trip',
-  'commented on your post',
-  'commented on your photo'
-]
-
-User.all.each do |u|
-  rand(1..10).times do
-    Activity.create!(user: u, description: activity_examples.sample)
-  end
-end
-
 # followings
 User.all.each do |u|
   Following.create!(user: u, followed_user: User.all.sample)
@@ -156,6 +131,22 @@ end
     when 5 then Comment.all.sample
     end
   Like.create(user: User.all.sample, likeable: likeable)
+end
+
+# activities
+(User.count * 5).times do
+  n = rand(1..5)
+  subject =
+    case n
+    when 1 then Comment.all.sample
+    when 2 then MediaItem.all.sample
+    when 3 then Post.all.sample
+    when 4 then Trip.all.sample
+    when 5 then User.all.sample
+    end
+  action = rand(1..2) == 1 ? 'liked' : 'commented on'
+  action = 'started following' if n == 5
+  Activity.create!(user: User.all.sample, subject: subject, action: action)
 end
 
 # dummy admin user for development

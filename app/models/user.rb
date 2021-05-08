@@ -17,6 +17,7 @@ class User < ApplicationRecord
   has_many :followers, class_name: 'User', through: :followings_passive, source: :user
   has_many :followings_active, class_name: 'Following', foreign_key: :user_id, dependent: :destroy
   has_many :following, class_name: 'User', through: :followings_active, source: :followed_user
+  has_many :activities, as: :subject, dependent: :destroy
 
   has_one_attached :avatar
 

@@ -1,6 +1,7 @@
 class Trip < ApplicationRecord
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :likes, as: :likeable, dependent: :destroy
+  has_many :activities, as: :subject, dependent: :destroy
   has_many :waypoints, dependent: :destroy
   has_many :segments, dependent: :destroy
   has_many :trip_users, dependent: :destroy

@@ -4,6 +4,7 @@ class MediaItem < ApplicationRecord
   has_one :trip, through: :waypoint
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :likes, as: :likeable, dependent: :destroy
+  has_many :activities, as: :subject, dependent: :destroy
 
   has_one_attached :photo
 
