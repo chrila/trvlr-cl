@@ -50,11 +50,6 @@ Rails.application.routes.draw do
     post 'comments', to: 'comments#create'
   end
 
-  scope 'comments/:id', as: :comment do
-    post 'like', to: 'comments#like', as: :like
-    delete 'like', to: 'comments#dislike', as: :dislike
-  end
-
   resources :media_items
   scope 'media_items/:id', as: :media_item do
     post 'like', to: 'media_items#like', as: :like
@@ -70,7 +65,11 @@ Rails.application.routes.draw do
     delete 'unfollow', to: 'users#unfollow', as: :unfollow
   end
 
-  resources :comments, only: %i[update destroy]
+  resources :comments, only: %i[show update destroy]
+  scope 'comments/:id', as: :comment do
+    post 'like', to: 'comments#like', as: :like
+    delete 'like', to: 'comments#dislike', as: :dislike
+  end
 
   get 'home/index', as: :home
   get 'summary/overall', as: :summary_overall
