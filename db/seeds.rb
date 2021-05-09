@@ -32,7 +32,7 @@ end
     description: Faker::Hipster.sentence,
     start_date: Faker::Date.between(from: 10.years.ago, to: Date.today),
     end_date: Faker::Date.between(from: 10.years.ago, to: Date.today),
-    budget: rand(50.0..999_999.9),
+    budget: rand(50.0..999_999.9).round(2),
     visibility: Trip.visibilities.values.sample,
     status: Trip.statuses.values.sample
   )
