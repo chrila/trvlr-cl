@@ -1,6 +1,8 @@
 /* users */
 
 .user-avatar {
-  width: 50%;
+  width: 30vh;
+  height: 30vh;
   margin: 2rem 0;
+  object-fit: cover;
 }

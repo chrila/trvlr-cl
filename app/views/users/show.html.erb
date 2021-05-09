@@ -2,7 +2,7 @@
   <h1 class="display-2">Hi, I'm <%= @user.username %></h1>
 
   <% if @user.avatar.attached? %>
-    <%= image_tag @user.avatar, class: 'user-avatar' %>
+    <%= image_tag @user.avatar, class: 'user-avatar rounded-circle' %>
   <% end %>
 
   <p>Following <%= pluralize(@user.following_count, 'user') %></p>
