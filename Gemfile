@@ -55,14 +55,12 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
-# Customized for this project
-group :development do
-  # for creating test data
-  gem 'faker'
-  # for generating ERD model
-  gem 'rails-erd'
-end
+## Customized for this project ##
 
+# for generating ERD model
+gem 'rails-erd', group: :development
+# for creating test data
+gem 'faker'
 # for user management
 gem 'devise'
 # for login using facebook
