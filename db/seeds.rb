@@ -62,7 +62,7 @@ Trip.all.each do |t|
       name: Faker::Address.city,
       notes: Faker::Hipster.sentence,
       address: Faker::Address.street_address,
-      country: Faker::Address.country,
+      country: Faker::Address.country_code,
       continent: continents.sample,
       longitude: Faker::Address.longitude,
       latitude: Faker::Address.latitude
