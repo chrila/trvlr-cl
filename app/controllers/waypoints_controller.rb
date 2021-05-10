@@ -11,6 +11,15 @@ class WaypointsController < ApplicationController
 
   def new
     @waypoint = @trip.waypoints.build
+
+    # set default values based on last waypoint
+    last_wp = @trip.waypoints.find_by(sequence: @trip.waypoints.maximum(:sequence))
+    return unless last_wp
+
+    @waypoint.country = last_wp.country
+    @waypoint.continent = last_wp.continent
+    @waypoint.longitude = last_wp.longitude
+    @waypoint.latitude = last_wp.latitude
   end
 
   def edit
