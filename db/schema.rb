@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_10_002955) do
+ActiveRecord::Schema.define(version: 2021_05_10_213754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -159,6 +159,7 @@ ActiveRecord::Schema.define(version: 2021_05_10_002955) do
     t.integer "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "sequence", default: 0
     t.index ["trip_id"], name: "index_segments_on_trip_id"
     t.index ["waypoint_from_id"], name: "index_segments_on_waypoint_from_id"
     t.index ["waypoint_to_id"], name: "index_segments_on_waypoint_to_id"
