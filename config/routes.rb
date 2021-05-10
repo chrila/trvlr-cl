@@ -30,6 +30,8 @@ Rails.application.routes.draw do
       get 'posts/new', to: 'posts#new_waypoint', as: :new_post
       get 'media_items', to: 'media_items#index_waypoint', as: :media_items
       get 'media_items/new', to: 'media_items#new_waypoint', as: :new_media_item
+      put 'increase_sequence', to: 'waypoints#increase_sequence', as: :increase_sequence
+      put 'decrease_sequence', to: 'waypoints#decrease_sequence', as: :decrease_sequence
     end
   end
 

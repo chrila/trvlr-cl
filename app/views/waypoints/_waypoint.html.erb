@@ -4,8 +4,6 @@
   <td class="d-none d-sm-table-cell"><%= truncate_string(waypoint.notes) %></td>
   <td class="d-none d-md-table-cell"><%= waypoint.address %></td>
   <td class="d-none d-lg-table-cell"><%= waypoint.country %></td>
-  <td class="d-none d-xl-table-cell"><%= waypoint.latitude.round(4) %></td>
-  <td class="d-none d-xl-table-cell"><%= waypoint.longitude.round(4) %></td>
   <td>
     <% if can? :read, @trip %>
       <%= link_to trip_waypoint_posts_path(@trip, waypoint) do %>
@@ -28,6 +26,12 @@
       <% end %>
       <%= link_to trip_waypoint_path(@trip, waypoint), method: :delete, data: { confirm: 'Are you sure?' } do %>
           <i class="bi bi-trash"></i>
+      <% end %>
+      <%= link_to trip_waypoint_decrease_sequence_path(@trip, waypoint), method: :put do %>
+          <i class="bi bi-arrow-up"></i>
+      <% end %>
+      <%= link_to trip_waypoint_increase_sequence_path(@trip, waypoint), method: :put do %>
+          <i class="bi bi-arrow-down"></i>
       <% end %>
     <% end %>
   </td>

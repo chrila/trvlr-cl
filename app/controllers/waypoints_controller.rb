@@ -2,7 +2,7 @@ class WaypointsController < ApplicationController
   include Pagy::Backend
 
   before_action :set_trip
-  before_action :set_waypoint, only: %i[show edit update destroy]
+  before_action :set_waypoint, only: %i[show edit update destroy increase_sequence decrease_sequence]
   authorize_resource
 
   def index
@@ -51,6 +51,22 @@ class WaypointsController < ApplicationController
     end
   end
 
+  def decrease_sequence
+    @waypoint.decrease_sequence
+
+    respond_to do |format|
+      format.html { redirect_to trip_waypoints_path(@trip) }
+    end
+  end
+
+  def increase_sequence
+    @waypoint.increase_sequence
+
+    respond_to do |format|
+      format.html { redirect_to trip_waypoints_path(@trip) }
+    end
+  end
+
   private
 
   def waypoint_params
@@ -62,6 +78,6 @@ class WaypointsController < ApplicationController
   end
 
   def set_waypoint
-    @waypoint = @trip.waypoints.find(params[:id])
+    @waypoint = @trip.waypoints.find(params[:id] || params[:waypoint_id])
   end
 end
