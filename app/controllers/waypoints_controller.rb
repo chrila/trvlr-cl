@@ -12,7 +12,7 @@ class WaypointsController < ApplicationController
   def new
     @waypoint = @trip.waypoints.build
 
-    # set default values based on last waypoint
+    # set default values based on previous waypoint
     last_wp = @trip.waypoints.find_by(sequence: @trip.waypoints.maximum(:sequence))
     return unless last_wp
 

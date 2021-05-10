@@ -11,6 +11,15 @@ class SegmentsController < ApplicationController
 
   def new
     @segment = @trip.segments.build
+
+    # set default values based on previous segment
+    last_sg = @trip.segments.find_by(sequence: @trip.segments.maximum(:sequence))
+    return unless last_sg
+
+    @segment.waypoint_from = last_sg.waypoint_to
+    @segment.waypoint_to = last_sg.waypoint_to
+    @segment.time_from = last_sg.time_to
+    @segment.time_to = last_sg.time_to
   end
 
   def edit
