@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_10_213754) do
+ActiveRecord::Schema.define(version: 2021_05_10_220707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -155,7 +155,7 @@ ActiveRecord::Schema.define(version: 2021_05_10_213754) do
     t.bigint "waypoint_to_id", null: false
     t.datetime "time_from"
     t.datetime "time_to"
-    t.float "distance"
+    t.float "distance", default: 0.0
     t.integer "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
