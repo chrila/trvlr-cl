@@ -81,7 +81,7 @@ Trip.all.each do |t|
       waypoint_to: t.waypoints[i + 1],
       time_from: Faker::Time.between_dates(from: t.start_date, to: t.end_date, period: :all),
       time_to: Faker::Time.between_dates(from: t.start_date, to: t.end_date, period: :all),
-      distance: rand(0.0..999.9),
+      distance: rand(0.0..999.9).round(2),
       status: Segment.statuses.values.sample
     )
   end
