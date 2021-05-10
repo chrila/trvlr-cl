@@ -1,9 +1,11 @@
 class TripsController < ApplicationController
+  include Pagy::Backend
+
   before_action :set_trip, only: %i[show edit update destroy like dislike]
   authorize_resource
 
   def index
-    @trips = Trip.of_user(current_user)
+    @pagy, @trips = pagy(Trip.of_user(current_user).order(id: :desc))
   end
 
   def new
