@@ -6,10 +6,6 @@ class Waypoint < ApplicationRecord
 
   after_create :set_sequence
 
-  def set_sequence
-    self.sequence = (trip.waypoints.maximum(:sequence) || 0) + 1
-  end
-
   def increase_sequence
     wp_after = trip.waypoints.find_by(sequence: sequence + 1)
     return unless wp_after
@@ -32,5 +28,11 @@ class Waypoint < ApplicationRecord
 
   def seq_name_str
     "#{sequence} - #{name}"
+  end
+
+  private
+
+  def set_sequence
+    update(sequence: (trip.waypoints.maximum(:sequence) || 0) + 1)
   end
 end
