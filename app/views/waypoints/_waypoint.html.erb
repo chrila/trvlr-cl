@@ -1,8 +1,8 @@
 <tr>
   <th scope="row"><%= waypoint.sequence %></th>
   <td><%= waypoint.name %></td>
-  <td class="d-none d-sm-table-cell"><%= truncate_string(waypoint.notes) %></td>
-  <td class="d-none d-md-table-cell"><%= waypoint.address %></td>
+  <td class="d-none d-md-table-cell"><%= truncate_string(waypoint.notes) %></td>
+  <td class="d-none d-lg-table-cell"><%= waypoint.address %></td>
   <td class="d-none d-lg-table-cell"><%= waypoint.country %></td>
   <td>
     <% if can? :read, @trip %>
@@ -14,25 +14,33 @@
       <% end %>
     <% end %>
   </td>
-  <td>
-    <% if can? :read, waypoint %>
+  <% if can? :read, waypoint %>
+    <td>
       <%= link_to trip_waypoint_path(@trip, waypoint) do %>
         <i class="bi bi-file-earmark-text"></i>
       <% end %>
-    <% end %>
-    <% if can? :manage, waypoint %>
-      <%= link_to edit_trip_waypoint_path(@trip, waypoint) do %>
-          <i class="bi bi-pencil mx-1"></i>
+      <% if can? :manage, waypoint %>
+        <%= link_to edit_trip_waypoint_path(@trip, waypoint) do %>
+            <i class="bi bi-pencil mx-1"></i>
+        <% end %>
+        <%= link_to trip_waypoint_path(@trip, waypoint), method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class="bi bi-trash"></i>
+        <% end %>
+        <td>
+          <% unless waypoint.first? %>
+            <%= link_to trip_waypoint_decrease_sequence_path(@trip, waypoint), method: :put do %>
+                <i class="bi bi-arrow-up"></i>
+            <% end %>
+          <% end %>
+        </td>
+        <td>
+          <% unless waypoint.last? %>
+            <%= link_to trip_waypoint_increase_sequence_path(@trip, waypoint), method: :put do %>
+                <i class="bi bi-arrow-down"></i>
+            <% end %>
+          <% end %>
+        </td>
       <% end %>
-      <%= link_to trip_waypoint_path(@trip, waypoint), method: :delete, data: { confirm: 'Are you sure?' } do %>
-          <i class="bi bi-trash"></i>
-      <% end %>
-      <%= link_to trip_waypoint_decrease_sequence_path(@trip, waypoint), method: :put do %>
-          <i class="bi bi-arrow-up"></i>
-      <% end %>
-      <%= link_to trip_waypoint_increase_sequence_path(@trip, waypoint), method: :put do %>
-          <i class="bi bi-arrow-down"></i>
-      <% end %>
-    <% end %>
-  </td>
+    </td>
+  <% end %>
 </tr>

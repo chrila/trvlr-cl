@@ -22,6 +22,14 @@ class Waypoint < ApplicationRecord
     update(sequence: sequence - 1)
   end
 
+  def first?
+    !trip.waypoints.find_by(sequence: sequence - 1).present?
+  end
+
+  def last?
+    !trip.waypoints.find_by(sequence: sequence + 1).present?
+  end
+
   def lat_long_str
     "#{latitude}, #{longitude}"
   end
