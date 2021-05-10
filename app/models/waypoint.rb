@@ -7,7 +7,7 @@ class Waypoint < ApplicationRecord
   before_save :set_sequence
 
   def set_sequence
-    self.sequence = Waypoint.where(trip: trip).maximum(:sequence) + 1
+    self.sequence = (Waypoint.where(trip: trip).maximum(:sequence) || 0) + 1
   end
 
   def lat_long_str
