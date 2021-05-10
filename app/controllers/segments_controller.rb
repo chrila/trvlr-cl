@@ -2,11 +2,11 @@ class SegmentsController < ApplicationController
   include Pagy::Backend
 
   before_action :set_trip
-  before_action :set_segment, only: %i[show edit update destroy]
+  before_action :set_segment, only: %i[show edit update destroy increase_sequence decrease_sequence]
   authorize_resource
 
   def index
-    @pagy, @segments = pagy(@trip.segments.order(:id))
+    @pagy, @segments = pagy(@trip.segments.order(:sequence, :id))
   end
 
   def new
@@ -51,6 +51,22 @@ class SegmentsController < ApplicationController
     end
   end
 
+  def decrease_sequence
+    @segment.decrease_sequence
+
+    respond_to do |format|
+      format.html { redirect_to trip_segments_path(@trip) }
+    end
+  end
+
+  def increase_sequence
+    @segment.increase_sequence
+
+    respond_to do |format|
+      format.html { redirect_to trip_segments_path(@trip) }
+    end
+  end
+
   private
 
   def segment_params
@@ -62,6 +78,6 @@ class SegmentsController < ApplicationController
   end
 
   def set_segment
-    @segment = @trip.segments.find(params[:id])
+    @segment = @trip.segments.find(params[:id] || params[:segment_id])
   end
 end

@@ -24,7 +24,12 @@ Rails.application.routes.draw do
     get 'media_items/new', to: 'media_items#new_trip', as: :new_media_item
 
     resources :trip_users
-    resources :segments
+
+    resources :segments do
+      put 'increase_sequence', to: 'segments#increase_sequence', as: :increase_sequence
+      put 'decrease_sequence', to: 'segments#decrease_sequence', as: :decrease_sequence
+    end
+
     resources :waypoints do
       get 'posts', to: 'posts#index_waypoint', as: :posts
       get 'posts/new', to: 'posts#new_waypoint', as: :new_post
