@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_08_155229) do
+ActiveRecord::Schema.define(version: 2021_05_10_002955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -216,6 +216,7 @@ ActiveRecord::Schema.define(version: 2021_05_08_155229) do
     t.float "latitude"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "sequence", default: 0
     t.index ["trip_id"], name: "index_waypoints_on_trip_id"
   end
 

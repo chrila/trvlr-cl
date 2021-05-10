@@ -1,11 +1,21 @@
 <tr>
-  <th scope="row"><%= @pagy.from + waypoint_counter %></th>
+  <th scope="row"><%= waypoint.sequence %></th>
   <td><%= waypoint.name %></td>
   <td class="d-none d-sm-table-cell"><%= truncate_string(waypoint.notes) %></td>
   <td class="d-none d-md-table-cell"><%= waypoint.address %></td>
   <td class="d-none d-lg-table-cell"><%= waypoint.country %></td>
   <td class="d-none d-xl-table-cell"><%= waypoint.latitude.round(4) %></td>
   <td class="d-none d-xl-table-cell"><%= waypoint.longitude.round(4) %></td>
+  <td>
+    <% if can? :read, @trip %>
+      <%= link_to trip_waypoint_posts_path(@trip, waypoint) do %>
+        <i class="bi bi-journals mx-1"></i>
+      <% end %>
+      <%= link_to trip_waypoint_media_items_path(@trip, waypoint) do %>
+        <i class="bi bi-images"></i>
+      <% end %>
+    <% end %>
+  </td>
   <td>
     <% if can? :read, waypoint %>
       <%= link_to trip_waypoint_path(@trip, waypoint) do %>
@@ -18,16 +28,6 @@
       <% end %>
       <%= link_to trip_waypoint_path(@trip, waypoint), method: :delete, data: { confirm: 'Are you sure?' } do %>
           <i class="bi bi-trash"></i>
-      <% end %>
-    <% end %>
-  </td>
-  <td>
-    <% if can? :read, @trip %>
-      <%= link_to trip_waypoint_posts_path(@trip, waypoint) do %>
-        <i class="bi bi-journals mx-1"></i>
-      <% end %>
-      <%= link_to trip_waypoint_media_items_path(@trip, waypoint) do %>
-        <i class="bi bi-images"></i>
       <% end %>
     <% end %>
   </td>

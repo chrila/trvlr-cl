@@ -4,6 +4,12 @@ class Waypoint < ApplicationRecord
   has_many :segments_ending, class_name: 'Segment', foreign_key: 'waypoint_to_id', dependent: :destroy
   has_many :media_items, dependent: :destroy
 
+  before_save :set_sequence
+
+  def set_sequence
+    self.sequence = Waypoint.where(trip: trip).maximum(:sequence) + 1
+  end
+
   def lat_long_str
     "#{latitude}, #{longitude}"
   end

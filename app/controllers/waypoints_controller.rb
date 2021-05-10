@@ -6,7 +6,7 @@ class WaypointsController < ApplicationController
   authorize_resource
 
   def index
-    @pagy, @waypoints = pagy(@trip.waypoints.order(:id))
+    @pagy, @waypoints = pagy(@trip.waypoints.order(:sequence, :id))
   end
 
   def new
