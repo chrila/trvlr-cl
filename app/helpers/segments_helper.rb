@@ -1,6 +1,6 @@
 module SegmentsHelper
   def waypoints_for_select(trip)
-    trip.waypoints.collect { |w| [w.name, w.id] }
+    trip.waypoints.order(:sequence).collect { |w| [w.seq_name_str, w.id] }
   end
 
   def segment_statuses_list

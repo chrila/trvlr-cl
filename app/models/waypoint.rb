@@ -29,4 +29,8 @@ class Waypoint < ApplicationRecord
   def lat_long_str
     "#{latitude}, #{longitude}"
   end
+
+  def seq_name_str
+    "#{sequence} - #{name}"
+  end
 end
