@@ -3,7 +3,7 @@ class Segment < ApplicationRecord
   belongs_to :waypoint_from, class_name: 'Waypoint'
   belongs_to :waypoint_to, class_name: 'Waypoint'
 
-  after_create :set_sequence
+  after_create :init_sequence
 
   enum status: %i[segment_open segment_active segment_finished]
 
@@ -12,19 +12,17 @@ class Segment < ApplicationRecord
   }
 
   def increase_sequence
-    sg_after = trip.segments.find_by(sequence: sequence + 1)
-    return unless sg_after
-
-    sg_after.update(sequence: sg_after.sequence - 1)
-    update(sequence: sequence + 1)
+    update_sequence(sequence + 1)
   end
 
   def decrease_sequence
-    return if sequence == 1
+    update_sequence(sequence - 1)
+  end
 
-    sg_before = trip.segments.find_by(sequence: sequence - 1)
-    sg_before.update(sequence: sg_before.sequence + 1)
-    update(sequence: sequence - 1)
+  def update_sequence(new_seq)
+    return if new_seq < 1 || new_seq > trip.segments.maximum(:sequence)
+
+    do_sequence_update(sequence, new_seq)
   end
 
   def first?
@@ -41,7 +39,30 @@ class Segment < ApplicationRecord
 
   private
 
-  def set_sequence
+  def do_sequence_update(m, n)
+    # cache sequence and ids, because the sequences will be updated in the DB as we go
+    seq_ids = trip.segments.pluck(:sequence, :id).to_h
+    upper = [m, n].max
+    lower = [m, n].min
+    delta = upper - lower
+
+    for i in (delta + 1).downto 1 do
+      x = upper - (i % (delta + 1))
+      y = upper - i + 1
+
+      if m > n
+        set_sequence(seq_ids[x], y)
+      else
+        set_sequence(seq_ids[y], x)
+      end
+    end
+  end
+
+  def set_sequence(id, seq_new)
+    trip.segments.find(id).update(sequence: seq_new)
+  end
+
+  def init_sequence
     update(sequence: (trip.segments.maximum(:sequence) || 0) + 1)
   end
 end
