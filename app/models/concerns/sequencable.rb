@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Sequencable classes must have a column sequence:integer
 module Sequencable
   extend ActiveSupport::Concern
 
@@ -19,6 +22,12 @@ module Sequencable
 
   def update_sequence(new_seq)
     do_sequence_update(sequence, new_seq) unless new_seq < 1 || new_seq > data_collection.maximum(:sequence)
+  end
+
+  def destroy
+    # move the record to the last sequence first, then destroy it
+    update_sequence(data_collection.maximum(:sequence))
+    super
   end
 
   private
