@@ -2,8 +2,6 @@
 
 <p class="fs-2 fw-normal"><%= @trip.description %></p>
 <div class="trip-show-info-block">
-  <p class="fs-3 fw-light"><strong>Time frame:  </strong><%= "#{@trip.start_date.to_s(:long)} to #{@trip.end_date.to_s(:long)}" %></p>
-  <p class="fs-3 fw-light"><strong>Budget: </strong><%= @trip.budget %></p>
   <p class="card-text">
     <% if signed_in? %>
       <span class="badge bg-dark"><%= @trip.visibility_string %></span>
@@ -26,6 +24,18 @@
         <% end %>
       </span>
     <% end %>
+  </p>
+  <p class="fs-3 fw-light"><strong>Time frame:  </strong><%= "#{@trip.start_date.to_s(:long)} to #{@trip.end_date.to_s(:long)}" %></p>
+  <p class="fs-3 fw-light"><strong>Budget: </strong><%= @trip.budget %></p>
+  <p class="fs-3 fw-light"><strong># Waypoints: </strong><%= @trip.waypoints.count %></p>
+  <p class="fs-3 fw-light"><strong># Segments: </strong><%= @trip.segments.count %></p>
+  <p class="fs-3 fw-light"><strong>Total distance: </strong><%= @trip.segments.sum(:distance).round(2) %></p>
+  <p class="fs-3 fw-light">
+    <strong>Progress (segments): </strong><%= @trip.segments.segment_finished.count %> / <%= @trip.segments.count %>
+  </p>
+  <p class="fs-3 fw-light">
+    <strong>Progress (distance): </strong>
+    <%= @trip.segments.segment_finished.sum(:distance).round(2) %> / <%= @trip.segments.sum(:distance).round(2) %> km
   </p>
 </div>
 
