@@ -15,9 +15,9 @@
       <th scope="col" class="d-none d-sm-table-cell">Distance</th>
       <th scope="col">Status</th>
       <% if can? :manage, @trip %>
-        <th scope="col"></th>
-        <th scope="col"></th>
-        <th scope="col"></th>
+        <th scope="col"></th> <!-- links to show, edit, delete -->
+        <th scope="col"></th> <!-- move up (decrease sequence) -->
+        <th scope="col"></th> <!-- move down (increase sequence) -->
       <% end %>
     </tr>
   </thead>

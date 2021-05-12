@@ -12,16 +12,16 @@ class Ability
       can? :read, t.trip
     end
 
-    can :index, Waypoint do |w|
+    can %i[index read], Waypoint do |w|
       can? :read, w.trip
     end
-    can :index, Segment do |s|
+    can %i[index read], Segment do |s|
       can? :read, s.trip
     end
-    can %i[index_trip index_waypoint], Post do |p|
+    can %i[index_trip index_waypoint read], Post do |p|
       can? :read, p.trip
     end
-    can %i[index_trip index_waypoint], MediaItem do |m|
+    can %i[index_trip index_waypoint read], MediaItem do |m|
       can? :read, m.trip
     end
 
