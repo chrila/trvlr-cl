@@ -1,6 +1,6 @@
 <%= form_with(model: [@trip, segment], local: true, id: 'segment-form') do |f| %>
   <% if segment.errors.any? %>
-    <div id="error_explanation">
+    <div class="form-error-list">
       <h2><%= pluralize(segment.errors.count, "error") %> prohibited this segment from being saved:</h2>
       <ul>
       <% segment.errors.full_messages.each do |e| %>

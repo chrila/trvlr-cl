@@ -25,8 +25,8 @@ class Trip < ApplicationRecord
   validates :start_date, presence: true
   validates :end_date, presence: true
   validates :budget, presence: true
-  validates :visibility, presence: true
-  validates :status, presence: true
+  validates :visibility, presence: true, inclusion: { in: Trip.visibilities, message: 'is invalid' }
+  validates :status, presence: true, inclusion: { in: Trip.statuses, message: 'is invalid' }
 
   def visibility_string
     visibility.split('_').last.humanize
