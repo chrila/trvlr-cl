@@ -3,4 +3,6 @@
   <h2 class="display-2"><%= title %></h2>
 </div>
 
-<%= render 'shared/trips_navbar', active: active %>
+<% if local_assigns[:navbar].nil? || local_assigns[:navbar] %>
+  <%= render 'shared/trips_navbar', active: active %>
+<% end %>

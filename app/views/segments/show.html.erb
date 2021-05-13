@@ -1,17 +1,17 @@
-<h1 class="display-2"><%= "Segment details" %></h1>
+<%= render 'shared/trips_header', trip: @trip, title: 'Segment details', navbar: false %>
 
 <%= render 'shared/back_button', target: trip_segments_path(@trip) %>
+<% if can? :manage, @segment %>
+    <%= render 'shared/edit_button', target: edit_trip_segment_path(@trip, @segment) %>
+    <%= render 'shared/delete_button', target: trip_segment_path(@trip, @segment) %>
+<% end %>
 
 <p><strong>From: </strong><%= @segment.waypoint_from.name %></p>
 <p><strong>To: </strong><%= @segment.waypoint_to.name %></p>
-<p><strong>Start: </strong><%= @segment.time_from %></p>
-<p><strong>End: </strong><%= @segment.time_to %></p>
-<p><strong>Distance: </strong><%= @segment.distance %></p>
-<p><strong>Status: </strong><%= @segment.status_string %></p>
+<p><strong>Start: </strong><%= @segment.time_from.to_s(:day_and_year) %></p>
+<p><strong>End: </strong><%= @segment.time_to.to_s(:day_and_year) %></p>
+<p><strong>Distance: </strong><%= "#{@segment.distance} km" %></p>
+<p><strong>Status: </strong><%= tag.span @segment.status_string, class: class_names('badge', segment_status_bg_class(@segment)) %></p>
 
-<% if can? :manage, @segment %>
-  <div class="my-3">
-    <%= link_to 'Edit', edit_trip_segment_path(@trip, @segment), class: 'btn btn-large btn-dark' %>
-    <%= link_to 'Delete', trip_segment_path(@trip, @segment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-large btn-outline-dark' %>
-  </div>
-<% end %>
+<h2 class="display-6 mt-5 mb-4">Map</h2>
+<%= render 'shared/map', waypoints: [@segment.waypoint_from, @segment.waypoint_to], segments: [@segment] %>

@@ -1,5 +1,5 @@
-<%= form_with(model: [@trip, segment], local: true) do |f| %>
-    <% if segment.errors.any? %>
+<%= form_with(model: [@trip, segment], local: true, id: 'segment-form') do |f| %>
+  <% if segment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(segment.errors.count, "error") %> prohibited this segment from being saved:</h2>
       <ul>
@@ -12,12 +12,12 @@
 
   <div class="form-group my-2">
     <%= f.label :waypoint_from %>
-    <%= f.select :waypoint_from_id, waypoints_for_select(@trip), {}, class: 'custom-select mx-sm-3 mb-2' %>
+    <%= f.select :waypoint_from_id, waypoints_for_select(@trip), {}, class: 'form-control' %>
   </div>
 
   <div class="form-group my-2">
     <%= f.label :waypoint_to %>
-    <%= f.select :waypoint_to_id, waypoints_for_select(@trip), {}, class: 'custom-select mx-sm-3 mb-2' %>
+    <%= f.select :waypoint_to_id, waypoints_for_select(@trip), {}, class: 'form-control' %>
   </div>
 
   <div class="form-group my-2">
@@ -37,10 +37,6 @@
 
   <div class="form-group my-2">
     <%= f.label :status %>
-    <%= f.select :status, segment_statuses_list, {}, class: 'custom-select mx-sm-3' %>
-  </div>
-
-  <div class="form-group my-4">
-    <%= f.submit class: 'btn btn-dark' %>
+    <%= f.select :status, segment_statuses_list, {}, class: 'form-control' %>
   </div>
 <% end %>
