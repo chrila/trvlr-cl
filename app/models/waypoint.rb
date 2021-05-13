@@ -8,6 +8,12 @@ class Waypoint < ApplicationRecord
 
   after_create :init_sequence
 
+  validates :name, presence: true
+  validates :country, presence: true
+  validates :continent, presence: true
+  validates :latitude, presence: true, inclusion: { in: -90..90, message: 'is invalid' }
+  validates :longitude, presence: true, inclusion: { in: -180..180, message: 'is invalid' }
+
   def lat_long_str
     "#{latitude}, #{longitude}"
   end

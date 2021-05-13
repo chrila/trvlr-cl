@@ -1,6 +1,6 @@
 <%= form_with(model: [@trip, waypoint], local: true, id: 'waypoint-form') do |f| %>
   <% if waypoint.errors.any? %>
-    <div id="error_explanation">
+    <div class="form-error-list">
       <h2><%= pluralize(waypoint.errors.count, "error") %> prohibited this waypoint from being saved:</h2>
       <ul>
       <% waypoint.errors.full_messages.each do |e| %>
