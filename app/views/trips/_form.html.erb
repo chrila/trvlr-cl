@@ -1,4 +1,4 @@
-<%= form_with(model: trip, local: true) do |f| %>
+<%= form_with(model: trip, local: true, id: 'trip-form') do |f| %>
     <% if trip.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(trip.errors.count, "error") %> prohibited this trip from being saved:</h2>
@@ -17,7 +17,7 @@
 
   <div class="form-group my-2">
     <%= f.label :description %>
-    <%= f.text_field :description, class: 'form-control' %>
+    <%= f.text_area :description, class: 'form-control' %>
   </div>
 
   <div class="form-group my-2">
@@ -37,15 +37,11 @@
 
   <div class="form-group my-2">
     <%= f.label :visibility %>
-    <%= f.select :visibility, trip_visibilities_list, {}, class: 'custom-select mx-sm-3' %>
+    <%= f.select :visibility, trip_visibilities_list, {}, class: 'form-control' %>
   </div>
 
   <div class="form-group my-2">
     <%= f.label :status %>
-    <%= f.select :status, trip_statuses_list, {}, class: 'custom-select mx-sm-3' %>
-  </div>
-
-  <div class="form-group my-4">
-    <%= f.submit class: 'btn btn-dark' %>
+    <%= f.select :status, trip_statuses_list, {}, class: 'form-control' %>
   </div>
 <% end %>

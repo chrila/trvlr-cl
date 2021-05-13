@@ -1,5 +1,6 @@
-<h1 class="display-2">New trip</h1>
+<%= render 'shared/trips_header', trip: @trip, title: 'New trip', navbar: false %>
 
 <%= render 'shared/back_button', target: :back %>
+<%= render 'shared/confirm_button', form: 'trip-form' %>
 
 <%= render 'form', trip: @trip %>

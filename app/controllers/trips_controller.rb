@@ -22,7 +22,7 @@ class TripsController < ApplicationController
     respond_to do |format|
       if @trip.save
         @trip.trip_users.create(user: current_user, role: TripUser.roles['role_administrator'])
-        Activity.create(user: current_user, description: 'Created a new trip!')
+        Activity.create(user: current_user, subject: @trip)
 
         format.html { redirect_to @trip, notice: 'Trip was successfully created.' }
       else
