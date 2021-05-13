@@ -1,6 +1,10 @@
-<h1 class="display-2"><%= "Waypoint: #{@waypoint.name}" %></h1>
+<%= render 'shared/trips_header', trip: @trip, title: "Waypoint: #{@waypoint.name}", navbar: false %>
 
 <%= render 'shared/back_button', target: trip_waypoints_path(@trip) %>
+<% if can? :manage, @waypoint %>
+    <%= render 'shared/edit_button', target: edit_trip_waypoint_path(@trip, @waypoint) %>
+    <%= render 'shared/delete_button', target: trip_waypoint_path(@trip, @waypoint) %>
+<% end %>
 
 <p><strong>Notes: </strong><%= @waypoint.notes %></p>
 <p><strong>Address: </strong><%= @waypoint.address %></p>

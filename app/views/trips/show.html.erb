@@ -25,7 +25,7 @@
       </span>
     <% end %>
   </p>
-  <p class="fs-3 fw-light"><strong>Time frame:  </strong><%= "#{@trip.start_date.to_s(:long)} to #{@trip.end_date.to_s(:long)}" %></p>
+  <p class="fs-3 fw-light"><strong>Time frame: </strong><%= "#{@trip.start_date.to_s(:long)} to #{@trip.end_date.to_s(:long)}" %></p>
   <p class="fs-3 fw-light"><strong>Budget: </strong><%= @trip.budget %></p>
   <p class="fs-3 fw-light"><strong># Waypoints: </strong><%= @trip.waypoints.count %></p>
   <p class="fs-3 fw-light"><strong># Segments: </strong><%= @trip.segments.count %></p>

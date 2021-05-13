@@ -1,5 +1,6 @@
-<h1 class="display-2">Edit waypoint</h1>
+<%= render 'shared/trips_header', trip: @trip, title: 'Edit waypoint', navbar: false %>
 
-<%= render 'shared/back_button', target: trip_waypoints_path(@trip) %>
+<%= render 'shared/back_button', target: :back %>
+<%= render 'shared/confirm_button', form: 'waypoint-form' %>
 
 <%= render 'form', waypoint: @waypoint %>

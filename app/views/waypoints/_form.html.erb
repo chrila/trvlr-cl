@@ -1,5 +1,5 @@
-<%= form_with(model: [@trip, waypoint], local: true) do |f| %>
-    <% if waypoint.errors.any? %>
+<%= form_with(model: [@trip, waypoint], local: true, id: 'waypoint-form') do |f| %>
+  <% if waypoint.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(waypoint.errors.count, "error") %> prohibited this waypoint from being saved:</h2>
       <ul>
@@ -43,9 +43,5 @@
   <div class="form-group my-2">
     <%= f.label :longitude %>
     <%= f.text_field :longitude, class: 'form-control' %>
-  </div>
-
-  <div class="form-group my-4">
-    <%= f.submit class: 'btn btn-dark' %>
   </div>
 <% end %>
