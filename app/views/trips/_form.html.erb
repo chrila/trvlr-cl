@@ -1,6 +1,6 @@
 <%= form_with(model: trip, local: true, id: 'trip-form') do |f| %>
-    <% if trip.errors.any? %>
-    <div id="error_explanation">
+  <% if trip.errors.any? %>
+    <div class="form-error-list">
       <h2><%= pluralize(trip.errors.count, "error") %> prohibited this trip from being saved:</h2>
       <ul>
       <% trip.errors.full_messages.each do |e| %>

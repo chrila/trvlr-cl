@@ -20,6 +20,14 @@ class Trip < ApplicationRecord
   attr_readonly :likes_count
   attr_readonly :comments_count
 
+  validates :title, presence: true
+  validates :description, presence: true
+  validates :start_date, presence: true
+  validates :end_date, presence: true
+  validates :budget, presence: true
+  validates :visibility, presence: true
+  validates :status, presence: true
+
   def visibility_string
     visibility.split('_').last.humanize
   end

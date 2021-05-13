@@ -7,6 +7,31 @@ body {
   margin-bottom: 3rem;
 }
 
+/* forms */
+
+.form-error-list {
+  background-color: #ff000013;
+  padding: 1rem;
+  border-color: darksalmon;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 2px;
+}
+
+.form-error-list li {
+  list-style-type: none;
+}
+
+.form-error-list li:before {
+  content: '\274C';
+  margin-left: -20px;
+  margin-right: 10px;
+} 
+
+.field_with_errors {
+  color: red;
+}
+
 /* navbar */
 
 .navbar-brand:hover {
