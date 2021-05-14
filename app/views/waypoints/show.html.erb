@@ -3,7 +3,9 @@
 <%= render 'shared/back_button', target: trip_waypoints_path(@trip) %>
 <% if can? :manage, @waypoint %>
     <%= render 'shared/edit_button', target: edit_trip_waypoint_path(@trip, @waypoint) %>
-    <%= render 'shared/delete_button', target: trip_waypoint_path(@trip, @waypoint) %>
+    <%= render 'shared/delete_button', target: trip_waypoint_path(@trip, @waypoint),
+          message: 'Are you sure? Associated segments, posts and media items will also be deleted!'
+    %>
 <% end %>
 
 <p><strong>Notes: </strong><%= @waypoint.notes %></p>
@@ -12,10 +14,3 @@
 <p><strong>Continent: </strong><%= @waypoint.continent %></p>
 <p><strong>Longitude: </strong><%= @waypoint.longitude %></p>
 <p><strong>Latitude: </strong><%= @waypoint.latitude %></p>
-
-<% if can? :manage, @waypoint %>
-  <div class="my-3">
-    <%= link_to 'Edit', edit_trip_waypoint_path(@trip, @waypoint), class: 'btn btn-large btn-dark' %>
-    <%= link_to 'Delete', trip_waypoint_path(@trip, @waypoint), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-large btn-outline-dark' %>
-  </div>
-<% end %>

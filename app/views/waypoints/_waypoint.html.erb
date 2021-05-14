@@ -23,7 +23,8 @@
         <%= link_to edit_trip_waypoint_path(@trip, waypoint) do %>
             <i class="bi bi-pencil mx-1"></i>
         <% end %>
-        <%= link_to trip_waypoint_path(@trip, waypoint), method: :delete, data: { confirm: 'Are you sure?' } do %>
+        <%= link_to trip_waypoint_path(@trip, waypoint), method: :delete,
+              data: { confirm: 'Are you sure? Associated segments, posts and media items will also be deleted!' } do %>
             <i class="bi bi-trash"></i>
         <% end %>
         <td>
