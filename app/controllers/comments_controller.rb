@@ -62,10 +62,10 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        Activity.create(user: current_user, description: "commented on a #{@comment.commentable_type.downcase}.")
+        Activity.create(user: current_user, subject: @comment.commentable, action: 'commented on')
         format.html { redirect_to @comment.commentable, notice: 'Comment was successfully created.' }
       else
-        format.html { render :new }
+        format.html { redirect_back fallback_location: @comment.commentable, alert: error_string('create') }
       end
     end
   end
@@ -75,7 +75,7 @@ class CommentsController < ApplicationController
       if @comment.update(comment_params)
         format.html { redirect_to @commentable, notice: 'Comment was successfully updated.' }
       else
-        format.html { render :edit }
+        format.html { redirect_back fallback_location: @comment, alert: error_string('update') }
       end
     end
   end
@@ -133,5 +133,9 @@ class CommentsController < ApplicationController
 
   def set_comment
     @comment = Comment.find(params[:id])
+  end
+
+  def error_string(action)
+    "Could not #{action} comment. Errors:<br>- #{@comment.errors.full_messages.join('<br>- ')}"
   end
 end

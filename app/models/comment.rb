@@ -9,4 +9,7 @@ class Comment < ApplicationRecord
   attr_readonly :likes_count
 
   scope :created_between, ->(date_from, date_to) { where('created_at between ? and ?', date_from, date_to).order(id: :desc) }
+
+  validates :title, presence: true
+  validates :content, presence: true
 end
