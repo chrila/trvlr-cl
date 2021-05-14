@@ -10,6 +10,9 @@ https://trello.com/b/FINbe47p/time-travelling-turtle
 ### DB design
 https://dbdiagram.io/d/60722617ecb54e10c33faa66
 
+### Live version
+http://www.trvlr.cl
+
 ## Versiones
 ruby: 3.0.1 \
 rails: 6.1.3.1
