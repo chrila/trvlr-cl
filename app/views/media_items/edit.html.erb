@@ -1,5 +1,6 @@
-<h1 class="display-2">Edit media item</h1>
+<%= render 'shared/trips_header', trip: @media_item.trip, title: 'Edit media item', navbar: false %>
 
 <%= render 'shared/back_button', target: trip_media_items_path(@media_item.trip) %>
+<%= render 'shared/confirm_button', form: 'media-item-form' %>
 
 <%= render 'form', media_item: @media_item %>

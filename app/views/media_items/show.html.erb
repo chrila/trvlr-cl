@@ -1,8 +1,12 @@
-<h1 class="display-2">Media item</h1>
+<%= render 'shared/trips_header', trip: @media_item.trip, title: 'Media item', navbar: false %>
 
 <%= render 'shared/back_button', target: trip_media_items_path(@media_item.trip) %>
+<% if can? :manage, @media_item %>
+    <%= render 'shared/edit_button', target: edit_media_item_path(@media_item) %>
+    <%= render 'shared/delete_button', target: media_item_path(@media_item) %>
+<% end %>
 
-<%= render 'media_item_show', media_item: @media_item  %>
+<%= render 'media_item_show', media_item: @media_item %>
 
 <h2 class="display-6 mt-5 mb-4">Comments</h2>
 

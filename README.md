@@ -42,7 +42,7 @@ rails: 6.1.3.1
 ## ERD
 ![ERD model](doc/erd.png)
 Nota: también está disponible cómo PDF en docs/erd.pdf \
-Se lo generó usando la gema `rails-erd` usando el comando
+Se lo generó usando la gema `rails-erd` con el comando
 ```bash
 rails erd indirect=true attributes=foreign_keys,primary_keys,content filetype=pdf filename=doc/erd
 ```

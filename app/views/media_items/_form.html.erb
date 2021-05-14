@@ -1,7 +1,7 @@
-<%= form_with(model: media_item, local: true) do |f| %>
-    <% if media_item.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(media_item.errors.count, "error") %> prohibited this media_item from being saved:</h2>
+<%= form_with(model: media_item, local: true, id: 'media-item-form') do |f| %>
+  <% if media_item.errors.any? %>
+    <div class="form-error-list">
+      <h2><%= pluralize(media_item.errors.count, "error") %> prohibited this media item from being saved:</h2>
       <ul>
       <% media_item.errors.full_messages.each do |e| %>
         <li><%= e %></li>
@@ -28,9 +28,5 @@
   <div class="form-group my-2">
     <%= f.label :photo %>
     <%= f.file_field :photo %>
-  </div>
-
-  <div class="form-group my-4">
-    <%= f.submit class: 'btn btn-dark' %>
   </div>
 <% end %>

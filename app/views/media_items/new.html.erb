@@ -1,5 +1,6 @@
-<h1 class="display-2">New media item</h1>
+<%= render 'shared/trips_header', trip: @trip, title: 'Add media item', navbar: false %>
 
 <%= render 'shared/back_button', target: :back %>
+<%= render 'shared/confirm_button', form: 'media-item-form' %>
 
 <%= render 'form', media_item: @media_item %>

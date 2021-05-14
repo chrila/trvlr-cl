@@ -35,6 +35,7 @@ class MediaItemsController < ApplicationController
   end
 
   def edit
+    @trip = @media_item.trip
   end
 
   def show
@@ -46,10 +47,10 @@ class MediaItemsController < ApplicationController
 
     respond_to do |format|
       if @media_item.save
-        Activity.create(user: current_user, description: "Uploaded a new media item from #{@media_item.waypoint.name}, #{@media_item.waypoint.country}.")
+        Activity.create(user: current_user, subject: @media_item, action: 'uploaded')
         format.html { redirect_to @media_item, notice: 'Media item was successfully created.' }
       else
-        format.html { render :new }
+        format.html { redirect_back fallback_location: @trip, alert: error_string('create') }
       end
     end
   end
@@ -59,7 +60,7 @@ class MediaItemsController < ApplicationController
       if @media_item.update(media_item_params)
         format.html { redirect_to @media_item, notice: 'Media item was successfully updated.' }
       else
-        format.html { render :edit }
+        format.html { redirect_back fallback_location: @media_item, alert: error_string('update') }
       end
     end
   end
@@ -67,9 +68,9 @@ class MediaItemsController < ApplicationController
   def destroy
     respond_to do |format|
       if @media_item.destroy
-        format.html { redirect_to :back, notice: 'Media item was successfully deleted.' }
+        format.html { redirect_back fallback_location: trip_media_items_path(@trip), notice: 'Media item was successfully deleted.' }
       else
-        format.html { redirect_to :back, alert: 'Media item could not be deleted.' }
+        format.html { redirect_back fallback_location: trip_media_items_path(@trip), alert: 'Media item could not be deleted.' }
       end
     end
   end
@@ -100,5 +101,9 @@ class MediaItemsController < ApplicationController
 
   def set_media_item
     @media_item = MediaItem.find(params[:id])
+  end
+
+  def error_string(action)
+    "Could not #{action} media item. Errors:<br>- #{@media_item.errors.full_messages.join('<br>- ')}"
   end
 end
