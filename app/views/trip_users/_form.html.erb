@@ -1,6 +1,6 @@
-<%= form_with(model: [@trip, trip_user], local: true) do |f| %>
-    <% if trip_user.errors.any? %>
-    <div id="error_explanation">
+<%= form_with(model: [@trip, trip_user], local: true, id: 'trip-user-form') do |f| %>
+  <% if trip_user.errors.any? %>
+    <div class="form-error-list">
       <h2><%= pluralize(trip_user.errors.count, "error") %> prohibited this participant from being saved:</h2>
       <ul>
       <% trip_user.errors.full_messages.each do |e| %>
@@ -12,15 +12,11 @@
 
   <div class="form-group my-2">
     <%= f.label :user_id %>
-    <%= f.select :user_id, user_list, {}, class: 'custom-select mx-sm-3' %>
+    <%= f.select :user_id, user_list, {}, class: 'form-control' %>
   </div>
 
   <div class="form-group my-2">
     <%= f.label :role %>
-    <%= f.select :role, trip_user_roles_list, {}, class: 'custom-select mx-sm-3' %>
-  </div>
-
-  <div class="form-group my-4">
-    <%= f.submit class: 'btn btn-dark' %>
+    <%= f.select :role, trip_user_roles_list, {}, class: 'form-control' %>
   </div>
 <% end %>

@@ -1,5 +1,6 @@
-<h1 class="display-2">Edit participant</h1>
+<%= render 'shared/trips_header', trip: @trip, title: 'Edit participant', navbar: false %>
 
 <%= render 'shared/back_button', target: trip_trip_users_path(@trip) %>
+<%= render 'shared/confirm_button', form: 'trip-user-form' %>
 
 <%= render 'form', trip_user: @trip_user %>
