@@ -36,8 +36,8 @@ class Ability
     can %i[read follow unfollow], User
 
     # Comments
-    # users can read, create, like and dislike comments, but only delete their own comments
-    can :destroy, Comment, user_id: user.id
+    # users can read, create, like and dislike comments, but only delete and edit their own comments
+    can :manage, Comment, user_id: user.id
     can :read, Comment
     can %i[new_activity new_media_item new_post new_trip create like dislike], Comment
 

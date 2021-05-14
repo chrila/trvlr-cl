@@ -7,9 +7,16 @@
         <small class="text-muted"><%= comment.user %></small>
       <% end %>
 
-      <% if can? :destroy, comment %>
-       | <%= link_to comment, method: :delete do %>
+      <% if comment.edited? %>
+        <small class="text-muted">(edited)</small>
+      <% end %>
+
+      <% if can? :manage, comment %>
+        | <%= link_to comment, method: :delete do %>
           <small class="text-muted">Delete</small>
+        <% end %>
+        | <%= link_to edit_comment_path(comment) do %>
+          <small class="text-muted">Edit</small>
         <% end %>
       <% end %>
       

@@ -12,4 +12,8 @@ class Comment < ApplicationRecord
 
   validates :title, presence: true
   validates :content, presence: true
+
+  def edited?
+    created_at != updated_at
+  end
 end

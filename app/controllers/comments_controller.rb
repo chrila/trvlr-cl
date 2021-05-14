@@ -73,7 +73,7 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to @commentable, notice: 'Comment was successfully updated.' }
+        format.html { redirect_to @comment.commentable, notice: 'Comment was successfully updated.' }
       else
         format.html { redirect_back fallback_location: @comment, alert: error_string('update') }
       end

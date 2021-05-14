@@ -72,7 +72,7 @@ Rails.application.routes.draw do
     delete 'unfollow', to: 'users#unfollow', as: :unfollow
   end
 
-  resources :comments, only: %i[show update destroy]
+  resources :comments, only: %i[show update edit destroy]
   scope 'comments/:id', as: :comment do
     post 'like', to: 'comments#like', as: :like
     delete 'like', to: 'comments#dislike', as: :dislike
