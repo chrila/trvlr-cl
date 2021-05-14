@@ -10,10 +10,12 @@ class Like < ApplicationRecord
 
   def self.like(user, likeable)
     create(user: user, likeable: likeable)
+    Activity.create(user: user, subject: likeable, action: 'likes')
   end
 
   def self.dislike(user, likeable)
     entry = find_by(user: user, likeable: likeable)
     entry&.destroy
+    Activity.where(user: user, subject: likeable, action: 'likes').destroy_all
   end
 end

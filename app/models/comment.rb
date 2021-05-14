@@ -16,4 +16,8 @@ class Comment < ApplicationRecord
   def edited?
     created_at != updated_at
   end
+
+  def activity_string
+    'a comment'
+  end
 end

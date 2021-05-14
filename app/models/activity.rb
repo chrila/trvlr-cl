@@ -11,4 +11,8 @@ class Activity < ApplicationRecord
   attr_readonly :comments_count
 
   scope :for_user, ->(user) { where(user: user.following).order(id: :desc) }
+
+  def activity_string
+    'an activity'
+  end
 end

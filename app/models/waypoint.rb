@@ -6,6 +6,7 @@ class Waypoint < ApplicationRecord
   has_many :segments_ending, class_name: 'Segment', foreign_key: 'waypoint_to_id', dependent: :destroy
   has_many :media_items, dependent: :destroy
   has_many :posts, dependent: :destroy
+  has_many :activities, as: :subject, dependent: :destroy
 
   after_create :init_sequence
 

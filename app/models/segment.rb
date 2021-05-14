@@ -23,6 +23,10 @@ class Segment < ApplicationRecord
     status.split('_').last.humanize
   end
 
+  def activity_string
+    'a segment'
+  end
+
   private
 
   def data_collection

@@ -19,4 +19,8 @@ class Post < ApplicationRecord
 
   validates :title, presence: true
   validates :content, presence: true
+
+  def activity_string
+    'a blog post'
+  end
 end

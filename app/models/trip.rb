@@ -39,4 +39,8 @@ class Trip < ApplicationRecord
   def owned_by?(a_user)
     users.exists? a_user.id
   end
+
+  def activity_string
+    'a trip'
+  end
 end

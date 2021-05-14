@@ -51,4 +51,8 @@ class User < ApplicationRecord
   def following?(other_user)
     followings_active.where(followed_user: other_user).size.positive?
   end
+
+  def activity_string
+    username
+  end
 end

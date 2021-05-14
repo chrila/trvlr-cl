@@ -10,4 +10,8 @@ class TripUser < ApplicationRecord
   def role_string
     role.split('_').last.humanize
   end
+
+  def activity_string
+    'a participant'
+  end
 end
