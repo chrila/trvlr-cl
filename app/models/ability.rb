@@ -78,11 +78,11 @@ class Ability
 
     # Media items and posts
     # They can only be created if a user is participating in a trip as 'administrator' or 'editor'
-    can %i[new_trip new_waypoint create], MediaItem do |m|
+    can %i[manage], MediaItem do |m|
       m.trip.trip_users.role_administrator.map(&:user).include?(user) ||
         m.trip.trip_users.role_editor.map(&:user).include?(user)
     end
-    can %i[new_trip new_waypoint create], Post do |p|
+    can %i[manage], Post do |p|
       p.trip.trip_users.role_administrator.map(&:user).include?(user) ||
         p.trip.trip_users.role_editor.map(&:user).include?(user)
     end

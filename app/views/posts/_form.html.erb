@@ -1,6 +1,6 @@
-<%= form_with(model: post, local: true) do |f| %>
-    <% if post.errors.any? %>
-    <div id="error_explanation">
+<%= form_with(model: post, local: true, id: 'post-form') do |f| %>
+  <% if post.errors.any? %>
+    <div class="form-error-list">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
       <ul>
       <% post.errors.full_messages.each do |e| %>
@@ -23,9 +23,5 @@
   <div class="form-group my-2">
     <%= f.label :content %>
     <%= f.rich_text_area :content, class: 'form-control' %>
-  </div>
-
-  <div class="form-group my-4">
-    <%= f.submit class: 'btn btn-dark' %>
   </div>
 <% end %>

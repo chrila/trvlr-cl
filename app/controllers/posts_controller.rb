@@ -35,6 +35,7 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @trip = @post.trip
   end
 
   def show
@@ -46,10 +47,10 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        Activity.create(user: current_user, description: "Wrote a new blog post about #{@post.waypoint.name}, #{@post.waypoint.country}.")
+        Activity.create(user: current_user, subject: @post, action: 'wrote')
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
       else
-        format.html { render :new }
+        format.html { redirect_back fallback_location: @trip, alert: error_string('create') }
       end
     end
   end
@@ -59,7 +60,7 @@ class PostsController < ApplicationController
       if @post.update(post_params)
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
       else
-        format.html { render :edit }
+        format.html { redirect_back fallback_location: @post, alert: error_string('update') }
       end
     end
   end
@@ -100,5 +101,9 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
+  end
+
+  def error_string(action)
+    "Could not #{action} post. Errors:<br>- #{@post.errors.full_messages.join('<br>- ')}"
   end
 end
