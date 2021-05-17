@@ -12,7 +12,7 @@
       <p class="card-text">
         <%= "#{activity.user} #{activity.action}"%>
         <%= link_to activity.subject.activity_string, activity.subject %>
-        <%= ' of you' if activity.subject.owned_by?(current_user) %>
+        <%= ' of you' if activity.subject_type != 'User' && activity.subject.owned_by?(current_user) %>
       </p>
     </div>
     <div class="card-footer">
