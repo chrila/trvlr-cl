@@ -16,7 +16,8 @@
 # users
 20.times do
   u = User.new(username: Faker::Internet.username, email: Faker::Internet.email, password: '123456')
-  u.avatar.attach(io: File.open('app/assets/images/default_avatar.jpg'), filename: 'avatar.jpg')
+  temp_file = Down.download('https://picsum.photos/500')
+  u.avatar.attach(io: temp_file, filename: "avatar-#{u.email}.jpg")
   u.save!
 end
 
@@ -101,7 +102,8 @@ end
     waypoint: Waypoint.all.sample, title: Faker::Hipster.sentence(word_count: 3),
     description: Faker::Hipster.sentence, user: User.all.sample
   )
-  m.photo.attach(io: File.open('app/assets/images/default_media_item.jpg'), filename: 'photo.jpg')
+  temp_file = Down.download('https://picsum.photos/1000')
+  m.photo.attach(io: temp_file, filename: 'photo.jpg')
   m.save!
 end
 
