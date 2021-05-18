@@ -15,7 +15,7 @@ http://www.trvlr.cl
 
 ## Versiones
 ruby: 3.0.1 \
-rails: 6.1.3.1
+rails: 6.1.3.2
 
 ## Mockups
 ### Visitantes
