@@ -1,6 +1,9 @@
-<div class="col">
-  <div class="card p-4">
-    <p><%= user.username %></p>
-    <%= link_to  'Follow', user_follow_path(user), method: :post, class: 'btn btn-sm btn-outline-dark' %>
+<%= tag.div class: class_names('col', 'd-none d-md-block': user_counter.between?(2, 3), 'd-none d-lg-block': user_counter.between?(4, 5)) do %>
+  <div class="card user-to-follow-body">
+    <%= link_to user_follow_path(user), method: :post, class: 'user-to-follow-link' do %>
+      <i class="bi bi-person-plus"></i>
+    <% end %>
+    <%= image_tag user.avatar.representation(resize_to_limit: [128, 128]), class: 'rounded-circle user-to-follow-pic', alt: user %>
+    <p><%= link_to user.username, user %></p>
   </div>
-</div>
+<% end %>

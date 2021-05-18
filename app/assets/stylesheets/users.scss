@@ -6,3 +6,45 @@
   margin: 2rem 0;
   object-fit: cover;
 }
+
+.user-to-follow-pic {
+  width: 4rem;
+  height: 4rem;
+  margin-bottom: 1rem;
+  display: inline;
+  object-fit: cover;
+  align-self: center;
+}
+
+.user-to-follow-body {
+  text-align: center;
+  border: 0;
+  background: none;
+}
+
+.user-to-follow-link {
+  font-size: 1.5rem;
+  background-color: black;
+  border-radius: 50%;
+  border-color: white;
+  border-width: 2px;
+  border-style: solid;
+  width: 2.5rem;
+  height: 2.5rem;
+  color: white;
+  position: relative;
+  align-self: center;
+  left: 2rem;
+  top: 5rem;
+}
+
+.user-to-follow-link:hover {
+  color: white;
+  background-color: grey;
+}
+
+.user-to-follow-link > i {
+  position: relative;
+  top: -2px;
+  left: 2px;
+}

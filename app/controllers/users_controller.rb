@@ -6,12 +6,12 @@ class UsersController < ApplicationController
 
   def follow
     current_user.follow(@user)
-    redirect_to @user
+    redirect_to root_path
   end
 
   def unfollow
     current_user.unfollow(@user)
-    redirect_to @user
+    redirect_to root_path
   end
 
   private
