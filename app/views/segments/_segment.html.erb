@@ -1,4 +1,4 @@
-<tr>
+<%= tag.tr class: class_names("segment-table-row-#{segment.status_string.downcase}") do %>
   <th scope="row"><%= segment.sequence %></th>
   <td><%= segment.waypoint_from.name %></td>
   <td><%= segment.waypoint_to.name %></td>
@@ -7,34 +7,36 @@
   <td class="d-none d-lg-table-cell"><%= segment.time_to.to_s(:day_and_year) %></td>
   <td class="d-none d-md-table-cell d-lg-none"><%= segment.time_to.to_s(:day) %></td>
   <td class="d-none d-sm-table-cell"><%= segment.distance.round(1) %></td>
-  <td><%= tag.span segment.status_string, class: class_names('badge', segment_status_bg_class(segment)) %></td>
-    <% if can? :read, segment %>
-      <td>
-        <%= link_to trip_segment_path(@trip, segment) do %>
-          <i class="bi bi-file-earmark-text"></i>
+  <td class="d-none d-md-table-cell"><%= tag.span segment.status_string, class: class_names('badge', segment_status_bg_class(segment)) %></td>
+  <% if can? :read, segment %>
+    <td>
+      <%= link_to trip_segment_path(@trip, segment) do %>
+        <i class="bi bi-file-earmark-text"></i>
+      <% end %>
+  <% end %>
+  <% if can? :manage, segment %>
+      <%= link_to edit_trip_segment_path(@trip, segment) do %>
+        <i class="bi bi-pencil mx-1"></i>
+      <% end %>
+      <%= link_to trip_segment_path(@trip, segment), method: :delete, data: { confirm: 'Are you sure?' } do %>
+        <i class="bi bi-trash"></i>
+      <% end %>
+  <% end %>
+    </td>
+  <% if can? :manage, segment %>
+    <td>
+      <% unless segment.first? %>
+        <%= link_to trip_segment_decrease_sequence_path(@trip, segment), method: :put do %>
+          <i class="bi bi-arrow-up"></i>
         <% end %>
-        <% if can? :manage, segment %>
-          <%= link_to edit_trip_segment_path(@trip, segment) do %>
-            <i class="bi bi-pencil mx-1"></i>
-          <% end %>
-          <%= link_to trip_segment_path(@trip, segment), method: :delete, data: { confirm: 'Are you sure?' } do %>
-            <i class="bi bi-trash"></i>
-          <% end %>
-          <td>
-            <% unless segment.first? %>
-              <%= link_to trip_segment_decrease_sequence_path(@trip, segment), method: :put do %>
-                  <i class="bi bi-arrow-up"></i>
-              <% end %>
-            <% end %>
-          </td>
-          <td>
-            <% unless segment.last? %>
-              <%= link_to trip_segment_increase_sequence_path(@trip, segment), method: :put do %>
-                  <i class="bi bi-arrow-down"></i>
-              <% end %>
-            <% end %>
-          </td>
+      <% end %>
+    </td>
+    <td>
+      <% unless segment.last? %>
+        <%= link_to trip_segment_increase_sequence_path(@trip, segment), method: :put do %>
+          <i class="bi bi-arrow-down"></i>
         <% end %>
-      </td>
-    <% end %>
-</tr>
+      <% end %>
+    </td>
+  <% end %>
+<% end %>

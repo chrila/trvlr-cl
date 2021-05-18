@@ -1,1 +1,19 @@
 /* segments */
+
+.segment-table-row-open {
+  background: inherit;
+}
+
+.segment-table-row-active {
+  background: #f2b7078c;
+}
+
+.segment-table-row-finished {
+  background: #1987548c;
+}
+
+tr .badge {
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+}
