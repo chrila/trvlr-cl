@@ -1,5 +1,6 @@
-<h1 class="display-2">Edit comment</h1>
+<%= render 'shared/trips_header', trip: nil, title: 'Edit comment', navbar: false %>
 
 <%= render 'shared/back_button', target: @comment.commentable %>
+<%= render 'shared/confirm_button', form: 'post-form' %>
 
 <%= render 'form', comment: @comment %>
