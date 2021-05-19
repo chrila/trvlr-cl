@@ -12,7 +12,7 @@
       <p class="card-text"><%= post.content %></p>
     </div>
     <div class="card-footer">
-      <span><i class="bi bi-geo-alt"></i> <%= "#{post.waypoint.name}, #{post.waypoint.country}" %></span>
+      <span><i class="bi bi-geo-alt"></i> <%= "#{post.waypoint.name}, #{post.waypoint.country_name}" %></span>
       <small class="text-muted mx-2"><%= "#{time_ago_in_words(post.created_at)} ago" %></small>
       <span class="post-reaction-buttons">
         <% if can? :like, post %>
