@@ -24,6 +24,10 @@ class Waypoint < ApplicationRecord
     "#{sequence} - #{name}"
   end
 
+  def country_name
+    ISO3166::Country[self.country]
+  end
+
   private
 
   def data_collection
