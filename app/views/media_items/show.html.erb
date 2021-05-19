@@ -1,4 +1,4 @@
-<%= render 'shared/trips_header', trip: @media_item.trip, title: 'Media item', navbar: false %>
+<%= render 'shared/trips_header', trip: @media_item.trip, title: @media_item.title, navbar: false %>
 
 <%= render 'shared/back_button', target: trip_media_items_path(@media_item.trip) %>
 <% if can? :manage, @media_item %>
@@ -6,7 +6,9 @@
     <%= render 'shared/delete_button', target: media_item_path(@media_item) %>
 <% end %>
 
-<%= render 'media_item_show', media_item: @media_item %>
+<p class="fs-3 fw-light"><%= @media_item.description %></p>
+
+<%= render @media_item, detail_view: true %>
 
 <h2 class="display-6 mt-5 mb-4">Comments</h2>
 

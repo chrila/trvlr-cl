@@ -1,7 +1,9 @@
 <div class="col">
   <div class="card shadow-sm">
-    <%= link_to media_item do %>
-      <%= image_tag media_item.photo, class: 'media-gallery-img' %>
+    <%= link_to (local_assigns[:detail_view].present? ? media_item.photo : media_item) do %>
+      <%= image_tag(
+        (local_assigns[:detail_view].present? ? media_item.photo : media_item.photo.representation(resize_to_limit: [512, 512])),
+        class: 'media-item-img') %>
     <% end %>
     <div class="card-body">
       <p class="card-text"><i class="bi bi-geo-alt"></i> <%= "#{media_item.waypoint.name}, #{media_item.waypoint.country}" %></p>
