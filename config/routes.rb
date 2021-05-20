@@ -39,6 +39,7 @@ Rails.application.routes.draw do
       put 'decrease_sequence', to: 'waypoints#decrease_sequence', as: :decrease_sequence
     end
   end
+  get 'waypoints/search/:keyword', to: 'waypoints#search', as: :waypoints_search
 
   scope 'trips/:id', as: :trip do
     post 'like', to: 'trips#like', as: :like

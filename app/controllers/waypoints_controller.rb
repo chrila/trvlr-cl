@@ -1,7 +1,7 @@
 class WaypointsController < ApplicationController
   include Pagy::Backend
 
-  before_action :set_trip
+  before_action :set_trip, except: %i[search]
   before_action :set_waypoint, only: %i[show edit update destroy increase_sequence decrease_sequence]
   authorize_resource
 
@@ -74,6 +74,18 @@ class WaypointsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to trip_waypoints_path(@trip) }
     end
+  end
+
+  def search
+    res = Geocoder.search(params[:keyword]).first
+    return unless res
+
+    country = ISO3166::Country.new(res.country_code)
+    @waypoint = Waypoint.new
+    @waypoint.country = country.alpha2
+    @waypoint.continent = country.continent
+    @waypoint.latitude = res.latitude
+    @waypoint.longitude = res.longitude
   end
 
   private

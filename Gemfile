@@ -85,3 +85,7 @@ gem 'mailgun-ruby'
 gem 'pagy'
 # for amazon s3 access
 gem 'aws-sdk-s3'
+# coordinates for waypoints
+gem 'geocoder'
+# country information
+gem 'countries'
