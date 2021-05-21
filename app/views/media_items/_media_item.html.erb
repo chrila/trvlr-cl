@@ -10,9 +10,7 @@
       <div class="d-flex justify-content-between align-items-center">
         <small class="text-muted"><%= "#{time_ago_in_words(media_item.created_at)} ago" %></small>
         <span class="media-item-reaction-buttons">
-          <% if can? :like, media_item %>
-            <%= render 'shared/like_button', likeable: media_item %>
-          <% end %>
+          <%= render 'shared/like_button', likeable: media_item %>
           <%= render 'shared/comments_button', commentable: media_item %>
         </span>
       </div>

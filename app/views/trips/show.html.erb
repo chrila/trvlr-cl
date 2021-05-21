@@ -1,7 +1,7 @@
 <%= render 'shared/trips_header', trip: @trip, title: 'Overview', active: 'overview' %>
 
 <p class="fs-2 fw-normal"><%= @trip.description %></p>
-<% if signed_in? %>
+<% if can? :manage, @trip %>
   <span class="trip-button-row">
     <span class="badge bg-dark"><%= @trip.visibility_string %></span>
     <% if @trip.users.exists? current_user.id%>
@@ -9,23 +9,21 @@
     <% end %>
     <%= tag.span @trip.status_string, class: class_names('badge', trip_status_bg_class(@trip)) %>
   </span>
-  <span class="trip-button-row">
-    <% if can? :like, @trip %>
-      <%= render 'shared/like_button', likeable: @trip %>
-    <% end %>
-    <%= render 'shared/comments_button', commentable: @trip %>
-  </span>
-  <span class="trip-button-row mx-2">
-    <% if can? :manage, @trip %>
-      <%= link_to edit_trip_path(@trip) do %>
-        <i class="bi bi-pencil mx-1"></i>
-      <% end %>
-      <%= link_to @trip, method: :delete, data: { confirm: 'Are you sure?' } do %>
-        <i class="bi bi-trash"></i>
-      <% end %>
-    <% end %>
-  </span>
 <% end %>
+<span class="trip-button-row">
+  <%= render 'shared/like_button', likeable: @trip %>
+  <%= render 'shared/comments_button', commentable: @trip %>
+</span>
+<span class="trip-button-row mx-2">
+  <% if can? :manage, @trip %>
+    <%= link_to edit_trip_path(@trip) do %>
+      <i class="bi bi-pencil mx-1"></i>
+    <% end %>
+    <%= link_to @trip, method: :delete, data: { confirm: 'Are you sure?' } do %>
+      <i class="bi bi-trash"></i>
+    <% end %>
+  <% end %>
+</span>
 
 <p class="fs-3 fw-light"><strong>Time frame: </strong><%= "#{@trip.start_date.to_s(:long)} to #{@trip.end_date.to_s(:long)}" %></p>
 <p class="fs-3 fw-light"><strong>Budget: </strong><%= @trip.budget %></p>

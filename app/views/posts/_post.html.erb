@@ -15,9 +15,7 @@
       <span><i class="bi bi-geo-alt"></i> <%= "#{post.waypoint.name}, #{post.waypoint.country_name}" %></span>
       <small class="text-muted mx-2"><%= "#{time_ago_in_words(post.created_at)} ago" %></small>
       <span class="post-reaction-buttons">
-        <% if can? :like, post %>
-          <%= render 'shared/like_button', likeable: post %>
-        <% end %>
+        <%= render 'shared/like_button', likeable: post %>
         <%= render 'shared/comments_button', commentable: post %>
       </span>
     </div>
