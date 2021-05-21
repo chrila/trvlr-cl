@@ -11,18 +11,7 @@
   </span>
   <span class="trip-button-row">
     <% if can? :like, @trip %>
-      <div class="mx-2">
-        <% if Like.liked?(current_user, @trip) %>
-          <%= link_to trip_dislike_path(@trip), method: :delete, remote: true, id: "like-link-#{@trip.id}" do %>
-            <i id=<%= "like-button-#{@trip.id}" %> class="bi bi-hand-thumbs-up-fill mx-1"></i>  
-          <% end %>
-        <% else %>
-          <%= link_to trip_like_path(@trip), method: :post, remote: true, id: "like-link-#{@trip.id}" do %>
-            <i id=<%= "like-button-#{@trip.id}" %> class="bi bi-hand-thumbs-up mx-1"></i>  
-          <% end %>
-        <% end %>
-        <span id=<%= "like-counter-#{@trip.id}" %>><%= @trip.likes_count %></span>
-      </div>
+      <%= render 'shared/like_button', likeable: @trip %>
     <% end %>
     <div>
       <%= link_to '#comments' do %>

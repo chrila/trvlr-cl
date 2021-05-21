@@ -8,4 +8,12 @@ module ApplicationHelper
   def truncate_string(str, len = 30)
     str.length > len ? "#{str[0, len]}..." : str
   end
+
+  def like_path(likeable)
+    send("#{likeable.class.to_s.underscore}_like_path", likeable)
+  end
+
+  def dislike_path(likeable)
+    send("#{likeable.class.to_s.underscore}_dislike_path", likeable)
+  end
 end

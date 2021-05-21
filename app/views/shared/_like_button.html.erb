@@ -1,0 +1,12 @@
+<div class="mx-2">
+  <% if Like.liked?(current_user, likeable) %>
+    <%= link_to dislike_path(likeable), method: :delete, remote: true, id: "like-link-#{likeable.id}" do %>
+      <i id=<%= "like-button-#{likeable.id}" %> class="bi bi-hand-thumbs-up-fill mx-1"></i>  
+    <% end %>
+  <% else %>
+    <%= link_to like_path(likeable), method: :post, remote: true, id: "like-link-#{likeable.id}" do %>
+      <i id=<%= "like-button-#{likeable.id}" %> class="bi bi-hand-thumbs-up mx-1"></i>  
+    <% end %>
+  <% end %>
+  <span id=<%= "like-counter-#{likeable.id}" %>><%= likeable.likes_count %></span>
+</div>
