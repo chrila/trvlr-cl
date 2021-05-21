@@ -13,12 +13,7 @@
     <% if can? :like, @trip %>
       <%= render 'shared/like_button', likeable: @trip %>
     <% end %>
-    <div>
-      <%= link_to '#comments' do %>
-        <i class="bi bi-chat-right mx-1"></i>
-      <% end %>
-      <%= @trip.comments_count %>
-    </div>
+    <%= render 'shared/comments_button', commentable: @trip %>
   </span>
   <span class="trip-button-row mx-2">
     <% if can? :manage, @trip %>

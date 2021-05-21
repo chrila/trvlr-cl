@@ -10,7 +10,7 @@
 
 <%= render @media_item, detail_view: true %>
 
-<h2 class="display-6 mt-5 mb-4">Comments</h2>
+<h2 id="comments" class="display-6 mt-5 mb-4">Comments</h2>
 
 <% if can? :new_media_item, Comment %>
   <%= render 'shared/add_button', target: media_item_new_comment_path(@media_item), resource: 'comment' %>

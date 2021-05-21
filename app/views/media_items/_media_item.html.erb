@@ -13,14 +13,7 @@
           <% if can? :like, media_item %>
             <%= render 'shared/like_button', likeable: media_item %>
           <% end %>
-          <% if can? :new_media_item, Comment %>
-            <div>
-              <%= link_to media_item_new_comment_path(media_item) do %>
-                <i class="bi bi-chat-right mx-1"></i>
-              <% end %>
-              <%= media_item.comments_count %>
-            </div>
-          <% end %>
+          <%= render 'shared/comments_button', commentable: media_item %>
         </span>
       </div>
     </div>

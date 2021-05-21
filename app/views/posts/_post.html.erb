@@ -18,14 +18,7 @@
         <% if can? :like, post %>
           <%= render 'shared/like_button', likeable: post %>
         <% end %>
-        <% if can? :new_post, Comment %>
-          <div>
-            <%= link_to post_new_comment_path(post) do %>
-              <i class="bi bi-chat-right mx-1"></i>
-            <% end %>
-            <%= post.comments_count %>
-          </div>
-        <% end %>
+        <%= render 'shared/comments_button', commentable: post %>
       </span>
     </div>
   </div>

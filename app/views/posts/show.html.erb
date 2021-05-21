@@ -8,7 +8,7 @@
 
 <%= render @post %>
 
-<h2 class="display-6 mt-5 mb-4">Comments</h2>
+<h2 id="comments" class="display-6 mt-5 mb-4">Comments</h2>
 
 <% if can? :new_post, Comment %>
   <%= render 'shared/add_button', target: post_new_comment_path(@post), resource: 'comment' %>

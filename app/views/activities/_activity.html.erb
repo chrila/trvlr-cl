@@ -23,14 +23,7 @@
         <% if can? :like, activity %>
           <%= render 'shared/like_button', likeable: activity %>
         <% end %>
-        <% if can? :new_activity, Comment %>
-          <div>
-            <%= link_to activity_new_comment_path(activity) do %>
-              <i class="bi bi-chat-right mx-1"></i>
-            <% end %>
-            <%= activity.comments_count %>
-          </div>
-        <% end %>
+        <%= render 'shared/comments_button', commentable: activity %>
       </span>
     </div>
   </div>
