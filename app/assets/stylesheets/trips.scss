@@ -21,6 +21,16 @@
   margin-right: 1rem;
 }
 
+.progress-detail-list li {
+  list-style-type: none;
+}
+
+.progress-detail-list li:before {
+  content: '-';
+  margin-left: -20px;
+  margin-right: 10px;
+}
+
 /* map */
 
 .map-container {

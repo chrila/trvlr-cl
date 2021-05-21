@@ -30,13 +30,19 @@
 <p class="fs-3 fw-light"><strong># Waypoints: </strong><%= @trip.waypoints.count %></p>
 <p class="fs-3 fw-light"><strong># Segments: </strong><%= @trip.segments.count %></p>
 <p class="fs-3 fw-light"><strong>Total distance: </strong><%= @trip.segments.sum(:distance).round(2) %></p>
-<p class="fs-3 fw-light">
-  <strong>Progress (segments): </strong><%= @trip.segments.segment_finished.count %> / <%= @trip.segments.count %>
+<p class="fs-3 fw-light mb-0">
+  <strong>Progress: </strong>
+  <%= (@trip.segments.segment_finished.sum(:distance) * 100 / @trip.segments.sum(:distance)).round %> %
 </p>
-<p class="fs-3 fw-light">
-  <strong>Progress (distance): </strong>
-  <%= @trip.segments.segment_finished.sum(:distance).round(2) %> / <%= @trip.segments.sum(:distance).round(2) %> km
-</p>
+<ul class="progress-detail-list">
+  <li class="fs-3 fw-light">
+    <strong>Segments: </strong><%= @trip.segments.segment_finished.count %> / <%= @trip.segments.count %>
+  </li>
+  <li class="fs-3 fw-light">
+    <strong>Distance: </strong>
+    <%= @trip.segments.segment_finished.sum(:distance).round %> / <%= @trip.segments.sum(:distance).round %> km
+  </li>
+</ul>
 
 <h2 class="display-6 mt-5 mb-4">Map</h2>
 <%= render 'shared/map', waypoints: @trip.waypoints, segments: @trip.segments.order(:sequence, :id) %>
