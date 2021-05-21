@@ -76,12 +76,12 @@ class MediaItemsController < ApplicationController
   end
 
   def like
-    Like.like(current_user, @media_item)
+    @media_item.like current_user
     set_media_item
   end
 
   def dislike
-    Like.dislike(current_user, @media_item)
+    @media_item.dislike current_user
     set_media_item
   end
 

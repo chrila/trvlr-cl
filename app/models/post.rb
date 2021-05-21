@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   include ActivitySubject
+  include Likeable
 
   belongs_to :waypoint
   belongs_to :user

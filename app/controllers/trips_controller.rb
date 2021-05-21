@@ -52,12 +52,12 @@ class TripsController < ApplicationController
   end
 
   def like
-    Like.like(current_user, @trip)
+    @trip.like current_user
     set_trip
   end
 
   def dislike
-    Like.dislike(current_user, @trip)
+    @trip.dislike current_user
     set_trip
   end
 

@@ -1,5 +1,6 @@
 class Activity < ApplicationRecord
   include ActivitySubject
+  include Likeable
 
   belongs_to :user
   has_many :comments, as: :commentable, dependent: :destroy

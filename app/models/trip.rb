@@ -1,5 +1,6 @@
 class Trip < ApplicationRecord
   include ActivitySubject
+  include Likeable
 
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :likes, as: :likeable, dependent: :destroy
