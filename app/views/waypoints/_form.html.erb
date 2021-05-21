@@ -24,7 +24,7 @@
     <%= f.label :address %>
     <span class="d-flex">
       <%= f.text_field :address, class: 'form-control' %>
-      <%= link_to 'Search', 'javascript();', id: 'btn-search', class: 'btn btn-outline-dark' %>
+      <span class="btn btn-outline-dark location-search-button">Search</span>
     </span>
     <span id="lb-search-error" class="address-search-error"></span>
   </div>
@@ -49,39 +49,3 @@
     <%= f.text_field :longitude, class: 'form-control' %>
   </div>
 <% end %>
-
-<script>
-  document.querySelector("#btn-search").addEventListener("click", function (event) {
-    event.preventDefault();
-    keyword = document.querySelector("#waypoint_address").value;
-    console.log("do search!!! with " + keyword);
-
-    // call waypoints/search/:keyword via API
-    fetch(createRequest("/waypoints/search/" + keyword)).then(v => {
-      v.text().then(txt => {
-        eval(txt);
-      })
-    });
-  });
-
-  function getHeaders() {
-    let headers = new window.Headers({
-      "Accept": "application/javascript",
-      "X-Requested-With": "XMLHttpRequest"
-    })
-
-    const csrfToken = document.head.querySelector("[name='csrf-token']").getAttribute("content");
-    if (csrfToken) { headers.append("X-CSRF-Token", csrfToken); }
-
-    return headers
-  }
-
-  function createRequest(url, method = "get") {
-    const request = new window.Request(url, {
-      headers: getHeaders(),
-      method: method,
-      credentials: "same-origin"
-    })
-    return request
-  }
-</script>

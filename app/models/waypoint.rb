@@ -16,6 +16,8 @@ class Waypoint < ApplicationRecord
   validates :latitude, presence: true, inclusion: { in: -90..90, message: 'is invalid' }
   validates :longitude, presence: true, inclusion: { in: -180..180, message: 'is invalid' }
 
+  geocoded_by :address
+
   def lat_long_str
     "#{latitude}, #{longitude}"
   end
@@ -25,7 +27,7 @@ class Waypoint < ApplicationRecord
   end
 
   def country_name
-    ISO3166::Country[self.country]
+    ISO3166::Country[country]
   end
 
   private
