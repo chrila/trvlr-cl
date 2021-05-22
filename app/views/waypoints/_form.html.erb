@@ -1,3 +1,5 @@
+<%= javascript_pack_tag 'waypoint' %>
+
 <%= form_with(model: [@trip, waypoint], local: true, id: 'waypoint-form') do |f| %>
   <% if waypoint.errors.any? %>
     <div class="form-error-list">

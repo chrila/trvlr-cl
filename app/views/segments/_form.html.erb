@@ -1,3 +1,5 @@
+<%= javascript_pack_tag 'segment' %>
+
 <%= form_with(model: [@trip, segment], local: true, id: 'segment-form') do |f| %>
   <% if segment.errors.any? %>
     <div class="form-error-list">
