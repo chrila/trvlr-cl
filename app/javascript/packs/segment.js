@@ -10,12 +10,8 @@ document.addEventListener("turbolinks:load", function() {
     
     // call waypoints/distance/:from/:to via API
     fetch(AjaxUtils.createRequest(`/waypoints/distance/${waypoint_from_id}/${waypoint_to_id}`))
-    .then(response => {
-      return response.json();
-    })
-    .then(response => {
-      displayFetchedData(response);
-    });
+    .then(response => response.json())
+    .then(response => displayFetchedData(response));
   }));
 });
 

@@ -78,14 +78,18 @@ class WaypointsController < ApplicationController
 
   def search
     res = Geocoder.search(params[:keyword]).first
-    return unless res
+    hash = {}
 
-    country = ISO3166::Country.new(res.country_code)
-    @waypoint = Waypoint.new
-    @waypoint.country = country.alpha2
-    @waypoint.continent = country.continent
-    @waypoint.latitude = res.latitude
-    @waypoint.longitude = res.longitude
+    if res
+      country = ISO3166::Country.new(res.country_code)
+      hash = {
+        country: country.alpha2,
+        continent: country.continent,
+        latitude: res.latitude,
+        longitude: res.longitude
+      }
+    end
+    render json: hash
   end
 
   def distance

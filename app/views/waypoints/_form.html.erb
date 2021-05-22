@@ -24,9 +24,9 @@
 
   <div class="form-group my-2">
     <%= f.label :address %>
-    <span class="d-flex">
+    <span class="d-flex gap-2">
       <%= f.text_field :address, class: 'form-control' %>
-      <span class="btn btn-outline-dark location-search-button">Search</span>
+      <button type="button" class="btn btn-outline-dark location-search-button">Search</button>
     </span>
     <span id="lb-search-error" class="address-search-error"></span>
   </div>

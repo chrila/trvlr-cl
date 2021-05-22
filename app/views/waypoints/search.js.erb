@@ -1,9 +1,0 @@
-<% if @waypoint %>
-  document.querySelector("#waypoint_latitude").value = "<%= @waypoint.latitude %>";
-  document.querySelector("#waypoint_longitude").value = "<%= @waypoint.longitude %>";
-  document.querySelector("#waypoint_country").value = "<%= @waypoint.country %>";
-  document.querySelector("#waypoint_continent").value = "<%= @waypoint.continent %>";
-  document.querySelector("#lb-search-error").innerText = null;
-<% else %>
-  document.querySelector("#lb-search-error").innerText = "Not found.";
-<% end %>
