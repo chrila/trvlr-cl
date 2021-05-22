@@ -12,12 +12,12 @@
 
   <div class="form-group my-2">
     <%= f.label :waypoint_from %>
-    <%= f.select :waypoint_from_id, waypoints_for_select(@trip), {}, class: 'form-control' %>
+    <%= f.select :waypoint_from_id, waypoints_for_select(@trip), {}, class: 'form-control waypoint-selection-element' %>
   </div>
 
   <div class="form-group my-2">
     <%= f.label :waypoint_to %>
-    <%= f.select :waypoint_to_id, waypoints_for_select(@trip), {}, class: 'form-control' %>
+    <%= f.select :waypoint_to_id, waypoints_for_select(@trip), {}, class: 'form-control waypoint-selection-element' %>
   </div>
 
   <div class="form-group my-2">

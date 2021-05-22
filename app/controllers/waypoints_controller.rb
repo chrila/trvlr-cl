@@ -1,7 +1,7 @@
 class WaypointsController < ApplicationController
   include Pagy::Backend
 
-  before_action :set_trip, except: %i[search]
+  before_action :set_trip, except: %i[search distance]
   before_action :set_waypoint, only: %i[show edit update destroy increase_sequence decrease_sequence]
   authorize_resource
 
@@ -86,6 +86,15 @@ class WaypointsController < ApplicationController
     @waypoint.continent = country.continent
     @waypoint.latitude = res.latitude
     @waypoint.longitude = res.longitude
+  end
+
+  def distance
+    waypoint_from = Waypoint.find(params[:id_from])
+    waypoint_to = Waypoint.find(params[:id_to])
+    return unless waypoint_from && waypoint_to;
+
+    distance = waypoint_from.distance_to(waypoint_to)
+    render json: { distance: distance }
   end
 
   private

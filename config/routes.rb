@@ -40,6 +40,7 @@ Rails.application.routes.draw do
     end
   end
   get 'waypoints/search/:keyword', to: 'waypoints#search', as: :waypoints_search
+  get 'waypoints/distance/:id_from/:id_to', to: 'waypoints#distance', as: :waypoints_distance
 
   scope 'trips/:id', as: :trip do
     post 'like', to: 'trips#like', as: :like

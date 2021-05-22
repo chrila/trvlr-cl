@@ -17,5 +17,6 @@ ActiveStorage.start()
 require("trix")
 require("@rails/actiontext")
 
-import '../js/leaflet.js'
+import '../js/leaflet'
 import '../js/waypoint'
+import '../js/segment'
