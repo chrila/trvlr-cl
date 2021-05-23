@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     get 'posts/new', to: 'posts#new_trip', as: :new_post
     get 'media_items', to: 'media_items#index_trip', as: :media_items
     get 'media_items/new', to: 'media_items#new_trip', as: :new_media_item
+    put 'set_cover_photo/:media_item_id', to: 'trips#set_cover_photo', as: :set_cover_photo
 
     resources :trip_users
 

@@ -9,6 +9,9 @@ class Trip < ApplicationRecord
   has_many :segments, dependent: :destroy
   has_many :trip_users, dependent: :destroy
   has_many :users, through: :trip_users
+  has_many :media_items, through: :waypoints
+  has_many :posts, through: :waypoints
+  belongs_to :cover_photo, class_name: 'MediaItem', foreign_key: :cover_photo_id
 
   enum status: %i[trip_draft trip_active trip_finished trip_cancelled]
   enum visibility: %i[visibility_private visibility_users visibility_public]

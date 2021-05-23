@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
   include Pagy::Backend
 
-  before_action :set_trip, only: %i[show edit update destroy like dislike]
+  before_action :set_trip, only: %i[show edit update destroy like dislike set_cover_photo]
   authorize_resource
 
   def index
@@ -61,6 +61,19 @@ class TripsController < ApplicationController
     set_trip
   end
 
+  def set_cover_photo
+    media_item = MediaItem.find(params[:media_item_id])
+    return unless media_item
+
+    respond_to do |format|
+      if @trip.update(cover_photo: media_item)
+        format.html { redirect_to media_item, notice: 'Cover photo successfully updated.' }
+      else
+        format.html { redirect_to media_item, alert: 'Could not set cover photo.' }
+      end
+    end
+  end
+
   private
 
   def trip_params
@@ -68,6 +81,6 @@ class TripsController < ApplicationController
   end
 
   def set_trip
-    @trip = Trip.find(params[:id])
+    @trip = Trip.find(params[:id] || params[:trip_id])
   end
 end

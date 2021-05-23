@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_21_210758) do
+ActiveRecord::Schema.define(version: 2021_05_22_230918) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -186,6 +186,8 @@ ActiveRecord::Schema.define(version: 2021_05_21_210758) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "likes_count", default: 0, null: false
     t.integer "comments_count", default: 0, null: false
+    t.bigint "cover_photo_id"
+    t.index ["cover_photo_id"], name: "index_trips_on_cover_photo_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -237,5 +239,6 @@ ActiveRecord::Schema.define(version: 2021_05_21_210758) do
   add_foreign_key "segments", "waypoints", column: "waypoint_to_id"
   add_foreign_key "trip_users", "trips"
   add_foreign_key "trip_users", "users"
+  add_foreign_key "trips", "media_items", column: "cover_photo_id"
   add_foreign_key "waypoints", "trips"
 end

@@ -1,5 +1,9 @@
 <div class="col">
-  <div class="card trip-card">
+  <div class="card trip-card"
+    <% if trip.cover_photo %>
+       style="background-image: url(<%= url_for trip.cover_photo.photo %>)"
+    <% end %>
+  >
     <%= link_to trip do %>
     <div class="card-body">
       <h5 class="card-title mb-0">

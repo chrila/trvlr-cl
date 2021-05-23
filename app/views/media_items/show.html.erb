@@ -5,6 +5,11 @@
     <%= render 'shared/edit_button', target: edit_media_item_path(@media_item) %>
     <%= render 'shared/delete_button', target: media_item_path(@media_item) %>
 <% end %>
+<% if can? :manage, @media_item.trip %>
+  <%= link_to trip_set_cover_photo_path(@media_item.trip, @media_item), method: :put, class: 'btn btn-outline-dark mb-4' do %>
+    <i class="bi bi-card-image mx-1"></i>Set as cover photo
+  <% end %>
+<% end %>
 
 <p class="fs-3 fw-light"><%= @media_item.description %></p>
 
