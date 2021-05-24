@@ -5,7 +5,11 @@ class TripsController < ApplicationController
   authorize_resource
 
   def index
-    @pagy, @trips = pagy(Trip.of_user(current_user).order(id: :desc))
+    @pagy, @trips = pagy(current_user.trips.order(id: :desc))
+  end
+
+  def index_public
+    @pagy, @trips = pagy(Trip.most_popular_public)
   end
 
   def new

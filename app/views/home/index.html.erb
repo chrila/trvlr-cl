@@ -8,7 +8,7 @@
 <h2 class="display-3 my-5">Check out the trips shared by our users!</h2>
 <div id="myCarousel" class="carousel slide my-3" data-bs-ride="carousel">
   <div class="carousel-inner">
-    <%= render partial: 'trip_carousel_item', collection: Trip.public_top_five, as: :trip %>
+    <%= render partial: 'trip_carousel_item', collection: Trip.most_popular_public.first(5), as: :trip %>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -19,16 +19,16 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-<p><%= link_to raw('See more trips &raquo'), '#', class: 'btn btn-lg btn-dark my-3' %></p>
+<p><%= link_to raw('See more trips &raquo'), trips_public_path, class: 'btn btn-lg btn-dark my-3' %></p>
 
 <h2 class="display-3 my-5">Top-rated photos</h2>
 <div class="row row-cols-1 row-cols-lg-2 g-3 my-3">
   <%= render MediaItem.most_popular_public.first(6) %>
 </div>
-<p><%= link_to raw('See more photos &raquo'), '#', class: 'btn btn-lg btn-dark my-3' %></p>
+<p><%= link_to raw('See more photos &raquo'), media_items_public_path, class: 'btn btn-lg btn-dark my-3' %></p>
 
 <h2 class="display-3 my-5">Most popular blog posts</h2>
 <div class="row row-cols-1 row-cols-xl-2 g-3 my-3">
   <%= render Post.most_popular_public.first(6) %>
 </div>
-<p><%= link_to raw('See more blog posts &raquo'), '#', class: 'btn btn-lg btn-dark my-3' %></p>
+<p><%= link_to raw('See more blog posts &raquo'), posts_public_path, class: 'btn btn-lg btn-dark my-3' %></p>

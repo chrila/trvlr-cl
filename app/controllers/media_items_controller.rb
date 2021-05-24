@@ -6,8 +6,8 @@ class MediaItemsController < ApplicationController
   before_action :set_media_item, only: %i[show edit update destroy like dislike]
   authorize_resource
 
-  def index
-    @pagy, @media_items = pagy(MediaItem.all.order(id: :desc))
+  def index_public
+    @pagy, @media_items = pagy(MediaItem.most_popular_public)
   end
 
   def index_trip

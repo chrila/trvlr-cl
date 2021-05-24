@@ -6,6 +6,7 @@ class Ability
   def initialize(user)
     # visitors can view public trips and their details
     can :read, Trip, visibility: 'visibility_public'
+    can :index_public, Trip
     cannot :index, Trip
 
     can :index, TripUser do |t|
@@ -18,10 +19,10 @@ class Ability
     can %i[index read], Segment do |s|
       can? :read, s.trip
     end
-    can %i[index_trip index_waypoint read], Post do |p|
+    can %i[index_trip index_waypoint index_public read], Post do |p|
       can? :read, p.trip
     end
-    can %i[index_trip index_waypoint read], MediaItem do |m|
+    can %i[index_trip index_waypoint index_public read], MediaItem do |m|
       can? :read, m.trip
     end
 

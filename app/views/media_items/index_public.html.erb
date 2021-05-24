@@ -1,9 +1,7 @@
-<h1 class="display-2">Blog</h1>
-
-<%= render 'shared/add_button', target: new_post_path, resource: 'media item' %>
+<h1 class="display-2 mb-4">Media gallery</h1>
 
 <div class="row row-cols-1 g-4">
-  <%= render @posts %>
+  <%= render @media_items %>
 </div>
 
 <% if @pagy.pages > 1%>

@@ -16,10 +16,7 @@ class Trip < ApplicationRecord
   enum status: %i[trip_draft trip_active trip_finished trip_cancelled]
   enum visibility: %i[visibility_private visibility_users visibility_public]
 
-  scope :public_newest, -> { visibility_public.order(id: :desc).first(10) }
-  scope :public_most_likes, -> { visibility_public.order(likes_count: :desc).first(10) }
-  scope :public_top_five, -> { public_most_likes.first(5) }
-  scope :of_user, ->(user) { joins(:trip_users).where('user_id = ?', user.id).order('trips.id DESC') }
+  scope :most_popular_public, -> { visibility_public.order(likes_count: :desc, comments_count: :desc) }
 
   attr_readonly :likes_count
   attr_readonly :comments_count

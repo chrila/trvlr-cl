@@ -51,7 +51,7 @@ Rails.application.routes.draw do
     post 'comments', to: 'comments#create'
   end
 
-  resources :posts
+  resources :posts, except: :index
   scope 'posts/:id', as: :post do
     post 'like', to: 'posts#like', as: :like
     delete 'like', to: 'posts#dislike', as: :dislike
@@ -60,7 +60,7 @@ Rails.application.routes.draw do
     post 'comments', to: 'comments#create'
   end
 
-  resources :media_items
+  resources :media_items, except: :index
   scope 'media_items/:id', as: :media_item do
     post 'like', to: 'media_items#like', as: :like
     delete 'like', to: 'media_items#dislike', as: :dislike
@@ -85,6 +85,10 @@ Rails.application.routes.draw do
   get 'summary/overall', as: :summary_overall
   get 'summary/current_year', as: :summary_current_year
   get 'summary/last_year', as: :summary_last_year
+
+  get 'media_items_public', to: 'media_items#index_public', as: :media_items_public
+  get 'posts_public', to: 'posts#index_public', as: :posts_public
+  get 'trips_public', to: 'trips#index_public', as: :trips_public
 
   root 'home#index'
 end

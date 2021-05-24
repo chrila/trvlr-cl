@@ -6,8 +6,8 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy like dislike]
   authorize_resource
 
-  def index
-    @pagy, @posts = pagy(Post.all.order(id: :desc))
+  def index_public
+    @pagy, @posts = pagy(Post.most_popular_public)
   end
 
   def index_trip
