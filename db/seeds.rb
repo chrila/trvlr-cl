@@ -45,14 +45,14 @@ end
 def create_segment(trip, wp_from, wp_to, previous_segment)
   time_from = previous_segment ? previous_segment.time_to : trip.start_date
   time_to = Faker::Time.between_dates(from: time_from, to: trip.end_date, period: :all)
-
-  status = if time_from > Date.today
-             Segment.statuses['segment_open']
-           elsif time_to < Date.today
-             Segment.statuses['segment_finished']
-           else
-             Segment.statuses['segment_active']
-           end
+  status =
+    if time_from > Date.today
+      Segment.statuses['segment_open']
+    elsif time_to < Date.today
+      Segment.statuses['segment_finished']
+    else
+      Segment.statuses['segment_active']
+    end
 
   Segment.create!(
     trip: trip,
@@ -94,13 +94,14 @@ end
   country = ISO3166::Country.new(Faker::Address.country_code)
   start_date = Faker::Date.between(from: 10.years.ago, to: Date.today)
   end_date = Faker::Date.between(from: start_date, to: 1.year.from_now)
-  status = if start_date > Date.today
-             Trip.statuses['trip_draft']
-           elsif end_date < Date.today
-             rand(1..5) < 4 ? Trip.statuses['trip_finished'] : Trip.statuses['trip_cancelled']
-           else
-             Trip.statuses['trip_active']
-           end
+  status =
+    if start_date > Date.today
+      Trip.statuses['trip_draft']
+    elsif end_date < Date.today
+      rand(1..5) < 4 ? Trip.statuses['trip_finished'] : Trip.statuses['trip_cancelled']
+    else
+      Trip.statuses['trip_active']
+    end
 
   trip = Trip.create!(
     title: "#{country.subregion} #{start_date.year}",
