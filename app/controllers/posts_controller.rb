@@ -11,11 +11,11 @@ class PostsController < ApplicationController
   end
 
   def index_trip
-    @pagy, @posts = pagy(Post.for_trip(@trip).order(id: :desc))
+    @pagy, @posts = pagy(@trip.posts.order(id: :desc))
   end
 
   def index_waypoint
-    @pagy, @posts = pagy(Post.for_waypoint(@waypoint).order(id: :desc))
+    @pagy, @posts = pagy(@waypoint.posts.order(id: :desc))
   end
 
   def new

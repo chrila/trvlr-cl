@@ -11,11 +11,11 @@ class MediaItemsController < ApplicationController
   end
 
   def index_trip
-    @pagy, @media_items = pagy(MediaItem.for_trip(@trip).order(id: :desc))
+    @pagy, @media_items = pagy(@trip.media_items.order(id: :desc))
   end
 
   def index_waypoint
-    @pagy, @media_items = pagy(MediaItem.for_waypoint(@waypoint).order(id: :desc))
+    @pagy, @media_items = pagy(@waypoint.media_items.order(id: :desc))
   end
 
   def new

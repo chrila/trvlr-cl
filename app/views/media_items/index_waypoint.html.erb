@@ -1,4 +1,4 @@
-<h1 class="display-2"><%= "#{@waypoint.name} - Media gallery" %></h1>
+<%= render 'shared/trips_header', trip: @waypoint.trip, title: "Media gallery - #{@waypoint.name}", active: 'media_items' %>
 
 <%= render 'shared/back_button', target: :back %>
 
