@@ -17,7 +17,12 @@ class MediaItem < ApplicationRecord
   scope :for_trip, ->(trip) { where(waypoint: trip.waypoints).order(id: :desc) }
   scope :for_waypoint, ->(waypoint) { where(waypoint: waypoint).order(id: :desc) }
   scope :created_between, ->(date_from, date_to) { where('created_at between ? and ?', date_from, date_to) }
-  scope :most_popular, -> { order(likes_count: :desc, comments_count: :desc) }
+  scope :most_popular_public, lambda {
+    joins(:waypoint)
+      .joins(:trip)
+      .where('trips.visibility = ?', Trip.visibilities['visibility_public'])
+      .order(likes_count: :desc, comments_count: :desc)
+  }
 
   validates :title, presence: true
   validates :description, presence: true
