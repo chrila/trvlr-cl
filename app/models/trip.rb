@@ -18,7 +18,7 @@ class Trip < ApplicationRecord
 
   scope :public_newest, -> { visibility_public.order(id: :desc).first(10) }
   scope :public_most_likes, -> { visibility_public.order(likes_count: :desc).first(10) }
-  scope :public_top_three, -> { public_most_likes.first(3) }
+  scope :public_top_five, -> { public_most_likes.first(5) }
   scope :of_user, ->(user) { joins(:trip_users).where('user_id = ?', user.id).order('trips.id DESC') }
 
   attr_readonly :likes_count

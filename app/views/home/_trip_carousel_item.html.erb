@@ -4,14 +4,13 @@
   <div class="carousel-item">
 <% end %>
 
-  <%= image_tag trip.cover_photo.photo, class: 'carousel-image' %>
+  <%= image_tag trip.cover_photo.photo.representation(resize_to_limit: [800, 800]), class: 'carousel-image' %>
 
   <div class="container">
     <div class="carousel-caption text-start">
-      <h1><span class="carousel-caption-title"><%= trip.title %></span></h1>
-      <h4>by <%= participant_list trip %></h4>
-      <p><%= trip.description %></p>
-      <p><%= link_to raw('Check it out &raquo'), trip, class: 'btn btn-lg btn-primary' %></p>
+      <h1><span class="trip-carousel-text"><%= trip.title %></span></h1>
+      <h4><span class="trip-carousel-text">by <%= participant_list trip %></span></h4>
+      <p><%= link_to raw('Check it out &raquo'), trip, class: 'btn btn-lg btn-primary my-3' %></p>
     </div>
   </div>
 </div>
