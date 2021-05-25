@@ -2,12 +2,14 @@
 <html>
   <head>
     <title>trvlr</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="description" content="Plan, document and share your trips.">
+    <meta name="keywords" content="travel, maps, trips, planning, community">
+    <meta name="author" content="Christian Lampl">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= favicon_link_tag %>
-
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -15,7 +17,6 @@
 
   <body>
     <%= render 'shared/navbar' %>
-
     <main>
       <div class="container">
         <% if notice %>
@@ -30,8 +31,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
         <% end %>
-
-          <%= yield %>
+        <%= yield %>
       </div>
     </main>
   </body>
