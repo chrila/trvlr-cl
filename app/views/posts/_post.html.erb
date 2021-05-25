@@ -1,19 +1,18 @@
 <div class="col">
   <div class="card activity-card">
-    <div class="post-pic-container">
-      <%= link_to post.user do %>
-        <%= image_tag post.user.avatar.representation(resize_to_limit: [32, 32]), class: 'rounded-circle post-user-pic', alt: post.user %>
-      <% end %>
-    </div>
-    <div class="card-body post-body">
+    <div class="card-body">
       <%= link_to post do %>
         <h5 class="card-title"><%= post.title %></h5>
       <% end %>
+      <small class="text-muted">
+        by <%= link_to_if can?(:show, post.user), post.user, post.user %><!--
+        --><%= ", #{time_ago_in_words(post.created_at)} ago" %>
+      </small>
       <p class="card-text"><%= post.content %></p>
     </div>
     <div class="card-footer">
-      <span><i class="bi bi-geo-alt"></i> <%= "#{post.waypoint.name}, #{post.waypoint.country_name}" %></span>
-      <small class="text-muted mx-2"><%= "#{time_ago_in_words(post.created_at)} ago" %></small>
+      <span><i class="bi bi-geo-alt"></i> <%= "#{post.waypoint.name}, #{post.waypoint.country_name} #{post.waypoint.country_flag}" %></span>
+      <small class="text-muted mx-2"><%= "" %></small>
       <span class="post-reaction-buttons">
         <%= render 'shared/like_button', likeable: post %>
         <%= render 'shared/comments_button', commentable: post %>

@@ -30,6 +30,10 @@ class Waypoint < ApplicationRecord
     ISO3166::Country[country]
   end
 
+  def country_flag
+    ISO3166::Country[country].emoji_flag
+  end
+
   private
 
   def data_collection
