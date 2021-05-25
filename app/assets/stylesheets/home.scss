@@ -6,6 +6,31 @@
   align-content: center;
 }
 
+@keyframes fade-slide-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.scroll-arrow {
+  position: absolute;
+  bottom: 4vh;
+  left: 0;
+  right: 0;
+  text-align: center;
+  opacity: 0;
+  animation-name: fade-slide-down;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-out;
+  animation-direction: alternate;
+}
+
 .carousel-caption {
   bottom: 3rem;
   z-index: 10;
@@ -15,7 +40,7 @@
   height: 75vh;
 }
 
-.carousel-item>img {
+.carousel-item > img {
   position: absolute;
   top: 0;
   left: 0;
