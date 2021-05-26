@@ -18,3 +18,4 @@ require("trix")
 require("@rails/actiontext")
 
 import '../js/leaflet'
+import '../js/hide_navbar'

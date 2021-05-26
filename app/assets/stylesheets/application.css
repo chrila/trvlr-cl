@@ -52,6 +52,10 @@ body {
   padding-top: 0.5rem;
 }
 
+.navbar {
+  transition: top 0.3s;
+}
+
 .navbar-light {
   color: black;
   background-color: white;
