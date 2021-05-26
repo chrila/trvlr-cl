@@ -85,15 +85,22 @@ body {
   padding-bottom: 1rem;
   padding-left: 1rem;
   margin-bottom: 1rem;
-  object-fit: cover;
+  background-size: cover;
+  background-position: center;
 }
 
 .trip-header-text {
   background-color: black;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  line-height: 1.2;
+  padding: 0.5rem;
+  line-height: 1.5;
   color: white;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.trip-header-text-above {
+  z-index: 2;
+  position: relative;
 }
 
 /* pagination links */
