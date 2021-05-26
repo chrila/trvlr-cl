@@ -53,4 +53,6 @@
   background-color: black;
   padding: 0.5rem;
   line-height: 1.5;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
