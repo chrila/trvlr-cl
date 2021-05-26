@@ -78,6 +78,24 @@ body {
   color: black;
 }
 
+/* trip navbar */
+
+.trip-header {
+  padding-top: 4rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  object-fit: cover;
+}
+
+.trip-header-text {
+  background-color: black;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  line-height: 1.2;
+  color: white;
+}
+
 /* pagination links */
 
 .page-link {

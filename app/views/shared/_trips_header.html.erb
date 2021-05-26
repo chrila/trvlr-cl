@@ -1,6 +1,10 @@
-<div class="mb-4">
-  <h1 class="display-6 text-black-50 mb-0"><%= trip.title if trip %></h1>
-  <h2 class="display-2"><%= title %></h2>
+<div class="trip-header"
+  <% if trip && trip.cover_photo %>
+    style="background-image: url(<%= url_for trip.cover_photo.photo %>)"
+  <% end %>
+>
+  <h1 class="display-6 text-black-50 mb-0"><span class="trip-header-text"><%= trip.title.presence || 'New' %></span></h1>
+  <h2 class="display-2"><span class="trip-header-text"><%= title %></span></h2>
 </div>
 
 <% if local_assigns[:navbar].nil? || local_assigns[:navbar] %>

@@ -1,4 +1,4 @@
-<%= render 'shared/trips_header', trip: @media_item.trip, title: @media_item.title, navbar: false %>
+<%= render 'shared/trips_header', trip: @media_item.trip, title: 'Media item', navbar: false %>
 
 <%= render 'shared/back_button', target: trip_media_items_path(@media_item.trip) %>
 <% if can? :manage, @media_item %>
@@ -11,6 +11,7 @@
   <% end %>
 <% end %>
 
+<p class="fs-3 fw-bold"><%= @media_item.title %></p>
 <p class="fs-3 fw-light"><%= @media_item.description %></p>
 
 <%= render @media_item, detail_view: true %>
