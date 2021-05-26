@@ -14,3 +14,6 @@
 <p><strong>Continent: </strong><%= @waypoint.continent %></p>
 <p><strong>Longitude: </strong><%= @waypoint.longitude %></p>
 <p><strong>Latitude: </strong><%= @waypoint.latitude %></p>
+
+<h2 class="display-6 mt-5 mb-4">Map</h2>
+<%= render 'shared/map', waypoints: [@waypoint] %>

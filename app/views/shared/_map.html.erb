@@ -1,4 +1,4 @@
-<div id="mapid" class="map-container ratio ratio-16x9"></div>
+<div id="mapid" class="map-container"></div>
 <script>
 	var mymap = L.map('mapid', {
     center: [0, 0],
@@ -16,29 +16,37 @@
 		zoomOffset: -1
 	}).addTo(mymap);
 
-  // draw waypoints
-  <% waypoints.each do |w| %>
-	  L.marker([<%= w.lat_long_str %>], {
-      title: '<%= w.name %>'
-    }).addTo(mymap);
+  <% if local_assigns[:waypoints].present? %>
+    // draw waypoints
+    var markers = [];
+    <% waypoints.each do |w| %>
+      markers.push(
+        L.marker([<%= w.lat_long_str %>], {
+          title: '<%= w.name %>'
+        }).addTo(mymap)
+      );
+    <% end %>
+
+    // zoom the map to show all markers
+    var group = new L.featureGroup(markers)
+    mymap.fitBounds(group.getBounds());
+
+    // if there's only one marker, set zoom level to actually see something
+    if (markers.length == 1) {
+      mymap.setZoom(10);
+    }
   <% end %>
 
   <% if local_assigns[:segments].present? %>
     // draw segments
-    var lines = []
     var line;
     <% segments.each_with_index do |s, i| %>
       line = [[<%= s.waypoint_from.lat_long_str %>], [<%= s.waypoint_to.lat_long_str %>]];
-      lines.push(line);
       L.polyline(line, {
         color: '<%= segment_status_color(s) %>',
         weight: '<%= 3.0 / Math.sqrt(i + 1) %>'
       }).addTo(mymap);
     <% end %>
-
-    // zoom the map to the entire path (= all segments)
-    var path = L.polyline(lines);
-    mymap.fitBounds(path.getBounds());
   <% end %>
 
 </script>
