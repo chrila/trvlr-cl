@@ -60,7 +60,7 @@ def create_segment(trip, wp_from, wp_to, previous_segment)
     waypoint_to: wp_to,
     time_from: time_from,
     time_to: time_to,
-    distance: wp_from.distance_to(wp_to),
+    distance: wp_from.distance_to(wp_to).round(2),
     status: status
   )
 end
@@ -156,7 +156,7 @@ end
 end
 
 # comments
-50.times do
+200.times do
   commentable =
     case rand(1..4)
     when 1 then Post.all.sample
@@ -168,7 +168,7 @@ end
 end
 
 # likes
-50.times do
+200.times do
   likeable =
     case rand(1..5)
     when 1 then Post.all.sample
