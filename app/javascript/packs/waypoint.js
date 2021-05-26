@@ -1,25 +1,23 @@
 import * as AjaxUtils from '../js/ajax_utils'
 
-document.addEventListener("turbolinks:load", function() {
-  let btnSearch = document.querySelector(".location-search-button");
+let btnSearch = document.querySelector(".location-search-button");
 
-  document.querySelector(".location-search-button").addEventListener("click", function (event) {
-    event.preventDefault();
-    let keyword = document.querySelector("#waypoint_address").value;
-    if (keyword) {
-      console.debug(`Doing waypoint search with keywords: ${keyword}`);
-      
-      // call waypoints/search/:keyword via API
-      fetch(AjaxUtils.createRequest("/waypoints/search/" + keyword))
+document.querySelector(".location-search-button").addEventListener("click", function (event) {
+  event.preventDefault();
+  let keyword = document.querySelector("#waypoint_address").value;
+  if (keyword) {
+    console.debug(`Doing waypoint search with keywords: ${keyword}`);
+    
+    // call waypoints/search/:keyword via API
+    fetch(AjaxUtils.createRequest("/waypoints/search/" + keyword))
       .then(response => response.json())
       .then(response => displayFetchedData(response));
 
-      // meanwhile, change button to show that request is in progress
-      disableSearchButton(btnSearch);
-    } else {
-      displayError("No keywords given.");
-    }
-  });
+    // meanwhile, change button to show that request is in progress
+    disableSearchButton(btnSearch);
+  } else {
+    displayError("No keywords given.");
+  }
 });
 
 // show recieved values in form
