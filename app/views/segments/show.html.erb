@@ -6,12 +6,12 @@
     <%= render 'shared/delete_button', target: trip_segment_path(@trip, @segment) %>
 <% end %>
 
-<p><strong>From: </strong><%= @segment.waypoint_from.name %></p>
-<p><strong>To: </strong><%= @segment.waypoint_to.name %></p>
-<p><strong>Start: </strong><%= @segment.time_from.to_s(:day_and_year) %></p>
-<p><strong>End: </strong><%= @segment.time_to.to_s(:day_and_year) %></p>
-<p><strong>Distance: </strong><%= "#{@segment.distance} km" %></p>
-<p><strong>Status: </strong><%= tag.span @segment.status_string, class: class_names('badge', segment_status_bg_class(@segment)) %></p>
+<p class="fs-3 fw-light"><strong>From: </strong><%= @segment.waypoint_from.name %></p>
+<p class="fs-3 fw-light"><strong>To: </strong><%= @segment.waypoint_to.name %></p>
+<p class="fs-3 fw-light"><strong>Start: </strong><%= @segment.time_from.to_s(:day_and_year) %></p>
+<p class="fs-3 fw-light"><strong>End: </strong><%= @segment.time_to.to_s(:day_and_year) %></p>
+<p class="fs-3 fw-light"><strong>Distance: </strong><%= "#{@segment.distance.round(2)} km" %></p>
+<p class="fs-3 fw-light"><strong>Status: </strong><%= tag.span @segment.status_string, class: class_names('badge', segment_status_bg_class(@segment)) %></p>
 
 <h2 class="display-6 mt-5 mb-4">Map</h2>
 <%= render 'shared/map', waypoints: [@segment.waypoint_from, @segment.waypoint_to], segments: [@segment] %>
