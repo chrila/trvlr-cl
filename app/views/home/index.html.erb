@@ -3,10 +3,10 @@
   <p class="display-1 mb-5">Welcome to trvlr!</p>
   <p class="display-1 mb-5">Plan, document and share your trips.</p>
   <p class="display-1 text-primary my-5">Together.</p>
-  <div class="scroll-arrow"><i class="bi bi-chevron-compact-down display-3"></i></div>
+  <a href="#trips" class="scroll-arrow"><i class="bi bi-chevron-compact-down display-3"></i></a>
 </div>
 
-<h2 class="display-3 my-5">Check out the trips shared by our users!</h2>
+<h2 id="trips" class="display-3 my-5">Check out the trips shared by our users!</h2>
 <div id="myCarousel" class="carousel slide my-3" data-bs-ride="carousel">
   <div class="carousel-inner">
     <%= render partial: 'trip_carousel_item', collection: Trip.most_popular_public.first(5), as: :trip %>
@@ -22,13 +22,13 @@
 </div>
 <p><%= link_to raw('See more trips &raquo'), trips_public_path, class: 'btn btn-lg btn-dark my-3' %></p>
 
-<h2 class="display-3 my-5">Top-rated photos</h2>
+<h2 id="photos" class="display-3 my-5">Top-rated photos</h2>
 <div class="row row-cols-1 row-cols-lg-2 g-3 my-3">
   <%= render MediaItem.most_popular_public.first(6) %>
 </div>
 <p><%= link_to raw('See more photos &raquo'), media_items_public_path, class: 'btn btn-lg btn-dark my-3' %></p>
 
-<h2 class="display-3 my-5">Most popular blog posts</h2>
+<h2 id="posts" class="display-3 my-5">Most popular blog posts</h2>
 <div class="row row-cols-1 row-cols-xl-2 g-3 my-3">
   <%= render Post.most_popular_public.first(6) %>
 </div>
