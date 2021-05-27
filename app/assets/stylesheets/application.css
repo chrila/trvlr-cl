@@ -3,10 +3,6 @@
  *= require_self
  */
 
-body {
-  margin-bottom: 3rem;
-}
-
 /* forms */
 
 .form-error-list {
@@ -38,7 +34,7 @@ body {
   color: white;
 }
 
-.navbar-brand {
+.trvlr-logo {
   font-size: 2rem;
   font-weight: bold;
   color: white;
@@ -95,4 +91,33 @@ body {
 
 .pagy-bootstrap-nav {
   display: inline-block;
+}
+
+/* footer */
+
+.footer {
+  width: 100%;
+  background-color: black;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 300;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  padding: 2rem 0;
+  margin-top: 3rem;
+}
+
+.footer a:hover {
+  color: white;
+}
+
+.btn-admin {
+  background-color: transparent;
+  border-color: white;
+  color: white;
+}
+
+.btn-admin:hover {
+  background-color: #99999983;
 }
