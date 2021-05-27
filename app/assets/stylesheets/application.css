@@ -78,31 +78,6 @@ body {
   color: black;
 }
 
-/* trip navbar */
-
-.trip-header {
-  padding-top: 4rem;
-  padding-bottom: 1rem;
-  padding-left: 1rem;
-  margin-bottom: 1rem;
-  background-size: cover;
-  background-position: center;
-}
-
-.trip-header-text {
-  background-color: black;
-  padding: 0.5rem;
-  line-height: 1.5;
-  color: white;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
-}
-
-.trip-header-text-above {
-  z-index: 2;
-  position: relative;
-}
-
 /* pagination links */
 
 .page-link {
