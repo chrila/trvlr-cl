@@ -1,7 +1,7 @@
 <%= render 'shared/trips_header', trip: @trip, title: 'Overview', active: 'overview' %>
 
 <p class="fs-2 fw-normal"><%= @trip.description %></p>
-<span class="trip-button-row fs-3 fw-light">
+<span class="trip-button-row fs-5 fw-light">
   <span class="badge bg-dark"><%= @trip.visibility_string %></span>
   <% if signed_in? && @trip.users.exists?(current_user.id) %>
     <%= tag.span user_in_trip(current_user, @trip).role_string, class: class_names('badge', trip_role_bg_class(user_in_trip(current_user, @trip))) %>
