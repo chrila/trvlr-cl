@@ -5,6 +5,10 @@
 
 /* forms */
 
+main .container {
+  min-height: 80vh;
+}
+
 .form-error-list {
   background-color: #ff000013;
   padding: 1rem;
