@@ -86,7 +86,8 @@ class WaypointsController < ApplicationController
         country: country.alpha2,
         continent: country.continent,
         latitude: res.latitude,
-        longitude: res.longitude
+        longitude: res.longitude,
+        address: res.address
       }
     end
     render json: hash

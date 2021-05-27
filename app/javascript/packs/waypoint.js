@@ -28,6 +28,8 @@ function displayFetchedData(data) {
     document.querySelector("#waypoint_longitude").value = data.longitude;
     document.querySelector("#waypoint_country").value = data.country;
     document.querySelector("#waypoint_continent").value = data.continent;
+    // replace search keyword with address of found place
+    document.querySelector("#waypoint_address").value = data.address;
     displayError(null);
   } else {
     // show error message
