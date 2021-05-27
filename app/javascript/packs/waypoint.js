@@ -40,7 +40,12 @@ function displayFetchedData(data) {
 }
 
 function displayError(msg) {
-  document.querySelector("#lb-search-error").innerText = msg;
+  let lbError = document.querySelector("#lb-search-error");
+  let inputAddress = document.querySelector('#waypoint_address');
+  lbError.classList.toggle("invalid-feedback", msg != null);
+  inputAddress.classList.toggle("is-invalid", msg != null);
+  inputAddress.classList.toggle("is-valid", msg == null);
+  lbError.innerText = msg;
 }
 
 // enable search button
