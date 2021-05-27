@@ -68,9 +68,9 @@ class PostsController < ApplicationController
   def destroy
     respond_to do |format|
       if @post.destroy
-        format.html { redirect_to :back, notice: 'Post was successfully deleted.' }
+        format.html { redirect_to trip_posts_path(@trip), notice: 'Post was successfully deleted.' }
       else
-        format.html { redirect_to :back, alert: 'Post could not be deleted.' }
+        format.html { redirect_back fallback_location: trip_posts_path(@trip), alert: 'Post could not be deleted.' }
       end
     end
   end
@@ -101,6 +101,8 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
+    @waypoint = @post.waypoint
+    @trip = @waypoint.trip
   end
 
   def error_string(action)

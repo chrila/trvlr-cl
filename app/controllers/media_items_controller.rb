@@ -68,7 +68,7 @@ class MediaItemsController < ApplicationController
   def destroy
     respond_to do |format|
       if @media_item.destroy
-        format.html { redirect_back fallback_location: trip_media_items_path(@trip), notice: 'Media item was successfully deleted.' }
+        format.html { redirect_to trip_media_items_path(@trip), notice: 'Media item was successfully deleted.' }
       else
         format.html { redirect_back fallback_location: trip_media_items_path(@trip), alert: 'Media item could not be deleted.' }
       end
@@ -101,6 +101,8 @@ class MediaItemsController < ApplicationController
 
   def set_media_item
     @media_item = MediaItem.find(params[:id])
+    @waypoint = @media_item.waypoint
+    @trip = @waypoint.trip
   end
 
   def error_string(action)
