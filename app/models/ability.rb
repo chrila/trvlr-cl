@@ -83,10 +83,18 @@ class Ability
       t.trip_users.role_administrator.map(&:user).include?(user) ||
         t.trip_users.role_editor.map(&:user).include?(user)
     end
+    can %i[new_trip new_waypoint], MediaItem do |m|
+      can? :manage_mediaitem, m.trip
+    end
+
     can %i[manage_post], Trip do |t|
       t.trip_users.role_administrator.map(&:user).include?(user) ||
         t.trip_users.role_editor.map(&:user).include?(user)
     end
+    can %i[new_trip new_waypoint], Post do |p|
+      can? :manage_post, p.trip
+    end
+
     # Reading is analog to the trip's permission
     can %i[read like dislike], MediaItem do |m|
       can? :read, m.trip
