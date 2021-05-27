@@ -25,7 +25,6 @@ class MediaItem < ApplicationRecord
   }
 
   validates :title, presence: true
-  validates :description, presence: true
 
   def activity_string
     'a media item'

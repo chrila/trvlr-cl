@@ -83,7 +83,7 @@ class Ability
       t.trip_users.role_administrator.map(&:user).include?(user) ||
         t.trip_users.role_editor.map(&:user).include?(user)
     end
-    can %i[new_trip new_waypoint], MediaItem do |m|
+    can %i[manage], MediaItem do |m|
       can? :manage_mediaitem, m.trip
     end
 
@@ -91,7 +91,7 @@ class Ability
       t.trip_users.role_administrator.map(&:user).include?(user) ||
         t.trip_users.role_editor.map(&:user).include?(user)
     end
-    can %i[new_trip new_waypoint], Post do |p|
+    can %i[manage], Post do |p|
       can? :manage_post, p.trip
     end
 
