@@ -2,7 +2,7 @@
 
 <%= render 'shared/back_button', target: :back %>
 
-<% if can? :new_waypoint, MediaItem %>
+<% if can? :manage_mediaitem, @trip %>
   <%= render 'shared/add_button', target: trip_waypoint_new_media_item_path(@trip, @waypoint), resource: 'media item' %>
 <% end %>
 

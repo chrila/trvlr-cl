@@ -79,13 +79,13 @@ class Ability
 
     # Media items and posts
     # They can only be created if a user is participating in a trip as 'administrator' or 'editor'
-    can %i[manage], MediaItem do |m|
-      m.trip.trip_users.role_administrator.map(&:user).include?(user) ||
-        m.trip.trip_users.role_editor.map(&:user).include?(user)
+    can %i[manage_mediaitem], Trip do |t|
+      t.trip_users.role_administrator.map(&:user).include?(user) ||
+        t.trip_users.role_editor.map(&:user).include?(user)
     end
-    can %i[manage], Post do |p|
-      p.trip.trip_users.role_administrator.map(&:user).include?(user) ||
-        p.trip.trip_users.role_editor.map(&:user).include?(user)
+    can %i[manage_post], Trip do |t|
+      t.trip_users.role_administrator.map(&:user).include?(user) ||
+        t.trip_users.role_editor.map(&:user).include?(user)
     end
     # Reading is analog to the trip's permission
     can %i[read like dislike], MediaItem do |m|

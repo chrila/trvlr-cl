@@ -1,6 +1,6 @@
 <%= render 'shared/trips_header', trip: @trip, title: 'Blog', active: 'posts' %>
 
-<% if can? :new_trip, Post %>
+<% if can? :manage_mediaitem, @trip %>
   <%= render 'shared/add_button', target: trip_new_post_path(@trip), resource: 'blog post' %>
 <% end %>
 
