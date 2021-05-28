@@ -11,3 +11,8 @@
   max-height: 70vh;
   object-fit: contain;
 }
+
+.media-item-bottom-bar {
+  display: flex;
+  justify-content: space-between;
+}
