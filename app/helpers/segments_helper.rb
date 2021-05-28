@@ -10,8 +10,8 @@ module SegmentsHelper
   def segment_status_color(segment)
     colors = {
       segment_open: 'black',
-      segment_active: 'yellow',
-      segment_finished: 'green'
+      segment_active: '#ffc107', # yellow
+      segment_finished: '#198754' # green
     }
     colors[segment.status.to_sym]
   end

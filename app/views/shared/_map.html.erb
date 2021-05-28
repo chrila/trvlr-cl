@@ -43,8 +43,7 @@
     <% segments.each_with_index do |s, i| %>
       line = [[<%= s.waypoint_from.lat_long_str %>], [<%= s.waypoint_to.lat_long_str %>]];
       L.polyline(line, {
-        color: '<%= segment_status_color(s) %>',
-        weight: '<%= 3.0 / Math.sqrt(i + 1) %>'
+        color: '<%= segment_status_color(s) %>'
       }).addTo(mymap);
     <% end %>
   <% end %>
