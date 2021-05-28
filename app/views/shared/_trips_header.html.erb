@@ -3,7 +3,11 @@
     style="background-image: url(<%= url_for trip.cover_photo.photo %>)"
   <% end %>
 >
-  <h1 class="display-6"><span class="trip-header-text trip-header-text-above"><%= trip.title.presence || 'New' %></span></h1>
+  <h1 class="display-6">
+    <span class="trip-header-text trip-header-text-above">
+      <%= trip.title if trip %>
+    </span>
+  </h1>
   <h2 class="display-2"><span class="trip-header-text"><%= title %></span></h2>
 </div>
 
