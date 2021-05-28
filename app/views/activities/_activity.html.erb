@@ -1,28 +1,28 @@
 <div class="col">
   <div class="card activity-card">
-    <div class="activity-pic-container">
+    <div class="activity-card-body">
       <%= link_to activity.user do %>
         <%= image_tag activity.user.avatar.representation(resize_to_limit: [32, 32]), class: 'rounded-circle activity-user-pic', alt: activity.user %>
       <% end %>
+      <div class="activity-card-content">
+        <h5 class="card-title">
+          <%= link_to activity.user, user_path(activity.user) %>
+        </h5>
+        <p class="card-text">
+          <%= "#{activity.user} #{activity.action}"%>
+          <%= link_to activity.subject.activity_string, activity.subject %>
+          <%= ' of you' if activity.subject_type != 'User' && activity.subject.owned_by?(current_user) %>
+        </p>
+      </div>
     </div>
-    <div class="card-body activity-body">
-      <h5 class="card-title">
-        <%= link_to activity.user, user_path(activity.user) %>
-      </h5>
-      <p class="card-text">
-        <%= "#{activity.user} #{activity.action}"%>
-        <%= link_to activity.subject.activity_string, activity.subject %>
-        <%= ' of you' if activity.subject_type != 'User' && activity.subject.owned_by?(current_user) %>
-      </p>
-    </div>
-    <div class="card-footer">
+    <div class="card-footer activity-bottom-bar">
       <small class="text-muted">
         <%= link_to "#{time_ago_in_words(activity.created_at)} ago", activity_path(activity) %>
       </small>
-      <span class="activity-reaction-buttons">
+      <div class="interaction-button-group">
         <%= render 'shared/like_button', likeable: activity %>
         <%= render 'shared/comments_button', commentable: activity %>
-      </span>
+      </div>
     </div>
   </div>
 </div>

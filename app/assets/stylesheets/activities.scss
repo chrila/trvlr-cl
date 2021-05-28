@@ -4,29 +4,20 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.activity-card-body {
+  display: flex;
+  padding: 1rem;
+}
+
+.activity-card-content {
+  margin-left: 1rem;
+}
+
 .activity-user-pic {
   width: 32px;
   height: 32px;
-  margin: 1rem 1rem;
   display: inline;
   object-fit: cover;
-}
-
-.activity-pic-container {
-  position: absolute;
-  height: 70%;
-}
-
-.activity-body {
-  position: relative;
-  left: 3rem;
-  width: 90%;
-}
-
-.activity-reaction-buttons {
-  right: 2%;
-  position: absolute;
-  display: inline-flex;
 }
 
 a {
@@ -36,4 +27,9 @@ a {
 
 a:visited {
   text-decoration: none;
+}
+
+.activity-bottom-bar {
+  display: flex;
+  justify-content: space-between;
 }
