@@ -1,27 +1,26 @@
 <div class="col">
   <div class="card comment-card">
     <p><%= comment.content %></p>
-    <div>
-      <%= link_to comment.user do %>
-        <small class="text-muted"><%= comment.user %></small>
-      <% end %>
-
-      <% if comment.edited? %>
-        <small class="text-muted">(edited)</small>
-      <% end %>
-
-      <% if can? :manage, comment %>
-        | <%= link_to comment, method: :delete do %>
-          <small class="text-muted">Delete</small>
+    <div class="comment-bottom-bar">
+      <div>
+        <%= link_to comment.user do %>
+          <small class="text-muted"><%= comment.user %></small>
         <% end %>
-        | <%= link_to edit_comment_path(comment) do %>
-          <small class="text-muted">Edit</small>
+
+        <% if comment.edited? %>
+          <small class="text-muted">(edited)</small>
         <% end %>
-      <% end %>
-      
-      <span class="comment-reaction-buttons">
-        <%= render 'shared/like_button', likeable: comment %>
-      </span>
+
+        <% if can? :manage, comment %>
+          | <%= link_to comment, method: :delete do %>
+            <small class="text-muted">Delete</small>
+          <% end %>
+          | <%= link_to edit_comment_path(comment) do %>
+            <small class="text-muted">Edit</small>
+          <% end %>
+        <% end %>
+      </div>
+      <%= render 'shared/like_button', likeable: comment %>
     </div>
   </div>
 </div>

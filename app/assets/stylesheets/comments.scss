@@ -1,11 +1,10 @@
 /* comments */
 
-.comment-reaction-buttons {
-  right: 0;
-  position: absolute;
-  display: inline-flex;
-}
-
 .comment-card {
   padding: 1rem;
+}
+
+.comment-bottom-bar {
+  display: flex;
+  justify-content: space-between;
 }
