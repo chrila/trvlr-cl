@@ -8,11 +8,9 @@
   <% end %>
   <%= tag.span @trip.status_string, class: class_names('badge', trip_status_bg_class(@trip)) %>
 </span>
-<span class="trip-button-row">
+<span class="interaction-button-group px-2 py-2">
   <%= render 'shared/like_button', likeable: @trip %>
   <%= render 'shared/comments_button', commentable: @trip %>
-</span>
-<span class="trip-button-row mx-2">
   <% if can? :manage, @trip %>
     <%= link_to edit_trip_path(@trip) do %>
       <i class="bi bi-pencil mx-1"></i>

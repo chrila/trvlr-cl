@@ -1,4 +1,4 @@
-<div class="mx-2">
+<div class="like-button">
   <% if likeable.liked_by? current_user %>
     <%= link_to_if can?(:like, likeable), icon_thumbs_up(likeable, true).html_safe, dislike_path(likeable), method: :delete, remote: true, id: "like-link-#{likeable.id}" do %>
       <%= icon_thumbs_up(likeable, true).html_safe %>

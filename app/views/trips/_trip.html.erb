@@ -12,10 +12,10 @@
           </h5>
           <small class="text-muted"><%= "#{trip.start_date.to_s(:long)} to #{trip.end_date.to_s(:long)}" %></small>
         </div>
-        <span class="trip-button-row">
+        <div class="interaction-button-group">
           <%= render 'shared/like_button', likeable: trip %>
           <%= render 'shared/comments_button', commentable: trip %>
-        </span>
+        </div>
       </div>
       <p class="card-text mt-2"><%= trip.description %></p>
       <p class="card-text">

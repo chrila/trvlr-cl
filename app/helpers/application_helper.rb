@@ -22,6 +22,6 @@ module ApplicationHelper
   end
 
   def icon_thumbs_up(likeable, filled)
-    "<i id='like-button-#{likeable.id}' class='bi bi-hand-thumbs-up#{'-fill' if filled} mx-1'></i>"
+    "<i id='like-button-#{likeable.id}' class='bi bi-hand-thumbs-up#{'-fill' if filled}'></i>"
   end
 end

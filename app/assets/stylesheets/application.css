@@ -125,3 +125,20 @@ main .container {
 .btn-admin:hover {
   background-color: #99999983;
 }
+
+/* interaction buttons */
+
+.like-button {
+  display: inline-flex;
+  gap: 0.5rem;
+}
+
+.comments-button {
+  display: inline-flex;
+  gap: 0.5rem;
+}
+
+.interaction-button-group {
+  display: inline-flex;
+  gap: 1rem;
+}
