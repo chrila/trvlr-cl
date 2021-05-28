@@ -6,7 +6,8 @@
         class: 'media-item-img') %>
     <% end %>
     <div class="card-body">
-      <p class="card-text"><i class="bi bi-geo-alt"></i> <%= "#{media_item.waypoint.name}, #{media_item.waypoint.country_name} #{media_item.waypoint.country_flag}" %></p>
+      <p class="card-text mb-0"><i class="bi bi-geo-alt"></i> <%= "#{media_item.waypoint.name}, #{media_item.waypoint.country_name} #{media_item.waypoint.country_flag}" %></p>
+      <small class="text-muted">by <%= link_to_if can?(:show, media_item.user), media_item.user, media_item.user %></small>
       <div class="media-item-bottom-bar">
         <small class="text-muted"><%= "#{time_ago_in_words(media_item.created_at)} ago" %></small>
         <div class="interaction-button-group">
