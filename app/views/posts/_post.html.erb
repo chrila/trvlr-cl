@@ -10,13 +10,12 @@
       </small>
       <p class="card-text"><%= post.content %></p>
     </div>
-    <div class="card-footer">
-      <span><i class="bi bi-geo-alt"></i> <%= "#{post.waypoint.name}, #{post.waypoint.country_name} #{post.waypoint.country_flag}" %></span>
-      <small class="text-muted mx-2"><%= "" %></small>
-      <span class="post-reaction-buttons">
+    <div class="card-footer post-bottom-bar">
+      <div><i class="bi bi-geo-alt"></i> <%= "#{post.waypoint.name}, #{post.waypoint.country_name} #{post.waypoint.country_flag}" %></div>
+      <div class="interaction-button-group">
         <%= render 'shared/like_button', likeable: post %>
         <%= render 'shared/comments_button', commentable: post %>
-      </span>
+      </div>
     </div>
   </div>
 </div>
