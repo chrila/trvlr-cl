@@ -5,12 +5,18 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  background-position: center;
   background-image: image-url('default_cover_photo.jpg');
 }
 
 .trip-card:hover {
   color: black;
   background-color: rgba(0, 0, 0, 0.02);
+}
+
+.trip-card-header {
+  display: flex;
+  justify-content: space-between;
 }
 
 .card-title {

@@ -4,12 +4,19 @@
        style="background-image: url(<%= url_for trip.cover_photo.photo %>)"
     <% end %>
   >
-    <%= link_to trip do %>
     <div class="card-body">
-      <h5 class="card-title mb-0">
-        <%= trip.title %>
-      </h5>
-      <small class="text-muted"><%= "#{trip.start_date.to_s(:long)} to #{trip.end_date.to_s(:long)}" %></small>
+      <div class="trip-card-header">
+        <div>
+          <h5 class="card-title mb-0">
+            <%= link_to trip.title, trip %>
+          </h5>
+          <small class="text-muted"><%= "#{trip.start_date.to_s(:long)} to #{trip.end_date.to_s(:long)}" %></small>
+        </div>
+        <span class="trip-button-row">
+          <%= render 'shared/like_button', likeable: trip %>
+          <%= render 'shared/comments_button', commentable: trip %>
+        </span>
+      </div>
       <p class="card-text mt-2"><%= trip.description %></p>
       <p class="card-text">
         <% if signed_in? %>
@@ -21,7 +28,6 @@
         <%= tag.span trip.status_string, class: class_names('badge', trip_status_bg_class(trip)) %>
       </p>
     </div>
-    <% end %>
     <div class="card-footer">
       <div class="btn-group w-100 d-flex d-lg-block">
         <!-- the comments are needed to avoid a whitespace between the buttons -->
