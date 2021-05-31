@@ -5,12 +5,14 @@
   <td class="d-none d-lg-table-cell"><%= trip_user.user.email %></td>
     <% if can? :manage, trip_user %>
       <td>
-        <%= link_to edit_trip_trip_user_path(@trip, trip_user) do %>
-          <i class="bi bi-pencil mx-1"></i>
-        <% end %>
-        <%= link_to trip_trip_user_path(@trip, trip_user), method: :delete, data: { confirm: 'Are you sure?' } do %>
-          <i class="bi bi-trash"></i>
-        <% end %>
+        <div class="table-row-action-items">
+          <%= link_to edit_trip_trip_user_path(@trip, trip_user) do %>
+            <i class="bi bi-pencil"></i>
+          <% end %>
+          <%= link_to trip_trip_user_path(@trip, trip_user), method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class="bi bi-trash"></i>
+          <% end %>
+        </div>
       </td>
     <% end %>
 </tr>

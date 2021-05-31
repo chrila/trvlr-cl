@@ -142,3 +142,11 @@ main .container {
   display: inline-flex;
   gap: 1rem;
 }
+
+/* table rows */
+
+.table-row-action-items {
+  display: inline-flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}

@@ -5,28 +5,35 @@
   <td class="d-none d-lg-table-cell"><%= waypoint.address %></td>
   <td class="d-none d-lg-table-cell"><%= waypoint.country_name %></td>
   <td>
-    <% if can? :read, @trip %>
-      <%= link_to trip_waypoint_posts_path(@trip, waypoint) do %>
-        <i class="bi bi-journals mx-1"></i>
+    <div class="table-row-action-items">
+      <% if can? :read, @trip %>
+        <%= link_to trip_waypoint_posts_path(@trip, waypoint) do %>
+          <i class="bi bi-journals"></i>
+        <% end %>
+        <%= link_to trip_waypoint_media_items_path(@trip, waypoint) do %>
+          <i class="bi bi-images"></i>
+        <% end %>
       <% end %>
-      <%= link_to trip_waypoint_media_items_path(@trip, waypoint) do %>
-        <i class="bi bi-images"></i>
-      <% end %>
-    <% end %>
+    </div>
   </td>
   <% if can? :read, waypoint %>
     <td>
-      <%= link_to trip_waypoint_path(@trip, waypoint) do %>
-        <i class="bi bi-file-earmark-text"></i>
-      <% end %>
+      <div class="table-row-action-items">
+        <%= link_to trip_waypoint_path(@trip, waypoint) do %>
+          <i class="bi bi-file-earmark-text"></i>
+        <% end %>
+        <% if can? :manage, waypoint %>
+          <%= link_to edit_trip_waypoint_path(@trip, waypoint) do %>
+              <i class="bi bi-pencil"></i>
+          <% end %>
+          <%= link_to trip_waypoint_path(@trip, waypoint), method: :delete,
+                data: { confirm: 'Are you sure? Associated segments, posts and media items will also be deleted!' } do %>
+              <i class="bi bi-trash"></i>
+          <% end %>
+        <% end %>
+      </div>
+    </td>
       <% if can? :manage, waypoint %>
-        <%= link_to edit_trip_waypoint_path(@trip, waypoint) do %>
-            <i class="bi bi-pencil mx-1"></i>
-        <% end %>
-        <%= link_to trip_waypoint_path(@trip, waypoint), method: :delete,
-              data: { confirm: 'Are you sure? Associated segments, posts and media items will also be deleted!' } do %>
-            <i class="bi bi-trash"></i>
-        <% end %>
         <td>
           <% unless waypoint.first? %>
             <%= link_to trip_waypoint_decrease_sequence_path(@trip, waypoint), method: :put do %>
@@ -42,6 +49,5 @@
           <% end %>
         </td>
       <% end %>
-    </td>
   <% end %>
 </tr>
