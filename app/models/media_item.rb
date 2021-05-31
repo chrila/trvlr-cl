@@ -8,6 +8,7 @@ class MediaItem < ApplicationRecord
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :likes, as: :likeable, dependent: :destroy
   has_many :activities, as: :subject, dependent: :destroy
+  has_one :trip_cover_photo, class_name: 'Trip', foreign_key: :cover_photo_id, dependent: :nullify
 
   has_one_attached :photo
 
