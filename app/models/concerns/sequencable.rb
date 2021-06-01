@@ -4,6 +4,10 @@
 module Sequencable
   extend ActiveSupport::Concern
 
+  included do
+    after_create :init_sequence
+  end
+
   def first?
     !data_collection.find_by(sequence: sequence - 1).present?
   end

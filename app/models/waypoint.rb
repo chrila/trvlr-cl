@@ -8,8 +8,6 @@ class Waypoint < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :activities, as: :subject, dependent: :destroy
 
-  after_create :init_sequence
-
   validates :name, presence: true
   validates :country, presence: true
   validates :continent, presence: true

@@ -5,8 +5,6 @@ class Segment < ApplicationRecord
   belongs_to :waypoint_from, class_name: 'Waypoint'
   belongs_to :waypoint_to, class_name: 'Waypoint'
 
-  after_create :init_sequence
-
   enum status: %i[segment_open segment_active segment_finished]
 
   scope :finished_between, lambda { |date_from, date_to|
