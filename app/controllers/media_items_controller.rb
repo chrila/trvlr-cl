@@ -7,15 +7,15 @@ class MediaItemsController < ApplicationController
   authorize_resource
 
   def index_public
-    @pagy, @media_items = pagy(MediaItem.most_popular_public)
+    @pagy, @media_items = pagy(MediaItem.most_popular_public, items: 24)
   end
 
   def index_trip
-    @pagy, @media_items = pagy(@trip.media_items.order(id: :desc))
+    @pagy, @media_items = pagy(@trip.media_items.order(id: :desc), items: 24)
   end
 
   def index_waypoint
-    @pagy, @media_items = pagy(@waypoint.media_items.order(id: :desc))
+    @pagy, @media_items = pagy(@waypoint.media_items.order(id: :desc), items: 24)
   end
 
   def new
