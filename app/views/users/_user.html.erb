@@ -1,5 +1,5 @@
 <%= tag.div class: class_names('col', 'd-none d-md-block': user_counter.between?(2, 3), 'd-none d-lg-block': user_counter.between?(4, 5)) do %>
-  <div class="card user-to-follow-body">
+  <div class="user-to-follow-body">
     <%= link_to user_follow_path(user), method: :post, class: 'user-to-follow-link' do %>
       <i class="bi bi-person-plus"></i>
     <% end %>

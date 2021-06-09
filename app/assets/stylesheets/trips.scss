@@ -23,12 +23,15 @@
   color: black;
 }
 
-.card-body {
-  background-color: rgba(255, 255, 255, 0.8);
+.trip-card .card-body {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .card-footer {
   background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 0 0 5px 5px;
 }
 
 .progress-detail-list li {
@@ -72,4 +75,7 @@
 .map-container {
   width: 100%;
   height: 80vh;
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--color-border);
 }

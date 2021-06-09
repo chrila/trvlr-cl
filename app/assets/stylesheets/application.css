@@ -3,11 +3,40 @@
  *= require_self
  */
 
-/* forms */
+:root {
+  --color-1: #7da2a9;
+  --color-2: #f7f7f7;
+  --color-borders: #000;
+  --color-active: #000;
+}
+
+body {
+  background: var(--color-2);
+}
 
 main .container {
   min-height: 80vh;
 }
+
+/* cards */
+
+.card {
+  border-color: var(--color-borders);
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 5px;
+}
+
+.card-body {
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 5px;
+}
+
+.card-footer {
+  background-color: rgba(255, 255, 255, 0.6);
+  border-top-color: var(--color-1);
+}
+
+/* forms */
 
 .form-error-list {
   background-color: #ff000013;
@@ -23,7 +52,7 @@ main .container {
 }
 
 .form-error-list li:before {
-  content: '\274C';
+  content: "\274C";
   margin-left: -20px;
   margin-right: 10px;
 }
@@ -35,17 +64,20 @@ main .container {
 /* navbar */
 
 .navbar-brand:hover {
-  color: white;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .trvlr-logo {
   font-size: 2rem;
   font-weight: bold;
-  color: white;
-  background-color: black;
+  color: var(--color-2);
+  background-color: var(--color-1);
   padding: 0.5rem;
   text-decoration: none;
-  font-family: 'Delius Unicase', cursive;
+  font-family: "Delius Unicase", cursive;
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--color-2);
 }
 
 .navbar-collapse {
@@ -57,21 +89,23 @@ main .container {
 }
 
 .navbar-light {
-  color: black;
-  background-color: white;
+  color: var(--color-2);
+  /* background-color: rgba(255, 255, 255, 0.5); */
+  background-color: var(--color-1);
 }
 
 .navbar-light .navbar-nav .nav-link {
-  color: black;
+  color: var(--color-2);
 }
 
-.navbar-light .navbar-nav .nav-link:hover, .nav-link:hover {
-  color: white;
-  background-color: black;
+.navbar-light .navbar-nav .nav-link:hover,
+.nav-link:hover {
+  color: var(--color-2);
+  background-color: var(--color-1);
 }
 
 .nav-link.active {
-  background-color: black;
+  background-color: var(--color-1);
 }
 
 .nav-link {
@@ -82,15 +116,22 @@ main .container {
 
 .page-link {
   color: black;
+  border-color: var(--color-borders);
 }
 
 .page-link:hover {
-  color: black;
+  color: var(--color-2);
+  background-color: var(--color-1);
+  border-color: var(--color-borders);
 }
 
 .page-item.active .page-link {
-  background-color: black;
-  border-color: black;
+  background-color: var(--color-1);
+  border-color: var(--color-borders);
+}
+
+.page-item.disabled .page-link {
+  border-color: var(--color-borders);
 }
 
 .pagy-bootstrap-nav {
@@ -101,8 +142,8 @@ main .container {
 
 .footer {
   width: 100%;
-  background-color: black;
-  color: white;
+  background-color: var(--color-1);
+  color: var(--color-2);
   font-size: 1.5rem;
   font-weight: 300;
   text-align: center;
@@ -113,13 +154,34 @@ main .container {
 }
 
 .footer a:hover {
-  color: white;
+  color: var(--color-2);
+}
+
+/* buttons */
+
+.btn-dark {
+  background-color: var(--color-1);
+  border-color: var(--color-borders);
+}
+
+.btn-outline-dark {
+  border-color: var(--color-1);
+}
+
+.btn-outline-dark.active {
+  background-color: var(--color-1);
+  border-color: var(--color-1);
+}
+
+.btn-outline-dark:hover {
+  background-color: var(--color-1);
+  border-color: var(--color-1);
 }
 
 .btn-admin {
   background-color: transparent;
-  border-color: white;
-  color: white;
+  border-color: var(--color-2);
+  color: var(--color-2);
 }
 
 .btn-admin:hover {

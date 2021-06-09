@@ -18,8 +18,11 @@
 
 .user-to-follow-body {
   text-align: center;
-  border: 0;
   background: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word;
 }
 
 .user-to-follow-link {

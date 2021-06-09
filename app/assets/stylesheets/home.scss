@@ -6,6 +6,11 @@
   align-content: center;
 }
 
+.text-highlight {
+  color: var(--color-1);
+  font-weight: 400;
+}
+
 @keyframes fade-slide-down {
   0% {
     opacity: 0;
