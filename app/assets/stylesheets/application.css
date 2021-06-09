@@ -84,6 +84,10 @@ main .container {
   border-color: var(--color-2);
 }
 
+.trvlr-logo:hover {
+  background-color: black;
+}
+
 .navbar-collapse {
   padding-top: 0.5rem;
 }
@@ -170,6 +174,18 @@ main .container {
 
 /* buttons */
 
+.btn {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.btn-group {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.btn-group .btn {
+  box-shadow: none;
+}
+
 .btn-dark {
   background-color: var(--color-1);
   border-color: var(--color-borders);
@@ -196,7 +212,7 @@ main .container {
 }
 
 .btn-admin:hover {
-  background-color: #99999983;
+  background-color: black;
 }
 
 /* interaction buttons */
