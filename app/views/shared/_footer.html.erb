@@ -1,9 +1,11 @@
 <footer class="footer">
   <div class="row justify-content-between w-100 row-cols-1 row-cols-sm-3 g-3">
     <div class="col">
-      <%= link_to 'trvlr', root_path, class: 'trvlr-logo text-white' %><br>
-      www.trvlr.cl<br>
-      staff@trvlr.cl
+      <%= link_to 'trvlr', root_path, class: 'trvlr-logo text-white shadow' %><br>
+      <div class="mt-3">
+        www.trvlr.cl<br>
+        staff@trvlr.cl
+      </div>
     </div>
     <div class="col d-grid">
       <p>© 2021 by CL</p>
@@ -12,7 +14,7 @@
       <% end %>
     </div>
     <div class="col">
-      <%= link_to 'Admin', admin_root_path, class: 'btn btn-admin' %>
+      <%= link_to 'Admin', admin_root_path, class: 'btn btn-admin shadow' %>
     </div>
   </div>
 </footer>

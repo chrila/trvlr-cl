@@ -33,7 +33,7 @@ main .container {
 
 .card-footer {
   background-color: rgba(255, 255, 255, 0.6);
-  border-top-color: var(--color-1);
+  border-top-color: var(--color-borders);
 }
 
 /* forms */
@@ -90,8 +90,10 @@ main .container {
 
 .navbar-light {
   color: var(--color-2);
-  /* background-color: rgba(255, 255, 255, 0.5); */
   background-color: var(--color-1);
+  border-bottom-style: solid;
+  border-bottom-color: var(--color-borders);
+  border-bottom-width: 1px;
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -151,6 +153,10 @@ main .container {
   display: flex;
   padding: 2rem 0;
   margin-top: 3rem;
+  border-top-style: solid;
+  border-top-color: var(--color-borders);
+  border-top-width: 1px;
+
 }
 
 .footer a:hover {
@@ -165,17 +171,17 @@ main .container {
 }
 
 .btn-outline-dark {
-  border-color: var(--color-1);
+  border-color: var(--color-borders);
 }
 
 .btn-outline-dark.active {
   background-color: var(--color-1);
-  border-color: var(--color-1);
+  border-color: var(--color-borders);
 }
 
 .btn-outline-dark:hover {
   background-color: var(--color-1);
-  border-color: var(--color-1);
+  border-color: var(--color-borders);
 }
 
 .btn-admin {
