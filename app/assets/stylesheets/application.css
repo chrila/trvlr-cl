@@ -104,9 +104,6 @@ main .container {
 .navbar-light {
   color: var(--color-2);
   background-color: var(--color-1);
-  border-bottom-style: solid;
-  border-bottom-color: var(--color-borders);
-  border-bottom-width: 1px;
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -160,6 +157,10 @@ footer {
   margin-top: 3rem;
 }
 
+footer a:hover {
+  color: black;
+}
+
 .footer-content {
   width: 100%;
   background-color: var(--color-1);
@@ -173,8 +174,8 @@ footer {
   margin-top: -1px;
 }
 
-footer a:hover {
-  color: black;
+.footer-svg {
+  filter: drop-shadow(0 0 1rem #969696);
 }
 
 /* buttons */
