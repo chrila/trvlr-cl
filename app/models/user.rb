@@ -22,6 +22,8 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
   validates :username, presence: true
+  validates :email, presence: true
+  validates :avatar, presence: true
 
   scope :users_to_follow, ->(user) { where.not(id: user.followings_active.map(&:followed_user_id)).where.not(id: user.id) }
 
