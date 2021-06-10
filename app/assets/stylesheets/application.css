@@ -151,7 +151,11 @@ main .container {
 
 /* footer */
 
-.footer {
+footer {
+  margin-top: 3rem;
+}
+
+.footer-content {
   width: 100%;
   background-color: var(--color-1);
   color: var(--color-2);
@@ -161,15 +165,11 @@ main .container {
   align-items: center;
   display: flex;
   padding: 2rem 0;
-  margin-top: 3rem;
-  border-top-style: solid;
-  border-top-color: var(--color-borders);
-  border-top-width: 1px;
-
+  margin-top: -1px;
 }
 
-.footer a:hover {
-  color: var(--color-2);
+footer a:hover {
+  color: black;
 }
 
 /* buttons */
@@ -213,6 +213,7 @@ main .container {
 
 .btn-admin:hover {
   background-color: black;
+  color: var(--color-2);
 }
 
 /* interaction buttons */
