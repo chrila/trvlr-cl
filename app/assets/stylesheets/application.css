@@ -22,6 +22,11 @@ main .container {
   text-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.35);
 }
 
+.alert {
+  border-color: var(--color-borders);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
 /* cards */
 
 .card {
