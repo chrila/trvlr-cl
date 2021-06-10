@@ -111,6 +111,11 @@ main .container {
   text-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.35);
 }
 
+.navbar-nav {
+  flex-grow: inherit;
+  justify-content: end;
+}
+
 .navbar-light .navbar-nav .nav-link:hover,
 .nav-link:hover {
   color: var(--color-2);
@@ -123,6 +128,14 @@ main .container {
 
 .nav-link {
   color: black;
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
 }
 
 /* pagination links */
