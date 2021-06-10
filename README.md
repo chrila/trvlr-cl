@@ -1,72 +1,36 @@
-# Final project for fullstack-g39
-This is the final project of the bootcamp "Fullstack development", generation 39, of academia desafío latam.  
+# trvlr
+trvlr is a platform where users can plan, document and share trips.
+* Planning: create potential trip targets as waypoint and connect the dots. The current plan is illustrated on a map.
+* Documenting: update the status of your route, write blog posts and upload photos while you are travelling. Such items are
+  connected to waypoints, this way it's always straight forward and you don't have to sort anything when you come back home.
+* Sharing: if you want your friends and family to see your trip, just set its visibility to "public" and share the link.
+  Visitors don't have to register to see public items.
+
+This is my final project of the bootcamp "Fullstack development - ruby on rails", generation 39, of
+[Academia Desafío Latam](https://desafiolatam.com/).
 The objective of this project was to create a platform to plan, document and share trips.
 
 # Index
-[Links](#links)  
-[Used versions](#used-versions)  
-[Mockups](#mockups)  
-[ERD](#erd)  
+[Used versions](#used-versions) \
 [Deployment](#deployment)
 
-# Links
-## Trello
-https://trello.com/b/FINbe47p/time-travelling-turtle
-
-## DB design
-https://dbdiagram.io/d/60722617ecb54e10c33faa66
-
-## Live version
-https://www.trvlr.cl
-
 # Used versions
-ruby: `3.0.1`  
+ruby: `3.0.1` \
 rails: `6.1.3.2`
-
-# Mockups
-Following are the initial mockups that were created during the design phase.
-
-## Visitors
-![mockup: visitors](mockups/screenshots/visitors.png)
-
-## Activity stream
-![mockup: activity stream](mockups/screenshots/activity_stream.png)
-
-## My trips - overview
-![mockup: my trips - overview](mockups/screenshots/my_trips_overview.png)
-
-## My trips - segments
-![mockup: my trips - segments](mockups/screenshots/my_trips_segments.png)
-
-## My trips - blog
-![mockup: my trips - blog](mockups/screenshots/my_trips_blog.png)
-
-## My trips - media
-![mockup: my trips - media](mockups/screenshots/my_trips_media.png)
-
-## Summary page
-![mockup: overview](mockups/screenshots/summary.png)
-
-# ERD
-![ERD model](doc/erd.png)
-Note: also avaliable as PDF in `docs/erd.pdf`  
-It was generated using the gem `rails-erd` by running the command
-```bash
-rails erd indirect=true attributes=foreign_keys,primary_keys,content filetype=pdf filename=doc/erd
-```
 
 # Deployment
 Deployment is pretty straight forward. You will need a running postgres server and the ruby and rails versions mentioned above under [used versions](#used-versions).
 
 ## Clone repository
 ```bash
-git clone https://github.com/chrila/time-travelling-turtle.git
+git clone https://github.com/chrila/trvlr-cl.git
 ```
 
-## Install gems
+## Install dependencies
 ```bash
-cd time-travelling-turtle
+cd trvlr-cl
 bundle install
+yarn install
 ```
 
 ## Run migrations
