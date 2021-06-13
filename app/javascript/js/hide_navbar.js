@@ -1,11 +1,13 @@
 // hide navbar when scrolling down and show it when scrolling up
-var prevScrollpos = window.pageYOffset;
+let prevScrollpos = window.pageYOffset;
+
 window.onscroll = function () {
-  var currentScrollPos = window.pageYOffset;
+  let currentScrollPos = window.pageYOffset
+  let navbar = document.getElementById("navbar")
   if (prevScrollpos > currentScrollPos) {
-    document.getElementById("navbar").style.top = "0";
+    navbar.style.top = "0"
   } else {
-    document.getElementById("navbar").style.top = "-6rem";
+    navbar.style.top = navbar.clientHeight * (-1) + "px"
   }
-  prevScrollpos = currentScrollPos;
-};
+  prevScrollpos = currentScrollPos
+}
