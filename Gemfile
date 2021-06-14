@@ -89,3 +89,5 @@ gem 'aws-sdk-s3'
 gem 'geocoder'
 # country information
 gem 'countries'
+# stimulus.js
+gem 'stimulus-rails'
