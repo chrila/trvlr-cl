@@ -1,5 +1,3 @@
-<%= javascript_pack_tag 'segment' %>
-
 <%= form_with(model: [@trip, segment], local: true, id: 'segment-form') do |f| %>
   <% if segment.errors.any? %>
     <div class="form-error-list">
@@ -12,33 +10,37 @@
     </div>
   <% end %>
 
-  <div class="form-group my-2">
-    <%= f.label :waypoint_from %>
-    <%= f.select :waypoint_from_id, waypoints_for_select(@trip), {}, class: 'form-select waypoint-selection-element' %>
-  </div>
+  <div data-controller="segment">
+    <div class="form-group my-2">
+      <%= f.label :waypoint_from %>
+      <%= f.select :waypoint_from_id, waypoints_for_select(@trip), {}, class: 'form-select',
+        data: { "segment-target": "from", "action": "change->segment#calculateDistance" } %>
+    </div>
 
-  <div class="form-group my-2">
-    <%= f.label :waypoint_to %>
-    <%= f.select :waypoint_to_id, waypoints_for_select(@trip), {}, class: 'form-select waypoint-selection-element' %>
-  </div>
+    <div class="form-group my-2">
+      <%= f.label :waypoint_to %>
+      <%= f.select :waypoint_to_id, waypoints_for_select(@trip), {}, class: 'form-select',
+        data: { "segment-target": "to", "action": "change->segment#calculateDistance" } %>
+    </div>
 
-  <div class="form-group my-2">
-    <%= f.label :time_from, 'From' %>
-    <%= f.date_field :time_from, class: 'form-control' %>
-  </div>
+    <div class="form-group my-2">
+      <%= f.label :time_from, 'From' %>
+      <%= f.date_field :time_from, class: 'form-control' %>
+    </div>
 
-  <div class="form-group my-2">
-    <%= f.label :time_to, 'Until' %>
-    <%= f.date_field :time_to, class: 'form-control' %>
-  </div>
+    <div class="form-group my-2">
+      <%= f.label :time_to, 'Until' %>
+      <%= f.date_field :time_to, class: 'form-control' %>
+    </div>
 
-  <div class="form-group my-2">
-    <%= f.label :distance %>
-    <%= f.text_field :distance, class: 'form-control' %>
-  </div>
+    <div class="form-group my-2">
+      <%= f.label :distance %>
+      <%= f.text_field :distance, class: 'form-control', data: { "segment-target": "distance" } %>
+    </div>
 
-  <div class="form-group my-2">
-    <%= f.label :status %>
-    <%= f.select :status, segment_statuses_list, {}, class: 'form-select' %>
+    <div class="form-group my-2">
+      <%= f.label :status %>
+      <%= f.select :status, segment_statuses_list, {}, class: 'form-select' %>
+    </div>
   </div>
 <% end %>
