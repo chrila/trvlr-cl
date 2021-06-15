@@ -1,21 +1,28 @@
 import { Controller } from "stimulus"
-import * as AjaxUtils from '../js/ajax_utils'
+import { FetchRequest } from "@rails/request.js"
 
 export default class extends Controller {
   static targets = [ "button", "address", "error", "continent", "country", "longitude", "latitude" ]
 
-  search() {
+  async search() {
     let keyword = this.addressTarget.value
     if (keyword) {
       console.debug(`Doing waypoint search with keywords: ${keyword}`)
 
       // call waypoints/search/:keyword via API
-      fetch(AjaxUtils.createRequest("/waypoints/search/" + keyword))
-        .then(response => response.json())
-        .then(response => this.displayFetchedData(response))
+      const request = new FetchRequest("get", `/waypoints/search/${keyword}`)
 
       // meanwhile, change button to show that request is in progress
       this.disableSearchButton()
+
+      const response = await request.perform()
+      if (response.ok) {
+        this.displayFetchedData(await response.json)
+      } else {
+        this.displayError(`Error: ${response.statusCode}`)
+      }
+
+      this.enableSearchButton()
     } else {
       this.displayError("No keywords given.")
     }
@@ -36,8 +43,6 @@ export default class extends Controller {
       // show error message
       this.displayError("No results found.")
     }
-
-    this.enableSearchButton()
   }
 
   displayError(msg) {
