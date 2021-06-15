@@ -12,5 +12,6 @@ module TimeTravellingTurtle
     config.load_defaults 6.1
 
     config.action_mailer.default_url_options = { host: 'localhost:3000' }
+    config.action_view.form_with_generates_remote_forms = false
   end
 end
