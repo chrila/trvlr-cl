@@ -3,7 +3,7 @@
     <%= link_to (local_assigns[:detail_view].present? ? media_item.photo : media_item) do %>
       <%= image_tag(
         (local_assigns[:detail_view].present? ? media_item.photo : media_item.photo.representation(resize_to_limit: [512, 512])),
-        class: 'media-item-img') %>
+        class: 'media-item-img', alt: media_item.title) %>
     <% end %>
     <div class="card-body">
       <p class="card-text mb-0"><i class="bi bi-geo-alt"></i> <%= "#{media_item.waypoint.name}, #{media_item.waypoint.country_name} #{media_item.waypoint.country_flag}" %></p>
