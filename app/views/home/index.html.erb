@@ -20,16 +20,16 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-<p><%= link_to raw('See more trips &raquo'), trips_public_path, class: 'btn btn-lg btn-dark my-3' %></p>
+<p><%= link_to raw('See more trips &raquo;'), trips_public_path, class: 'btn btn-lg btn-dark my-3' %></p>
 
 <h2 id="photos" class="display-3 my-5">Top-rated photos</h2>
 <div class="row row-cols-1 row-cols-lg-2 g-3 my-3">
   <%= render MediaItem.most_popular_public.first(6) %>
 </div>
-<p><%= link_to raw('See more photos &raquo'), media_items_public_path, class: 'btn btn-lg btn-dark my-3' %></p>
+<p><%= link_to raw('See more photos &raquo;'), media_items_public_path, class: 'btn btn-lg btn-dark my-3' %></p>
 
 <h2 id="posts" class="display-3 my-5">Most popular blog posts</h2>
 <div class="row row-cols-1 row-cols-xl-2 g-3 my-3">
   <%= render Post.most_popular_public.first(6) %>
 </div>
-<p><%= link_to raw('See more blog posts &raquo'), posts_public_path, class: 'btn btn-lg btn-dark my-3' %></p>
+<p><%= link_to raw('See more blog posts &raquo;'), posts_public_path, class: 'btn btn-lg btn-dark my-3' %></p>
