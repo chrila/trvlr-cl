@@ -25,7 +25,7 @@ class TripUsersController < ApplicationController
         format.html { redirect_to trip_trip_users_path(@trip), notice: 'Participant was successfully added to the trip.' }
         UserMailer.with(user: current_user, invited_user: @trip_user.user, trip: @trip).added_to_trip.deliver_later
       else
-        format.html { render :new }
+        format.html { render :new, status: :unprocessable_entity }
       end
     end
   end
@@ -35,7 +35,7 @@ class TripUsersController < ApplicationController
       if @trip_user.update(trip_user_params)
         format.html { redirect_to trip_trip_users_path(@trip), notice: 'Participant was successfully updated.' }
       else
-        format.html { render :edit }
+        format.html { render :edit, status: :unprocessable_entity }
       end
     end
   end

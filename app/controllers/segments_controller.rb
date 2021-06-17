@@ -35,7 +35,7 @@ class SegmentsController < ApplicationController
       if @segment.save
         format.html { redirect_to trip_segments_path(@trip), notice: 'Segment was successfully created.' }
       else
-        format.html { render :new }
+        format.html { render :new, status: :unprocessable_entity }
       end
     end
   end
@@ -45,7 +45,7 @@ class SegmentsController < ApplicationController
       if @segment.update(segment_params)
         format.html { redirect_to trip_segments_path(@trip), notice: 'Segment was successfully updated.' }
       else
-        format.html { render :edit }
+        format.html { render :edit, status: :unprocessable_entity }
       end
     end
   end

@@ -35,7 +35,7 @@ class WaypointsController < ApplicationController
       if @waypoint.save
         format.html { redirect_to trip_waypoints_path(@trip), notice: 'Waypoint was successfully created.' }
       else
-        format.html { render :new }
+        format.html { render :new, status: :unprocessable_entity }
       end
     end
   end
@@ -45,7 +45,7 @@ class WaypointsController < ApplicationController
       if @waypoint.update(waypoint_params)
         format.html { redirect_to trip_waypoints_path(@trip), notice: 'Waypoint was successfully updated.' }
       else
-        format.html { render :edit }
+        format.html { render :edit, status: :unprocessable_entity }
       end
     end
   end

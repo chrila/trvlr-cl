@@ -30,7 +30,7 @@ class TripsController < ApplicationController
 
         format.html { redirect_to @trip, notice: 'Trip was successfully created.' }
       else
-        format.html { render :new }
+        format.html { render :new, status: :unprocessable_entity }
       end
     end
   end
@@ -40,7 +40,7 @@ class TripsController < ApplicationController
       if @trip.update(trip_params)
         format.html { redirect_to @trip, notice: 'Trip was successfully updated.' }
       else
-        format.html { render :edit }
+        format.html { render :edit, status: :unprocessable_entity }
       end
     end
   end
