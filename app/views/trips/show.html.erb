@@ -42,7 +42,6 @@
   </ul>
 <% end %>
 
-<h2 class="display-6 mt-5 mb-4">Map</h2>
 <%= render 'shared/map', waypoints: @trip.waypoints, segments: @trip.segments.order(:sequence, :id) %>
 
 <%= render 'shared/comments', commentable: @trip, can_comment: can?(:new_trip, Comment) %>

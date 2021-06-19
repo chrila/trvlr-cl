@@ -13,5 +13,4 @@
 <p class="fs-3 fw-light"><strong>Distance: </strong><%= "#{@segment.distance.round(2)} km" %></p>
 <p class="fs-3 fw-light"><strong>Status: </strong><%= tag.span @segment.status_string, class: class_names('badge', segment_status_bg_class(@segment)) %></p>
 
-<h2 class="display-6 mt-5 mb-4">Map</h2>
 <%= render 'shared/map', waypoints: [@segment.waypoint_from, @segment.waypoint_to], segments: [@segment] %>
