@@ -21,6 +21,10 @@ module ApplicationHelper
     send("#{likeable.class.to_s.underscore}_dislike_path", likeable)
   end
 
+  def new_comment_path(commentable)
+    send("#{commentable.class.to_s.underscore}_new_comment_path", commentable)
+  end
+
   def element_id(type, object)
     "#{dash_classname(object)}-#{type}-#{object.id}"
   end
