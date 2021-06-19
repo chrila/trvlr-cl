@@ -45,12 +45,4 @@
 <h2 class="display-6 mt-5 mb-4">Map</h2>
 <%= render 'shared/map', waypoints: @trip.waypoints, segments: @trip.segments.order(:sequence, :id) %>
 
-<h2 id="comments" class="display-6 mt-5 mb-4">Comments</h2>
-
-<% if can? :new_trip, Comment %>
-  <%= render 'shared/add_button', target: trip_new_comment_path(@trip), resource: 'comment' %>
-<% end %>
-
-<div class="row row-cols-1 row-cols-xl-2 g-3 my-3">
-  <%= render @trip.comments.order(:id).reverse %>
-</div>
+<%= render 'shared/comments', commentable: @trip, can_comment: can?(:new_trip, Comment) %>
