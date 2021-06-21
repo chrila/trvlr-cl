@@ -1,9 +1,10 @@
-<h2 id="comments" class="display-6 mt-5 mb-4">Comments</h2>
+<h2 id="comments_h" class="display-6 mt-5 mb-4">Comments</h2>
 
 <% if can_comment %>
   <%= render 'shared/add_button', target: new_comment_path(commentable), resource: 'comment' %>
 <% end %>
 
-<div class="row row-cols-1 row-cols-xl-2 g-3 my-3">
-  <%= render commentable.comments.order(:id).reverse %>
-</div>
+<%= turbo_stream_from commentable %>
+<%= turbo_frame_tag "comments", class: "row row-cols-1 row-cols-xl-2 g-3 my-3" do %>
+  <%= render commentable.comments %>
+<% end %>

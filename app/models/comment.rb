@@ -13,6 +13,8 @@ class Comment < ApplicationRecord
 
   validates :content, presence: true
 
+  broadcasts_to :commentable
+
   def edited?
     created_at != updated_at
   end
