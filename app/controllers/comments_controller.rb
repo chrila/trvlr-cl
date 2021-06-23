@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   before_action :set_post, only: %i[index_post new_post]
   before_action :set_trip, only: %i[index_trip new_trip]
   before_action :set_comment, only: %i[show edit update destroy like dislike]
-  before_action :create_comment, only: %i[new_activity new_media_item new_post new_trip]
+  before_action :create_comment, only: %i[new new_activity new_media_item new_post new_trip]
   authorize_resource
 
   def index

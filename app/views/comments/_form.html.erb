@@ -1,4 +1,4 @@
-<%= form_with(model: [@commentable, comment], local: true, id: 'comment-form') do |f| %>
+<%= form_with(model: [commentable, comment], local: true, id: 'comment-form') do |f| %>
   <% if comment.errors.any? %>
     <div class="form-error-list">
       <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
@@ -15,6 +15,9 @@
 
   <div class="form-group my-2">
     <%= f.label :content, 'Your comment:' %>
-    <%= f.text_area :content, class: 'form-control' %>
+    <%= f.text_area :content, class: 'form-control shadow-sm' %>
   </div>
+
+  <%= f.submit class: "btn btn-dark" %>
+  <button type="button" class="btn btn-outline-dark" data-action="click->comment#hideForm">Cancel</button>
 <% end %>
