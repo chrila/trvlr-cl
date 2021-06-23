@@ -1,10 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_activity, only: %i[index_activity new_activity]
-  before_action :set_media_item, only: %i[index_media_item new_media_item]
-  before_action :set_post, only: %i[index_post new_post]
-  before_action :set_trip, only: %i[index_trip new_trip]
   before_action :set_comment, only: %i[show edit update destroy like dislike]
-  before_action :create_comment, only: %i[new new_activity new_media_item new_post new_trip]
   authorize_resource
 
   def index
@@ -29,25 +24,6 @@ class CommentsController < ApplicationController
   def index_trip
     @comments = @trip.comments.order(id: :desc)
     render :index
-  end
-
-  def new
-  end
-
-  def new_activity
-    render :new
-  end
-
-  def new_media_item
-    render :new
-  end
-
-  def new_post
-    render :new
-  end
-
-  def new_trip
-    render :new
   end
 
   def edit
@@ -104,31 +80,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(%i[title content commentable_type commentable_id])
-  end
-
-  def set_activity
-    @activity = Activity.find(params[:id])
-    @commentable = @activity
-  end
-
-  def set_media_item
-    @media_item = MediaItem.find(params[:id])
-    @commentable = @media_item
-  end
-
-  def set_post
-    @post = Post.find(params[:id])
-    @commentable = @post
-  end
-
-  def set_trip
-    @trip = Trip.find(params[:id])
-    @commentable = @trip
-  end
-
-  def create_comment
-    @comment = @commentable.comments.build
+    params.require(:comment).permit(%i[content commentable_type commentable_id])
   end
 
   def set_comment
@@ -136,6 +88,6 @@ class CommentsController < ApplicationController
   end
 
   def error_string(action)
-    "Could not #{action} comment. Errors:<br>- #{@comment.errors.full_messages.join('<br>- ')}"
+    "Could not #{action} comment. Errors:<ul><li>#{@comment.errors.full_messages.join('<li>')}</ul>"
   end
 end
