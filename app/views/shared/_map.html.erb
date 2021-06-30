@@ -1,6 +1,10 @@
 <h2 class="display-6 mt-5 mb-4">Map</h2>
 <div id="mapid" class="map-container"></div>
 <script>
+  function onWaypointClick(e) {
+    location.href = e.originalEvent.target.innerHTML
+  }
+
 	var mymap = L.map('mapid', {
     center: [0, 0],
     zoom: 1,
@@ -20,12 +24,15 @@
   <% if local_assigns[:waypoints].present? %>
     // draw waypoints
     var markers = [];
+    var m
     <% waypoints.each do |w| %>
-      markers.push(
-        L.marker([<%= w.lat_long_str %>], {
-          title: '<%= w.name %>'
-        }).addTo(mymap)
-      );
+      m = L.marker([<%= w.lat_long_str %>], {
+        title: '<%= w.name %>'
+      }).addTo(mymap)
+      markers.push(m)
+      // hack: store link to waypoint inside markers image
+      m._icon.innerHTML = "<%= url_for([w.trip, w]) %>"
+      m.on('click', onWaypointClick)
     <% end %>
 
     // zoom the map to show all markers
