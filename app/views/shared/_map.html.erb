@@ -9,7 +9,7 @@
     center: [0, 0],
     zoom: 1,
     gestureHandling: true
-  });
+  })
 
   // tiles
 	L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY2hyaWxhIiwiYSI6ImNrbzF4ZWJhcjBwZmQycG1zbWRodWM1cm8ifQ.M0TKFhXK_SzhWqokJpDE4Q', {
@@ -19,15 +19,15 @@
 		id: 'mapbox/streets-v11',
 		tileSize: 512,
 		zoomOffset: -1
-	}).addTo(mymap);
+	}).addTo(mymap)
 
   <% if local_assigns[:waypoints].present? %>
     // draw waypoints
-    var markers = [];
+    var markers = []
     var m
     <% waypoints.each do |w| %>
       m = L.marker([<%= w.lat_long_str %>], {
-        title: '<%= w.name %>'
+        title: '<%= w.seq_name_str %>'
       }).addTo(mymap)
       markers.push(m)
       // hack: store link to waypoint inside markers image
@@ -37,22 +37,22 @@
 
     // zoom the map to show all markers
     var group = new L.featureGroup(markers)
-    mymap.fitBounds(group.getBounds());
+    mymap.fitBounds(group.getBounds())
 
     // if there's only one marker, set zoom level to actually see something
     if (markers.length == 1) {
-      mymap.setZoom(10);
+      mymap.setZoom(10)
     }
   <% end %>
 
   <% if local_assigns[:segments].present? %>
     // draw segments
-    var line;
+    var line
     <% segments.each_with_index do |s, i| %>
-      line = [[<%= s.waypoint_from.lat_long_str %>], [<%= s.waypoint_to.lat_long_str %>]];
+      line = [[<%= s.waypoint_from.lat_long_str %>], [<%= s.waypoint_to.lat_long_str %>]]
       L.polyline(line, {
         color: '<%= segment_status_color(s) %>'
-      }).addTo(mymap);
+      }).addTo(mymap)
     <% end %>
   <% end %>
 
