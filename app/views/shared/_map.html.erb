@@ -1,7 +1,7 @@
 <h2 class="display-6 mt-5 mb-4">Map</h2>
 <div id="mapid" class="map-container"></div>
 <script>
-  function onWaypointClick(e) {
+  function onMapElementClick(e) {
     location.href = e.originalEvent.target.innerHTML
   }
 
@@ -32,7 +32,7 @@
       markers.push(m)
       // hack: store link to waypoint inside markers image
       m._icon.innerHTML = "<%= url_for([w.trip, w]) %>"
-      m.on('click', onWaypointClick)
+      m.on('click', onMapElementClick)
     <% end %>
 
     // zoom the map to show all markers
@@ -47,12 +47,15 @@
 
   <% if local_assigns[:segments].present? %>
     // draw segments
-    var line
-    <% segments.each_with_index do |s, i| %>
+    var line, pl
+    <% segments.each do |s| %>
       line = [[<%= s.waypoint_from.lat_long_str %>], [<%= s.waypoint_to.lat_long_str %>]]
-      L.polyline(line, {
+      pl = L.polyline(line, {
         color: '<%= segment_status_color(s) %>'
       }).addTo(mymap)
+      // hack: store link to waypoint inside polyline's path
+      pl._path.innerHTML = "<%= url_for([s.trip, s]) %>"
+      pl.on('click', onMapElementClick)
     <% end %>
   <% end %>
 
