@@ -1,5 +1,5 @@
 <div class="my-3">
-  <%= link_to target, class: 'btn btn-dark' do %>
+  <%= link_to target, class: 'btn btn-dark', data: local_assigns[:data] do %>
     <i class="bi bi-plus mx-1"></i>Add <%= resource %>
   <% end %>
 </div>

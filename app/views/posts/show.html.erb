@@ -6,6 +6,6 @@
     <%= render 'shared/delete_button', target: post_path(@post) %>
 <% end %>
 
-<%= render @post %>
+<%= render @post, detail_view: true %>
 
 <%= render 'shared/comments', commentable: @post, can_comment: can?(:new_post, Comment) %>

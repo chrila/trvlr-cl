@@ -1,11 +1,15 @@
 <h2 class="display-6 mt-5 mb-4">Map</h2>
 <div id="mapid" class="map-container"></div>
 <script>
+  function onMapElementClick(e) {
+    location.href = e.originalEvent.target.innerHTML
+  }
+
 	var mymap = L.map('mapid', {
     center: [0, 0],
     zoom: 1,
     gestureHandling: true
-  });
+  })
 
   // tiles
 	L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY2hyaWxhIiwiYSI6ImNrbzF4ZWJhcjBwZmQycG1zbWRodWM1cm8ifQ.M0TKFhXK_SzhWqokJpDE4Q', {
@@ -15,37 +19,43 @@
 		id: 'mapbox/streets-v11',
 		tileSize: 512,
 		zoomOffset: -1
-	}).addTo(mymap);
+	}).addTo(mymap)
 
   <% if local_assigns[:waypoints].present? %>
     // draw waypoints
-    var markers = [];
+    var markers = []
+    var m
     <% waypoints.each do |w| %>
-      markers.push(
-        L.marker([<%= w.lat_long_str %>], {
-          title: '<%= w.name %>'
-        }).addTo(mymap)
-      );
+      m = L.marker([<%= w.lat_long_str %>], {
+        title: '<%= w.seq_name_str %>'
+      }).addTo(mymap)
+      markers.push(m)
+      // hack: store link to waypoint inside markers image
+      m._icon.innerHTML = "<%= url_for([w.trip, w]) %>"
+      m.on('click', onMapElementClick)
     <% end %>
 
     // zoom the map to show all markers
     var group = new L.featureGroup(markers)
-    mymap.fitBounds(group.getBounds());
+    mymap.fitBounds(group.getBounds())
 
     // if there's only one marker, set zoom level to actually see something
     if (markers.length == 1) {
-      mymap.setZoom(10);
+      mymap.setZoom(10)
     }
   <% end %>
 
   <% if local_assigns[:segments].present? %>
     // draw segments
-    var line;
-    <% segments.each_with_index do |s, i| %>
-      line = [[<%= s.waypoint_from.lat_long_str %>], [<%= s.waypoint_to.lat_long_str %>]];
-      L.polyline(line, {
+    var line, pl
+    <% segments.each do |s| %>
+      line = [[<%= s.waypoint_from.lat_long_str %>], [<%= s.waypoint_to.lat_long_str %>]]
+      pl = L.polyline(line, {
         color: '<%= segment_status_color(s) %>'
-      }).addTo(mymap);
+      }).addTo(mymap)
+      // hack: store link to waypoint inside polyline's path
+      pl._path.innerHTML = "<%= url_for([s.trip, s]) %>"
+      pl.on('click', onMapElementClick)
     <% end %>
   <% end %>
 
