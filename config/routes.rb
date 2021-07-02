@@ -12,8 +12,6 @@ Rails.application.routes.draw do
   scope 'activities/:id', as: :activity do
     post 'like', to: 'activities#like', as: :like
     delete 'like', to: 'activities#dislike', as: :dislike
-    get 'comments', to: 'comments#index_activity', as: :comments
-    get 'comments/new', to: 'comments#new_activity', as: :new_comment
     post 'comments', to: 'comments#create'
   end
 
@@ -46,8 +44,6 @@ Rails.application.routes.draw do
   scope 'trips/:id', as: :trip do
     post 'like', to: 'trips#like', as: :like
     delete 'like', to: 'trips#dislike', as: :dislike
-    get 'comments', to: 'comments#index_trip', as: :comments
-    get 'comments/new', to: 'comments#new_trip', as: :new_comment
     post 'comments', to: 'comments#create'
   end
 
@@ -55,8 +51,6 @@ Rails.application.routes.draw do
   scope 'posts/:id', as: :post do
     post 'like', to: 'posts#like', as: :like
     delete 'like', to: 'posts#dislike', as: :dislike
-    get 'comments', to: 'comments#index_post', as: :comments
-    get 'comments/new', to: 'comments#new_post', as: :new_comment
     post 'comments', to: 'comments#create'
   end
 
@@ -64,8 +58,6 @@ Rails.application.routes.draw do
   scope 'media_items/:id', as: :media_item do
     post 'like', to: 'media_items#like', as: :like
     delete 'like', to: 'media_items#dislike', as: :dislike
-    get 'comments', to: 'comments#index_media_item', as: :comments
-    get 'comments/new', to: 'comments#new_media_item', as: :new_comment
     post 'comments', to: 'comments#create'
   end
 
@@ -75,7 +67,7 @@ Rails.application.routes.draw do
     delete 'unfollow', to: 'users#unfollow', as: :unfollow
   end
 
-  resources :comments, only: %i[show update edit destroy]
+  resources :comments, only: %i[update edit destroy]
   scope 'comments/:id', as: :comment do
     post 'like', to: 'comments#like', as: :like
     delete 'like', to: 'comments#dislike', as: :dislike
