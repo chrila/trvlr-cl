@@ -1,35 +1,8 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: %i[show edit update destroy like dislike]
+  before_action :set_comment, only: %i[edit update destroy like dislike]
   authorize_resource
 
-  def index
-    @comments = Comment.all.order(id: :desc)
-  end
-
-  def index_activity
-    @comments = @activity.comments.order(id: :desc)
-    render :index
-  end
-
-  def index_media_item
-    @comments = @media_item.comments.order(id: :desc)
-    render :index
-  end
-
-  def index_post
-    @comments = @post.comments.order(id: :desc)
-    render :index
-  end
-
-  def index_trip
-    @comments = @trip.comments.order(id: :desc)
-    render :index
-  end
-
   def edit
-  end
-
-  def show
   end
 
   def create
@@ -57,12 +30,12 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @commentable = @comment.commentable
+    commentable = @comment.commentable
     respond_to do |format|
       if @comment.destroy
-        format.html { redirect_to @commentable, notice: 'Comment was successfully deleted.' }
+        format.html { redirect_to commentable, notice: 'Comment was successfully deleted.' }
       else
-        format.html { redirect_to @commentable, alert: 'Comment could not be deleted.' }
+        format.html { redirect_to commentable, alert: 'Comment could not be deleted.' }
       end
     end
   end
