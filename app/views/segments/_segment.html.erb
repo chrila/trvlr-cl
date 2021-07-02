@@ -7,7 +7,7 @@
   <td class="d-none d-lg-table-cell"><%= segment.time_to.to_s(:day_and_year) %></td>
   <td class="d-none d-md-table-cell d-lg-none"><%= segment.time_to.to_s(:day) %></td>
   <td class="d-none d-sm-table-cell"><%= segment.distance.round(1) %></td>
-  <td class="d-none d-md-table-cell"><%= tag.span segment.status_string, class: class_names('badge', segment_status_bg_class(segment)) %></td>
+  <td class="d-none d-md-table-cell"><%= render 'segment_status_button', segment: segment %></td>
   <% if can? :read, segment %>
     <td>
       <div class="table-row-action-items">
