@@ -6,7 +6,7 @@
   <% end %>
 
   <div data-comment-target="form" class="d-none">
-    <%= render "comments/form", commentable: commentable, comment: commentable.comments.build %>
+    <%= render "comments/form", commentable: commentable, comment: Comment.new(commentable: commentable) %>
   </div>
 </div>
 
