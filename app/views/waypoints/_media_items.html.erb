@@ -1,0 +1,5 @@
+<h2 class="display-6 mt-5 mb-4">Media items: <span class="summary-text-highlight"><%= @waypoint.media_items.count %></span></h2>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mb-3">
+  <%= render @waypoint.media_items.first(5) %>
+</div>
+<%= link_to raw("More media items &raquo;"), trip_waypoint_media_items_path(@trip, @waypoint), class: "btn btn-dark" %>

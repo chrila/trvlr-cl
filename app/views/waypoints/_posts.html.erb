@@ -1,0 +1,5 @@
+<h2 class="display-6 mt-5 mb-4">Posts: <span class="summary-text-highlight"><%= @waypoint.posts.count %></span></h2>
+<div class="row row-cols-1 g-4 mb-3">
+  <%= render @waypoint.posts.first(5) %>
+</div>
+<%= link_to raw("More posts &raquo;"), trip_waypoint_posts_path(@trip, @waypoint), class: "btn btn-dark" %>
