@@ -25,6 +25,12 @@ main .container {
 .alert {
   border-color: var(--color-borders);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  position: fixed;
+  bottom: 5vh;
+  left: 20vw;
+  right: 20vw;
+  text-align: center;
+  z-index: 9999;
 }
 
 /* cards */
