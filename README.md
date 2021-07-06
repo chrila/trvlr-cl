@@ -16,7 +16,7 @@ The objective of this project was to create a platform to plan, document and sha
 
 # Used versions
 ruby: `3.0.1` \
-rails: `6.1.3.2`
+rails: `6.1.4`
 
 # Deployment
 Deployment is pretty straight forward. You will need a running postgres server and the ruby and rails versions mentioned above under [used versions](#used-versions).
