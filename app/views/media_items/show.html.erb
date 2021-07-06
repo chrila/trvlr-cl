@@ -16,4 +16,4 @@
 
 <%= render @media_item, detail_view: true %>
 
-<%= render 'shared/comments', commentable: @media_item, can_comment: can?(:new_media_item, Comment) %>
+<%= render 'comments/comments', commentable: @media_item, can_comment: can?(:new_media_item, Comment) %>

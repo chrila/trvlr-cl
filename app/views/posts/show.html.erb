@@ -8,4 +8,4 @@
 
 <%= render @post, detail_view: true %>
 
-<%= render 'shared/comments', commentable: @post, can_comment: can?(:new_post, Comment) %>
+<%= render 'comments/comments', commentable: @post, can_comment: can?(:new_post, Comment) %>

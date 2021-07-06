@@ -4,4 +4,4 @@
 
 <%= render @activity %>
 
-<%= render 'shared/comments', commentable: @activity, can_comment: can?(:new_activity, Comment) %>
+<%= render 'comments/comments', commentable: @activity, can_comment: can?(:new_activity, Comment) %>

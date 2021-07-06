@@ -44,4 +44,4 @@
 
 <%= render 'shared/map', waypoints: @trip.waypoints, segments: @trip.segments.order(:sequence, :id) %>
 
-<%= render 'shared/comments', commentable: @trip, can_comment: can?(:new_trip, Comment) %>
+<%= render 'comments/comments', commentable: @trip, can_comment: can?(:new_trip, Comment) %>
