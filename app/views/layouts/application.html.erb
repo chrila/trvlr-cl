@@ -19,18 +19,20 @@
     <%= render 'shared/navbar' %>
     <main>
       <div class="container">
-        <% if notice %>
-          <div class="alert alert-primary alert-dismissible fade show" role="alert">
-            <%= notice.html_safe %>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-        <% end %>
-        <% if alert %>
-          <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <%= alert.html_safe %>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-        <% end %>
+        <div class="alert-container">
+          <% if notice %>
+            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+              <%= notice.html_safe %>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          <% end %>
+          <% if alert %>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <%= alert.html_safe %>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          <% end %>
+        </div>
         <%= yield %>
       </div>
     </main>
