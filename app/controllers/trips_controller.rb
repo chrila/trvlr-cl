@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TripsController < ApplicationController
   include Pagy::Backend
 
@@ -16,9 +18,11 @@ class TripsController < ApplicationController
     @trip = Trip.new
   end
 
-  def edit; end
+  def edit
+  end
 
-  def show; end
+  def show
+  end
 
   def create
     @trip = Trip.new(trip_params)

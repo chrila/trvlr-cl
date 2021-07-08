@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SegmentsController < ApplicationController
   include Pagy::Backend
 

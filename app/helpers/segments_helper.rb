@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SegmentsHelper
   def waypoints_for_select(trip)
     trip.waypoints.order(:sequence).collect { |w| [w.seq_name_str, w.id] }

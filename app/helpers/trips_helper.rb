@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module TripsHelper
   def participant_list(trip)
     trip.users.map(&:username).join(', ')

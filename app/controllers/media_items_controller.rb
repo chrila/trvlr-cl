@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MediaItemsController < ApplicationController
   include Pagy::Backend
 
