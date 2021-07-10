@@ -15,7 +15,7 @@ The objective of this project was to create a platform to plan, document and sha
 [Deployment](#deployment)
 
 # Used versions
-ruby: `3.0.1` \
+ruby: `3.0.2` \
 rails: `6.1.4`
 
 # Deployment
