@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddCommentsCountToTrip < ActiveRecord::Migration[6.1]
   def change
     add_column :trips, :comments_count, :integer, default: 0, null: false

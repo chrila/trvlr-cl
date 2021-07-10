@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddLikesCountToTrip < ActiveRecord::Migration[6.1]
   def change
     add_column :trips, :likes_count, :integer, default: 0, null: false

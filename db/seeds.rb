@@ -47,11 +47,11 @@ def create_segment(trip, wp_from, wp_to, previous_segment)
   time_to = Faker::Time.between_dates(from: time_from, to: trip.end_date, period: :all)
   status =
     if time_from > Date.today
-      Segment.statuses['segment_open']
+      Segment.statuses["segment_open"]
     elsif time_to < Date.today
-      Segment.statuses['segment_finished']
+      Segment.statuses["segment_finished"]
     else
-      Segment.statuses['segment_active']
+      Segment.statuses["segment_active"]
     end
 
   Segment.create!(
@@ -78,8 +78,8 @@ end
 
 # users
 20.times do
-  u = User.new(username: Faker::Internet.username, email: Faker::Internet.email, password: '123456')
-  temp_file = Down.download('https://picsum.photos/500')
+  u = User.new(username: Faker::Internet.username, email: Faker::Internet.email, password: "123456")
+  temp_file = Down.download("https://picsum.photos/500")
   u.avatar.attach(io: temp_file, filename: "avatar-#{u.email}.jpg")
   u.save!
 end
@@ -96,11 +96,11 @@ end
   end_date = Faker::Date.between(from: start_date, to: 1.year.from_now)
   status =
     if start_date > Date.today
-      Trip.statuses['trip_draft']
+      Trip.statuses["trip_draft"]
     elsif end_date < Date.today
-      rand(1..5) < 4 ? Trip.statuses['trip_finished'] : Trip.statuses['trip_cancelled']
+      rand(1..5) < 4 ? Trip.statuses["trip_finished"] : Trip.statuses["trip_cancelled"]
     else
-      Trip.statuses['trip_active']
+      Trip.statuses["trip_active"]
     end
 
   trip = Trip.create!(
@@ -138,8 +138,8 @@ end
         waypoint: w, title: Faker::Hipster.sentence(word_count: 2),
         description: Faker::Hipster.sentence, user: trip.users.sample
       )
-      temp_file = Down.download('https://picsum.photos/1000')
-      m.photo.attach(io: temp_file, filename: 'photo.jpg')
+      temp_file = Down.download("https://picsum.photos/1000")
+      m.photo.attach(io: temp_file, filename: "photo.jpg")
       m.save!
 
       trip.update(cover_photo: m) unless trip.cover_photo
@@ -192,13 +192,13 @@ end
     when 5 then Activity.all.sample
     when 6 then User.all.sample
     end
-  action = rand(1..2) == 1 ? 'liked' : 'commented on'
-  action = 'started following' if n == 6
+  action = rand(1..2) == 1 ? "liked" : "commented on"
+  action = "started following" if n == 6
   Activity.create!(user: User.all.sample, subject: subject, action: action)
 end
 
 # dummy admin user for development
 if Rails.env.development?
-  AdminUser.create!(email: 'admin@example.com', password: 'password',
-                    password_confirmation: 'password')
+  AdminUser.create!(email: "admin@example.com", password: "password",
+                    password_confirmation: "password")
 end
