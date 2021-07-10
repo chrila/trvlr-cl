@@ -1,5 +1,3 @@
-inherit_from: .rubocop_todo.yml
-
-Style/EmptyMethod:
-  EnforcedStyle: expanded
-
+inherit_gem:
+  rubocop-rails_config:
+    - config/rails.yml

@@ -11,7 +11,7 @@ class Comment < ApplicationRecord
 
   attr_readonly :likes_count
 
-  scope :created_between, ->(date_from, date_to) { where('created_at between ? and ?', date_from, date_to).order(id: :desc) }
+  scope :created_between, ->(date_from, date_to) { where("created_at between ? and ?", date_from, date_to).order(id: :desc) }
 
   validates :content, presence: true
 
@@ -22,6 +22,6 @@ class Comment < ApplicationRecord
   end
 
   def activity_string
-    'a comment'
+    "a comment"
   end
 end

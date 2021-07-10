@@ -10,18 +10,18 @@ class MediaItem < ApplicationRecord
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :likes, as: :likeable, dependent: :destroy
   has_many :activities, as: :subject, dependent: :destroy
-  has_one :trip_cover_photo, class_name: 'Trip', foreign_key: :cover_photo_id, dependent: :nullify
+  has_one :trip_cover_photo, class_name: "Trip", foreign_key: :cover_photo_id, dependent: :nullify
 
   has_one_attached :photo
 
   attr_readonly :likes_count
   attr_readonly :comments_count
 
-  scope :created_between, ->(date_from, date_to) { where('created_at between ? and ?', date_from, date_to) }
+  scope :created_between, ->(date_from, date_to) { where("created_at between ? and ?", date_from, date_to) }
   scope :most_popular_public, lambda {
     joins(:waypoint)
       .joins(:trip)
-      .where('trips.visibility = ?', Trip.visibilities['visibility_public'])
+      .where("trips.visibility = ?", Trip.visibilities["visibility_public"])
       .order(likes_count: :desc, comments_count: :desc)
   }
 
@@ -29,6 +29,6 @@ class MediaItem < ApplicationRecord
   validates :photo, presence: true
 
   def activity_string
-    'a media item'
+    "a media item"
   end
 end

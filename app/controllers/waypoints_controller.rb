@@ -35,7 +35,7 @@ class WaypointsController < ApplicationController
 
     respond_to do |format|
       if @waypoint.save
-        format.html { redirect_to trip_waypoints_path(@trip), notice: 'Waypoint was successfully created.' }
+        format.html { redirect_to trip_waypoints_path(@trip), notice: "Waypoint was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -45,7 +45,7 @@ class WaypointsController < ApplicationController
   def update
     respond_to do |format|
       if @waypoint.update(waypoint_params)
-        format.html { redirect_to trip_waypoints_path(@trip), notice: 'Waypoint was successfully updated.' }
+        format.html { redirect_to trip_waypoints_path(@trip), notice: "Waypoint was successfully updated." }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -55,9 +55,9 @@ class WaypointsController < ApplicationController
   def destroy
     respond_to do |format|
       if @waypoint.destroy
-        format.html { redirect_to trip_waypoints_path(@trip), notice: 'Waypoint was successfully deleted.' }
+        format.html { redirect_to trip_waypoints_path(@trip), notice: "Waypoint was successfully deleted." }
       else
-        format.html { redirect_to trip_waypoints_path(@trip), alert: 'Waypoint could not be deleted.' }
+        format.html { redirect_to trip_waypoints_path(@trip), alert: "Waypoint could not be deleted." }
       end
     end
   end
@@ -98,23 +98,22 @@ class WaypointsController < ApplicationController
   def distance
     waypoint_from = Waypoint.find(params[:id_from])
     waypoint_to = Waypoint.find(params[:id_to])
-    return unless waypoint_from && waypoint_to;
+    return unless waypoint_from && waypoint_to
 
     distance = waypoint_from.distance_to(waypoint_to)
     render json: { distance: distance }
   end
 
   private
+    def waypoint_params
+      params.require(:waypoint).permit(%i[name notes address country continent longitude latitude])
+    end
 
-  def waypoint_params
-    params.require(:waypoint).permit(%i[name notes address country continent longitude latitude])
-  end
+    def set_trip
+      @trip = Trip.find(params[:trip_id])
+    end
 
-  def set_trip
-    @trip = Trip.find(params[:trip_id])
-  end
-
-  def set_waypoint
-    @waypoint = @trip.waypoints.find(params[:id] || params[:waypoint_id])
-  end
+    def set_waypoint
+      @waypoint = @trip.waypoints.find(params[:id] || params[:waypoint_id])
+    end
 end

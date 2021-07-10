@@ -16,11 +16,11 @@ class Post < ApplicationRecord
   attr_readonly :likes_count
   attr_readonly :comments_count
 
-  scope :created_between, ->(date_from, date_to) { where('created_at between ? and ?', date_from, date_to) }
+  scope :created_between, ->(date_from, date_to) { where("created_at between ? and ?", date_from, date_to) }
   scope :most_popular_public, lambda {
     joins(:waypoint)
       .joins(:trip)
-      .where('trips.visibility = ?', Trip.visibilities['visibility_public'])
+      .where("trips.visibility = ?", Trip.visibilities["visibility_public"])
       .order(likes_count: :desc, comments_count: :desc)
   }
 
@@ -28,6 +28,6 @@ class Post < ApplicationRecord
   validates :content, presence: true
 
   def activity_string
-    'a blog post'
+    "a blog post"
   end
 end

@@ -7,13 +7,13 @@ class TripUser < ApplicationRecord
   enum role: %i[role_participant role_editor role_administrator]
 
   validates :user, presence: true
-  validates :role, presence: true, inclusion: { in: TripUser.roles, message: 'is invalid' }
+  validates :role, presence: true, inclusion: { in: TripUser.roles, message: "is invalid" }
 
   def role_string
-    role.split('_').last.humanize
+    role.split("_").last.humanize
   end
 
   def activity_string
-    'a participant'
+    "a participant"
   end
 end

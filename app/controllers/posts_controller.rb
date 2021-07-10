@@ -49,10 +49,10 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        Activity.create(user: current_user, subject: @post, action: 'wrote')
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        Activity.create(user: current_user, subject: @post, action: "wrote")
+        format.html { redirect_to @post, notice: "Post was successfully created." }
       else
-        format.html { redirect_back fallback_location: @trip, alert: error_string('create') }
+        format.html { redirect_back fallback_location: @trip, alert: error_string("create") }
       end
     end
   end
@@ -60,9 +60,9 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.html { redirect_to @post, notice: "Post was successfully updated." }
       else
-        format.html { redirect_back fallback_location: @post, alert: error_string('update') }
+        format.html { redirect_back fallback_location: @post, alert: error_string("update") }
       end
     end
   end
@@ -70,9 +70,9 @@ class PostsController < ApplicationController
   def destroy
     respond_to do |format|
       if @post.destroy
-        format.html { redirect_to trip_posts_path(@trip), notice: 'Post was successfully deleted.' }
+        format.html { redirect_to trip_posts_path(@trip), notice: "Post was successfully deleted." }
       else
-        format.html { redirect_back fallback_location: trip_posts_path(@trip), alert: 'Post could not be deleted.' }
+        format.html { redirect_back fallback_location: trip_posts_path(@trip), alert: "Post could not be deleted." }
       end
     end
   end
@@ -88,26 +88,25 @@ class PostsController < ApplicationController
   end
 
   private
+    def post_params
+      params.require(:post).permit(%i[title content waypoint_id])
+    end
 
-  def post_params
-    params.require(:post).permit(%i[title content waypoint_id])
-  end
+    def set_trip
+      @trip = Trip.find(params[:trip_id])
+    end
 
-  def set_trip
-    @trip = Trip.find(params[:trip_id])
-  end
+    def set_waypoint
+      @waypoint = Waypoint.find(params[:waypoint_id])
+    end
 
-  def set_waypoint
-    @waypoint = Waypoint.find(params[:waypoint_id])
-  end
+    def set_post
+      @post = Post.find(params[:id])
+      @waypoint = @post.waypoint
+      @trip = @waypoint.trip
+    end
 
-  def set_post
-    @post = Post.find(params[:id])
-    @waypoint = @post.waypoint
-    @trip = @waypoint.trip
-  end
-
-  def error_string(action)
-    "Could not #{action} post. Errors:<br>- #{@post.errors.full_messages.join('<br>- ')}"
-  end
+    def error_string(action)
+      "Could not #{action} post. Errors:<br>- #{@post.errors.full_messages.join('<br>- ')}"
+    end
 end

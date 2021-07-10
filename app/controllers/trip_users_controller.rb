@@ -24,7 +24,7 @@ class TripUsersController < ApplicationController
 
     respond_to do |format|
       if @trip_user.save
-        format.html { redirect_to trip_trip_users_path(@trip), notice: 'Participant was successfully added to the trip.' }
+        format.html { redirect_to trip_trip_users_path(@trip), notice: "Participant was successfully added to the trip." }
         UserMailer.with(user: current_user, invited_user: @trip_user.user, trip: @trip).added_to_trip.deliver_later
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -35,7 +35,7 @@ class TripUsersController < ApplicationController
   def update
     respond_to do |format|
       if @trip_user.update(trip_user_params)
-        format.html { redirect_to trip_trip_users_path(@trip), notice: 'Participant was successfully updated.' }
+        format.html { redirect_to trip_trip_users_path(@trip), notice: "Participant was successfully updated." }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -45,24 +45,23 @@ class TripUsersController < ApplicationController
   def destroy
     respond_to do |format|
       if @trip_user.destroy
-        format.html { redirect_to trip_trip_users_path(@trip), notice: 'Participant was successfully removed from the trip.' }
+        format.html { redirect_to trip_trip_users_path(@trip), notice: "Participant was successfully removed from the trip." }
       else
-        format.html { redirect_to trip_trip_users_path(@trip), alert: 'Participant could not be removed from the trip.' }
+        format.html { redirect_to trip_trip_users_path(@trip), alert: "Participant could not be removed from the trip." }
       end
     end
   end
 
   private
+    def trip_user_params
+      params.require(:trip_user).permit(%i[user_id trip_id role])
+    end
 
-  def trip_user_params
-    params.require(:trip_user).permit(%i[user_id trip_id role])
-  end
+    def set_trip
+      @trip = Trip.find(params[:trip_id])
+    end
 
-  def set_trip
-    @trip = Trip.find(params[:trip_id])
-  end
-
-  def set_trip_user
-    @trip_user = @trip.trip_users.find(params[:id])
-  end
+    def set_trip_user
+      @trip_user = @trip.trip_users.find(params[:id])
+    end
 end

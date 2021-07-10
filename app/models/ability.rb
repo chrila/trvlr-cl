@@ -5,7 +5,7 @@ class Ability
 
   def initialize(user)
     # visitors can view public trips and their details
-    can :read, Trip, visibility: 'visibility_public'
+    can :read, Trip, visibility: "visibility_public"
     can :index_public, Trip
     cannot :index, Trip
 
@@ -48,7 +48,7 @@ class Ability
 
     # Trips
     # users can see and like/dislike trips that are public and users-only
-    can %i[read like dislike], Trip, visibility: ['visibility_public', 'visibility_users']
+    can %i[read like dislike], Trip, visibility: ["visibility_public", "visibility_users"]
     # private trips can only be read by participants
     can %i[read like dislike], Trip do |t|
       t.visibility_private? && t.user_ids.include?(user.id)

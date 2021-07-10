@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 class UserMailer < ApplicationMailer
-  default from: 'staff@trvlr.com'
+  default from: "staff@trvlr.com"
 
   def welcome_email
     @user = params[:user]
-    mail(to: @user.email, subject: 'Welcome to trvlr!')
+    mail(to: @user.email, subject: "Welcome to trvlr!")
   end
 
   def added_to_trip
