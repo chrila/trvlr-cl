@@ -1,20 +1,15 @@
 <%= tag.tr class: class_names("segment-table-row-#{segment.status_string.downcase}") do %>
   <th scope="row"><%= segment.sequence %></th>
-  <td><%= segment.waypoint_from.name %></td>
-  <td><%= segment.waypoint_to.name %></td>
+  <td><%= link_to segment.waypoint_from.name, [@trip, segment] %></td>
+  <td><%= link_to segment.waypoint_to.name, [@trip, segment] %></td>
   <td class="d-none d-lg-table-cell"><%= segment.time_from.to_s(:day_and_year) %></td>
   <td class="d-none d-md-table-cell d-lg-none"><%= segment.time_from.to_s(:day) %></td>
   <td class="d-none d-lg-table-cell"><%= segment.time_to.to_s(:day_and_year) %></td>
   <td class="d-none d-md-table-cell d-lg-none"><%= segment.time_to.to_s(:day) %></td>
   <td class="d-none d-sm-table-cell"><%= segment.distance.round(1) %></td>
   <td class="d-none d-md-table-cell"><%= render 'segment_status_button', segment: segment %></td>
-  <% if can? :read, segment %>
-    <td>
+    <td class="d-none d-md-table-cell">
       <div class="table-row-action-items">
-        <%= link_to trip_segment_path(@trip, segment) do %>
-          <i class="bi bi-file-earmark-text"></i>
-        <% end %>
-  <% end %>
   <% if can? :manage, segment %>
         <%= link_to edit_trip_segment_path(@trip, segment) do %>
           <i class="bi bi-pencil"></i>

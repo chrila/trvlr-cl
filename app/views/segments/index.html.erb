@@ -16,7 +16,7 @@
       <th scope="col" class="d-none d-md-table-cell">Status</th>
       <% if can? :read, @trip %>
         <!-- links to show, edit, delete -->
-        <th scope="col"></th>
+        <th scope="col" class="d-none d-md-table-cell"></th>
       <% end %>
       <% if can? :manage, @trip %>
         <!-- move up (decrease sequence) -->
