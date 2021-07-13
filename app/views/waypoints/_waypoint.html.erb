@@ -1,10 +1,10 @@
 <tr>
   <th scope="row"><%= waypoint.sequence %></th>
-  <td><%= waypoint.name %></td>
+  <td><%= link_to waypoint.name, [@trip, waypoint] %></td>
   <td class="d-none d-md-table-cell"><%= truncate_string(waypoint.notes) %></td>
   <td class="d-none d-lg-table-cell"><%= waypoint.address %></td>
   <td class="d-none d-lg-table-cell"><%= waypoint.country_name %></td>
-  <td>
+  <td class="d-none d-md-table-cell">
     <div class="table-row-action-items">
       <% if can? :read, @trip %>
         <%= link_to trip_waypoint_posts_path(@trip, waypoint) do %>
@@ -17,11 +17,8 @@
     </div>
   </td>
   <% if can? :read, waypoint %>
-    <td>
+    <td class="d-none d-md-table-cell">
       <div class="table-row-action-items">
-        <%= link_to trip_waypoint_path(@trip, waypoint) do %>
-          <i class="bi bi-file-earmark-text"></i>
-        <% end %>
         <% if can? :manage, waypoint %>
           <%= link_to edit_trip_waypoint_path(@trip, waypoint) do %>
               <i class="bi bi-pencil"></i>
