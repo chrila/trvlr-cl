@@ -26,9 +26,8 @@ main .container {
   position: fixed;
   align-items: center;
   bottom: 5vh;
-  width: 100vh;
+  width: 100%;
   left: 0;
-  right: 0;
   pointer-events: none;
   z-index: 9999;
   display: flex;
