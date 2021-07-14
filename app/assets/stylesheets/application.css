@@ -26,7 +26,10 @@ main .container {
   position: fixed;
   align-items: center;
   bottom: 5vh;
-  width: 100%;
+  width: 100vh;
+  left: 0;
+  right: 0;
+  pointer-events: none;
   z-index: 9999;
   display: flex;
   flex-direction: column;
@@ -35,6 +38,7 @@ main .container {
 .alert {
   border-color: var(--color-borders);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  pointer-events: all;
 }
 
 /* cards */
