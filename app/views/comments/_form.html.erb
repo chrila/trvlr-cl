@@ -18,6 +18,6 @@
     <%= f.text_area :content, class: 'form-control shadow-sm' %>
   </div>
 
-  <%= f.submit class: "btn btn-dark" %>
+  <%= f.submit class: "btn btn-dark", data: { "turbo": "false" } %>
   <button type="button" class="btn btn-outline-dark" data-action="click->comment#hideForm">Cancel</button>
 <% end %>

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class CommentsController < ApplicationController
+  include ActionView::RecordIdentifier
+
   before_action :set_comment, only: %i[edit update destroy like dislike]
   authorize_resource
 
@@ -14,7 +16,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         Activity.create(user: current_user, subject: @comment.commentable, action: "commented on")
-        format.html { redirect_to @comment.commentable, notice: "Comment was successfully created." }
+        format.html { redirect_to polymorphic_path(@comment.commentable, anchor: dom_id(@comment)), notice: "Comment was successfully created." }
       else
         format.html { redirect_back fallback_location: @comment.commentable, alert: error_string("create") }
       end
@@ -24,9 +26,9 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to @comment.commentable, notice: "Comment was successfully updated." }
+        format.html { redirect_to polymorphic_path(@comment.commentable, anchor: dom_id(@comment)), notice: "Comment was successfully updated." }
       else
-        format.html { redirect_back fallback_location: @comment, alert: error_string("update") }
+        format.html { redirect_back fallback_location: @comment.commentable, alert: error_string("update") }
       end
     end
   end
