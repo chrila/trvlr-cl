@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     get "media_items/new", to: "media_items#new_trip", as: :new_media_item
     put "set_cover_photo/:media_item_id", to: "trips#set_cover_photo", as: :set_cover_photo
 
+    resources :comments, module: :trips
     resources :trip_users
 
     resources :segments do
@@ -52,7 +53,6 @@ Rails.application.routes.draw do
   scope "trips/:id", as: :trip do
     post "like", to: "trips#like", as: :like
     delete "like", to: "trips#dislike", as: :dislike
-    post "comments", to: "comments#create"
   end
 
   resources :posts, except: :index
