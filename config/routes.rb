@@ -32,8 +32,6 @@ Rails.application.routes.draw do
     end
 
     resources :waypoints do
-      get "posts", to: "posts#index_waypoint", as: :posts
-      get "posts/new", to: "posts#new_waypoint", as: :new_post
       get "media_items", to: "media_items#index_waypoint", as: :media_items
       get "media_items/new", to: "media_items#new_waypoint", as: :new_media_item
       put "increase_sequence", to: "waypoints#increase_sequence", as: :increase_sequence
@@ -42,6 +40,10 @@ Rails.application.routes.draw do
   end
   get "waypoints/search/:keyword", to: "waypoints#search", as: :waypoints_search
   get "waypoints/distance/:id_from/:id_to", to: "waypoints#distance", as: :waypoints_distance
+
+  resources :posts do
+    resources :comments, module: :posts
+  end
 
   scope "trips/:id", as: :trip do
     post "like", to: "trips#like", as: :like
@@ -53,7 +55,6 @@ Rails.application.routes.draw do
   scope "posts/:id", as: :post do
     post "like", to: "posts#like", as: :like
     delete "like", to: "posts#dislike", as: :dislike
-    post "comments", to: "comments#create"
   end
 
   resources :media_items, except: :index

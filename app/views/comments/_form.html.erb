@@ -1,4 +1,6 @@
-<%= form_with(model: [commentable, comment], local: true, id: 'comment-form') do |f| %>
+<% model = [local_assigns[:commentable], comment].compact %>
+
+<%= form_with(model: model, id: 'comment-form') do |f| %>
   <% if comment.errors.any? %>
     <div class="form-error-list">
       <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
@@ -9,9 +11,6 @@
       </ul>
     </div>
   <% end %>
-
-  <%= f.hidden_field :commentable_id %>
-  <%= f.hidden_field :commentable_type %>
 
   <div class="form-group my-2">
     <%= f.label :content, 'Your comment:' %>
