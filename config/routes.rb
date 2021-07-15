@@ -45,6 +45,10 @@ Rails.application.routes.draw do
     resources :comments, module: :posts
   end
 
+  resources :media_items do
+    resources :comments, module: :media_items
+  end
+
   scope "trips/:id", as: :trip do
     post "like", to: "trips#like", as: :like
     delete "like", to: "trips#dislike", as: :dislike
@@ -61,7 +65,6 @@ Rails.application.routes.draw do
   scope "media_items/:id", as: :media_item do
     post "like", to: "media_items#like", as: :like
     delete "like", to: "media_items#dislike", as: :dislike
-    post "comments", to: "comments#create"
   end
 
   resources :users, only: :show
