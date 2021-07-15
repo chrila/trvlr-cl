@@ -10,13 +10,6 @@ Rails.application.routes.draw do
     omniauth_callbacks: "users/omniauth_callbacks"
   }
 
-  resources :activities, only: %i[index show]
-  scope "activities/:id", as: :activity do
-    post "like", to: "activities#like", as: :like
-    delete "like", to: "activities#dislike", as: :dislike
-    post "comments", to: "comments#create"
-  end
-
   resources :trips do
     get "posts", to: "posts#index_trip", as: :posts
     get "posts/new", to: "posts#new_trip", as: :new_post
@@ -47,6 +40,12 @@ Rails.application.routes.draw do
 
   get "waypoints/search/:keyword", to: "waypoints#search", as: :waypoints_search
   get "waypoints/distance/:id_from/:id_to", to: "waypoints#distance", as: :waypoints_distance
+
+  resources :activities, only: %i[index show] do
+    resources :comments, module: :activities
+    post "like", to: "activities#like", as: :like
+    delete "like", to: "activities#dislike", as: :dislike
+  end
 
   resources :posts, except: :index do
     resources :comments, module: :posts
