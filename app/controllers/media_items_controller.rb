@@ -101,7 +101,7 @@ class MediaItemsController < ApplicationController
     end
 
     def set_media_item
-      @media_item = MediaItem.find(params[:id])
+      @media_item = MediaItem.find(params[:media_item_id] || params[:id])
       @waypoint = @media_item.waypoint
       @trip = @waypoint.trip
     end
