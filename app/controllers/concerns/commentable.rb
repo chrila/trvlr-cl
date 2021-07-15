@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Commentable
   extend ActiveSupport::Concern
 
@@ -8,7 +10,7 @@ module Commentable
   def create
     @comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
-    
+
     respond_to do |format|
       if @comment.save
         format.html { redirect_to @commentable }
@@ -23,4 +25,3 @@ module Commentable
       params.require(:comment).permit(:content)
     end
 end
-
