@@ -60,7 +60,7 @@ class CommentsController < ApplicationController
     end
 
     def set_comment
-      @comment = Comment.find(params[:id])
+      @comment = Comment.find(params[:comment_id] || params[:id])
     end
 
     def error_string(action)
