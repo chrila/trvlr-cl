@@ -55,8 +55,8 @@ Rails.application.routes.draw do
 
   resources :media_items, except: :index do
     resources :comments, module: :media_items
-    post "like", to: "media_items#like", as: :like
-    delete "like", to: "media_items#dislike", as: :dislike
+    post :like, to: "media_items/likes#create"
+    delete :like, to: "media_items/likes#destroy"
   end
 
   resources :users, only: :show do
