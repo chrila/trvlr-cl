@@ -3,7 +3,7 @@
 class ActivitiesController < ApplicationController
   include Pagy::Backend
 
-  before_action :set_activity, only: %i[show like dislike]
+  before_action :set_activity, only: %i[show]
   authorize_resource
 
   def index
@@ -11,16 +11,6 @@ class ActivitiesController < ApplicationController
   end
 
   def show
-  end
-
-  def like
-    @activity.like current_user
-    set_activity
-  end
-
-  def dislike
-    @activity.dislike current_user
-    set_activity
   end
 
   private

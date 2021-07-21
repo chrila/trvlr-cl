@@ -43,8 +43,8 @@ Rails.application.routes.draw do
 
   resources :activities, only: %i[index show] do
     resources :comments, module: :activities
-    post "like", to: "activities#like", as: :like
-    delete "like", to: "activities#dislike", as: :dislike
+    post :like, to: "activities/likes#create"
+    delete :like, to: "activities/likes#destroy"
   end
 
   resources :posts, except: :index do
