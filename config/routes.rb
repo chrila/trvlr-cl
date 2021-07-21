@@ -17,8 +17,8 @@ Rails.application.routes.draw do
     get "media_items/new", to: "media_items#new_trip", as: :new_media_item
     put "set_cover_photo/:media_item_id", to: "trips#set_cover_photo", as: :set_cover_photo
 
-    post "like", to: "trips#like", as: :like
-    delete "like", to: "trips#dislike", as: :dislike
+    post :like, to: "trips/likes#create"
+    delete :like, to: "trips/likes#destroy"
 
     resources :comments, module: :trips
     resources :trip_users

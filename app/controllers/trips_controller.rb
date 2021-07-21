@@ -3,7 +3,7 @@
 class TripsController < ApplicationController
   include Pagy::Backend
 
-  before_action :set_trip, only: %i[show edit update destroy like dislike set_cover_photo]
+  before_action :set_trip, only: %i[show edit update destroy set_cover_photo]
   authorize_resource
 
   def index
@@ -57,16 +57,6 @@ class TripsController < ApplicationController
         format.html { redirect_to trips_path, alert: "Trip could not be deleted." }
       end
     end
-  end
-
-  def like
-    @trip.like current_user
-    set_trip
-  end
-
-  def dislike
-    @trip.dislike current_user
-    set_trip
   end
 
   def set_cover_photo
