@@ -1,8 +1,10 @@
 <div class="like-button">
-  <% if likeable.liked_by? current_user %>
-    <%= link_to_if can?(:like, likeable), icon_thumbs_up(likeable, true).html_safe, like_path(likeable), method: :delete, id: element_id("like-link", likeable) %>
-  <% else %>
-    <%= link_to_if can?(:like, likeable), icon_thumbs_up(likeable, false).html_safe, like_path(likeable), method: :post, id: element_id("like-link", likeable) %>
-  <% end %>
+  <% liked = likeable.liked_by? current_user %>
+  <%= link_to_if can?(:like, likeable),
+    icon_thumbs_up(likeable, liked).html_safe,
+    like_path(likeable),
+    method: liked ? :delete : :post,
+    id: element_id("like-link", likeable)
+  %>
   <span id=<%= element_id("like-counter", likeable) %>><%= likeable.likes_count %></span>
 </div>
