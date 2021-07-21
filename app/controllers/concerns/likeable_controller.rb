@@ -9,11 +9,9 @@ module LikeableController
 
   def create
     @likeable.like current_user
-    set_likeable
   end
 
   def destroy
     @likeable.dislike current_user
-    set_likeable
   end
 end
