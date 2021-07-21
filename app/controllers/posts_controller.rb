@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
   before_action :set_trip, only: %i[index_trip index_waypoint new_trip new_waypoint]
   before_action :set_waypoint, only: %i[index_waypoint new_waypoint]
-  before_action :set_post, only: %i[show edit update destroy like dislike]
+  before_action :set_post, only: %i[show edit update destroy]
   authorize_resource
 
   def index_public
