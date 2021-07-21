@@ -77,16 +77,6 @@ class PostsController < ApplicationController
     end
   end
 
-  def like
-    @post.like current_user
-    set_post
-  end
-
-  def dislike
-    @post.dislike current_user
-    set_post
-  end
-
   private
     def post_params
       params.require(:post).permit(%i[title content waypoint_id])
