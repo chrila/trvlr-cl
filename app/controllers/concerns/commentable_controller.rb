@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Commentable
+module CommentableController
   extend ActiveSupport::Concern
 
   included do
