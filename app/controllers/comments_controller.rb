@@ -3,7 +3,7 @@
 class CommentsController < ApplicationController
   include ActionView::RecordIdentifier
 
-  before_action :set_comment, only: %i[edit update destroy like dislike]
+  before_action :set_comment, only: %i[edit update destroy]
   authorize_resource
 
   def edit
@@ -42,16 +42,6 @@ class CommentsController < ApplicationController
         format.html { redirect_to commentable, alert: "Comment could not be deleted." }
       end
     end
-  end
-
-  def like
-    @comment.like current_user
-    set_comment
-  end
-
-  def dislike
-    @comment.dislike current_user
-    set_comment
   end
 
   private

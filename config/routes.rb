@@ -65,8 +65,8 @@ Rails.application.routes.draw do
   end
 
   resources :comments, only: %i[update edit destroy] do
-    post "like", to: "comments#like", as: :like
-    delete "like", to: "comments#dislike", as: :dislike
+    post :like, to: "comments/likes#create"
+    delete :like, to: "comments/likes#destroy"
   end
 
   get "home/index", as: :home
