@@ -1,10 +1,10 @@
-<div class="like-button">
-  <% liked = likeable.liked_by? current_user %>
-  <%= link_to_if can?(:like, likeable),
+<%= turbo_frame_tag element_id("like-button", likeable), class: "like-button" do %>
+  <% liked = local_assigns[:user].present? ? likeable.liked_by?(user) : false %>
+  <%= link_to_if local_assigns[:clickable].presence,
     icon_thumbs_up(likeable, liked).html_safe,
     like_path(likeable),
     method: liked ? :delete : :post,
     id: element_id("like-link", likeable)
   %>
   <span id=<%= element_id("like-counter", likeable) %>><%= likeable.likes_count %></span>
-</div>
+<% end %>
