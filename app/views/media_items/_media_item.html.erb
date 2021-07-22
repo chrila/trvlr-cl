@@ -11,7 +11,7 @@
       <div class="media-item-bottom-bar">
         <small class="text-muted"><%= "#{time_ago_in_words(media_item.created_at)} ago" %></small>
         <div class="interaction-button-group">
-          <%= render 'shared/like_button', likeable: media_item, user: current_user, clickable: can?(:like, media_item) %>
+          <%= render 'shared/like_button', likeable: media_item, user: current_user, clickable: can?(:create, Like) %>
           <%= render 'shared/comments_button', commentable: media_item %>
         </div>
       </div>

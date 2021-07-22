@@ -20,7 +20,7 @@
           <% end %>
         <% end %>
       </div>
-      <%= render 'shared/like_button', likeable: comment, user: current_user, clickable: can?(:like, comment) %>
+      <%= render 'shared/like_button', likeable: comment, user: current_user, clickable: can?(:create, Like) %>
     </div>
   </div>
 </div>

@@ -14,7 +14,7 @@ module LikeableController
 
     render turbo_stream: turbo_stream.replace(
       element_id("like-button", @likeable), partial: "shared/like_button",
-      locals: { likeable: @likeable, user: current_user, clickable: can?(:like, @likeable) }
+      locals: { likeable: @likeable, user: current_user, clickable: can?(:create, Like) }
     )
   end
 
@@ -24,7 +24,7 @@ module LikeableController
 
     render turbo_stream: turbo_stream.replace(
       element_id("like-button", @likeable), partial: "shared/like_button",
-      locals: { likeable: @likeable, user: current_user, clickable: can?(:like, @likeable) }
+      locals: { likeable: @likeable, user: current_user, clickable: can?(:create, Like) }
     )
   end
 end

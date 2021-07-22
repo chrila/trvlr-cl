@@ -37,24 +37,23 @@ class Ability
     can %i[read follow unfollow], User
 
     # Comments
-    # users can read, create, like and dislike comments, but only delete and edit their own comments
+    # users can read and create comments, but only delete and edit their own comments
     can :manage, Comment, user_id: user.id
-    can :read, Comment
-    can %i[create like dislike], Comment
+    can %i[read create], Comment
 
     # Likes
     # users can create and destroy likes
     can %i[create destroy], Like
 
     # Activities
-    # users can read, like and dislike all activities
-    can %i[read like dislike], Activity
+    # users can read all activities
+    can :read, Activity
 
     # Trips
-    # users can see and like/dislike trips that are public and users-only
-    can %i[read like dislike], Trip, visibility: ["visibility_public", "visibility_users"]
+    # users can see trips that are public and users-only
+    can :read, Trip, visibility: ["visibility_public", "visibility_users"]
     # private trips can only be read by participants
-    can %i[read like dislike], Trip do |t|
+    can :read, Trip do |t|
       t.visibility_private? && t.user_ids.include?(user.id)
     end
     # users can manage trips which they participate in as administrator
@@ -100,10 +99,10 @@ class Ability
     end
 
     # Reading is analog to the trip's permission
-    can %i[read like dislike], MediaItem do |m|
+    can :read, MediaItem do |m|
       can? :read, m.trip
     end
-    can %i[read like dislike], Post do |p|
+    can :read, Post do |p|
       can? :read, p.trip
     end
   end
