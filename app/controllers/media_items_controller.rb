@@ -5,7 +5,7 @@ class MediaItemsController < ApplicationController
 
   before_action :set_trip, only: %i[index_trip index_waypoint new_trip new_waypoint]
   before_action :set_waypoint, only: %i[index_waypoint new_waypoint]
-  before_action :set_media_item, only: %i[show edit update destroy like dislike]
+  before_action :set_media_item, only: %i[show edit update destroy]
   authorize_resource
 
   def index_public
@@ -75,16 +75,6 @@ class MediaItemsController < ApplicationController
         format.html { redirect_back fallback_location: trip_media_items_path(@trip), alert: "Media item could not be deleted." }
       end
     end
-  end
-
-  def like
-    @media_item.like current_user
-    set_media_item
-  end
-
-  def dislike
-    @media_item.dislike current_user
-    set_media_item
   end
 
   private

@@ -19,7 +19,7 @@
     <div class="card-footer post-bottom-bar">
       <div><i class="bi bi-geo-alt"></i> <%= "#{post.waypoint.name}, #{post.waypoint.country_name} #{post.waypoint.country_flag}" %></div>
       <div class="interaction-button-group">
-        <%= render 'shared/like_button', likeable: post %>
+        <%= render 'shared/like_button', likeable: post, user: current_user, clickable: can?(:like, post) %>
         <%= render 'shared/comments_button', commentable: post %>
       </div>
     </div>

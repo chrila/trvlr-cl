@@ -17,8 +17,8 @@ Rails.application.routes.draw do
     get "media_items/new", to: "media_items#new_trip", as: :new_media_item
     put "set_cover_photo/:media_item_id", to: "trips#set_cover_photo", as: :set_cover_photo
 
-    post "like", to: "trips#like", as: :like
-    delete "like", to: "trips#dislike", as: :dislike
+    post :like, to: "trips/likes#create"
+    delete :like, to: "trips/likes#destroy"
 
     resources :comments, module: :trips
     resources :trip_users
@@ -43,20 +43,20 @@ Rails.application.routes.draw do
 
   resources :activities, only: %i[index show] do
     resources :comments, module: :activities
-    post "like", to: "activities#like", as: :like
-    delete "like", to: "activities#dislike", as: :dislike
+    post :like, to: "activities/likes#create"
+    delete :like, to: "activities/likes#destroy"
   end
 
   resources :posts, except: :index do
     resources :comments, module: :posts
-    post "like", to: "posts#like", as: :like
-    delete "like", to: "posts#dislike", as: :dislike
+    post :like, to: "posts/likes#create"
+    delete :like, to: "posts/likes#destroy"
   end
 
   resources :media_items, except: :index do
     resources :comments, module: :media_items
-    post "like", to: "media_items#like", as: :like
-    delete "like", to: "media_items#dislike", as: :dislike
+    post :like, to: "media_items/likes#create"
+    delete :like, to: "media_items/likes#destroy"
   end
 
   resources :users, only: :show do
@@ -65,8 +65,8 @@ Rails.application.routes.draw do
   end
 
   resources :comments, only: %i[update edit destroy] do
-    post "like", to: "comments#like", as: :like
-    delete "like", to: "comments#dislike", as: :dislike
+    post :like, to: "comments/likes#create"
+    delete :like, to: "comments/likes#destroy"
   end
 
   get "home/index", as: :home

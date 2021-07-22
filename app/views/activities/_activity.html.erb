@@ -20,7 +20,7 @@
         <%= link_to "#{time_ago_in_words(activity.created_at)} ago", activity_path(activity) %>
       </small>
       <div class="interaction-button-group">
-        <%= render 'shared/like_button', likeable: activity %>
+        <%= render 'shared/like_button', likeable: activity, user: current_user, clickable: can?(:like, activity) %>
         <%= render 'shared/comments_button', commentable: activity %>
       </div>
     </div>

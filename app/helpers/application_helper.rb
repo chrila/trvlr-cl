@@ -19,10 +19,6 @@ module ApplicationHelper
     send("#{likeable.class.to_s.underscore}_like_path", likeable)
   end
 
-  def dislike_path(likeable)
-    send("#{likeable.class.to_s.underscore}_dislike_path", likeable)
-  end
-
   def new_comment_path(commentable)
     send("#{commentable.class.to_s.underscore}_new_comment_path", commentable)
   end

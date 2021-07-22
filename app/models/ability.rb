@@ -42,6 +42,10 @@ class Ability
     can :read, Comment
     can %i[create like dislike], Comment
 
+    # Likes
+    # users can create and destroy likes
+    can %i[create destroy], Like
+
     # Activities
     # users can read, like and dislike all activities
     can %i[read like dislike], Activity
