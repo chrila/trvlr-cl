@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Activities::CommentsController < ApplicationController
-  include Commentable
+  include CommentableController
 
   before_action :set_commentable
 

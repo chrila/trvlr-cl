@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Posts::CommentsController < ApplicationController
-  include Commentable
+  include CommentableController
 
   before_action :set_commentable
 
