@@ -11,7 +11,7 @@ gem "puma", "~> 5.4"
 gem "sass-rails", ">= 6"
 gem "webpacker", "~> 5.0"
 gem "jbuilder", "~> 2.7"
-gem "redis", "~> 4.0"
+gem "redis", "~> 4.4"
 gem "image_processing", "~> 1.2"
 gem "bootsnap", ">= 1.4.4", require: false
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
