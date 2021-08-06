@@ -11,7 +11,7 @@
     "@rails/request.js": "^0.0.4",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.4.0",
-    "bootstrap": "^5.0.1",
+    "bootstrap": "^5.1.0",
     "chart.js": "^3.5.0",
     "chartkick": "^4.0.3",
     "leaflet": "^1.7.1",
