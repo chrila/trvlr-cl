@@ -6,4 +6,4 @@ one:
 
 two:
   user: two
-  followed_user: two
+  followed_user: one

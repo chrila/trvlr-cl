@@ -1,19 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  description: MyText
+  title: Trip 1
+  description: Description of trip 1
   start_date: 2021-04-17
   end_date: 2021-04-17
-  budget: 1.5
-  visbility: 1
+  budget: 1500
+  visibility: 1
   status: 1
 
 two:
-  title: MyString
-  description: MyText
-  start_date: 2021-04-17
-  end_date: 2021-04-17
-  budget: 1.5
-  visbility: 1
-  status: 1
+  title: Trip 2
+  description: Description of trip 2
+  start_date: 2021-05-17
+  end_date: 2021-06-17
+  budget: 100
+  visibility: 2
+  status: 3

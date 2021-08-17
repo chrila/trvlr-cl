@@ -1,15 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  content: MyText
+  content: Comment One
   user: one
-  commentable: one
-  commentable_type: Commentable
+  commentable: one (Trip)
 
 two:
-  title: MyString
-  content: MyText
+  content: Comment Two
   user: two
-  commentable: two
-  commentable_type: Commentable
+  commentable: one (Post)

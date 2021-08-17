@@ -3,17 +3,19 @@
 one:
   trip: one
   waypoint_from: one
-  waypoint_to: one
-  time_from: 2021-04-17 10:49:39
-  time_to: 2021-04-17 10:49:39
-  distance: 1.5
-  status: 1
-
-two:
-  trip: two
-  waypoint_from: two
   waypoint_to: two
   time_from: 2021-04-17 10:49:39
   time_to: 2021-04-17 10:49:39
-  distance: 1.5
+  distance: 4300
   status: 1
+  sequence: 0
+
+two:
+  trip: two
+  waypoint_from: three
+  waypoint_to: three
+  time_from: 2021-05-17 10:49:39
+  time_to: 2021-05-18 10:49:39
+  distance: 0
+  status: 1
+  sequence: 0

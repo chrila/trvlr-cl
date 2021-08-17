@@ -2,10 +2,8 @@
 
 one:
   user: one
-  likeable: one
-  likeable_type: Likeable
+  likeable: one (Trip)
 
 two:
   user: two
-  likeable: two
-  likeable_type: Likeable
+  likeable: two (Post)

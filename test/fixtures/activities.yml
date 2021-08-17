@@ -1,9 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  description: MyString
+  action: Liked a trip
   user: one
+  subject: one (Trip)
 
 two:
-  description: MyString
+  action: Commented on a post
   user: two
+  subject: one (Post)

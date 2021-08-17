@@ -2,10 +2,8 @@
 
 one:
   waypoint: one
-  title: MyString
-  content: MyText
+  title: Post 1
 
 two:
   waypoint: two
-  title: MyString
-  content: MyText
+  title: Post 2

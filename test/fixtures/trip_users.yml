@@ -6,6 +6,6 @@ one:
   trip: one
 
 two:
-  role: 1
+  role: 2
   user: two
   trip: two
