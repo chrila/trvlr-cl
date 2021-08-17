@@ -1,9 +1,0 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  username: Traveller 1
-  email: traveller1@trvlr.cl
-
-two:
-  username: Traveller 2
-  email: traveller2@trvlr.cl
