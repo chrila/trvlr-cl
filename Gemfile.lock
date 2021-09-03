@@ -132,7 +132,7 @@ GEM
     down (5.2.3)
       addressable (~> 2.8)
     erubi (1.10.0)
-    faker (2.18.0)
+    faker (2.19.0)
       i18n (>= 1.6, < 2)
     faraday (1.5.1)
       faraday-em_http (~> 1.0)
