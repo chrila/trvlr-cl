@@ -37,7 +37,7 @@ group :development do
   gem "byebug", platforms: %i[mri mingw x64_mingw]
   gem "web-console", ">= 4.1.0"
   gem "listen", "~> 3.7"
-  gem "rack-mini-profiler", "~> 2.0"
+  gem "rack-mini-profiler", "~> 2.3"
   gem "spring"
   gem "rails-erd"
   gem "rubocop"
