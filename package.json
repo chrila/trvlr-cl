@@ -3,7 +3,7 @@
   "private": true,
   "dependencies": {
     "@activeadmin/activeadmin": "^2.9.0",
-    "@hotwired/turbo-rails": "^7.0.0-rc.3",
+    "@hotwired/turbo-rails": "^7.0.0-rc.4",
     "@popperjs/core": "^2.10.1",
     "@rails/actioncable": "^6.0.0",
     "@rails/actiontext": "^6.1.3-1",
