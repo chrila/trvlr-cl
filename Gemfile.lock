@@ -303,7 +303,7 @@ GEM
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    redis (4.4.0)
+    redis (4.5.1)
     regexp_parser (2.1.1)
     responders (3.0.1)
       actionpack (>= 5.0)
@@ -444,7 +444,7 @@ DEPENDENCIES
   rack-mini-profiler (~> 2.3)
   rails (~> 6.1.4)
   rails-erd
-  redis (~> 4.4)
+  redis (~> 4.5)
   rubocop
   rubocop-packaging
   rubocop-performance
