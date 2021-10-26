@@ -108,7 +108,7 @@ GEM
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
     chartkick (4.1.0)
-    childprocess (3.0.0)
+    childprocess (4.1.0)
     choice (0.2.0)
     concurrent-ruby (1.1.9)
     countries (4.0.1)
@@ -365,8 +365,9 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    selenium-webdriver (3.142.7)
-      childprocess (>= 0.5, < 4.0)
+    selenium-webdriver (4.0.3)
+      childprocess (>= 0.5, < 5.0)
+      rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
     semantic_range (3.0.0)
     sixarm_ruby_unaccent (1.2.0)
