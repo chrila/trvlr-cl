@@ -5,9 +5,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.0.2"
 
+# database
 gem "rails", "~> 6.1.4"
-gem "pg", "~> 1.1"
 gem "puma", "~> 5.5"
+gem "pg", groups: %i[development production]
+gem "sqlite", groups: %i[test]
 gem "sass-rails", ">= 6"
 gem "webpacker", "~> 5.4"
 gem "jbuilder", "~> 2.7"
