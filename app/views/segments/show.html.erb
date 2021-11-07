@@ -1,6 +1,6 @@
 <%= render 'shared/trips_header', trip: @trip, title: 'Segment details', navbar: false %>
 
-<%= render 'shared/back_button', target: trip_segments_path(@trip) %>
+<%= render 'shared/back_button', target: trip_segments_path(@trip) + "\##{dom_id(@segment)}" %>
 <% if can? :manage, @segment %>
     <%= render 'shared/edit_button', target: edit_trip_segment_path(@trip, @segment) %>
     <%= render 'shared/delete_button', target: trip_segment_path(@trip, @segment) %>
