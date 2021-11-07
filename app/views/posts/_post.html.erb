@@ -2,7 +2,7 @@
   <div class="card activity-card">
     <div class="card-body">
       <%= link_to post do %>
-        <h5 class="card-title"><%= post.title %></h5>
+        <h5 class="card-title" id="<%= dom_id(post) %>"><%= post.title %></h5>
       <% end %>
       <small class="text-muted">
         by <%= link_to_if can?(:show, post.user), post.user, post.user %><!--

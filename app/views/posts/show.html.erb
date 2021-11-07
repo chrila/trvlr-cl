@@ -1,6 +1,6 @@
 <%= render 'shared/trips_header', trip: @post.trip, title: 'Blog post', navbar: false %>
 
-<%= render 'shared/back_button', target: trip_posts_path(@post.trip) %>
+<%= render 'shared/back_button', target: trip_posts_path(@post.trip) + "#" + dom_id(@post) %>
 <% if can? :manage, @post %>
     <%= render 'shared/edit_button', target: edit_post_path(@post) %>
     <%= render 'shared/delete_button', target: post_path(@post) %>
