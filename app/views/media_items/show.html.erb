@@ -1,6 +1,6 @@
 <%= render 'shared/trips_header', trip: @media_item.trip, title: 'Media item', navbar: false %>
 
-<%= render 'shared/back_button', target: trip_media_items_path(@media_item.trip) %>
+<%= render 'shared/back_button', target: trip_media_items_path(@media_item.trip) + "\##{dom_id(@media_item)}" %>
 <% if can? :manage, @media_item %>
     <%= render 'shared/edit_button', target: edit_media_item_path(@media_item) %>
     <%= render 'shared/delete_button', target: media_item_path(@media_item) %>
