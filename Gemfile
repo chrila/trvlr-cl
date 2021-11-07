@@ -5,16 +5,15 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.0.2"
 
-gem "rails", "~> 6.1.3", ">= 6.1.3.1"
-
 # database
+gem "rails", "~> 6.1.4"
+gem "puma", "~> 5.5"
 gem "pg", groups: %i[development production]
 gem "sqlite", groups: %i[test]
-gem "puma", "~> 5.4"
 gem "sass-rails", ">= 6"
-gem "webpacker", "~> 5.0"
+gem "webpacker", "~> 5.4"
 gem "jbuilder", "~> 2.7"
-gem "redis", "~> 4.4"
+gem "redis", "~> 4.5"
 gem "image_processing", "~> 1.2"
 gem "bootsnap", ">= 1.4.4", require: false
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
@@ -39,8 +38,8 @@ group :development do
   gem "dotenv-rails"
   gem "byebug", platforms: %i[mri mingw x64_mingw]
   gem "web-console", ">= 4.1.0"
-  gem "listen", "~> 3.3"
-  gem "rack-mini-profiler", "~> 2.0"
+  gem "listen", "~> 3.7"
+  gem "rack-mini-profiler", "~> 2.3"
   gem "spring"
   gem "rails-erd"
   gem "rubocop"
