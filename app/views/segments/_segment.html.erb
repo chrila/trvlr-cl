@@ -1,4 +1,4 @@
-<%= tag.tr class: class_names("segment-table-row-#{segment.status_string.downcase}") do %>
+<%= tag.tr class: class_names("segment-table-row-#{segment.status_string.downcase}"), id: dom_id(segment) do %>
   <th scope="row"><%= segment.sequence %></th>
   <td><%= link_to segment.waypoint_from.name, [@trip, segment] %></td>
   <td><%= link_to segment.waypoint_to.name, [@trip, segment] %></td>

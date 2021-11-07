@@ -1,4 +1,4 @@
-<tr>
+<tr id="<%= dom_id(waypoint) %>">
   <th scope="row"><%= waypoint.sequence %></th>
   <td><%= link_to waypoint.name, [@trip, waypoint] %></td>
   <td class="d-none d-md-table-cell"><%= truncate_string(waypoint.notes) %></td>
