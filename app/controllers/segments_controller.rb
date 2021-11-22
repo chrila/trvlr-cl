@@ -80,7 +80,7 @@ class SegmentsController < ApplicationController
 
   private
     def segment_params
-      params.require(:segment).permit(%i[waypoint_from_id waypoint_to_id time_from time_to distance status])
+      params.require(:segment).permit(%i[waypoint_from_id waypoint_to_id time_from time_to distance status means_of_travel_id])
     end
 
     def set_trip
