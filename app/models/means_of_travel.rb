@@ -1,0 +1,2 @@
+class MeansOfTravel < ApplicationRecord
+end

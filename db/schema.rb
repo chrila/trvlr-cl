@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_22_230918) do
+ActiveRecord::Schema.define(version: 2021_11_22_033445) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,6 +123,13 @@ ActiveRecord::Schema.define(version: 2021_05_22_230918) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
+  create_table "means_of_travels", force: :cascade do |t|
+    t.string "name"
+    t.string "icon"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "media_items", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -159,6 +166,8 @@ ActiveRecord::Schema.define(version: 2021_05_22_230918) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "sequence", default: 0
+    t.bigint "means_of_travel_id"
+    t.index ["means_of_travel_id"], name: "index_segments_on_means_of_travel_id"
     t.index ["trip_id"], name: "index_segments_on_trip_id"
     t.index ["waypoint_from_id"], name: "index_segments_on_waypoint_from_id"
     t.index ["waypoint_to_id"], name: "index_segments_on_waypoint_to_id"
@@ -234,6 +243,7 @@ ActiveRecord::Schema.define(version: 2021_05_22_230918) do
   add_foreign_key "media_items", "waypoints"
   add_foreign_key "posts", "users"
   add_foreign_key "posts", "waypoints"
+  add_foreign_key "segments", "means_of_travels"
   add_foreign_key "segments", "trips"
   add_foreign_key "segments", "waypoints", column: "waypoint_from_id"
   add_foreign_key "segments", "waypoints", column: "waypoint_to_id"
