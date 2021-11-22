@@ -28,10 +28,12 @@ module TripsHelper
   end
 
   def trip_means_of_travel_list(trip)
-    mots = []
-    trip.segments.map(&:means_of_travel).filter { |x| x }.each do |m|
-      mots << m.to_s unless mots.include? m.to_s
-    end
-    mots
+    trip
+      .segments
+      .map(&:means_of_travel)
+      .filter { |x| x }
+      .map(&:to_s)
+      .uniq
+      .reduce { |list, mot| list += ", #{mot}" }
   end
 end
