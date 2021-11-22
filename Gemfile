@@ -11,7 +11,7 @@ gem "pg", groups: %i[development production]
 gem "sqlite", groups: %i[test]
 gem "sass-rails", ">= 6"
 gem "webpacker", "~> 5.4"
-gem "jbuilder", "~> 2.7"
+gem "jbuilder", "~> 2.11"
 gem "redis", "~> 4.5"
 gem "image_processing", "~> 1.2"
 gem "bootsnap", ">= 1.4.4", require: false
