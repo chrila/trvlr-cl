@@ -26,6 +26,7 @@
 <p class="fs-3 fw-light"><strong># Waypoints: </strong><%= @trip.waypoints.count %></p>
 <p class="fs-3 fw-light"><strong># Segments: </strong><%= @trip.segments.count %></p>
 <p class="fs-3 fw-light"><strong>Total distance: </strong><%= @trip.segments.sum(:distance).round(2) %></p>
+<p class="fs-3 fw-light"><strong>Means of travel: </strong><%= trip_means_of_travel_list(@trip).reduce { |list, mot| list += ", #{mot}" } %></p>
 <% if @trip.segments.count.positive? %>
   <p class="fs-3 fw-light mb-0">
     <strong>Progress: </strong>

@@ -61,7 +61,8 @@ def create_segment(trip, wp_from, wp_to, previous_segment)
     time_from: time_from,
     time_to: time_to,
     distance: wp_from.distance_to(wp_to).round(2),
-    status: status
+    status: status,
+    means_of_travel: MeansOfTravel.all.sample
   )
 end
 
@@ -88,6 +89,14 @@ end
 User.all.each do |u|
   Following.create!(user: u, followed_user: User.all.sample)
 end
+
+# means of travel
+MeansOfTravel.create(name: "Motorbike")
+MeansOfTravel.create(name: "Car")
+MeansOfTravel.create(name: "Aeroplane")
+MeansOfTravel.create(name: "Ship")
+MeansOfTravel.create(name: "Bicycle")
+MeansOfTravel.create(name: "Foot")
 
 # trips
 30.times do
