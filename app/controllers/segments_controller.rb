@@ -22,6 +22,7 @@ class SegmentsController < ApplicationController
     @segment.waypoint_to = last_sg.waypoint_to
     @segment.time_from = last_sg.time_to
     @segment.time_to = last_sg.time_to
+    @segment.means_of_travel = last_sg.means_of_travel
   end
 
   def edit
@@ -80,7 +81,7 @@ class SegmentsController < ApplicationController
 
   private
     def segment_params
-      params.require(:segment).permit(%i[waypoint_from_id waypoint_to_id time_from time_to distance status])
+      params.require(:segment).permit(%i[waypoint_from_id waypoint_to_id time_from time_to distance status means_of_travel_id])
     end
 
     def set_trip

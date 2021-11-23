@@ -14,3 +14,10 @@
     <%= column_chart @stats[:distance_per_month], xmin: 1, xmax: 12, discrete: true, round: 2, suffix: ' km' %>
   </div>
 <% end %>
+
+<% if @stats[:distance_per_means].present? %>
+  <div class="mt-5">
+    <h2 class="display-6 mb-4">Distance travelled per means of travel</h2>
+    <%= pie_chart @stats[:distance_per_means], round: 2, suffix: ' km' %>
+  </div>
+<% end %>

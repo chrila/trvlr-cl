@@ -34,9 +34,11 @@ class SummaryController < ApplicationController
       stats[:posts] = calculate_posts(current_user.posts.created_between(date_from, date_to))
       stats[:likes] = calculate_likes(date_from, date_to)
       stats[:comments] = calculate_comments(date_from, date_to)
+      stats[:means_of_travel] = calculate_means(segments)
       stats[:waypoints_per_continent] = calculate_waypoints_per_continent(segments)
       stats[:distance_per_year] = calculate_distance_per_year(segments)
       stats[:distance_per_month] = calculate_distance_per_month(segments)
+      stats[:distance_per_means] = calculate_distance_per_means(segments)
       stats
     end
 
@@ -89,6 +91,10 @@ class SummaryController < ApplicationController
       Comment.created_between(date_from, date_to).where(commentable: current_user.media_items).count
     end
 
+    def calculate_means(segments)
+      segments.map(&:means_of_travel).filter { |x| x }.uniq.count
+    end
+
     # input: array of the form: [[a_1, [a_1, a_1, a_1]], [a_2, [a_2, a_2]] .. [a_n, [a_n, a_n, a_n, a_n]]]
     # returns: hash of the form: { a_1: 3, a_2: 2, .. a_n: 4 }
     def to_data_row_count(arr)
@@ -135,5 +141,13 @@ class SummaryController < ApplicationController
 
     def calculate_distance_per_year(segments)
       to_data_row_sum get_distance_and_year(segments)
+    end
+
+    def get_distance_and_means(segments)
+      segments.map { |s| [s.means_of_travel ? s.means_of_travel.to_s : "(not defined)", s.distance] }
+    end
+
+    def calculate_distance_per_means(segments)
+      to_data_row_sum get_distance_and_means(segments)
     end
 end

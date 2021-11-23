@@ -9,6 +9,10 @@ module SegmentsHelper
     Segment.statuses.keys.collect { |k| [k.split("_").last.humanize, k] }
   end
 
+  def means_of_travel_list
+    MeansOfTravel.order(:name).collect { |m| [m.name, m.id] }
+  end
+
   def segment_status_color(segment)
     colors = {
       segment_open: "black",
