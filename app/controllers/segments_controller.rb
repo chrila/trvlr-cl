@@ -22,6 +22,7 @@ class SegmentsController < ApplicationController
     @segment.waypoint_to = last_sg.waypoint_to
     @segment.time_from = last_sg.time_to
     @segment.time_to = last_sg.time_to
+    @segment.means_of_travel = last_sg.means_of_travel
   end
 
   def edit

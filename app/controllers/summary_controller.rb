@@ -144,7 +144,7 @@ class SummaryController < ApplicationController
     end
 
     def get_distance_and_means(segments)
-      segments.map { |s| [s.means_of_travel ? s.means_of_travel.to_s : "(undefined)", s.distance] }
+      segments.map { |s| [s.means_of_travel ? s.means_of_travel.to_s : "(not defined)", s.distance] }
     end
 
     def calculate_distance_per_means(segments)
