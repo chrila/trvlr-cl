@@ -154,7 +154,7 @@ GEM
     faraday-net_http_persistent (1.2.0)
     faraday-patron (1.0.0)
     faraday-rack (1.0.0)
-    ffi (1.15.3)
+    ffi (1.15.5)
     formtastic (4.0.0)
       actionpack (>= 5.2.0)
     formtastic_i18n (0.7.0)
@@ -176,7 +176,7 @@ GEM
       concurrent-ruby (~> 1.0)
     i18n_data (0.15.0)
       simple_po_parser (~> 1.1)
-    image_processing (1.12.1)
+    image_processing (1.12.2)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
     inherited_resources (1.13.1)
@@ -354,7 +354,7 @@ GEM
     ruby-graphviz (1.2.5)
       rexml
     ruby-progressbar (1.11.0)
-    ruby-vips (2.1.2)
+    ruby-vips (2.1.4)
       ffi (~> 1.12)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
@@ -441,7 +441,7 @@ DEPENDENCIES
   faker
   geocoder
   hotwire-rails
-  image_processing (~> 1.2)
+  image_processing (~> 1.12)
   jbuilder (~> 2.11)
   listen (~> 3.7)
   mailgun-ruby

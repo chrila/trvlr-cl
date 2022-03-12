@@ -13,7 +13,7 @@ gem "sass-rails", ">= 6"
 gem "webpacker", "~> 5.4"
 gem "jbuilder", "~> 2.11"
 gem "redis", "~> 4.6"
-gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.12"
 gem "bootsnap", ">= 1.4.4", require: false
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 gem "faker"
