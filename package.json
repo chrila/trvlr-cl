@@ -2,7 +2,7 @@
   "name": "time-travelling-turtle",
   "private": true,
   "dependencies": {
-    "@activeadmin/activeadmin": "^2.9.0",
+    "@activeadmin/activeadmin": "^2.11.0",
     "@hotwired/turbo-rails": "^7.1.1",
     "@popperjs/core": "^2.11.0",
     "@rails/actioncable": "^6.1.5",
