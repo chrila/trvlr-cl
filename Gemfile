@@ -12,7 +12,7 @@ gem "sqlite", groups: %i[test]
 gem "sass-rails", ">= 6"
 gem "webpacker", "~> 5.4"
 gem "jbuilder", "~> 2.11"
-gem "redis", "~> 4.5"
+gem "redis", "~> 4.6"
 gem "image_processing", "~> 1.2"
 gem "bootsnap", ">= 1.4.4", require: false
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
@@ -38,7 +38,7 @@ group :development do
   gem "byebug", platforms: %i[mri mingw x64_mingw]
   gem "web-console", ">= 4.1.0"
   gem "listen", "~> 3.7"
-  gem "rack-mini-profiler", "~> 2.3"
+  gem "rack-mini-profiler", "~> 3.0"
   gem "spring"
   gem "rails-erd"
   gem "rubocop"
